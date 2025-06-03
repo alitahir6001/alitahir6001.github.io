@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Ali Tahir - pakfro.dev</title>
+    <style>
+        /* Basic body styling with a cool gradient background */
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0; /* Remove default margin */
+            line-height: 1.6;
+            /* Darker, cooler gradient background: Dark Blue to Deep Purple */
+            background: linear-gradient(135deg, #1a2a6c 0%, #3a005c 100%); /* Dark Blue to Deep Purple */
+            color: #e0e0e0; /* Light gray text for contrast */
+            min-height: 100vh; /* Ensure gradient covers full viewport height */
+            display: flex; /* Use flexbox for centering content */
+            flex-direction: column;
+            justify-content: center; /* Center content vertically */
+            align-items: center; /* Center content horizontally */
+        }
+
+        /* Container for the main content */
+        .container {
+            max-width: 800px;
+            width: 90%; /* Responsive width */
+            background-color: rgba(255, 255, 255, 0.08); /* Slightly less opaque white for a darker frosted look */
+            backdrop-filter: blur(5px); /* Frosted glass effect */
+            padding: 30px;
+            border-radius: 15px; /* More rounded corners */
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.4); /* More pronounced shadow for darker theme */
+            text-align: center; /* Center text within container */
+            margin: 20px auto; /* Add some margin for smaller screens */
+        }
+
+        /* Styling for main heading */
+        h1 {
+            color: #ffffff; /* White heading */
+            text-align: center;
+            margin-bottom: 30px;
+            font-size: 2.5em; /* Larger font size */
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3); /* Subtle text shadow */
+        }
+
+        /* Styling for subheadings */
+        h2 {
+            color: #f0f0f0; /* Lighter gray for subheadings */
+            margin-top: 25px;
+            border-bottom: 2px solid rgba(255, 255, 255, 0.15); /* Semi-transparent white underline */
+            padding-bottom: 5px;
+            font-size: 1.8em;
+        }
+
+        /* Paragraph styling */
+        p {
+            margin-bottom: 20px;
+            color: #cfcfcf; /* Slightly darker light gray for paragraphs */
+        }
+
+        /* Accent color for links */
+        .accent-link {
+            color: #88bbee; /* A brighter, complementary blue */
+            text-decoration: none;
+            font-weight: bold;
+            transition: color 0.3s ease; /* Smooth transition for hover */
+        }
+        .accent-link:hover {
+            color: #b0e0ff; /* A lighter blue on hover */
+            text-decoration: underline;
+        }
+
+        /* Styling for location text */
+        .location {
+            color: #b0b0b0; /* Very light gray */
+            font-size: 0.9em;
+            margin-top: 20px;
+            text-align: center;
+        }
+
+        /* Navigation bar styling */
+        nav {
+            text-align: center;
+            margin-bottom: 20px;
+            width: 100%;
+            padding: 10px 0;
+            background-color: rgba(0, 0, 0, 0.15); /* Slightly darker transparent background for nav */
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+        }
+        nav a {
+            color: #ffffff; /* White links in nav */
+            text-decoration: none;
+            margin: 0 15px;
+            font-weight: bold;
+            transition: color 0.3s ease;
+        }
+        nav a:hover {
+            color: #88bbee; /* Brighter blue on hover */
+        }
+        /* Style for the current page link in nav */
+        nav a.current-page {
+            color: #88bbee; /* Highlight current page */
+            text-decoration: underline;
+        }
+
+        /* Responsive adjustments */
+        @media (max-width: 600px) {
+            body {
+                margin: 20px;
+            }
+            .container {
+                padding: 20px;
+            }
+            h1 {
+                font-size: 2em;
+            }
+            h2 {
+                font-size: 1.5em;
+            }
+            nav a {
+                margin: 0 8px;
+                font-size: 0.9em;
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <a href="/">Home (Resume)</a> |
+        <a href="/bio.html" class="current-page">My Bio</a>
+        <!-- Add more navigation links here as you create new pages, e.g.: -->
+        <!-- | <a href="/projects.html">My Projects</a> -->
+    </nav>
+
+    <div class="container">
+        <h1>About Ali Tahir</h1>
+
+        <p>
+            Hello! I'm Ali Tahir, a passionate developer based in the vibrant city of Austin, Texas. I'm deeply fascinated by the power of technology to solve complex problems and create innovative solutions. My journey in the world of code has been driven by a desire to continuously learn and build impactful applications.
+        </p>
+
+        <h2>My Development Focus</h2>
+        <p>
+            My primary interests lie in the realm of cutting-edge technologies, with a strong focus on **Artificial Intelligence and Machine Learning**. I'm particularly excited about working with large language models, exploring their potential through frameworks like **FastAPI** and leveraging tools like **Ollama**. I also have a solid foundation in **Python** and a keen interest in **Web Development**, always striving to create user-friendly and efficient applications.
+        </p>
+
+        <h2>Beyond the Code</h2>
+        <p>
+            When I'm not immersed in coding projects, I enjoy exploring the live music scene in Austin, hiking the beautiful trails around the city, and staying curious about the latest advancements in technology and science.
+        </p>
+
+        <h2>Connect With Me</h2>
+        <p>
+            I'm always open to connecting with fellow developers and enthusiasts. You can find me on <a href="YOUR_LINKEDIN_PROFILE_HERE" class="accent-link" target="_blank" rel="noopener noreferrer">LinkedIn</a> and check out my projects on <a href="YOUR_GITHUB_PROFILE_HERE" class="accent-link" target="_blank" rel="noopener noreferrer">GitHub</a>.
+        </p>
+
+        <p class="location">
+            Located in Austin, Texas, USA.
+        </p>
+    </div>
+
+    <script>
+        // JavaScript for a subtle background color animation on container hover
+        const container = document.querySelector('.container');
+        if (container) { // Ensure the container element exists
+            container.addEventListener('mouseenter', () => {
+                // Change background color slightly and add a transition
+                container.style.backgroundColor = 'rgba(255, 255, 255, 0.12)'; /* Slightly more opaque white */
+                container.style.transition = 'background-color 0.3s ease';
+            });
+            container.addEventListener('mouseleave', () => {
+                // Revert background color and transition on mouse leave
+                container.style.backgroundColor = 'rgba(255, 255, 255, 0.08)'; /* Original semi-transparent white */
+                container.style.transition = 'background-color 0.3s ease';
+            });
+        }
+    </script>
+
+</body>
+</html>
