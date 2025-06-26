@@ -8,6 +8,7 @@
     --accent: #7b68ee;
 }
 
+/* Universal box-sizing for consistent layout */
 * {
     margin: 0;
     padding: 0;
@@ -19,8 +20,12 @@ body {
     background: linear-gradient(135deg, var(--deep-blue), var(--purple-main));
     color: var(--white-text);
     line-height: 1.6;
+    min-height: 100vh; /* Ensure body takes full viewport height */
+    display: flex;
+    flex-direction: column;
 }
 
+/* Header Styling */
 header {
     background-color: rgba(0, 0, 0, 0.2);
     backdrop-filter: blur(5px);
@@ -46,6 +51,7 @@ nav {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    gap: 1rem; /* Added gap for better spacing */
 }
 
 .logo {
@@ -55,12 +61,14 @@ nav {
     -webkit-background-clip: text;
     background-clip: text;
     -webkit-text-fill-color: transparent;
+    white-space: nowrap; /* Prevent logo from wrapping */
 }
 
 .nav-links {
     display: flex;
     list-style: none;
     gap: 2rem;
+    margin-right: auto; 
 }
 
 .nav-links a {
@@ -104,12 +112,39 @@ nav {
     transition: all 0.3s ease;
 }
 
+/* Header Social Icons Styling - HIDDEN */
+.header-social-icons {
+    display: none; /* Removed from header as per request */
+    gap: 0.8rem; /* Adjust spacing between icons */
+}
+
+.header-social-icons .social-link {
+    width: 35px;
+    height: 35px;
+    font-size: 0.9rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--purple-light);
+    border-radius: 50%;
+    transition: all 0.3s ease;
+    color: white;
+    text-decoration: none;
+}
+
+.header-social-icons .social-link:hover {
+    background-color: var(--accent);
+    transform: translateY(-3px);
+}
+
+/* Hero Section */
 .hero {
     height: 100vh;
     display: flex;
     align-items: center;
     position: relative;
     overflow: hidden;
+    padding-top: 6rem; /* Account for fixed header */
 }
 
 .hero::before {
@@ -140,6 +175,15 @@ nav {
     opacity: 0.9;
 }
 
+.hero-actions {
+    display: flex;
+    flex-wrap: wrap; /* Allow buttons to wrap on smaller screens */
+    gap: 1rem; /* Space between buttons */
+    margin-bottom: 1rem;
+}
+
+
+/* General Button Styling */
 .btn {
     display: inline-block;
     padding: 0.8rem 2rem;
@@ -151,6 +195,7 @@ nav {
     transition: all 0.3s ease;
     border: none;
     cursor: pointer;
+    text-align: center; /* Ensures text is centered for buttons spanning full width */
 }
 
 .btn:hover {
@@ -158,6 +203,19 @@ nav {
     box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
 }
 
+/* New: Secondary Button Style */
+.btn-secondary {
+    background: transparent !important; /* Override primary button background */
+    border: 2px solid var(--accent) !important;
+    color: var(--accent) !important; /* Set text color to accent */
+}
+
+.btn-secondary:hover {
+    background-color: var(--accent) !important; /* Fill on hover */
+    color: var(--white-text) !important; /* Text color changes on hover */
+}
+
+/* Section Common Styles */
 .section {
     padding: 6rem 0;
 }
@@ -173,6 +231,7 @@ nav {
     color: var(--accent);
 }
 
+/* About Section */
 .about-grid {
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -182,6 +241,8 @@ nav {
 
 .about-img {
     width: 100%;
+    max-width: 100%; /* Ensure responsiveness */
+    height: auto; /* Maintain aspect ratio */
     border-radius: 10px;
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
 }
@@ -196,6 +257,7 @@ nav {
     opacity: 0.9;
 }
 
+/* Resume Section */
 .resume-grid {
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -239,8 +301,10 @@ nav {
     margin-right: 0.5rem;
     margin-bottom: 0.5rem;
     font-size: 0.8rem;
+    white-space: nowrap; /* Prevent tags from breaking words */
 }
 
+/* App Section */
 .app-preview {
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -250,6 +314,8 @@ nav {
 
 .app-img {
     width: 100%;
+    max-width: 100%;
+    height: auto;
     border-radius: 10px;
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
 }
@@ -286,6 +352,7 @@ nav {
     flex-shrink: 0;
 }
 
+/* Projects Section */
 .projects-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
@@ -325,6 +392,7 @@ nav {
     opacity: 0.8;
 }
 
+/* Contact Section */
 .contact-grid {
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -384,8 +452,10 @@ textarea.form-control {
     resize: vertical;
 }
 
+/* Social Links (in contact section, also used in header) */
 .social-links {
     display: flex;
+    flex-wrap: wrap; /* Allow links to wrap */
     gap: 1rem;
     margin-top: 2rem;
 }
@@ -408,15 +478,18 @@ textarea.form-control {
     transform: translateY(-3px);
 }
 
+/* Footer Styling */
 footer {
     background-color: rgba(0, 0, 0, 0.3);
     padding: 3rem 0;
     text-align: center;
+    margin-top: auto; /* Pushes footer to the bottom */
 }
 
 .footer-links {
     display: flex;
     justify-content: center;
+    flex-wrap: wrap; /* Allow links to wrap */
     gap: 2rem;
     list-style: none;
     margin-bottom: 2rem;
@@ -453,7 +526,16 @@ footer {
     }
     
     .about-img {
+        order: -1; /* Puts image above text on smaller screens */
+    }
+
+    /* If app image should also be above text on mobile */
+    .app-preview .fade-in:last-child { /* Targets the image div in app-preview */
         order: -1;
+    }
+
+    .header-social-icons {
+        display: none; /* Hide social icons in header on smaller screens if they clutter */
     }
 }
 
@@ -473,7 +555,7 @@ footer {
     .nav-links {
         position: fixed;
         left: -100%;
-        top: 5rem;
+        top: 5rem; /* Adjust based on header height */
         flex-direction: column;
         background-color: var(--blue-accent);
         width: 100%;
@@ -502,6 +584,11 @@ footer {
     
     .mobile-menu.active .bar:nth-child(3) {
         transform: translateY(-8px) rotate(-45deg);
+    }
+
+    /* Adjust padding for sections on mobile */
+    .section {
+        padding: 4rem 0;
     }
 }
 
