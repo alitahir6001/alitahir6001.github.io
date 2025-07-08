@@ -240,9 +240,9 @@ nav {
 }
 
 .about-img {
-    width: 100%;
-    max-width: 100%; /* Ensure responsiveness */
-    height: auto; /* Maintain aspect ratio */
+    width: 75%;
+    max-width: 75%; /* Ensure responsiveness */
+    height: 75%; /* Maintain aspect ratio */
     border-radius: 10px;
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
 }
