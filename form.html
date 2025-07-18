@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pocket Professor - Feedback</title>
+    <link rel="stylesheet" href="/styles/form_style.css">
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1 class="logo">Feedback Form</h1>
+            <p>Your insights will help build the future of Pocket Professor. Thank you for your time.</p>
+        </div>
+
+        <div class="form-container" id="feedbackFormContainer">
+            <form id="feedbackForm">
+                <div class="form-group">
+                    <label for="q1">What is the most frustrating part about trying to learn a new career skill on your own?</label>
+                    <textarea id="q1" class="form-control" required></textarea>
+                </div>
+
+                <div class="form-group">
+                    <label for="q2">After using the syllabus generator, how helpful is having this structured plan laid out for you? (1=Not helpful, 10=Extremely helpful)</label>
+                    <input type="number" id="q2" class="form-control" min="1" max="10" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="q3">Imagine after each week, the app gave you a short, targeted quiz to check your understanding. How valuable would that be?</label>
+                    <textarea id="q3" class="form-control" required></textarea>
+                </div>
+
+                <button type="submit" class="btn">Submit Feedback</button>
+            </form>
+        </div>
+        <div id="thankYouMessage">
+            <p>✅ Thank you for your feedback!</p>
+        </div>
+    </div>
+
+    <script>
+        const form = document.getElementById('feedbackForm');
+        const formContainer = document.getElementById('feedbackFormContainer');
+        const thankYouMessage = document.getElementById('thankYouMessage');
+
+        form.addEventListener('submit', async (e) => {
+            e.preventDefault();
+            const submitButton = form.querySelector('.btn');
+            submitButton.disabled = true;
+            submitButton.textContent = 'Submitting...';
+
+            const data = {
+                frustration: document.getElementById('q1').value,
+                helpfulness_rating: parseInt(document.getElementById('q2').value, 10),
+                quiz_value: document.getElementById('q3').value,
+                submitted_at: new Date().toISOString()
+            };
+
+            // This is the technical hurdle: we need to decide where to send this data.
+            // For now, this is a placeholder URL.
+            const response = await fetch('YOUR_BACKEND_URL_HERE/submit-feedback', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(data)
+            });
+
+            if (response.ok) {
+                formContainer.style.display = 'none';
+                thankYouMessage.style.display = 'block';
+            } else {
+                alert('There was an error submitting your feedback. Please try again.');
+                submitButton.disabled = false;
+                submitButton.textContent = 'Submit Feedback';
+            }
+        });
+    </script>
+</body>
+</html>
