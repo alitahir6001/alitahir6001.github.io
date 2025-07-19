@@ -15,11 +15,7 @@
 }
 
 body {
-    background: linear-gradient(135deg, var(--deep-blue), var(--purple-main));
-    color: var(--white-text);
-    line-height: 1.6;
-    min-height: 100vh;
-    padding-top: 80px; /* Prevents content from hiding behind fixed header */
+    padding-top: 80px; 
 }
 
 .container {
@@ -30,16 +26,11 @@ body {
 }
 
 /* === Main Navigation Bar === */
-.site-header {
-    background-color: rgba(26, 26, 46, 0.8);
-    padding: 1rem 0;
-    backdrop-filter: blur(10px);
-    border-bottom: 1px solid var(--purple-light);
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    z-index: 1000;
+.site-header .container nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1rem;
 }
 
 .site-header .container nav {
