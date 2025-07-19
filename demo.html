@@ -19,6 +19,9 @@
     </div>
 </nav>
     <div class="container">
+    <div class="feedback-prompt" id="feedbackPrompt">
+    <p>Find this tool helpful? Or not? <a href="/form.html">Please share your feedback</a> to help shape the future of Pocket Professor!</p>
+</div>
         <div class="header">
             <h1 class="logo">🎓 Pocket Professor</h1>
             <p class="tagline">Your AI-powered learning companion that creates personalized curricula for any subject</p>
@@ -96,14 +99,17 @@
     </div>
 
     <script>
+    // --- Element Variables ---
     const form = document.getElementById('syllabusForm');
     const loading = document.getElementById('loading');
     const results = document.getElementById('results');
-    const syllabusContent = document.getElementById('syllabusContent'); // Get this once
+    const syllabusContent = document.getElementById('syllabusContent');
     const errorMessage = document.getElementById('errorMessage');
     const generateBtn = document.getElementById('generateBtn');
+    const downloadPdfBtn = document.getElementById('downloadPdfBtn');
+    const feedbackPrompt = document.getElementById('feedbackPrompt');
 
-    // Example data to fill form
+    // --- Demo Examples ---
     const examples = {
         react: { subject: 'React.js', difficulty: 'novice', goal: 'get a job', timeCommitment: '7-10 hours' },
         python: { subject: 'Python for Data Science', difficulty: 'intermediate', goal: 'career change', timeCommitment: '10+ hours' },
@@ -117,27 +123,39 @@
         document.getElementById('goal').value = example.goal;
         document.getElementById('timeCommitment').value = example.timeCommitment;
     }
-    
-    // This function now correctly builds HTML and places it on the page
-    function formatCurriculumResponse(curriculum) {
-        // Clear previous results first
-        syllabusContent.innerHTML = '';
 
+    // --- PDF Generation ---
+    function downloadSyllabusAsPDF() {
+        const { jsPDF } = window.jspdf;
+        const syllabusElement = document.getElementById('syllabusContent');
+        
+        // Use html2canvas to render the element into an image
+        html2canvas(syllabusElement, { scale: 2 }).then(canvas => {
+            const imgData = canvas.toDataURL('image/png');
+            const pdf = new jsPDF({
+                orientation: 'p',
+                unit: 'px',
+                format: [canvas.width, canvas.height]
+            });
+            pdf.addImage(imgData, 'PNG', 0, 0, canvas.width, canvas.height);
+            pdf.save('PocketProfessor-Syllabus.pdf');
+        });
+    }
+
+    // --- HTML Rendering ---
+    function formatCurriculumResponse(curriculum) {
+        syllabusContent.innerHTML = ''; // Clear previous results
         const contentDiv = document.createElement('div');
 
         const subjectHeader = document.createElement('h2');
         subjectHeader.textContent = `${curriculum.subject} Learning Plan`;
-        subjectHeader.style.marginBottom = '1rem';
         contentDiv.appendChild(subjectHeader);
 
         if (curriculum.prerequisites && curriculum.prerequisites.length > 0) {
             const prereqHeader = document.createElement('h3');
             prereqHeader.textContent = 'Prerequisites';
-            prereqHeader.style.marginTop = '1.5rem';
             contentDiv.appendChild(prereqHeader);
-
             const prereqList = document.createElement('ul');
-            prereqList.style.listStylePosition = 'inside';
             curriculum.prerequisites.forEach(item => {
                 const li = document.createElement('li');
                 li.textContent = item;
@@ -148,7 +166,7 @@
 
         curriculum.modules.forEach(module => {
             const moduleWrapper = document.createElement('div');
-            moduleWrapper.style.borderTop = '1px solid var(--purple-light)';
+            moduleWrapper.style.borderTop = '1px solid #4d2d60';
             moduleWrapper.style.paddingTop = '1rem';
             moduleWrapper.style.marginTop = '1.5rem';
 
@@ -158,35 +176,34 @@
 
             const hours = document.createElement('p');
             hours.innerHTML = `<strong>Estimated Hours:</strong> ${module.estimated_hours}`;
-            hours.style.marginBottom = '0.5rem';
             moduleWrapper.appendChild(hours);
 
             const topicsHeader = document.createElement('h4');
-topicsHeader.textContent = 'Topics to Cover:';
-topicsHeader.style.marginTop = '0.5rem';
-moduleWrapper.appendChild(topicsHeader);
+            topicsHeader.textContent = 'Topics to Cover:';
+            moduleWrapper.appendChild(topicsHeader);
 
-const topicsList = document.createElement('ul');
-topicsList.style.listStylePosition = 'inside';
-module.topics.forEach(topic => {
-const li = document.createElement('li');
-li.textContent = topic;
-topicsList.appendChild(li);
-});
-moduleWrapper.appendChild(topicsList);
-            
+            const topicsList = document.createElement('ul');
+            module.topics.forEach(topic => {
+                const li = document.createElement('li');
+                li.textContent = topic;
+                topicsList.appendChild(li);
+            });
+            moduleWrapper.appendChild(topicsList);
             contentDiv.appendChild(moduleWrapper);
         });
         
-        // Append the new content to the page
         syllabusContent.appendChild(contentDiv);
     }
 
-    // This is the main function that runs when the form is submitted
+    // --- Event Listeners ---
+    downloadPdfBtn.addEventListener('click', downloadSyllabusAsPDF);
+
     form.addEventListener('submit', async (e) => {
         e.preventDefault();
         
+        // Reset UI state
         results.style.display = 'none';
+        feedbackPrompt.style.display = 'none';
         errorMessage.style.display = 'none';
         loading.style.display = 'block';
         generateBtn.disabled = true;
@@ -204,7 +221,7 @@ moduleWrapper.appendChild(topicsList);
             });
 
             if (!response.ok) {
-                const errorData = await response.json();
+                const errorData = await response.json().catch(() => ({ detail: 'An unknown error occurred.' }));
                 throw new Error(`HTTP error! status: ${response.status} - ${errorData.detail}`);
             }
 
@@ -212,8 +229,10 @@ moduleWrapper.appendChild(topicsList);
             
             formatCurriculumResponse(curriculumJson);
             
+            // Show results
             loading.style.display = 'none';
             results.style.display = 'block';
+            feedbackPrompt.style.display = 'block';
             results.scrollIntoView({ behavior: 'smooth' });
             
         } catch (error) {
