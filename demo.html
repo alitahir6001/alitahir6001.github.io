@@ -154,37 +154,62 @@
 
         // Format the JSON response into readable text
         function formatCurriculumResponse(curriculum) {
-            let formatted = `# ${curriculum.subject} Learning Plan\n\n`;
-            formatted += `**Duration:** ${curriculum.total_weeks} weeks\n\n`;
-            
+            const contentDiv = document.createElement('div');
+
+            // Main Title
+            const subjectHeader = document.createElement('h2');
+            subjectHeader.textContent = `${curriculum.subject} Learning Plan`;
+            subjectHeader.style.marginBottom = '1rem';
+            contentDiv.appendChild(subjectHeader);
+
+            // Prerequisites
             if (curriculum.prerequisites && curriculum.prerequisites.length > 0) {
-                formatted += `## Prerequisites\n`;
-                curriculum.prerequisites.forEach(prereq => {
-                    formatted += `- ${prereq}\n`;
+                const prereqHeader = document.createElement('h3');
+                prereqHeader.textContent = 'Prerequisites';
+                prereqHeader.style.marginTop = '1.5rem';
+                contentDiv.appendChild(prereqHeader);
+
+                const prereqList = document.createElement('ul');
+                prereqList.style.listStylePosition = 'inside';
+                curriculum.prerequisites.forEach(item => {
+                    const li = document.createElement('li');
+                    li.textContent = item;
+                    prereqList.appendChild(li);
                 });
-                formatted += '\n';
+                contentDiv.appendChild(prereqList);
             }
             
+            // Modules
             curriculum.modules.forEach(module => {
-                formatted += `## Week ${module.week}: ${module.title}\n`;
-                formatted += `**Estimated Hours:** ${module.estimated_hours}\n\n`;
+                const moduleWrapper = document.createElement('div');
+                moduleWrapper.style.borderTop = '1px solid var(--purple-light)';
+                moduleWrapper.style.paddingTop = '1rem';
+                moduleWrapper.style.marginTop = '1.5rem';
+
+                const moduleTitle = document.createElement('h3');
+                moduleTitle.textContent = `Week ${module.week}: ${module.title}`;
+                moduleWrapper.appendChild(moduleTitle);
+
+                const hours = document.createElement('p');
+                hours.innerHTML = `<strong>Estimated Hours:</strong> ${module.estimated_hours}`;
+                hours.style.marginBottom = '0.5rem';
+                moduleWrapper.appendChild(hours);
+
+                const topicsHeader = document.createElement('h4');
+                topicsHeader.textContent = 'Topics to Cover:';
+                topicsHeader.style.marginTop = '0.5rem';
+                moduleWrapper.appendChild(topicsHeader);
+
+                const topicsList = document.createElement('ul');
+                topicsList.style.listStylePosition = 'inside';
+                module.topics.forEach(topic => {
+                    const li = document.createElement('li');
+                    li.textContent = topic;
+                    topicsList.appendChild(li);
+                });
+                moduleWrapper.appendChild(topicsList);
                 
-                if (module.topics && module.topics.length > 0) {
-                    formatted += `**Topics:**\n`;
-                    module.topics.forEach(topic => {
-                        formatted += `- ${topic}\n`;
-                    });
-                    formatted += '\n';
-                }
-                
-                if (module.resources && module.resources.length > 0) {
-                    formatted += `**Resources:**\n`;
-                    module.resources.forEach(resource => {
-                        formatted += `- ${resource}\n`;
-                    });
-                    formatted += '\n';
-                }
-                formatted += '---\n\n';
+                contentDiv.appendChild(moduleWrapper);
             });
             
             return formatted;
@@ -208,14 +233,30 @@
             loading.style.display = 'block';
             generateBtn.disabled = true;
 
-            try {
-                const syllabus = await generateSyllabus(formData);
+try {
+                // This part changes slightly. We need the raw JSON now.
+                const response = await fetch('https://pocket-professor-backend-production.up.railway.app/generate-curriculum', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({
+                        subject: document.getElementById('subject').value,
+                        skill_level: document.getElementById('difficulty').value,
+                        learning_goal: document.getElementById('goal').value,
+                        time_commitment: document.getElementById('timeCommitment').value
+                    })
+                });
+
+                if (!response.ok) {
+                    throw new Error(`HTTP error! status: ${response.status}`);
+                }
+
+                const curriculumJson = await response.json();
                 
-                // Hide loading
                 loading.style.display = 'none';
                 
-                // Show results
-                document.getElementById('syllabusContent').textContent = syllabus;
+                // Call the new formatting function
+                formatCurriculumResponse(curriculumJson);
+                
                 results.style.display = 'block';
                 results.scrollIntoView({ behavior: 'smooth' });
                 
