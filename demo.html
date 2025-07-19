@@ -9,23 +9,32 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
 </head>
 <body>
-    <nav class="navbar">
-    <div class="nav-container">
-        <a href="/" class="nav-brand">🎓 Pocket Professor</a>
-        <div class="nav-links">
-            <a href="/demo.html">Syllabus Generator</a>
-            <a href="/form.html">Feedback</a>
+    <header class="site-header">
+    <div class="container">
+        <nav>
+            <a href="/" class="logo">🎓 Pocket Professor</a>
+            <ul class="nav-links">
+                <li><a href="/demo.html">Syllabus Generator</a></li>
+                <li><a href="/form.html">Feedback</a></li>
+                <li><a href="/#contact">Contact</a></li>
+            </ul>
+            <div class="mobile-menu">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </div>
+        </nav>
+        <div class="page-header">
+            <h1 class="page-title">AI Syllabus Generator</h1>
+            <p class="tagline">Your AI-powered learning companion that creates personalized curricula for any subject</p>
         </div>
     </div>
-</nav>
+    </header>
     <div class="container">
     <div class="feedback-prompt" id="feedbackPrompt">
     <p>Find this tool helpful? Or not? <a href="/form.html">Please share your feedback</a> to help shape the future of Pocket Professor!</p>
-</div>
-        <div class="header">
-            <h1 class="logo">🎓 Pocket Professor</h1>
-            <p class="tagline">Your AI-powered learning companion that creates personalized curricula for any subject</p>
-        </div>
+    </div>
+
 
         <div class="form-container">
             <form id="syllabusForm">
@@ -99,6 +108,7 @@
     </div>
 
     <script>
+        
     // --- Element Variables ---
     const form = document.getElementById('syllabusForm');
     const loading = document.getElementById('loading');
@@ -108,6 +118,17 @@
     const generateBtn = document.getElementById('generateBtn');
     const downloadPdfBtn = document.getElementById('downloadPdfBtn');
     const feedbackPrompt = document.getElementById('feedbackPrompt');
+    
+    // Mobile Menu Toggle
+    const mobileMenu = document.querySelector('.mobile-menu');
+    const navLinks = document.querySelector('.nav-links');
+
+    mobileMenu.addEventListener('click', () => {
+        mobileMenu.classList.toggle('active');
+        navLinks.classList.toggle('active');
+    });
+
+// --- Element Variables --- (rest of your script)
 
     // --- Demo Examples ---
     const examples = {
