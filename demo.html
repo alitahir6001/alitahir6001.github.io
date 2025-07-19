@@ -10,33 +10,22 @@
 </head>
 <body>
     <header class="site-header">
-    <div class="container">
-        <nav>
-            <a href="/" class="logo">🎓 Pocket Professor</a>
-            <ul class="nav-links">
-                <li><a href="/demo.html">Syllabus Generator</a></li>
-                <li><a href="/form.html">Feedback</a></li>
-                <li><a href="/#contact">Contact</a></li>
-            </ul>
-            <div class="mobile-menu">
-                <span class="bar"></span>
-                <span class="bar"></span>
-                <span class="bar"></span>
-            </div>
-        </nav>
-    </div>
-</header>
+        <div class="container">
+            <nav>
+                <a href="/" class="logo-link">⬅️ Back to Main Page</a>
+                <ul class="nav-links">
+                    <li><a href="/demo.html">Syllabus Generator</a></li>
+                    <li><a href="/form.html">Feedback</a></li>
+                </ul>
+                </nav>
+        </div>
+    </header>
 
-<div class="container">
-    <div class="page-header">
-        <h1 class="page-title">AI Syllabus Generator</h1>
-        <p class="tagline">Your AI-powered learning companion that creates personalized curricula for any subject</p>
-    </div>
     <div class="container">
-    <div class="feedback-prompt" id="feedbackPrompt">
-    <p>Find this tool helpful? Or not? <a href="/form.html">Please share your feedback</a> to help shape the future of Pocket Professor!</p>
-    </div>
-
+        <div class="page-header">
+            <h1 class="page-title">AI Syllabus Generator</h1>
+            <p class="tagline">Your AI-powered learning companion that creates personalized curricula for any subject</p>
+        </div>
 
         <div class="form-container">
             <form id="syllabusForm">
@@ -44,7 +33,6 @@
                     <label for="subject">What do you want to learn?</label>
                     <input type="text" id="subject" class="form-control" placeholder="e.g., React.js, Data Science, Spanish, Guitar" required>
                 </div>
-
                 <div class="form-group">
                     <label for="difficulty">Your current level</label>
                     <select id="difficulty" class="form-control" required>
@@ -55,7 +43,6 @@
                         <option value="advanced">Advanced</option>
                     </select>
                 </div>
-
                 <div class="form-group">
                     <label for="goal">What's your learning goal?</label>
                     <select id="goal" class="form-control" required>
@@ -63,12 +50,8 @@
                         <option value="get a job">Get a Job</option>
                         <option value="pass certification">Pass Certification</option>
                         <option value="personal interest">Personal Interest</option>
-                        <option value="academic project">Academic Project</option>
-                        <option value="career change">Career Change</option>
-                        <option value="skill improvement">Skill Improvement</option>
                     </select>
                 </div>
-
                 <div class="form-group">
                     <label for="timeCommitment">How many hours per week can you dedicate?</label>
                     <select id="timeCommitment" class="form-control" required>
@@ -79,12 +62,8 @@
                         <option value="10+ hours">10+ hours</option>
                     </select>
                 </div>
-
-                <button type="submit" class="btn" id="generateBtn">
-                    Generate My Learning Plan 🚀
-                </button>
+                <button type="submit" class="btn" id="generateBtn">Generate My Learning Plan 🚀</button>
             </form>
-
             <div class="error" id="errorMessage"></div>
         </div>
 
@@ -95,8 +74,12 @@
 
         <div class="results" id="results">
             <h2>Your Personalized Learning Syllabus</h2>
-            <button id="downloadPdfBtn" class="btn pdf-btn">⬇️ Download as PDF</button> <div class="syllabus-content" id="syllabusContent"></div>
+            <button id="downloadPdfBtn" class="btn pdf-btn">⬇️ Download as PDF</button>
             <div class="syllabus-content" id="syllabusContent"></div>
+        </div>
+
+        <div class="feedback-prompt" id="feedbackPrompt">
+            <p>Find this tool helpful? <a href="/form.html">Please share your feedback!</a></p>
         </div>
 
         <div class="demo-examples">
@@ -109,8 +92,8 @@
         </div>
     </div>
 
-    <script>
 
+    <script>
     // --- Element Variables ---
     const form = document.getElementById('syllabusForm');
     const loading = document.getElementById('loading');
@@ -120,17 +103,6 @@
     const generateBtn = document.getElementById('generateBtn');
     const downloadPdfBtn = document.getElementById('downloadPdfBtn');
     const feedbackPrompt = document.getElementById('feedbackPrompt');
-    
-    // Mobile Menu Toggle
-    const mobileMenu = document.querySelector('.mobile-menu');
-    const navLinks = document.querySelector('.nav-links');
-
-    mobileMenu.addEventListener('click', () => {
-        mobileMenu.classList.toggle('active');
-        navLinks.classList.toggle('active');
-    });
-
-// --- Element Variables --- (rest of your script)
 
     // --- Demo Examples ---
     const examples = {
@@ -151,15 +123,9 @@
     function downloadSyllabusAsPDF() {
         const { jsPDF } = window.jspdf;
         const syllabusElement = document.getElementById('syllabusContent');
-        
-        // Use html2canvas to render the element into an image
         html2canvas(syllabusElement, { scale: 2 }).then(canvas => {
             const imgData = canvas.toDataURL('image/png');
-            const pdf = new jsPDF({
-                orientation: 'p',
-                unit: 'px',
-                format: [canvas.width, canvas.height]
-            });
+            const pdf = new jsPDF({ orientation: 'p', unit: 'px', format: [canvas.width, canvas.height] });
             pdf.addImage(imgData, 'PNG', 0, 0, canvas.width, canvas.height);
             pdf.save('PocketProfessor-Syllabus.pdf');
         });
@@ -167,13 +133,11 @@
 
     // --- HTML Rendering ---
     function formatCurriculumResponse(curriculum) {
-        syllabusContent.innerHTML = ''; // Clear previous results
+        syllabusContent.innerHTML = '';
         const contentDiv = document.createElement('div');
-
         const subjectHeader = document.createElement('h2');
         subjectHeader.textContent = `${curriculum.subject} Learning Plan`;
         contentDiv.appendChild(subjectHeader);
-
         if (curriculum.prerequisites && curriculum.prerequisites.length > 0) {
             const prereqHeader = document.createElement('h3');
             prereqHeader.textContent = 'Prerequisites';
@@ -186,25 +150,20 @@
             });
             contentDiv.appendChild(prereqList);
         }
-
         curriculum.modules.forEach(module => {
             const moduleWrapper = document.createElement('div');
             moduleWrapper.style.borderTop = '1px solid #4d2d60';
             moduleWrapper.style.paddingTop = '1rem';
             moduleWrapper.style.marginTop = '1.5rem';
-
             const moduleTitle = document.createElement('h3');
             moduleTitle.textContent = `Week ${module.week}: ${module.title}`;
             moduleWrapper.appendChild(moduleTitle);
-
             const hours = document.createElement('p');
             hours.innerHTML = `<strong>Estimated Hours:</strong> ${module.estimated_hours}`;
             moduleWrapper.appendChild(hours);
-
             const topicsHeader = document.createElement('h4');
             topicsHeader.textContent = 'Topics to Cover:';
             moduleWrapper.appendChild(topicsHeader);
-
             const topicsList = document.createElement('ul');
             module.topics.forEach(topic => {
                 const li = document.createElement('li');
@@ -214,7 +173,6 @@
             moduleWrapper.appendChild(topicsList);
             contentDiv.appendChild(moduleWrapper);
         });
-        
         syllabusContent.appendChild(contentDiv);
     }
 
@@ -249,12 +207,12 @@
             }
 
             const curriculumJson = await response.json();
-            
             formatCurriculumResponse(curriculumJson);
             
             // Show results
             loading.style.display = 'none';
             results.style.display = 'block';
+            downloadPdfBtn.style.display = 'inline-block'; // 3. CORRECTED: Show PDF button
             feedbackPrompt.style.display = 'block';
             results.scrollIntoView({ behavior: 'smooth' });
             
@@ -267,6 +225,6 @@
             generateBtn.disabled = false;
         }
     });
-</script>
+    </script>
 </body>
 </html>
