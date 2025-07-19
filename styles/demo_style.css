@@ -15,7 +15,11 @@
 }
 
 body {
-    padding-top: 80px; 
+    background: linear-gradient(135deg, var(--deep-blue), var(--purple-main));
+    color: var(--white-text);
+    line-height: 1.6;
+    min-height: 100vh;
+    /* padding-top is REMOVED from the body */
 }
 
 .container {
@@ -23,21 +27,27 @@ body {
     max-width: 800px;
     margin: 0 auto;
     padding: 2rem 0;
+    margin-top: 100px; /* ADDED to push content down below the fixed header */
 }
 
 /* === Main Navigation Bar === */
-.site-header .container nav {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 1rem;
+.site-header {
+    background-color: rgba(26, 26, 46, 0.8);
+    padding: 1rem 0;
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid var(--purple-light);
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000;
 }
 
 .site-header .container nav {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin-bottom: 1rem;
+    /* margin-bottom is REMOVED from the nav */
 }
 
 .site-header .logo {
