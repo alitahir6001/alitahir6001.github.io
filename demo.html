@@ -84,191 +84,135 @@
     </div>
 
     <script>
-        const form = document.getElementById('syllabusForm');
-        const loading = document.getElementById('loading');
-        const results = document.getElementById('results');
-        const errorMessage = document.getElementById('errorMessage');
-        const generateBtn = document.getElementById('generateBtn');
+    const form = document.getElementById('syllabusForm');
+    const loading = document.getElementById('loading');
+    const results = document.getElementById('results');
+    const syllabusContent = document.getElementById('syllabusContent'); // Get this once
+    const errorMessage = document.getElementById('errorMessage');
+    const generateBtn = document.getElementById('generateBtn');
 
-        // Example data to fill form
-        const examples = {
-            react: {
-                subject: 'React.js',
-                difficulty: 'novice',
-                goal: 'get a job',
-                timeCommitment: '7-10 hours'
-            },
-            python: {
-                subject: 'Python for Data Science',
-                difficulty: 'intermediate',
-                goal: 'career change',
-                timeCommitment: '10+ hours'
-            },
-            aws: {
-                subject: 'AWS Cloud Practitioner',
-                difficulty: 'complete beginner',
-                goal: 'pass certification',
-                timeCommitment: '4-6 hours'
-            }
-        };
+    // Example data to fill form
+    const examples = {
+        react: { subject: 'React.js', difficulty: 'novice', goal: 'get a job', timeCommitment: '7-10 hours' },
+        python: { subject: 'Python for Data Science', difficulty: 'intermediate', goal: 'career change', timeCommitment: '10+ hours' },
+        aws: { subject: 'AWS Cloud Practitioner', difficulty: 'complete beginner', goal: 'pass certification', timeCommitment: '4-6 hours' }
+    };
 
-        function fillExample(type) {
-            const example = examples[type];
-            document.getElementById('subject').value = example.subject;
-            document.getElementById('difficulty').value = example.difficulty;
-            document.getElementById('goal').value = example.goal;
-            document.getElementById('timeCommitment').value = example.timeCommitment;
+    function fillExample(type) {
+        const example = examples[type];
+        document.getElementById('subject').value = example.subject;
+        document.getElementById('difficulty').value = example.difficulty;
+        document.getElementById('goal').value = example.goal;
+        document.getElementById('timeCommitment').value = example.timeCommitment;
+    }
+    
+    // This function now correctly builds HTML and places it on the page
+    function formatCurriculumResponse(curriculum) {
+        // Clear previous results first
+        syllabusContent.innerHTML = '';
+
+        const contentDiv = document.createElement('div');
+
+        const subjectHeader = document.createElement('h2');
+        subjectHeader.textContent = `${curriculum.subject} Learning Plan`;
+        subjectHeader.style.marginBottom = '1rem';
+        contentDiv.appendChild(subjectHeader);
+
+        if (curriculum.prerequisites && curriculum.prerequisites.length > 0) {
+            const prereqHeader = document.createElement('h3');
+            prereqHeader.textContent = 'Prerequisites';
+            prereqHeader.style.marginTop = '1.5rem';
+            contentDiv.appendChild(prereqHeader);
+
+            const prereqList = document.createElement('ul');
+            prereqList.style.listStylePosition = 'inside';
+            curriculum.prerequisites.forEach(item => {
+                const li = document.createElement('li');
+                li.textContent = item;
+                prereqList.appendChild(li);
+            });
+            contentDiv.appendChild(prereqList);
         }
 
-// Real API call to your FastAPI backend
-        async function generateSyllabus(data) {
+        curriculum.modules.forEach(module => {
+            const moduleWrapper = document.createElement('div');
+            moduleWrapper.style.borderTop = '1px solid var(--purple-light)';
+            moduleWrapper.style.paddingTop = '1rem';
+            moduleWrapper.style.marginTop = '1.5rem';
+
+            const moduleTitle = document.createElement('h3');
+            moduleTitle.textContent = `Week ${module.week}: ${module.title}`;
+            moduleWrapper.appendChild(moduleTitle);
+
+            const hours = document.createElement('p');
+            hours.innerHTML = `<strong>Estimated Hours:</strong> ${module.estimated_hours}`;
+            hours.style.marginBottom = '0.5rem';
+            moduleWrapper.appendChild(hours);
+
+            const topicsHeader = document.createElement('h4');
+topicsHeader.textContent = 'Topics to Cover:';
+topicsHeader.style.marginTop = '0.5rem';
+moduleWrapper.appendChild(topicsHeader);
+
+const topicsList = document.createElement('ul');
+topicsList.style.listStylePosition = 'inside';
+module.topics.forEach(topic => {
+const li = document.createElement('li');
+li.textContent = topic;
+topicsList.appendChild(li);
+});
+moduleWrapper.appendChild(topicsList);
+            
+            contentDiv.appendChild(moduleWrapper);
+        });
+        
+        // Append the new content to the page
+        syllabusContent.appendChild(contentDiv);
+    }
+
+    // This is the main function that runs when the form is submitted
+    form.addEventListener('submit', async (e) => {
+        e.preventDefault();
+        
+        results.style.display = 'none';
+        errorMessage.style.display = 'none';
+        loading.style.display = 'block';
+        generateBtn.disabled = true;
+
+        try {
             const response = await fetch('https://pocket-professor-backend-production.up.railway.app/generate-curriculum', {
                 method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
+                headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({
-                    subject: data.subject,
-                    skill_level: data.difficulty,
-                    learning_goal: data.goal,
-                    time_commitment: extractHours(data.timeCommitment)
+                    subject: document.getElementById('subject').value,
+                    skill_level: document.getElementById('difficulty').value,
+                    learning_goal: document.getElementById('goal').value,
+                    time_commitment: document.getElementById('timeCommitment').value
                 })
             });
 
             if (!response.ok) {
-                throw new Error(`HTTP error! status: ${response.status}`);
+                const errorData = await response.json();
+                throw new Error(`HTTP error! status: ${response.status} - ${errorData.detail}`);
             }
 
-            const result = await response.json();
-            return formatCurriculumResponse(result);
+            const curriculumJson = await response.json();
+            
+            formatCurriculumResponse(curriculumJson);
+            
+            loading.style.display = 'none';
+            results.style.display = 'block';
+            results.scrollIntoView({ behavior: 'smooth' });
+            
+        } catch (error) {
+            console.error('Error generating syllabus:', error);
+            loading.style.display = 'none';
+            errorMessage.textContent = 'Sorry, there was an error generating your syllabus. Please try again.';
+            errorMessage.style.display = 'block';
+        } finally {
+            generateBtn.disabled = false;
         }
-
-        // Helper function to extract hours from timeCommitment
-        function extractHours(timeCommitment) {
-            if (timeCommitment.includes('2-3')) return '3';
-            if (timeCommitment.includes('4-6')) return '5';
-            if (timeCommitment.includes('7-10')) return '8';
-            if (timeCommitment.includes('10+')) return '12';
-            return '5';
-        }
-
-        // Format the JSON response into readable text
-        function formatCurriculumResponse(curriculum) {
-            const contentDiv = document.createElement('div');
-
-            // Main Title
-            const subjectHeader = document.createElement('h2');
-            subjectHeader.textContent = `${curriculum.subject} Learning Plan`;
-            subjectHeader.style.marginBottom = '1rem';
-            contentDiv.appendChild(subjectHeader);
-
-            // Prerequisites
-            if (curriculum.prerequisites && curriculum.prerequisites.length > 0) {
-                const prereqHeader = document.createElement('h3');
-                prereqHeader.textContent = 'Prerequisites';
-                prereqHeader.style.marginTop = '1.5rem';
-                contentDiv.appendChild(prereqHeader);
-
-                const prereqList = document.createElement('ul');
-                prereqList.style.listStylePosition = 'inside';
-                curriculum.prerequisites.forEach(item => {
-                    const li = document.createElement('li');
-                    li.textContent = item;
-                    prereqList.appendChild(li);
-                });
-                contentDiv.appendChild(prereqList);
-            }
-            
-            // Modules
-            curriculum.modules.forEach(module => {
-                const moduleWrapper = document.createElement('div');
-                moduleWrapper.style.borderTop = '1px solid var(--purple-light)';
-                moduleWrapper.style.paddingTop = '1rem';
-                moduleWrapper.style.marginTop = '1.5rem';
-
-                const moduleTitle = document.createElement('h3');
-                moduleTitle.textContent = `Week ${module.week}: ${module.title}`;
-                moduleWrapper.appendChild(moduleTitle);
-
-                const hours = document.createElement('p');
-                hours.innerHTML = `<strong>Estimated Hours:</strong> ${module.estimated_hours}`;
-                hours.style.marginBottom = '0.5rem';
-                moduleWrapper.appendChild(hours);
-
-                const topicsHeader = document.createElement('h4');
-                topicsHeader.textContent = 'Topics to Cover:';
-                topicsHeader.style.marginTop = '0.5rem';
-                moduleWrapper.appendChild(topicsHeader);
-
-                const topicsList = document.createElement('ul');
-                topicsList.style.listStylePosition = 'inside';
-                module.topics.forEach(topic => {
-                    const li = document.createElement('li');
-                    li.textContent = topic;
-                    topicsList.appendChild(li);
-                });
-                moduleWrapper.appendChild(topicsList);
-                
-                contentDiv.appendChild(moduleWrapper);
-            });
-            
-            return formatted;
-        }
-
-        form.addEventListener('submit', async (e) => {
-            e.preventDefault();
-            
-            const formData = {
-                subject: document.getElementById('subject').value,
-                difficulty: document.getElementById('difficulty').value,
-                goal: document.getElementById('goal').value,
-                timeCommitment: document.getElementById('timeCommitment').value
-            };
-
-            // Hide previous results and errors
-            results.style.display = 'none';
-            errorMessage.style.display = 'none';
-            
-            // Show loading
-            loading.style.display = 'block';
-            generateBtn.disabled = true;
-
-try {
-                // This part changes slightly. We need the raw JSON now.
-                const response = await fetch('https://pocket-professor-backend-production.up.railway.app/generate-curriculum', {
-                    method: 'POST',
-                    headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify({
-                        subject: document.getElementById('subject').value,
-                        skill_level: document.getElementById('difficulty').value,
-                        learning_goal: document.getElementById('goal').value,
-                        time_commitment: document.getElementById('timeCommitment').value
-                    })
-                });
-
-                if (!response.ok) {
-                    throw new Error(`HTTP error! status: ${response.status}`);
-                }
-
-                const curriculumJson = await response.json();
-                
-                loading.style.display = 'none';
-                
-                // Call the new formatting function
-                formatCurriculumResponse(curriculumJson);
-                
-                results.style.display = 'block';
-                results.scrollIntoView({ behavior: 'smooth' });
-                
-            } catch (error) {
-                console.error('Error generating syllabus:', error);
-                loading.style.display = 'none';
-                errorMessage.textContent = 'Sorry, there was an error generating your syllabus. Please try again.';
-                errorMessage.style.display = 'block';
-            } finally {
-                generateBtn.disabled = false;
-            }
-        });
-    </script>
+    });
+</script>
 </body>
 </html>
