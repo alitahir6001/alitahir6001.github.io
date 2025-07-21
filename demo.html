@@ -16,7 +16,7 @@
                 <ul class="nav-links">
                     <li><a href="/bio.html">About</a></li>
                     <li><a href="/resume.html">Resume</a></li>
-                    <li><a href="https://forms.gle/N436zSXQdDGXAMBE7">App Feedback</a></li>
+                    <li><a href="https://forms.gle/N436zSXQdDGXAMBE7" target="_blank">App Feedback</a></li>
                 </ul>
             </nav>
         </div>
@@ -52,7 +52,7 @@
                         <option value="career change">Career Change</option>
                         <option value="get a job">Get a Job</option>
                         <option value="skill improvement">Skill Improvement</option>
-                        <option value="pass certification">Academic Project</option>
+                        <option value="academic project">Academic Project</option>
                         <option value="pass certification">Pass Certification</option>
                         <option value="personal interest">Personal Interest</option>
                     </select>
@@ -75,6 +75,7 @@
         <div class="loading" id="loading">
             <div class="spinner"></div>
             <p>Creating your personalized learning plan...</p>
+            <p class="disclaimer">(This may take up to 30 seconds for detailed results)</p>
         </div>
 
         <div class="results" id="results">
@@ -84,7 +85,7 @@
         </div>
 
         <div class="feedback-prompt" id="feedbackPrompt">
-            <p>Find this tool helpful? I'd love to hear your thoughts -- <a href="https://forms.gle/N436zSXQdDGXAMBE7">Please share your feedback!</a></p>
+            <p>Find this tool helpful? I'd love to hear your thoughts -- <a href="https://forms.gle/N436zSXQdDGXAMBE7" target="_blank">Please share your feedback!</a></p>
         </div>
 
         <div class="demo-examples">
@@ -123,7 +124,14 @@
         document.getElementById('timeCommitment').value = example.timeCommitment;
     }
 
-    // --- PDF Generation ---
+    function extractHours(timeCommitment) {
+        if (timeCommitment.includes('2-3')) return '3';
+        if (timeCommitment.includes('4-6')) return '5';
+        if (timeCommitment.includes('7-10')) return '8';
+        if (timeCommitment.includes('10+')) return '12';
+        return '5';
+    }
+
     function downloadSyllabusAsPDF() {
         const { jsPDF } = window.jspdf;
         const syllabusElement = document.getElementById('syllabusContent');
@@ -135,49 +143,98 @@
         });
     }
 
-    // --- HTML Rendering ---
+    // --- CORRECTED: HTML Rendering for Detailed Syllabus ---
     function formatCurriculumResponse(curriculum) {
-        syllabusContent.innerHTML = '';
-        const contentDiv = document.createElement('div');
-        const subjectHeader = document.createElement('h2');
-        subjectHeader.textContent = `${curriculum.subject} Learning Plan`;
-        contentDiv.appendChild(subjectHeader);
+        syllabusContent.innerHTML = ''; // Clear previous results
+        
+        // Introduction
+        const intro = document.createElement('p');
+        intro.textContent = curriculum.introduction;
+        syllabusContent.appendChild(intro);
+
+        // Prerequisites
         if (curriculum.prerequisites && curriculum.prerequisites.length > 0) {
+            const prereqSection = document.createElement('div');
+            prereqSection.className = 'syllabus-section';
             const prereqHeader = document.createElement('h3');
             prereqHeader.textContent = 'Prerequisites';
-            contentDiv.appendChild(prereqHeader);
+            prereqSection.appendChild(prereqHeader);
             const prereqList = document.createElement('ul');
             curriculum.prerequisites.forEach(item => {
                 const li = document.createElement('li');
                 li.textContent = item;
                 prereqList.appendChild(li);
             });
-            contentDiv.appendChild(prereqList);
+            prereqSection.appendChild(prereqList);
+            syllabusContent.appendChild(prereqSection);
         }
+
+        // Weekly Modules
         curriculum.modules.forEach(module => {
-            const moduleWrapper = document.createElement('div');
-            moduleWrapper.style.borderTop = '1px solid #4d2d60';
-            moduleWrapper.style.paddingTop = '1rem';
-            moduleWrapper.style.marginTop = '1.5rem';
+            const moduleSection = document.createElement('div');
+            moduleSection.className = 'syllabus-section';
+            
             const moduleTitle = document.createElement('h3');
             moduleTitle.textContent = `Week ${module.week}: ${module.title}`;
-            moduleWrapper.appendChild(moduleTitle);
-            const hours = document.createElement('p');
-            hours.innerHTML = `<strong>Estimated Hours:</strong> ${module.estimated_hours}`;
-            moduleWrapper.appendChild(hours);
-            const topicsHeader = document.createElement('h4');
-            topicsHeader.textContent = 'Topics to Cover:';
-            moduleWrapper.appendChild(topicsHeader);
-            const topicsList = document.createElement('ul');
+            moduleSection.appendChild(moduleTitle);
+
             module.topics.forEach(topic => {
-                const li = document.createElement('li');
-                li.textContent = topic;
-                topicsList.appendChild(li);
+                const topicItem = document.createElement('div');
+                topicItem.className = 'topic-item';
+                
+                const topicName = document.createElement('h4');
+                topicName.textContent = topic.topic_name;
+                topicItem.appendChild(topicName);
+
+                const topicDesc = document.createElement('p');
+                topicDesc.textContent = topic.description;
+                topicItem.appendChild(topicDesc);
+
+                const resourcesHeader = document.createElement('strong');
+                resourcesHeader.textContent = 'Resources:';
+                topicItem.appendChild(resourcesHeader);
+
+                const resourcesList = document.createElement('ul');
+                topic.resources.forEach(res => {
+                    const li = document.createElement('li');
+                    li.textContent = res;
+                    resourcesList.appendChild(li);
+                });
+                topicItem.appendChild(resourcesList);
+                moduleSection.appendChild(topicItem);
             });
-            moduleWrapper.appendChild(topicsList);
-            contentDiv.appendChild(moduleWrapper);
+
+            const projectCard = document.createElement('div');
+            projectCard.className = 'project-card';
+            const projectHeader = document.createElement('h4');
+            projectHeader.textContent = `Weekly Project: ${module.weekly_project.title}`;
+            projectCard.appendChild(projectHeader);
+            const projectDesc = document.createElement('p');
+            projectDesc.textContent = module.weekly_project.description;
+            projectCard.appendChild(projectDesc);
+            moduleSection.appendChild(projectCard);
+
+            syllabusContent.appendChild(moduleSection);
         });
-        syllabusContent.appendChild(contentDiv);
+
+        // Capstone Project
+        const capstoneSection = document.createElement('div');
+        capstoneSection.className = 'syllabus-section';
+        const capstoneHeader = document.createElement('h3');
+        capstoneHeader.textContent = 'Capstone Project';
+        capstoneSection.appendChild(capstoneHeader);
+        
+        const capstoneCard = document.createElement('div');
+        capstoneCard.className = 'project-card';
+        const capstoneTitle = document.createElement('h4');
+        capstoneTitle.textContent = curriculum.capstone_project.title;
+        capstoneCard.appendChild(capstoneTitle);
+        const capstoneDesc = document.createElement('p');
+        capstoneDesc.textContent = curriculum.capstone_project.description;
+        capstoneCard.appendChild(capstoneDesc);
+        capstoneSection.appendChild(capstoneSection);
+
+        syllabusContent.appendChild(capstoneSection);
     }
 
     // --- Event Listeners ---
@@ -186,7 +243,6 @@
     form.addEventListener('submit', async (e) => {
         e.preventDefault();
         
-        // Reset UI state
         results.style.display = 'none';
         feedbackPrompt.style.display = 'none';
         errorMessage.style.display = 'none';
@@ -201,7 +257,7 @@
                     subject: document.getElementById('subject').value,
                     skill_level: document.getElementById('difficulty').value,
                     learning_goal: document.getElementById('goal').value,
-                    time_commitment: document.getElementById('timeCommitment').value
+                    time_commitment: extractHours(document.getElementById('timeCommitment').value)
                 })
             });
 
@@ -213,7 +269,6 @@
             const curriculumJson = await response.json();
             formatCurriculumResponse(curriculumJson);
             
-            // Show results
             loading.style.display = 'none';
             results.style.display = 'block';
             downloadPdfBtn.style.display = 'inline-block';
