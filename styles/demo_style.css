@@ -1,4 +1,3 @@
-/* Base and Variables */
 :root {
     --deep-blue: #1a1a2e;
     --purple-main: #301b3f;
@@ -24,8 +23,6 @@ body {
     margin: 0 auto;
     padding: 2rem 0;
 }
-
-/* Static Header */
 .site-header {
     background-color: rgba(26, 26, 46, 0.8);
     padding: 1rem 0;
@@ -56,11 +53,9 @@ body {
     transition: color 0.3s ease;
 }
 .site-header .nav-links a:hover { color: var(--accent); }
-
-/* Page Header */
 .page-header {
     text-align: center;
-    margin-top: 2rem; /* Spacing from the header */
+    margin-top: 2rem;
 }
 .page-title {
     font-size: 2.5rem;
@@ -68,8 +63,6 @@ body {
     color: var(--accent);
 }
 .tagline { font-size: 1.2rem; opacity: 0.9; }
-
-/* Form & Content Styles */
 .form-container, .results {
     background-color: rgba(26, 26, 46, 0.8);
     border-radius: 15px;
@@ -94,8 +87,6 @@ body {
     font-size: 1rem;
 }
 select.form-control option { background-color: var(--deep-blue); }
-
-/* Buttons */
 .btn {
     display: block;
     width: 100%;
@@ -127,8 +118,6 @@ select.form-control option { background-color: var(--deep-blue); }
     font-size: 0.9rem;
 }
 .example-btn:hover { background-color: var(--accent); }
-
-/* State-dependent Visibility */
 .loading, .results, .feedback-prompt, #downloadPdfBtn {
     display: none;
 }
@@ -143,8 +132,8 @@ select.form-control option { background-color: var(--deep-blue); }
     animation: spin 1s ease-in-out infinite;
 }
 @keyframes spin { to { transform: rotate(360deg); } }
-
-/* Results and Feedback Styles */
+.loading p { margin-top: 1rem; }
+.loading .disclaimer { font-size: 0.9rem; opacity: 0.8; margin-top: 0.5rem; }
 .results h2 {
     margin-bottom: 1rem;
     color: var(--accent);
@@ -160,3 +149,38 @@ select.form-control option { background-color: var(--deep-blue); }
     border-radius: 15px;
 }
 .feedback-prompt a { color: var(--accent); font-weight: 600; }
+
+/* New Styles for Detailed Syllabus */
+.syllabus-section {
+    margin-top: 2rem;
+    padding-top: 1.5rem;
+    border-top: 1px solid var(--purple-light);
+}
+.syllabus-section h3 {
+    color: var(--accent);
+    margin-bottom: 1rem;
+}
+.topic-item {
+    margin-bottom: 1.5rem;
+}
+.topic-item h4 {
+    margin-bottom: 0.25rem;
+}
+.topic-item p {
+    margin-bottom: 0.5rem;
+    opacity: 0.9;
+}
+.topic-item ul {
+    list-style-position: inside;
+    padding-left: 1rem;
+}
+.project-card {
+    background-color: rgba(0,0,0,0.2);
+    border-left: 4px solid var(--accent);
+    padding: 1rem;
+    border-radius: 8px;
+    margin-top: 1rem;
+}
+.project-card h4 {
+    margin-bottom: 0.5rem;
+}
