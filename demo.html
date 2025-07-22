@@ -164,32 +164,59 @@
     }
 
     // --- CORRECTED: HTML Rendering for Detailed Syllabus ---
-    function formatCurriculumResponse(curriculum) {
+function formatCurriculumResponse(curriculum) {
         syllabusContent.innerHTML = ''; // Clear previous results
         
-        // Introduction
+        // 1. ADDED: Main Title for the Syllabus
+        const titleHeader = document.createElement('h1');
+        titleHeader.className = 'syllabus-title';
+        titleHeader.textContent = `Learning Guide for ${curriculum.subject}`;
+        syllabusContent.appendChild(titleHeader);
+
         const intro = document.createElement('p');
         intro.textContent = curriculum.introduction;
         syllabusContent.appendChild(intro);
 
-        // Prerequisites
+        // 2. ADDED: Two-column overview section
+        const overviewSection = document.createElement('div');
+        overviewSection.className = 'overview-section';
+
+        // Left Column: Prerequisites
+        const prereqColumn = document.createElement('div');
+        prereqColumn.className = 'overview-column';
         if (curriculum.prerequisites && curriculum.prerequisites.length > 0) {
-            const prereqSection = document.createElement('div');
-            prereqSection.className = 'syllabus-section';
             const prereqHeader = document.createElement('h3');
             prereqHeader.textContent = 'Prerequisites';
-            prereqSection.appendChild(prereqHeader);
+            prereqColumn.appendChild(prereqHeader);
             const prereqList = document.createElement('ul');
             curriculum.prerequisites.forEach(item => {
                 const li = document.createElement('li');
                 li.textContent = item;
                 prereqList.appendChild(li);
             });
-            prereqSection.appendChild(prereqList);
-            syllabusContent.appendChild(prereqSection);
+            prereqColumn.appendChild(prereqList);
         }
+        overviewSection.appendChild(prereqColumn);
 
-        // Weekly Modules
+        // Right Column: Weekly Breakdown
+        const breakdownColumn = document.createElement('div');
+        breakdownColumn.className = 'overview-column';
+        const breakdownHeader = document.createElement('h3');
+        breakdownHeader.textContent = 'Weekly Breakdown';
+        breakdownColumn.appendChild(breakdownHeader);
+        const breakdownList = document.createElement('ul');
+        curriculum.modules.forEach(module => {
+            const li = document.createElement('li');
+            li.textContent = `Week ${module.week}: ${module.title}`;
+            breakdownList.appendChild(li);
+        });
+        breakdownColumn.appendChild(breakdownList);
+        overviewSection.appendChild(breakdownColumn);
+
+        syllabusContent.appendChild(overviewSection);
+
+
+        // Weekly Modules (Detailed View)
         curriculum.modules.forEach(module => {
             const moduleSection = document.createElement('div');
             moduleSection.className = 'syllabus-section';
@@ -252,7 +279,9 @@
         const capstoneDesc = document.createElement('p');
         capstoneDesc.textContent = curriculum.capstone_project.description;
         capstoneCard.appendChild(capstoneDesc);
+        
         capstoneSection.appendChild(capstoneCard);
+
         syllabusContent.appendChild(capstoneSection);
     }
 
