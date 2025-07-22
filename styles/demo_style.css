@@ -213,6 +213,11 @@ select.form-control option { background-color: var(--deep-blue); }
 
 .overview-column {
     flex-basis: 100%; /* Default to full width on mobile */
+    
+}
+
+.overview-column ul li {
+    margin-bottom: 0.5rem; /* Adds a bit of space between each week */
 }
 
 /* On larger screens (tablets and up), make them side-by-side */
