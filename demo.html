@@ -132,14 +132,34 @@
         return '5';
     }
 
-    function downloadSyllabusAsPDF() {
+ function downloadSyllabusAsPDF() {
         const { jsPDF } = window.jspdf;
         const syllabusElement = document.getElementById('syllabusContent');
-        html2canvas(syllabusElement, { scale: 2 }).then(canvas => {
+        
+        // Store original styles to revert back to them later
+        const originalStyle = syllabusElement.style.cssText;
+
+        // Apply temporary styles for PDF rendering
+        syllabusElement.style.backgroundColor = '#1a1a2e';
+        syllabusElement.style.color = '#f0f0f0';
+        syllabusElement.style.padding = '20px';
+        syllabusElement.style.borderRadius = '8px';
+
+        html2canvas(syllabusElement, { 
+            scale: 2,
+            backgroundColor: '#1a1a2e' // Ensure canvas background is set
+        }).then(canvas => {
             const imgData = canvas.toDataURL('image/png');
-            const pdf = new jsPDF({ orientation: 'p', unit: 'px', format: [canvas.width, canvas.height] });
+            const pdf = new jsPDF({ 
+                orientation: 'p', 
+                unit: 'px', 
+                format: [canvas.width, canvas.height] 
+            });
             pdf.addImage(imgData, 'PNG', 0, 0, canvas.width, canvas.height);
             pdf.save('PocketProfessor-Syllabus.pdf');
+
+            // Revert to original styles after PDF is saved
+            syllabusElement.style.cssText = originalStyle;
         });
     }
 
