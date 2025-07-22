@@ -194,14 +194,21 @@ select.form-control option { background-color: var(--deep-blue); }
     font-size: 1.8rem;
 }
 
+/* Two-Column Overview using CSS Grid */
 .overview-section {
-    display: flex;
-    flex-wrap: wrap; /* Allows columns to stack on smaller screens */
-    justify-content: space-between;
+    display: grid; /* Use Grid instead of Flexbox */
+    grid-template-columns: 1fr; /* Default to a single column on mobile */
     gap: 2rem; 
     margin-top: 2rem;
     padding-top: 1.5rem;
     border-top: 1px solid var(--purple-light);
+}
+
+/* On larger screens (tablets and up), switch to two equal columns */
+@media (min-width: 768px) {
+    .overview-section {
+        grid-template-columns: repeat(2, 1fr); /* Creates two equal-width columns */
+    }
 }
 
 .overview-column {
