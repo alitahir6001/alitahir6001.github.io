@@ -128,3 +128,14 @@ body {
     margin: 2rem 0; /* Centered with vertical space */
     border-radius: 10px;
 }
+
+figure {
+    margin: 0; /* Reset browser default margin */
+}
+figcaption {
+    text-align: center;
+    font-size: 0.9rem;
+    font-style: italic;
+    opacity: 0.8;
+    margin-top: 0.75rem;
+}
