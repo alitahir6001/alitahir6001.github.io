@@ -11,11 +11,11 @@ body {
     color: var(--white-text);
     line-height: 1.6;
     font-family: 'Inter', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    overflow-x: hidden; /* Prevents horizontal scrollbar from the breakout image */
 }
 .container {
     width: 90%;
-    max-width: 800px;
+    /* UPDATED: Increased max-width for a wider layout */
+    max-width: 960px; 
     margin: 0 auto;
     padding: 2rem 0;
 }
@@ -72,6 +72,7 @@ body {
     padding: 2.5rem;
     font-size: 1.1rem;
     line-height: 1.8;
+    margin-bottom: 2rem; /* Added margin between content blocks */
 }
 .bio-content h3 {
     color: var(--accent);
@@ -79,9 +80,8 @@ body {
     margin-bottom: 1rem;
     border-bottom: 1px solid var(--purple-light);
     padding-bottom: 0.5rem;
-    font-size: 1.5rem; /* Explicitly set font size */
+    font-size: 1.5rem;
 }
-/* Style the first h3 in a content box differently */
 .bio-content > h3:first-child {
     margin-top: 0;
 }
@@ -120,18 +120,11 @@ body {
     flex-shrink: 0;
 }
 
-.full-width-image-container {
-    width: 80vw;
-    max-width: 1200px;
-    position: relative;
-    left: 50%;
-    transform: translateX(-50%);
-    margin-top: 3rem;
-    margin-bottom: 3rem;
-}
+/* UPDATED: Simplified style for the code screenshot */
 .prominent-code-image {
-    width: 100%;
+    width: 75%; /* Reduced size */
     height: auto;
     display: block;
+    margin: 2rem auto; /* Centered with vertical space */
     border-radius: 10px;
 }
