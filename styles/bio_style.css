@@ -91,7 +91,7 @@ body {
     opacity: 0.9;
 }
 
-/* --- NEW STYLES FOR IMAGE LAYOUT --- */
+/* --- STYLES FOR IMAGE LAYOUT --- */
 .personal-photo-section {
     display: flex;
     flex-direction: column;
@@ -106,21 +106,22 @@ body {
     }
 }
 .personal-photo {
-    width: 150px;
-    height: 150px;
-    border-radius: 50%;
+    /* UPDATED: Increased size and changed shape */
+    width: 220px;
+    height: 220px;
+    border-radius: 15px; /* Changed from circle to rounded square */
     object-fit: cover;
     border: 3px solid var(--accent);
+    flex-shrink: 0; /* Prevents image from shrinking */
 }
 
-/* This is the new full-width breakout style */
 .full-width-image-container {
-    width: 100vw;
+    /* UPDATED: Reduced width and centered */
+    width: 80vw;
+    max-width: 1200px; /* Added max-width for very large screens */
     position: relative;
     left: 50%;
-    right: 50%;
-    margin-left: -50vw;
-    margin-right: -50vw;
+    transform: translateX(-50%);
     margin-top: 3rem;
     margin-bottom: 3rem;
 }
@@ -128,4 +129,5 @@ body {
     width: 100%;
     height: auto;
     display: block;
+    border-radius: 10px; /* Added a slight border-radius */
 }
