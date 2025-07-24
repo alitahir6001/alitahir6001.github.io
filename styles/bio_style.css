@@ -10,6 +10,7 @@ body {
     color: var(--white-text);
     line-height: 1.6;
     font-family: 'Inter', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    overflow-x: hidden; /* Prevents horizontal scrollbar from the breakout image */
 }
 .container {
     width: 90%;
@@ -90,36 +91,41 @@ body {
     opacity: 0.9;
 }
 
-/* Image layout */
-.bio-section {
-    display: grid;
-    grid-template-columns: 1fr; /* Mobile-first: single column */
-    gap: 2rem;
+/* --- NEW STYLES FOR IMAGE LAYOUT --- */
+.personal-photo-section {
+    display: flex;
+    flex-direction: column;
     align-items: center;
+    gap: 1.5rem;
     margin-bottom: 2rem;
 }
-
 @media (min-width: 768px) {
-    .bio-section {
-        grid-template-columns: 1fr 2fr; /* Image on left, text on right */
-    }
-    /* Reverse the order for the second section */
-    .bio-section.reverse {
-        grid-template-columns: 1.5fr 1fr;
-    }
-    .bio-section.reverse .bio-image {
-        grid-column: 2; /* Explicitly set image to the second column */
-    }
-    .bio-section.reverse .bio-text {
-        grid-column: 1; /* Explicitly set text to the first column */
+    .personal-photo-section {
+        flex-direction: row;
+        text-align: left;
     }
 }
-
-.bio-image {
-    width: 100%;
-    max-width: 450px;
-    height: auto;
-    border-radius: 15px;
-    margin: 0 auto; /* Center image on mobile */
+.personal-photo {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
     object-fit: cover;
+    border: 3px solid var(--accent);
+}
+
+/* This is the new full-width breakout style */
+.full-width-image-container {
+    width: 100vw;
+    position: relative;
+    left: 50%;
+    right: 50%;
+    margin-left: -50vw;
+    margin-right: -50vw;
+    margin-top: 3rem;
+    margin-bottom: 3rem;
+}
+.prominent-code-image {
+    width: 100%;
+    height: auto;
+    display: block;
 }
