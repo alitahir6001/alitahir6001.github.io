@@ -131,3 +131,11 @@ body {
     display: block;
     border-radius: 10px; /* Added a slight border-radius */
 }
+
+.section-heading {
+    color: var(--accent);
+    margin-top: 2rem;
+    margin-bottom: 1rem;
+    border-bottom: 1px solid var(--purple-light);
+    padding-bottom: 0.5rem;
+}
