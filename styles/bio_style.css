@@ -122,9 +122,9 @@ body {
 
 /* UPDATED: Simplified style for the code screenshot */
 .prominent-code-image {
-    width: 75%; /* Reduced size */
+    width: 100%; /* Reduced size */
     height: auto;
     display: block;
-    margin: 2rem auto; /* Centered with vertical space */
+    margin: 2rem 0; /* Centered with vertical space */
     border-radius: 10px;
 }
