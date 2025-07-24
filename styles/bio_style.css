@@ -1,3 +1,4 @@
+/* You can move these specific styles to your main stylesheet */
 :root {
     --deep-blue: #1a1a2e;
     --purple-main: #301b3f;
@@ -78,6 +79,11 @@ body {
     margin-bottom: 1rem;
     border-bottom: 1px solid var(--purple-light);
     padding-bottom: 0.5rem;
+    font-size: 1.5rem; /* Explicitly set font size */
+}
+/* Style the first h3 in a content box differently */
+.bio-content > h3:first-child {
+    margin-top: 0;
 }
 .bio-content p {
     margin-bottom: 1.5rem;
@@ -106,19 +112,17 @@ body {
     }
 }
 .personal-photo {
-    /* UPDATED: Increased size and changed shape */
     width: 220px;
     height: 220px;
-    border-radius: 15px; /* Changed from circle to rounded square */
+    border-radius: 15px;
     object-fit: cover;
     border: 3px solid var(--accent);
-    flex-shrink: 0; /* Prevents image from shrinking */
+    flex-shrink: 0;
 }
 
 .full-width-image-container {
-    /* UPDATED: Reduced width and centered */
     width: 80vw;
-    max-width: 1200px; /* Added max-width for very large screens */
+    max-width: 1200px;
     position: relative;
     left: 50%;
     transform: translateX(-50%);
@@ -129,13 +133,5 @@ body {
     width: 100%;
     height: auto;
     display: block;
-    border-radius: 10px; /* Added a slight border-radius */
-}
-
-.section-heading {
-    color: var(--accent);
-    margin-top: 2rem;
-    margin-bottom: 1rem;
-    border-bottom: 1px solid var(--purple-light);
-    padding-bottom: 0.5rem;
+    border-radius: 10px;
 }
