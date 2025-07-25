@@ -16,6 +16,10 @@
     font-family: 'Inter', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
+html {
+    scroll-behavior: smooth;
+}
+
 body {
     background: linear-gradient(135deg, var(--deep-blue), var(--purple-main));
     color: var(--white-text);
@@ -55,12 +59,9 @@ nav {
 }
 
 .logo {
-    font-size: 1.8rem;
+    font-size: 1.5rem; /* Adjusted for better fit */
     font-weight: 700;
-    background: linear-gradient(90deg, var(--accent), #a78bfa);
-    -webkit-background-clip: text;
-    background-clip: text;
-    -webkit-text-fill-color: transparent;
+    color: var(--white-text);
     white-space: nowrap; /* Prevent logo from wrapping */
 }
 
@@ -101,6 +102,7 @@ nav {
 .mobile-menu {
     display: none;
     cursor: pointer;
+    z-index: 1001; /* Ensure hamburger is on top */
 }
 
 .bar {
@@ -110,31 +112,6 @@ nav {
     margin: 5px auto;
     background-color: var(--white-text);
     transition: all 0.3s ease;
-}
-
-/* Header Social Icons Styling - HIDDEN */
-.header-social-icons {
-    display: none; /* Removed from header as per request */
-    gap: 0.8rem; /* Adjust spacing between icons */
-}
-
-.header-social-icons .social-link {
-    width: 35px;
-    height: 35px;
-    font-size: 0.9rem;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background-color: var(--purple-light);
-    border-radius: 50%;
-    transition: all 0.3s ease;
-    color: white;
-    text-decoration: none;
-}
-
-.header-social-icons .social-link:hover {
-    background-color: var(--accent);
-    transform: translateY(-3px);
 }
 
 /* Hero Section */
@@ -201,18 +178,6 @@ nav {
 .btn:hover {
     transform: translateY(-3px);
     box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
-}
-
-/* New: Secondary Button Style */
-.btn-secondary {
-    background: transparent !important; /* Override primary button background */
-    border: 2px solid var(--accent) !important;
-    color: var(--accent) !important; /* Set text color to accent */
-}
-
-.btn-secondary:hover {
-    background-color: var(--accent) !important; /* Fill on hover */
-    color: var(--white-text) !important; /* Text color changes on hover */
 }
 
 /* Section Common Styles */
@@ -529,13 +494,8 @@ footer {
         order: -1; /* Puts image above text on smaller screens */
     }
 
-    /* If app image should also be above text on mobile */
-    .app-preview .fade-in:last-child { /* Targets the image div in app-preview */
+    .app-preview .fade-in:last-child {
         order: -1;
-    }
-
-    .header-social-icons {
-        display: none; /* Hide social icons in header on smaller screens if they clutter */
     }
 }
 
@@ -555,15 +515,17 @@ footer {
     .nav-links {
         position: fixed;
         left: -100%;
-        top: 5rem; /* Adjust based on header height */
+        top: 0; /* Changed from 5rem to 0 */
         flex-direction: column;
-        background-color: var(--blue-accent);
+        background-color: var(--deep-blue); /* Changed for better contrast */
         width: 100%;
+        height: 100vh; /* Full height */
         text-align: center;
         transition: 0.3s;
         box-shadow: 0 10px 27px rgba(0, 0, 0, 0.05);
-        padding: 2rem 0;
+        padding-top: 5rem; /* Added padding-top */
         gap: 1.5rem;
+        z-index: 1000; /* Ensures menu is on top of content */
     }
     
     .nav-links.active {
@@ -586,7 +548,6 @@ footer {
         transform: translateY(-8px) rotate(-45deg);
     }
 
-    /* Adjust padding for sections on mobile */
     .section {
         padding: 4rem 0;
     }
@@ -602,22 +563,4 @@ footer {
 .fade-in.visible {
     opacity: 1;
     transform: translateY(0);
-}
-
-/* Custom scrollbar */
-::-webkit-scrollbar {
-    width: 10px;
-}
-
-::-webkit-scrollbar-track {
-    background: var(--deep-blue);
-}
-
-::-webkit-scrollbar-thumb {
-    background: var(--purple-light);
-    border-radius: 5px;
-}
-
-::-webkit-scrollbar-thumb:hover {
-    background: var(--accent);
 }
