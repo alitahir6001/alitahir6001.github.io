@@ -24,7 +24,7 @@ body {
     background: linear-gradient(135deg, var(--deep-blue), var(--purple-main));
     color: var(--white-text);
     line-height: 1.6;
-    min-height: 100vh; /* Ensure body takes full viewport height */
+    min-height: 100vh;
     display: flex;
     flex-direction: column;
 }
@@ -55,14 +55,14 @@ nav {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    gap: 1rem; /* Added gap for better spacing */
+    gap: 1rem;
 }
 
 .logo {
-    font-size: 1.5rem; /* Adjusted for better fit */
+    font-size: 1.5rem;
     font-weight: 700;
     color: var(--white-text);
-    white-space: nowrap; /* Prevent logo from wrapping */
+    white-space: nowrap;
 }
 
 .nav-links {
@@ -102,7 +102,7 @@ nav {
 .mobile-menu {
     display: none;
     cursor: pointer;
-    z-index: 1001; /* Ensure hamburger is on top */
+    z-index: 1001;
 }
 
 .bar {
@@ -121,7 +121,7 @@ nav {
     align-items: center;
     position: relative;
     overflow: hidden;
-    padding-top: 6rem; /* Account for fixed header */
+    padding-top: 6rem;
 }
 
 .hero::before {
@@ -154,8 +154,8 @@ nav {
 
 .hero-actions {
     display: flex;
-    flex-wrap: wrap; /* Allow buttons to wrap on smaller screens */
-    gap: 1rem; /* Space between buttons */
+    flex-wrap: wrap;
+    gap: 1rem;
     margin-bottom: 1rem;
 }
 
@@ -172,7 +172,7 @@ nav {
     transition: all 0.3s ease;
     border: none;
     cursor: pointer;
-    text-align: center; /* Ensures text is centered for buttons spanning full width */
+    text-align: center;
 }
 
 .btn:hover {
@@ -206,8 +206,8 @@ nav {
 
 .about-img {
     width: 75%;
-    max-width: 75%; /* Ensure responsiveness */
-    height: 75%; /* Maintain aspect ratio */
+    max-width: 75%;
+    height: 75%;
     border-radius: 10px;
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
 }
@@ -266,7 +266,7 @@ nav {
     margin-right: 0.5rem;
     margin-bottom: 0.5rem;
     font-size: 0.8rem;
-    white-space: nowrap; /* Prevent tags from breaking words */
+    white-space: nowrap;
 }
 
 /* App Section */
@@ -417,10 +417,10 @@ textarea.form-control {
     resize: vertical;
 }
 
-/* Social Links (in contact section, also used in header) */
+/* Social Links */
 .social-links {
     display: flex;
-    flex-wrap: wrap; /* Allow links to wrap */
+    flex-wrap: wrap;
     gap: 1rem;
     margin-top: 2rem;
 }
@@ -448,13 +448,13 @@ footer {
     background-color: rgba(0, 0, 0, 0.3);
     padding: 3rem 0;
     text-align: center;
-    margin-top: auto; /* Pushes footer to the bottom */
+    margin-top: auto; 
 }
 
 .footer-links {
     display: flex;
     justify-content: center;
-    flex-wrap: wrap; /* Allow links to wrap */
+    flex-wrap: wrap;
     gap: 2rem;
     list-style: none;
     margin-bottom: 2rem;
@@ -491,7 +491,7 @@ footer {
     }
     
     .about-img {
-        order: -1; /* Puts image above text on smaller screens */
+        order: -1;
     }
 
     .app-preview .fade-in:last-child {
@@ -515,17 +515,17 @@ footer {
     .nav-links {
         position: fixed;
         left: -100%;
-        top: 0; /* Changed from 5rem to 0 */
+        top: 0;
         flex-direction: column;
-        background-color: var(--deep-blue); /* Changed for better contrast */
+        background-color: var(--deep-blue);
         width: 100%;
-        height: 100vh; /* Full height */
+        height: 100vh;
         text-align: center;
         transition: 0.3s;
         box-shadow: 0 10px 27px rgba(0, 0, 0, 0.05);
-        padding-top: 5rem; /* Added padding-top */
+        padding-top: 5rem; 
         gap: 1.5rem;
-        z-index: 1000; /* Ensures menu is on top of content */
+        z-index: 1000;
     }
     
     .nav-links.active {
