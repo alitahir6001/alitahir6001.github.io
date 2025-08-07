@@ -109,6 +109,18 @@
     const downloadPdfBtn = document.getElementById('downloadPdfBtn');
     const feedbackPrompt = document.getElementById('feedbackPrompt');
 
+    // --- Sanitization function to escape potentially dangerous characters ---
+    function sanitizeInput(str) {
+        if (!str) return '';
+        return str
+            .replace(/&/g, '&amp;')
+            .replace(/</g, '&lt;')
+            .replace(/>/g, '&gt;')
+            .replace(/"/g, '&quot;')
+            .replace(/'/g, '&#39;')
+            .trim();
+    }
+
     // --- Demo Examples ---
     const examples = {
         react: { subject: 'React.js', difficulty: 'novice', goal: 'get a job', timeCommitment: '7-10 hours' },
@@ -132,7 +144,7 @@
         return '5';
     }
 
- function downloadSyllabusAsPDF() {
+    function downloadSyllabusAsPDF() {
         const { jsPDF } = window.jspdf;
         const syllabusElement = document.getElementById('syllabusContent');
         
@@ -163,8 +175,7 @@
         });
     }
 
-    // --- CORRECTED: HTML Rendering for Detailed Syllabus ---
-function formatCurriculumResponse(curriculum) {
+    function formatCurriculumResponse(curriculum) {
         syllabusContent.innerHTML = ''; // Clear previous results
         
         // 1. ADDED: Main Title for the Syllabus
@@ -298,14 +309,19 @@ function formatCurriculumResponse(curriculum) {
         generateBtn.disabled = true;
 
         try {
+            const sanitizedSubject = sanitizeInput(document.getElementById('subject').value);
+            const sanitizedSkillLevel = sanitizeInput(document.getElementById('difficulty').value);
+            const sanitizedGoal = sanitizeInput(document.getElementById('goal').value);
+            const timeCommitment = extractHours(document.getElementById('timeCommitment').value);
+
             const response = await fetch('https://pocket-professor-backend-production.up.railway.app/generate-curriculum', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({
-                    subject: document.getElementById('subject').value,
-                    skill_level: document.getElementById('difficulty').value,
-                    learning_goal: document.getElementById('goal').value,
-                    time_commitment: extractHours(document.getElementById('timeCommitment').value)
+                    subject: sanitizedSubject,
+                    skill_level: sanitizedSkillLevel,
+                    learning_goal: sanitizedGoal,
+                    time_commitment: timeCommitment
                 })
             });
 
@@ -332,6 +348,7 @@ function formatCurriculumResponse(curriculum) {
             generateBtn.disabled = false;
         }
     });
-    </script>
+</script>
+
 </body>
 </html>
