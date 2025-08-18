@@ -5,8 +5,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Pocket Professor - AI Learning Assistant</title>
     <link rel="stylesheet" href="/styles/demo_style.css">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    <!-- SECURITY: Added Subresource Integrity (SRI) hashes. -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"
+            xintegrity="sha512-BNaRQnYJYiPSqHHDb58B0yaPfCu+Wgds8Gp/gU33kqBtgNS4tSPHuGibyoeqMV/TJlSKda6BTzYlEjY/eaMAHQ=="
+            crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"
+            xintegrity="sha512-qZvrmS2ekKPF2mSznTQsxqPgnpkI4DNTlrdUmTzrDgektczlKNRRhy5X5AAOnx5S09ydFYWWNSfcEqDTTHgtNA=="
+            crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 </head>
 <body>
     <header class="site-header">
@@ -155,10 +160,8 @@
         const { jsPDF } = window.jspdf;
         const syllabusElement = document.getElementById('syllabusContent');
         
-        // Store original styles to revert back to them later
         const originalStyle = syllabusElement.style.cssText;
 
-        // Apply temporary styles for PDF rendering
         syllabusElement.style.backgroundColor = '#1a1a2e';
         syllabusElement.style.color = '#f0f0f0';
         syllabusElement.style.padding = '20px';
@@ -166,7 +169,7 @@
 
         html2canvas(syllabusElement, { 
             scale: 2,
-            backgroundColor: '#1a1a2e' // Ensure canvas background is set
+            backgroundColor: '#1a1a2e'
         }).then(canvas => {
             const imgData = canvas.toDataURL('image/png');
             const pdf = new jsPDF({ 
@@ -177,17 +180,16 @@
             pdf.addImage(imgData, 'PNG', 0, 0, canvas.width, canvas.height);
             pdf.save('PocketProfessor-Syllabus.pdf');
 
-            // Revert to original styles after PDF is saved
             syllabusElement.style.cssText = originalStyle;
         });
     }
 
     function formatCurriculumResponse(curriculum) {
-        syllabusContent.innerHTML = ''; // Clear previous results
+        syllabusContent.innerHTML = ''; 
         
-        // 1. ADDED: Main Title for the Syllabus
         const titleHeader = document.createElement('h1');
         titleHeader.className = 'syllabus-title';
+        // Using .textContent to defend against XSS.
         titleHeader.textContent = `Your Custom Learning Guide -  ${curriculum.subject}`;
         syllabusContent.appendChild(titleHeader);
 
@@ -195,11 +197,9 @@
         intro.textContent = curriculum.introduction;
         syllabusContent.appendChild(intro);
 
-        // 2. ADDED: Two-column overview section
         const overviewSection = document.createElement('div');
         overviewSection.className = 'overview-section';
 
-        // Left Column: Prerequisites
         const prereqColumn = document.createElement('div');
         prereqColumn.className = 'overview-column';
         if (curriculum.prerequisites && curriculum.prerequisites.length > 0) {
@@ -216,7 +216,6 @@
         }
         overviewSection.appendChild(prereqColumn);
 
-        // Right Column: Weekly Breakdown
         const breakdownColumn = document.createElement('div');
         breakdownColumn.className = 'overview-column';
         const breakdownHeader = document.createElement('h3');
@@ -233,8 +232,6 @@
 
         syllabusContent.appendChild(overviewSection);
 
-
-        // Weekly Modules (Detailed View)
         curriculum.modules.forEach(module => {
             const moduleSection = document.createElement('div');
             moduleSection.className = 'syllabus-section';
@@ -282,7 +279,6 @@
             syllabusContent.appendChild(moduleSection);
         });
 
-        // Capstone Project
         const capstoneSection = document.createElement('div');
         capstoneSection.className = 'syllabus-section';
         const capstoneHeader = document.createElement('h3');
@@ -319,7 +315,7 @@
             const sanitizedSubject = sanitizeInput(document.getElementById('subject').value);
             const sanitizedSkillLevel = sanitizeInput(document.getElementById('difficulty').value);
             const sanitizedGoal = sanitizeInput(document.getElementById('goal').value);
-            const timeCommitment = extractHours(document.getElementById('timeCommitment').value);
+            const timeCommitment = document.getElementById('timeCommitment').value; // Send the string value
 
             const response = await fetch('https://pocket-professor-backend-production.up.railway.app/generate-curriculum', {
                 method: 'POST',
