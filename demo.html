@@ -345,7 +345,7 @@
         } catch (error) {
             console.error('Error generating syllabus:', error);
             loading.style.display = 'none';
-            errorMessage.textContent = f`Sorry, there was an error generating your syllabus. Please try again: ${error}.`;
+            errorMessage.textContent = `Sorry, there was an error generating your syllabus. Please try again: ${error}.`;
             errorMessage.style.display = 'block';
         } finally {
             generateBtn.disabled = false;
