@@ -563,3 +563,63 @@ footer {
     opacity: 1;
     transform: translateY(0);
 }
+
+/* --- Blog Section Styles (Add to index_style.css) --- */
+.blog-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    gap: 2rem;
+}
+
+.post-card {
+    background-color: var(--blue-accent); /* Use a darker color for the card */
+    padding: 1.5rem;
+    border-radius: 10px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+}
+
+.post-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.4);
+    background-color: rgba(22, 33, 62, 0.95); /* Slight darkening on hover */
+}
+
+.post-card h3 {
+    font-size: 1.4rem;
+    margin-bottom: 0.5rem;
+}
+
+.post-card h3 a {
+    color: var(--white-text);
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.post-card h3 a:hover {
+    color: var(--accent); /* Accent color on title hover */
+}
+
+.post-meta {
+    font-size: 0.9rem;
+    color: var(--accent);
+    margin-bottom: 1rem;
+    opacity: 0.8;
+}
+
+.post-card p {
+    margin-bottom: 1.5rem;
+    opacity: 0.9;
+}
+
+.read-more {
+    color: var(--accent);
+    text-decoration: none;
+    font-weight: 600;
+    display: inline-block;
+    transition: opacity 0.3s ease;
+}
+
+.read-more:hover {
+    opacity: 0.8;
+}
