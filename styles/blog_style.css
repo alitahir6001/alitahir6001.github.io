@@ -1,0 +1,15 @@
+:root {
+    --deep-blue: #1a1a2e;
+    --purple-main: #301b3f;
+    --purple-light: #4d2d60;
+    --white-text: #f0f0f0;
+    --accent: #7b68ee;
+}
+
+/* Universal box-sizing for consistent layout */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Inter', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
