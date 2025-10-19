@@ -3,11 +3,93 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="/styles/blog_style.css">
-
-    <title>Bloggy Bloggerson</title>
+    <link rel="stylesheet" href="/styles/index_style.css">
+    <title>Blog - Pakfro Insights</title>
 </head>
 <body>
-    <h1> HELLO WORLD </h1>
+    <header id="header">
+        <div class="container">
+            <nav>
+                <div class="logo">Ali Tahir | Blog</div>
+                <ul class="nav-links">
+                    <li><a href="/">Home</a></li>
+                    <li><a href="#blog-list">Posts</a></li>
+                    <li><a href="/resume.html">Resume</a></li>
+                    <li><a href="/demo.html">Pocket Professor</a></li>
+                    <li><a href="/bio.html">My Story</a></li>
+                </ul>
+                <div class="mobile-menu">
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <section id="blog-header" class="section" style="padding-top: 8rem; text-align: center;">
+            <div class="container fade-in">
+                <h1 style="font-size: 3.5rem; margin-bottom: 0.5rem; font-weight: 800;">
+                    Pakfro <span>Musings</span>
+                </h1>
+                <p style="font-size: 1.2rem; opacity: 0.8;">
+                    Thoughts on AI, EdTech, Systems, and the Art of Self-Learning.
+                </p>
+            </div>
+        </section>
+
+        <section id="blog-list" class="section">
+            <div class="container">
+                <h2 class="section-title fade-in" style="margin-bottom: 3rem;">Latest <span>Articles</span></h2>
+                <p>WORK IN PROGRESS (THESE ARE EXAMPLE SECTIONS) </p>
+                
+                <div class="blog-grid">
+                    <div class="post-card fade-in">
+                        <h3><a href="/blog/ai-llm-local-workflow.html">Integrating Local LLMs: A Developer's Guide to Ollama and FastAPI</a></h3>
+                        <p class="post-meta">October 19, 2025 • AI, Systems</p>
+                        <p>A deep dive into how I containerized Ollama and FastAPI to run my 'Pocket Professor' demo, balancing cost-efficiency with performance for custom LLM solutions.</p>
+                        <a href="/blog/ai-llm-local-workflow.html" class="read-more">Read Article →</a>
+                    </div>
+                    
+                    <div class="post-card fade-in">
+                        <h3><a href="/blog/neuromyths-learning.html">Why "Learning Styles" Are a Myth and What Really Works</a></h3>
+                        <p class="post-meta">September 28, 2025 • EdTech, Psychology</p>
+                        <p>Leveraging my background in experimental psychology to discuss the pitfalls of popular learning models and introduce the mechanics behind effective self-teaching.</p>
+                        <a href="/blog/neuromyths-learning.html" class="read-more">Read Article →</a>
+                    </div>
+
+                    <div class="post-card fade-in">
+                        <h3><a href="/blog/terraform-vs-manual-config.html">Terraform vs. Console: Why IaC is Non-Negotiable for Cloud Security</a></h3>
+                        <p class="post-meta">September 1, 2025 • DevOps, Cloud</p>
+                        <p>A look at the SSO migration project and how Infrastructure as Code ensured auditability and stability during a critical stack transition.</p>
+                        <a href="/blog/terraform-vs-manual-config.html" class="read-more">Read Article →</a>
+                    </div>
+                </div>
+
+                <div style="text-align: center; margin-top: 4rem;" class="fade-in">
+                    <p style="margin-bottom: 1rem;">Looking for more? Check out my full archives.</p>
+                    <a href="https://drpakfro.substack.com/" class="btn" target="_blank" rel="noopener noreferrer">Visit Full Substack Archive</a>
+                </div>
+
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <ul class="footer-links">
+                <li><a href="/">Home</a></li>
+                <li><a href="#blog-list">Blog</a></li>
+                <li><a href="/resume.html">Resume</a></li>
+                <li><a href="/demo.html">App</a></li>
+                <li><a href="#projects">Projects</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+            <p class="copyright">© <span id="year">2025</span> Ali Tahir. All Rights Reserved.</p>
+        </div>
+    </footer>
+    
+    <script src="/js/main.js"></script> 
 </body>
 </html>
