@@ -120,6 +120,7 @@
     const generateBtn = document.getElementById('generateBtn');
     const downloadPdfBtn = document.getElementById('downloadPdfBtn');
     const feedbackPrompt = document.getElementById('feedbackPrompt');
+    let currentCurriculumData = null;
 
     // --- Sanitization function to escape potentially dangerous characters ---
     function sanitizeInput(str) {
@@ -156,33 +157,197 @@
         return '5';
     }
 
-    function downloadSyllabusAsPDF() {
-        const { jsPDF } = window.jspdf;
-        const syllabusElement = document.getElementById('syllabusContent');
-        
-        const originalStyle = syllabusElement.style.cssText;
-
-        syllabusElement.style.backgroundColor = '#1a1a2e';
-        syllabusElement.style.color = '#f0f0f0';
-        syllabusElement.style.padding = '20px';
-        syllabusElement.style.borderRadius = '8px';
-
-        html2canvas(syllabusElement, { 
-            scale: 2,
-            backgroundColor: '#1a1a2e'
-        }).then(canvas => {
-            const imgData = canvas.toDataURL('image/png');
-            const pdf = new jsPDF({ 
-                orientation: 'p', 
-                unit: 'px', 
-                format: [canvas.width, canvas.height] 
-            });
-            pdf.addImage(imgData, 'PNG', 0, 0, canvas.width, canvas.height);
-            pdf.save('PocketProfessor-Syllabus.pdf');
-
-            syllabusElement.style.cssText = originalStyle;
-        });
+async function downloadSyllabusAsPDF() {
+    if (!currentCurriculumData) {
+        alert('Please generate a syllabus first before downloading.');
+        return;
     }
+
+    const { jsPDF } = window.jspdf;
+    const doc = new jsPDF({
+        unit: 'pt',
+        format: 'a4'
+    });
+
+    const data = currentCurriculumData;
+
+    // --- Configuration ---
+    const COLORS = {
+        ACCENT: '#7b68ee',
+        TEXT: '#333333',
+        SUBTLE: '#555555'
+    };
+
+    const margin = 40;
+    const pageHeight = doc.internal.pageSize.getHeight();
+    const usableWidth = doc.internal.pageSize.getWidth() - (margin * 2);
+    let y = margin; // This is our master Y-position tracker
+
+    const FONTS = {
+        TITLE: 22,
+        H1: 16,
+        H2: 13,
+        BODY: 11
+    };
+    
+    // Base line height, calculated from font size
+    const getLineHeight = (fontSize) => fontSize * 1.2;
+    const BODY_LINE_HEIGHT = getLineHeight(FONTS.BODY);
+    
+    // Spacing constants
+    const HEADER_MARGIN_BOTTOM = 8;
+    const BLOCK_SPACING = 15;
+
+    // --- 1. NEW & MODIFIED HELPERS ---
+
+    /**
+     * Checks if a block of a certain height will fit on the current page.
+     * If not, adds a new page and resets the Y position.
+     */
+    const addPageIfNeeded = (heightNeeded) => {
+        if (y + heightNeeded > pageHeight - margin) {
+            doc.addPage();
+            y = margin;
+        }
+    };
+
+    /**
+     * NEW: Helper to estimate the height of a block of text
+     */
+    const getTextBlockHeight = (text, fontSize, width, indent = 0) => {
+        doc.setFontSize(fontSize); // Must set font size for accurate line splitting
+        const lines = doc.splitTextToSize(text, width - indent);
+        return lines.length * getLineHeight(fontSize);
+    };
+
+    /**
+     * MODIFIED: Helper functions no longer call addPageIfNeeded.
+     * The main loop will now handle all page-break logic.
+     */
+    const drawTextBlock = (text, fontSize = FONTS.BODY, color = COLORS.TEXT, indent = 0) => {
+        doc.setFont('helvetica', 'normal');
+        doc.setFontSize(fontSize);
+        doc.setTextColor(color);
+
+        const lines = doc.splitTextToSize(text, usableWidth - indent);
+        const blockHeight = lines.length * getLineHeight(fontSize);
+        
+        doc.text(lines, margin + indent, y);
+        y += blockHeight + (getLineHeight(fontSize) / 2); // Add text height and a small gap
+    };
+
+    const drawHeader = (text, fontSize, color = COLORS.ACCENT) => {
+        doc.setFont('helvetica', 'bold');
+        doc.setFontSize(fontSize);
+        doc.setTextColor(color);
+
+        const headerHeight = getLineHeight(fontSize);
+        doc.text(text, margin, y);
+        y += headerHeight + HEADER_MARGIN_BOTTOM; // Add header height and margin
+    };
+
+
+    // --- 2. MAIN PDF BUILDING LOGIC (Now with "Look-Ahead") ---
+
+    // --- Title ---
+    const titleHeight = getLineHeight(FONTS.TITLE);
+    addPageIfNeeded(titleHeight); // Check for title
+    drawHeader(`Syllabus: ${data.subject}`, FONTS.TITLE);
+
+    // --- Introduction ---
+    const introHeight = getTextBlockHeight(data.introduction, FONTS.BODY, usableWidth);
+    addPageIfNeeded(introHeight + BLOCK_SPACING); // Check for intro
+    drawTextBlock(data.introduction, FONTS.BODY, COLORS.TEXT);
+    y += BLOCK_SPACING;
+
+    // --- Prerequisites ---
+    if (data.prerequisites?.length) {
+        const headerHeight = getLineHeight(FONTS.H1) + HEADER_MARGIN_BOTTOM;
+        // Look ahead: Check for header + first item
+        const firstItemHeight = getTextBlockHeight(`• ${data.prerequisites[0]}`, FONTS.BODY, usableWidth, 10);
+        addPageIfNeeded(headerHeight + firstItemHeight);
+        
+        drawHeader('Prerequisites', FONTS.H1);
+        
+        data.prerequisites.forEach(p => {
+            const itemHeight = getTextBlockHeight(`• ${p}`, FONTS.BODY, usableWidth, 10);
+            addPageIfNeeded(itemHeight); // Check for each item
+            drawTextBlock(`• ${p}`, FONTS.BODY, COLORS.SUBTLE, 10);
+        });
+        y += BLOCK_SPACING;
+    }
+
+    // --- Modules ---
+    data.modules.forEach(module => {
+        const moduleHeaderHeight = getLineHeight(FONTS.H1) + HEADER_MARGIN_BOTTOM;
+        
+        // Look ahead: Check for Module Header + First Topic Header + First Topic Desc
+        let firstTopicHeight = 0;
+        if (module.topics[0]) {
+            firstTopicHeight += getLineHeight(FONTS.H2) + HEADER_MARGIN_BOTTOM; // Topic header
+            firstTopicHeight += getTextBlockHeight(module.topics[0].description, FONTS.BODY, usableWidth); // Topic desc
+        }
+        addPageIfNeeded(moduleHeaderHeight + firstTopicHeight);
+        
+        drawHeader(`Week ${module.week}: ${module.title}`, FONTS.H1);
+
+        module.topics.forEach(topic => {
+            const topicHeaderHeight = getLineHeight(FONTS.H2) + HEADER_MARGIN_BOTTOM;
+            const topicDescHeight = getTextBlockHeight(topic.description, FONTS.BODY, usableWidth);
+            
+            // Look ahead: Check for Topic Header + Topic Description
+            addPageIfNeeded(topicHeaderHeight + topicDescHeight);
+            
+            drawHeader(topic.topic_name, FONTS.H2, COLORS.TEXT);
+            drawTextBlock(topic.description, FONTS.BODY, COLORS.SUBTLE);
+
+            if (topic.resources?.length) {
+                const resHeaderHeight = getTextBlockHeight('Resources:', FONTS.BODY, usableWidth, 10);
+                const resFirstItemHeight = getTextBlockHeight(`• ${topic.resources[0]}`, FONTS.BODY, usableWidth, 20);
+                
+                // Look ahead: Check for "Resources:" + first resource
+                addPageIfNeeded(resHeaderHeight + resFirstItemHeight);
+                
+                drawTextBlock('Resources:', FONTS.BODY, COLORS.TEXT, 10);
+                topic.resources.forEach(r => {
+                    const resItemHeight = getTextBlockHeight(`• ${r}`, FONTS.BODY, usableWidth, 20);
+                    addPageIfNeeded(resItemHeight); // Check for each resource
+                    drawTextBlock(`• ${r}`, FONTS.BODY, COLORS.SUBTLE, 20);
+                });
+            }
+        });
+
+        if (module.weekly_project) {
+            const projectHeaderHeight = getLineHeight(FONTS.H2) + HEADER_MARGIN_BOTTOM;
+            const projectDescHeight = getTextBlockHeight(module.weekly_project.description, FONTS.BODY, usableWidth, 10);
+            
+            // Look ahead: Check for Project Header + Project Description
+            addPageIfNeeded(projectHeaderHeight + projectDescHeight);
+            
+            drawHeader(`Weekly Project: ${module.weekly_project.title}`, FONTS.H2, COLORS.TEXT);
+            drawTextBlock(module.weekly_project.description, FONTS.BODY, COLORS.SUBTLE, 10);
+        }
+        y += BLOCK_SPACING;
+    });
+
+    // --- Capstone Project ---
+    if (data.capstone_project) {
+        const capstoneHeaderHeight = getLineHeight(FONTS.H1) + HEADER_MARGIN_BOTTOM;
+        const capstoneTitleHeight = getLineHeight(FONTS.H2) + HEADER_MARGIN_BOTTOM;
+        const capstoneDescHeight = getTextBlockHeight(data.capstone_project.description, FONTS.BODY, usableWidth, 10);
+        
+        // Look ahead: Check for all capstone content
+        addPageIfNeeded(capstoneHeaderHeight + capstoneTitleHeight + capstoneDescHeight);
+        
+        drawHeader('Capstone Project', FONTS.H1);
+        drawHeader(data.capstone_project.title, FONTS.H2, COLORS.TEXT);
+        drawTextBlock(data.capstone_project.description, FONTS.BODY, COLORS.SUBTLE, 10);
+    }
+
+    // --- Save the PDF ---
+    doc.save(`Syllabus_${data.subject.replace(/\s+/g, '_')}.pdf`);
+}
+
 
     function formatCurriculumResponse(curriculum) {
         syllabusContent.innerHTML = ''; 
@@ -334,6 +499,7 @@
             }
 
             const curriculumJson = await response.json();
+            currentCurriculumData = curriculumJson;
             formatCurriculumResponse(curriculumJson);
             
             loading.style.display = 'none';
