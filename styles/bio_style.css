@@ -62,10 +62,6 @@ body {
     color: var(--accent);
     margin-bottom: 0.5rem;
 }
-.bio-subtitle {
-    font-size: 1.2rem;
-    opacity: 0.9;
-}
 .bio-content {
     background-color: rgba(26, 26, 46, 0.8);
     border-radius: 15px;
