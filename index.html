@@ -7,6 +7,7 @@
     <title>Pakfro Site</title>
 </head>
 <body>
+    <!-- NEW SIDEBAR NAVIGATION -->
     <div id="sidebar-nav" class="sidebar-nav">
         <a href="javascript:void(0)" class="close-btn">&times;</a>
         <div class="sidebar-content">
@@ -19,15 +20,22 @@
                 <li><a href="/blog.html">Blog</a></li>
                 <li><a href="#projects">Projects</a></li>
                 <li><a href="#contact">Contact</a></li>
+                <!-- Your existing links are now here -->
             </ul>
         </div>
     </div>
+    <!-- END NEW SIDEBAR NAVIGATION -->
 
     <header id="header">
         <div class="container">
             <nav>
-                <!-- <a href="/" class="logo">Pakfro</a>                  -->
+                <!-- FIXED: Re-added the logo element. We will use a <div> instead of an <a> tag to eliminate the link, while still preserving the header's layout. -->
+                <div class="logo">Pakfro</div>
+                
+                <!-- 2. NAVIGATION LINKS REMOVED FROM HERE -->
                 <ul class="nav-links" style="display: none;"></ul> 
+
+                <!-- 3. MOBILE/DESKTOP MENU ICON REMAINS TO TOGGLE SIDEBAR -->
                 <div id="menu-icon" class="menu-icon">
                     <span class="bar"></span>
                     <span class="bar"></span>
@@ -43,7 +51,7 @@
                 <div class="hero-grid">
                     <div class="hero-content fade-in">
                         <h1>Hi, I'm <span style="color: var(--accent);">Ali</span></h1>
-                        <p>I make AI-assisted education tools for motivated learners looking to level-up.</p>
+                        <p>Developer, autodidact, and creator of AI-assisted learning solutions for motivated self-learners.</p>
                         <div class="hero-actions">
                             <a href="/demo.html" class="btn">Try Pocket Professor</a>
                         </div>
@@ -178,7 +186,7 @@
                     <div class="app-content fade-in">
                         <h3>The Pocket Professor</h3>
                         <p>This app serves as a mock graduate-level college instructor of sorts, creating customized learning plans to provide users with a personalized syllabus on any subject they wish to learn!</p>
-                        <p>My background in experimental psychology as well as my own subjective experience with self-learning made me deeply skeptical of popular <a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC11270031/">neuromyths like "learning styles."</a> My goal is to combine peer-reviewed seminal research and meta-analysis with natural language processing tools to build an engine based on proven <strong>learning mechanics</strong>—like Active Recall and Spaced Repetition—to make your learning experience more efficient and most importantly: effective.</p> 
+                        <p>My background in experimental psychology as well as my own subjective experience with self-learning made me deeply skeptical of popular <a href="https://pmc.ncbi.nlm.nih.com/articles/PMC11270031/">neuromyths like "learning styles."</a> My goal is to combine peer-reviewed seminal research and meta-analysis with natural language processing tools to build an engine based on proven <strong>learning mechanics</strong>—like Active Recall and Spaced Repetition—to make your learning experience more efficient and most importantly: effective.</p> 
                         <p>I designed the app to appeal to my fellow autodidacts on their self-teaching learning journey, breaking down their learning path with week-by-week lessons based on their skill level on the subject (novice, intermediate, expert), and their time committment.</p>
                         <a href="/demo.html" class="btn" style="margin-top: 2rem;">Try It Out</a>
                     </div>
