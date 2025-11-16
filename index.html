@@ -7,7 +7,6 @@
     <title>Pakfro Site</title>
 </head>
 <body>
-    <!-- NEW SIDEBAR NAVIGATION -->
     <div id="sidebar-nav" class="sidebar-nav">
         <a href="javascript:void(0)" class="close-btn">&times;</a>
         <div class="sidebar-content">
@@ -20,24 +19,18 @@
                 <li><a href="/blog.html">Blog</a></li>
                 <li><a href="#projects">Projects</a></li>
                 <li><a href="#contact">Contact</a></li>
-                <!-- Your existing links are now here -->
             </ul>
         </div>
     </div>
-    <!-- END NEW SIDEBAR NAVIGATION -->
 
     <header id="header">
         <div class="container">
             <nav>
-                <!-- 1. Hamburger menu is now the first item -->
                 <div id="menu-icon" class="menu-icon">
                     <span class="bar"></span>
                     <span class="bar"></span>
                     <span class="bar"></span>
                 </div>
-                
-                <!-- 2. Removed the commented-out logo and the old ul.nav-links -->
-
             </nav>
         </div>
     </header>
@@ -291,7 +284,7 @@
 
             function toggleSidebar() {
                 sidebarNav.classList.toggle('active');
-                menuIcon.classList.toggle('active'); // Keep icon sync for X animation
+                menuIcon.classList.toggle('active');
             }
 
             // Open/Close on Icon Click
@@ -309,13 +302,12 @@
                 });
             });
 
-            // Close sidebar when clicking outside (optional, but good UX)
+            // Close sidebar when clicking outside
             document.addEventListener('click', (e) => {
                 if (sidebarNav.classList.contains('active') && !sidebarNav.contains(e.target) && !menuIcon.contains(e.target)) {
                     toggleSidebar();
                 }
             });
-
 
             // Header scroll effect
             const header = document.getElementById('header');
@@ -327,7 +319,6 @@
                 }
             });
             
-            // Modern Fade-in Animation using Intersection Observer
             const fadeElements = document.querySelectorAll('.fade-in');
             const observer = new IntersectionObserver((entries) => {
                 entries.forEach(entry => {
@@ -348,7 +339,7 @@
                 yearSpan.textContent = new Date().getFullYear();
             }
 
-            // Contact Form Submission (unchanged)
+            // Contact Form Submission
             const contactForm = document.getElementById('contactForm');
             const formStatus = document.getElementById('formStatus');
 
