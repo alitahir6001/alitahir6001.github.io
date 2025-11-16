@@ -7,20 +7,28 @@
     <title>Pakfro Site</title>
 </head>
 <body>
+    <div id="sidebar-nav" class="sidebar-nav">
+        <a href="javascript:void(0)" class="close-btn">&times;</a>
+        <div class="sidebar-content">
+            <h3 class="sidebar-title">Ali Tahir | Software Engineer</h3>
+            <ul class="sidebar-links">
+                <li><a href="/">Home</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="/resume.html">Resume</a></li>
+                <li><a href="/demo.html">Pocket Professor</a></li>
+                <li><a href="/blog.html">Blog</a></li>
+                <li><a href="#projects">Projects</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </div>
+    </div>
+
     <header id="header">
         <div class="container">
             <nav>
-                <div class="logo">Ali Tahir | Software Engineer</div>
-                <ul class="nav-links">
-                    <li><a href="#about">About</a></li>
-                    <li><a href="/resume.html">Resume</a></li>
-                    <li><a href="/demo.html">Pocket Professor</a></li>
-                    <li><a href="#projects">Projects</a></li>
-                    <!-- <li><a href="/bio.html">My Story</a></li> -->
-                    <li><a href="/blog.html">Blog</a></li>
-                    <li><a href="#contact">Contact</a></li>
-                </ul>
-                <div class="mobile-menu">
+                <a href="/" class="logo">Pakfro</a>                 
+                <ul class="nav-links" style="display: none;"></ul> 
+                <div id="menu-icon" class="menu-icon">
                     <span class="bar"></span>
                     <span class="bar"></span>
                     <span class="bar"></span>
@@ -40,9 +48,6 @@
                             <a href="/demo.html" class="btn">Try Pocket Professor</a>
                         </div>
                     </div>
-                    <div class="hero-image-container fade-in">
-                        <!-- <img src="/images/kitty1.jpg" alt="me and kitty" class="hero-image"> -->
-                    </div>
                 </div>
             </div>
         </section>
@@ -54,10 +59,10 @@
                     <div class="about-content fade-in">
                         <h3>Who I am</h3>
                         <p>I'm a Software Engineer who has successfully delivered mission-critical SSO and user authentication APIs at enterprise scale with a high functioning team, achieving key codebase and directory migrations in a record 11 months. My technical stack includes Node.js/TypeScript and Python, complemented by extensive AWS Cloud and DevOps experience, including Terraform for infrastructure and TeamCity for CI/CD.</p>
-                        <p>I'm driven by a passion for learning and identify as a life-long academic who loves education. Leveraging insights from my experimental psychology background and professional academic research experience, I'm currently advancing my skills in AI and machine learning to build a passion project, 'The Pocket Professor':  an agentic AI-powered learning assistant designed to create personalized learning guides for my fellow autodidacts, blending technical expertise with pedagogical insights to enhance the self-taught learning journeys.</p>
+                        <p>I'm driven by a passion for learning and identify as a life-long academic who loves education. Leveraging insights from my experimental psychology background and professional academic research experience, I'm currently advancing my skills in AI and machine learning to build a passion project, 'The Pocket Professor': an agentic AI-powered learning assistant designed to create personalized learning guides for my fellow autodidacts, blending technical expertise with pedagogical insights to enhance the self-taught learning journeys.</p>
                     </div>
                     <div class="fade-in">
-                        <img src="/images/kitty1.jpg" alt="Ali Tahir - Action-oriented Profile Image" class="about-img">
+                        <img src="/images/kitty1.jpg" alt="kittyyyy" class="about-img">
                     </div>
                 </div>
             </div>
@@ -271,24 +276,39 @@
 
     <script>
         document.addEventListener('DOMContentLoaded', () => {
-            // Mobile Menu Toggle
-            const mobileMenu = document.querySelector('.mobile-menu');
-            const navLinks = document.querySelector('.nav-links');
-            
-            mobileMenu.addEventListener('click', () => {
-                mobileMenu.classList.toggle('active');
-                navLinks.classList.toggle('active');
-            });
-            
-            document.querySelectorAll('.nav-links a').forEach(link => {
-                link.addEventListener('click', () => {
-                    if(navLinks.classList.contains('active')) {
-                        mobileMenu.classList.remove('active');
-                        navLinks.classList.remove('active');
+            // SIDEBAR TOGGLE LOGIC
+            const menuIcon = document.getElementById('menu-icon');
+            const sidebarNav = document.getElementById('sidebar-nav');
+            const closeBtn = document.querySelector('.close-btn');
+
+            function toggleSidebar() {
+                sidebarNav.classList.toggle('active');
+                menuIcon.classList.toggle('active'); // Keep icon sync for X animation
+            }
+
+            // Open/Close on Icon Click
+            menuIcon.addEventListener('click', toggleSidebar);
+            closeBtn.addEventListener('click', toggleSidebar);
+
+            // Close sidebar when a link is clicked
+            document.querySelectorAll('#sidebar-nav a').forEach(link => {
+                link.addEventListener('click', (e) => {
+                    // Check if the link is external or an anchor link on the same page
+                    if (link.getAttribute('href').startsWith('#') || link.getAttribute('href').startsWith('/')) {
+                        // Small delay for smooth closing transition
+                        setTimeout(toggleSidebar, 300);
                     }
                 });
             });
-            
+
+            // Close sidebar when clicking outside (optional, but good UX)
+            document.addEventListener('click', (e) => {
+                if (sidebarNav.classList.contains('active') && !sidebarNav.contains(e.target) && !menuIcon.contains(e.target)) {
+                    toggleSidebar();
+                }
+            });
+
+
             // Header scroll effect
             const header = document.getElementById('header');
             window.addEventListener('scroll', () => {
@@ -320,7 +340,7 @@
                 yearSpan.textContent = new Date().getFullYear();
             }
 
-            // Contact Form Submission
+            // Contact Form Submission (unchanged)
             const contactForm = document.getElementById('contactForm');
             const formStatus = document.getElementById('formStatus');
 
