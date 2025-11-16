@@ -214,10 +214,7 @@ nav {
 }
 
 .hero-actions {
-    display: flex;
-    flex-wrap: wrap; /* Allow buttons to wrap on smaller screens */
-    gap: 1rem; /* Space between buttons */
-    margin-bottom: 1rem;
+    margin-bottom: -15rem;
 }
 
 .hero-image-container {
@@ -579,4 +576,5 @@ footer {
 .fade-in.visible {
     opacity: 1;
     transform: translateY(0);
+    text-align: center;
 }
