@@ -206,13 +206,19 @@
             const closeBtn = document.querySelector('.close-btn');
 
             function toggleSidebar() {
-                sidebarNav.classList.toggle('active');
-                menuIcon.classList.toggle('active');
+                if (sidebarNav && menuIcon) {
+                    sidebarNav.classList.toggle('active');
+                    menuIcon.classList.toggle('active');
+                }
             }
 
             // Open/Close on Icon Click
-            menuIcon.addEventListener('click', toggleSidebar);
-            closeBtn.addEventListener('click', toggleSidebar);
+            if (menuIcon) {
+                menuIcon.addEventListener('click', toggleSidebar);
+            }
+            if (closeBtn) {
+                closeBtn.addEventListener('click', toggleSidebar);
+            }
 
             // Close sidebar when a link is clicked
             document.querySelectorAll('#sidebar-nav a').forEach(link => {
@@ -220,49 +226,58 @@
                     // Check if the link is external or an anchor link on the same page
                     if (link.getAttribute('href').startsWith('#') || link.getAttribute('href').startsWith('/')) {
                         // Small delay for smooth closing transition
-                        setTimeout(toggleSidebar, 300);
+                        // Check if sidebar is active before trying to close
+                        if (sidebarNav && sidebarNav.classList.contains('active')) {
+                           setTimeout(toggleSidebar, 300);
+                        }
                     }
                 });
             });
 
             // Close sidebar when clicking outside
             document.addEventListener('click', (e) => {
-                if (sidebarNav.classList.contains('active') && !sidebarNav.contains(e.target) && !menuIcon.contains(e.target)) {
+                if (sidebarNav && menuIcon && sidebarNav.classList.contains('active') && !sidebarNav.contains(e.target) && !menuIcon.contains(e.target)) {
                     toggleSidebar();
                 }
             });
 
             // Header scroll effect
             const header = document.getElementById('header');
-            window.addEventListener('scroll', () => {
-                if (window.scrollY > 50) {
-                    header.classList.add('header-scrolled');
-                } else {
-                    header.classList.remove('header-scrolled');
-                }
-            });
-            
-            const fadeElements = document.querySelectorAll('.fade-in');
-            const observer = new IntersectionObserver((entries) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        entry.target.classList.add('visible');
-                        observer.unobserve(entry.target);
+            if (header) {
+                window.addEventListener('scroll', () => {
+                    if (window.scrollY > 50) {
+                        header.classList.add('header-scrolled');
+                    } else {
+                        header.classList.remove('header-scrolled');
                     }
                 });
-            }, { threshold: 0.1 });
+            }
+            
+            // Fade-in animation logic
+            const fadeElements = document.querySelectorAll('.fade-in');
+            if (fadeElements.length > 0) {
+                const observer = new IntersectionObserver((entries) => {
+                    entries.forEach(entry => {
+                        if (entry.isIntersecting) {
+                            entry.target.classList.add('visible');
+                            observer.unobserve(entry.target);
+                        }
+                    });
+                }, { threshold: 0.1 });
 
-            fadeElements.forEach(element => {
-                observer.observe(element);
-            });
+                fadeElements.forEach(element => {
+                    observer.observe(element);
+                });
+            }
             
             // Update year in footer
             const yearSpan = document.getElementById('year');
             if (yearSpan) {
+                // Use new Date().getFullYear() to always get the current year
                 yearSpan.textContent = new Date().getFullYear();
             }
 
-            // Contact Form Submission
+            // Contact Form Submission (Will not run, as no form exists, but safe to leave)
             const contactForm = document.getElementById('contactForm');
             const formStatus = document.getElementById('formStatus');
 
@@ -290,6 +305,6 @@
                 });
             }
         });
-    </script>
+    </script> 
 </body>
 </html>

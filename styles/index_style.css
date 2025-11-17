@@ -576,5 +576,81 @@ footer {
 .fade-in.visible {
     opacity: 1;
     transform: translateY(0);
+    /* FIX: Removed 'text-align: center;' from this class
+        to prevent post-card content from being centered. */
+}
+
+/* BLOG-SPECIFIC STYLES */
+#blog-header {
+    padding-top: 8rem;
     text-align: center;
+}
+#blog-header h1 {
+    font-size: 3.5rem;
+    margin-bottom: 0.5rem;
+    font-weight: 800;
+}
+#blog-header p {
+    font-size: 1.2rem;
+    opacity: 0.8;
+}
+#blog-list .section-title {
+    margin-bottom: 3rem;
+}
+
+.blog-grid {
+    display: grid;
+    grid-template-columns: 1fr; /* Stack posts */
+    gap: 2.5rem;
+}
+
+.post-card {
+    background-color: rgba(26, 26, 46, 0.8);
+    border-radius: 10px;
+    padding: 2rem;
+    transition: all 0.3s ease;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+.post-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+}
+.post-card h3 {
+    font-size: 1.75rem;
+    margin-bottom: 0.75rem;
+}
+.post-card h3 a {
+    color: var(--white-text);
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+.post-card h3 a:hover {
+    color: var(--accent);
+}
+.post-meta {
+    font-size: 0.9rem;
+    color: var(--accent);
+    margin-bottom: 1rem;
+    font-weight: 500;
+}
+.post-card p {
+    margin-bottom: 1.5rem;
+    opacity: 0.9;
+}
+.read-more {
+    color: var(--accent);
+    text-decoration: none;
+    font-weight: 600;
+    transition: all 0.3s ease;
+}
+.read-more:hover {
+    padding-left: 5px;
+}
+
+/* Responsive blog grid */
+@media (min-width: 768px) {
+    .blog-grid {
+            /* You can change this if you want more columns */
+        grid-template-columns: 1fr;
+    }
 }
