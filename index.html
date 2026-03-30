@@ -3,308 +3,73 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Ali Tahir is a software engineer building practical AI-powered products. Explore Pocket Professor, a project focused on career-transition learners.">
     <link rel="stylesheet" href="/styles/index_style.css">
-    <title>Pakfro Site</title>
+    <title>Ali Tahir | Software Engineer</title>
 </head>
 <body>
-    <div id="sidebar-nav" class="sidebar-nav">
-        <a href="javascript:void(0)" class="close-btn">&times;</a>
-        <div class="sidebar-content">
-            <h3 class="sidebar-title">Ali Tahir | Software Engineer</h3>
-            <ul class="sidebar-links">
-                <li><a href="/">Home</a></li>
-                <li><a href="#about">About</a></li>
-                <li><a href="/resume.html">Resume</a></li>
-                <li><a href="/demo.html">Pocket Professor</a></li>
-                <li><a href="/blog.html">Blog</a></li>
-                <!-- <li><a href="#projects">Projects</a></li> -->
-                <!-- <li><a href="#contact">Contact</a></li> -->
-            </ul>
-        </div>
-    </div>
-
-    <header id="header">
-        <div class="container">
-            <nav>
-                <div id="menu-icon" class="menu-icon">
-                    <span class="bar"></span>
-                    <span class="bar"></span>
-                    <span class="bar"></span>
-                </div>
+    <header class="site-header">
+        <div class="container nav-wrap">
+            <a href="/" class="brand">Ali Tahir</a>
+            <nav class="site-nav" aria-label="Main navigation">
+                <a href="/projects.html">Project</a>
+                <a href="/about.html">About</a>
+                <a href="/resume.html">Resume</a>
+                <a href="/blog.html">Blog</a>
             </nav>
         </div>
     </header>
 
     <main>
-        <section id="home" class="hero">
+        <section class="hero section">
             <div class="container">
-                <div class="hero-grid">
-                    <div class="hero-content fade-in">
-                        <h1>Hi, I'm <span style="color: var(--accent);">Ali</span></h1>
-                        <p>I create education tools for the motivated autodidact.
-                        <div class="hero-actions">
-                            <a href="/demo.html" class="btn">Try Pocket Professor</a>
-                        </div>
-                    </div>
-                    <div class="hero-image-container fade-in">
-                        <!-- <img src="/images/kitty1.jpg" alt="me and kitty" class="hero-image"> -->
-                    </div>
+                <p class="eyebrow">Software Engineer → AI-focused builder</p>
+                <h1>I build practical learning tools with clear product and engineering tradeoffs.</h1>
+                <p class="lead">My current focus is Pocket Professor: an AI-assisted learning product designed for service workers (35+) trying to transition into new careers.</p>
+                <div class="hero-actions">
+                    <a class="btn btn-primary" href="/projects.html">Read Pocket Professor Breakdown</a>
+                    <a class="btn btn-secondary" href="/demo.html">Try Live Demo</a>
                 </div>
             </div>
         </section>
 
-        <section id="about" class="section">
-            <div class="container">
-                <h2 class="section-title fade-in">About <span>Me</span></h2>
-                <div class="about-grid">
-                    <div class="about-content fade-in">
-                        <h3>Who I am</h3>
-                        <p>I'm a Software Engineer who has successfully delivered mission-critical SSO and user authentication APIs at enterprise scale with a high functioning team, achieving key codebase and directory migrations in a record 11 months. My technical stack includes Node.js/TypeScript and Python, complemented by extensive AWS Cloud and DevOps experience, including Terraform for infrastructure and TeamCity for CI/CD.</p>
-                        <p>I'm driven by a passion for learning and identify as a life-long academic who loves education. Leveraging insights from my experimental psychology background and professional academic research experience, I'm currently advancing my skills in AI and machine learning to build a passion project, 'The Pocket Professor': an agentic AI-powered learning assistant designed to create personalized learning guides for my fellow autodidacts, blending technical expertise with pedagogical insights to enhance the self-taught learning journeys.</p>
-                    </div>
-                    <div class="fade-in">
-                        <img src="/images/kitty1.jpg" alt="Ali Tahir - Action-oriented Profile Image" class="about-img">
-                    </div>
+        <section class="section">
+            <div class="container project-mini">
+                <div>
+                    <p class="eyebrow">Flagship Project</p>
+                    <h2>Pocket Professor</h2>
+                    <p>
+                        I started Pocket Professor after repeatedly seeing motivated adults stall during career shifts—not because they lacked ambition, but because they lacked structured learning direction and consistency.
+                        The project combines educational psychology principles and AI-assisted planning to generate practical learning paths tailored to each person’s context.
+                    </p>
+                    <p>
+                        This is where I’m documenting how product assumptions changed, which technical choices held up, and what I’d redesign next.
+                    </p>
+                    <a class="text-link" href="/projects.html">Read full breakdown →</a>
                 </div>
+                <img src="/images/pockProf_code_snapshot.png" alt="Pocket Professor code snapshot" class="project-image">
             </div>
         </section>
 
-        <section id="resume" class="section" style="background-color: rgba(22, 33, 62, 0.3);">
-            <div class="container">
-                <h2 class="section-title fade-in">My <span>Experience</span></h2>
-                <div style="text-align: center; margin-top: -3rem;">
-                    <a href="/resume.html" class="btn">View Full Resume</a>
-                </div>
-                <div class="resume-grid">
-                    <div class="resume-card fade-in">
-                        <h3>Education</h3>
-                        <div>
-                            <h4>University of Texas San Antonio • 2018</h4>
-                            <p>Experimental Psychology</p>
-                            <p>Focus in behavior research, experimental design and stats analysis using ANOVA I/II, factor analysis.</p>
-                            <p>Independent Study: "Cross Cultural Stressors of Adolescents In A Bi-Cultural Environment</p>
-                        </div>
-                        <div style="margin-top: 2rem;">
-                            <h4>Coding Dojo • 2021 </h4>
-                            <p>Full Stack Development Bootcamp</p>
-                            <p>Project Driven intense learning sprints that helped launch my career in technology</p>
-                            <p>Web Stack (HTML, CSS, JS), Python, MERN, Java</p>
-                        </div>
-
-                        <div style="margin-top: 2rem;">
-                            <h3>Certifications</h3>
-                        <div>
-                            <h4>AWS Cloud Practitioner</h4>
-                            <p>Amazon • 2023</p>
-                        </div>
-                        <div style="margin-top: 1.5rem;">
-                            <h4>Scaled Agile Scrum Master</h4>
-                            <p>SAFe® Enterprise • 2023</p>
-                        </div>
-                        <div style="margin-top: 1.5rem;">
-                            <h4>Full Stack Web Development</h4>
-                            <p>Coding Dojo • 2021</p>
-                        </div>
-
-                        </div>
-                    </div>
-                    <div class="resume-card fade-in">
-                        <h3>Professional Experience</h3>
-                        <div>
-                            <h4>Security Specialist</h4>
-                            <p>Accenture • 2024-2025</p>
-                            <p>Continued all G.E. SSO Services and beyond, now taking time for further professional development.</p>
-                        </div>
-                        <div style="margin-top: 2rem;">
-                            <h4>Software Engineering Specialist</h4>
-                            <p>The General Electric Company (G.E.) • 2021-2024</p>
-                            <p>Part of a full SDLC team, helped deliver and maintain 14 mission-critical user auth and management APIs in 11 months as part of a stack migration from Java to Node.js/Typescript while simultaneously migrating to a new Identity provider and directory (PingID, PingDirectory).</p>
-                        </div>
-                        <div style="margin-top: 2rem;">
-                            <h4>Technology Apprentice</h4>
-                            <p>MAXX Potential • 2021-2022</p>
-                            <p>Accelerated career development program providing technical support across VA/NC region and beyond. Gained hands-on experience with enterprise software development, leading to successful placement to G.E. Assignment.</p>
-                        </div>
-                        <div style="margin-top: 2rem;">
-                            <h4>Researcher III - Animal Attendant</h4>
-                            <p>Lab Animal Resources Center at UTSA • 2013-2015</p>
-                            <p>Principal Investigator: Dr. Marcel Perret-Gentil. AAALAC Int. certified, R01 Federally funded laboratory into military-grade field research and NIH funded cancer research, with animal husbandry tasks and delivery of autoclaved equipment to off-site research labs.</p>
-                        </div>
-                        <div style="margin-top: 2rem;">
-                            <h4>Work Study</h4>
-                            <p>Hermann Laboratory at UTSA • 2016</p>
-                            <p>Principal Investigator: Dr. Brian Hermann. AAALAC Int. certified, R01 Federally funded spermatogenesis research laboratory, with tasks including chemical solution creation, biological material disposal, file-system organizing of archived research materials.   </p>
-                        </div>
-                    </div>
-                    <div class="resume-card fade-in">
-                        <h3>Skills</h3>
-                        <div>
-                            <span class="tag">Node.js</span>
-                            <span class="tag">Typescript</span>
-                            <span class="tag">Python</span>
-                            <span class="tag">Vue.js</span>
-                            <span class="tag">Terraform</span>
-                            <span class="tag">WSL2</span>
-                            <span class="tag">mTLS</span>
-                            <span class="tag">OpenSSL</span>
-                            <span class="tag">Envoy</span>
-                            <span class="tag">Docker</span>
-                            <span class="tag">TeamCity CI/CD</span>
-                            <span class="tag">Apigee</span>
-                            <span class="tag">Git/Github</span>
-                            <span class="tag">Kanban - Rally</span>
-                            <span class="tag">SAFe® Agile Certified</span>
-                            <span class="tag">RSA Cryptography</span>
-                            <span class="tag">Prompt Engineering</span>
-                            <span class="tag">TensorFlow</span>
-                            <span class="tag">Machine Learning</span>
-                            <span class="tag">Educational Technology</span>
-                            <span class="tag">AWS Cloud Practitioner Certified</span>
-                            <span class="tag">AI - local LLM workflow integration</span>
-                            <span class="tag">Natural Language Processing Tools</span>
-                            <span class="tag">Certificate Chain/Key management</span>
-                        </div>
-                    </div>
-                </div>
+        <section class="section proof-section">
+            <div class="container proof-grid">
+                <article class="proof-card">
+                    <h3>Enterprise engineering foundation</h3>
+                    <p>Delivered and maintained mission-critical authentication systems in large-scale production environments, including major migration work under strict reliability constraints.</p>
+                </article>
+                <article class="proof-card">
+                    <h3>Applied AI focus, not AI hype</h3>
+                    <p>I prioritize practical AI workflows that solve a real user problem first, then optimize for maintainability and performance.</p>
+                </article>
             </div>
         </section>
-
-        <section id="app" class="section">
-            <div class="container">
-                <h2 class="section-title fade-in">Customized <span>Learning</span></h2>
-                <div class="app-preview">
-                    <div class="app-content fade-in">
-                        <h3>The Pocket Professor</h3>
-                        <p>This app serves as a mock graduate-level college instructor of sorts, creating customized learning plans to provide users with a personalized syllabus on any subject they wish to learn!</p>
-                        <p>My background in experimental psychology as well as my own subjective experience with self-learning made me deeply skeptical of popular <a href="https://pmc.ncbi.nlm.nih.com/articles/PMC11270031/">neuromyths like "learning styles."</a> My goal is to combine peer-reviewed seminal research and meta-analysis with natural language processing tools to build an engine based on proven <strong>learning mechanics</strong>—like Active Recall and Spaced Repetition—to make your learning experience more efficient and most importantly: effective.</p> 
-                        <p>I designed the app to appeal to my fellow autodidacts on their self-teaching learning journey, breaking down their learning path with week-by-week lessons based on their skill level on the subject (novice, intermediate, expert), and their time committment.</p>
-                        <a href="/demo.html" class="btn" style="margin-top: 2rem;">Try It Out</a>
-                    </div>
-                    <div class="fade-in">
-                        <img src="/images/pockProf_code_snapshot.png" alt="App Preview" class="app-img">
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- TODO: Add Projects Section -->
-         <!-- TODO: Add socials section -->
-
     </main>
 
-    <footer>
-        <div class="container">
-            <p class="copyright">© <span id="year">2025 </span> ali@pakfro.dev</p>
+    <footer class="site-footer">
+        <div class="container footer-wrap">
+            <p>Contact: <a href="mailto:ali@pakfro.dev">ali@pakfro.dev</a></p>
+            <p><a href="https://github.com/alitahir6001" target="_blank" rel="noopener noreferrer">GitHub</a> · <a href="https://linkedin.com/in/ali-t-06748432" target="_blank" rel="noopener noreferrer">LinkedIn</a></p>
         </div>
     </footer>
-
-    <script>
-        document.addEventListener('DOMContentLoaded', () => {
-            // SIDEBAR TOGGLE LOGIC
-            const menuIcon = document.getElementById('menu-icon');
-            const sidebarNav = document.getElementById('sidebar-nav');
-            const closeBtn = document.querySelector('.close-btn');
-
-            function toggleSidebar() {
-                if (sidebarNav && menuIcon) {
-                    sidebarNav.classList.toggle('active');
-                    menuIcon.classList.toggle('active');
-                }
-            }
-
-            // Open/Close on Icon Click
-            if (menuIcon) {
-                menuIcon.addEventListener('click', toggleSidebar);
-            }
-            if (closeBtn) {
-                closeBtn.addEventListener('click', toggleSidebar);
-            }
-
-            // Close sidebar when a link is clicked
-            document.querySelectorAll('#sidebar-nav a').forEach(link => {
-                link.addEventListener('click', (e) => {
-                    // Check if the link is external or an anchor link on the same page
-                    if (link.getAttribute('href').startsWith('#') || link.getAttribute('href').startsWith('/')) {
-                        // Small delay for smooth closing transition
-                        // Check if sidebar is active before trying to close
-                        if (sidebarNav && sidebarNav.classList.contains('active')) {
-                           setTimeout(toggleSidebar, 300);
-                        }
-                    }
-                });
-            });
-
-            // Close sidebar when clicking outside
-            document.addEventListener('click', (e) => {
-                if (sidebarNav && menuIcon && sidebarNav.classList.contains('active') && !sidebarNav.contains(e.target) && !menuIcon.contains(e.target)) {
-                    toggleSidebar();
-                }
-            });
-
-            // Header scroll effect
-            const header = document.getElementById('header');
-            if (header) {
-                window.addEventListener('scroll', () => {
-                    if (window.scrollY > 50) {
-                        header.classList.add('header-scrolled');
-                    } else {
-                        header.classList.remove('header-scrolled');
-                    }
-                });
-            }
-            
-            // Fade-in animation logic
-            const fadeElements = document.querySelectorAll('.fade-in');
-            if (fadeElements.length > 0) {
-                const observer = new IntersectionObserver((entries) => {
-                    entries.forEach(entry => {
-                        if (entry.isIntersecting) {
-                            entry.target.classList.add('visible');
-                            observer.unobserve(entry.target);
-                        }
-                    });
-                }, { threshold: 0.1 });
-
-                fadeElements.forEach(element => {
-                    observer.observe(element);
-                });
-            }
-            
-            // Update year in footer
-            const yearSpan = document.getElementById('year');
-            if (yearSpan) {
-                // Use new Date().getFullYear() to always get the current year
-                yearSpan.textContent = new Date().getFullYear();
-            }
-
-            // Contact Form Submission (Will not run, as no form exists, but safe to leave)
-            const contactForm = document.getElementById('contactForm');
-            const formStatus = document.getElementById('formStatus');
-
-            if(contactForm && formStatus) {
-                contactForm.addEventListener('submit', async function(e) {
-                    e.preventDefault();
-                    const formData = new FormData(contactForm);
-                    formStatus.textContent = 'Sending...';
-                    try {
-                        const response = await fetch(contactForm.action, {
-                            method: 'POST',
-                            body: formData,
-                            headers: { 'Accept': 'application/json' }
-                        });
-
-                        if (response.ok) {
-                            formStatus.textContent = 'Message sent successfully!';
-                            contactForm.reset();
-                        } else {
-                            formStatus.textContent = 'Oops! There was a problem sending your message.';
-                        }
-                    } catch (error) {
-                        formStatus.textContent = 'Oops! A network error occurred.';
-                    }
-                });
-            }
-        });
-    </script> 
 </body>
 </html>

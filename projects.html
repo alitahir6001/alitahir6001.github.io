@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Pocket Professor project breakdown: problem context, implementation decisions, iteration history, and lessons learned.">
+    <link rel="stylesheet" href="/styles/projects_style.css">
+    <title>Pocket Professor | Project Breakdown</title>
+</head>
+<body>
+    <header class="site-header">
+        <div class="container nav-wrap">
+            <a href="/" class="brand">Ali Tahir</a>
+            <nav class="site-nav" aria-label="Main navigation">
+                <a href="/">Home</a>
+                <a href="/resume.html">Resume</a>
+                <a href="/blog.html">Blog</a>
+                <a href="/demo.html">Live Demo</a>
+            </nav>
+        </div>
+    </header>
+
+    <main class="container">
+        <section class="page-hero">
+            <p class="eyebrow">Project Breakdown</p>
+            <h1>Pocket Professor</h1>
+            <p class="lead">An AI-assisted learning guide built for service workers (35+) who want to shift careers but struggle with direction and consistency.</p>
+            <a class="btn" href="/demo.html">Try the demo</a>
+        </section>
+
+        <section class="panel">
+            <h2>Problem context</h2>
+            <p>Many adults trying to leave service-industry work hit the same wall: information overload, no structured path, and low consistency after week one. Pocket Professor was built to reduce that friction with guided learning plans adapted to current skill level, goal, and weekly bandwidth.</p>
+        </section>
+
+        <section class="panel">
+            <h2>What I built</h2>
+            <ul>
+                <li>A lightweight web interface to capture user goals, background level, and time commitment.</li>
+                <li>A plan generator flow that produces a structured weekly syllabus rather than generic topic lists.</li>
+                <li>Output export support (PDF) so users can keep and reuse their plan offline.</li>
+            </ul>
+        </section>
+
+        <section class="panel">
+            <h2>Key engineering decisions</h2>
+            <div class="decision">
+                <h3>Decision 1: Keep the interface intentionally simple</h3>
+                <p>I avoided a feature-heavy onboarding flow. The product needs quick entry for tired users with limited time, so the form focuses only on inputs that materially improve plan quality.</p>
+            </div>
+            <div class="decision">
+                <h3>Decision 2: Prioritize usable structure over “smart” output</h3>
+                <p>Generated plans are formatted as an actionable week-by-week sequence. This improves execution compared with broad, abstract recommendations.</p>
+            </div>
+            <div class="decision">
+                <h3>Decision 3: Add sanitation at the UI boundary</h3>
+                <p>User text is sanitized before being rendered. Even in a personal project, defensive defaults are non-negotiable when handling free-form input.</p>
+            </div>
+        </section>
+
+        <section class="panel">
+            <h2>Iteration story (short)</h2>
+            <p><strong>v1:</strong> early prompts produced overly generic plans. <br>
+               <strong>v2:</strong> adjusted input framing and output structure to emphasize realistic weekly execution. <br>
+               <strong>v3:</strong> improved polish (PDF export, examples, and clearer UX copy) to reduce drop-off between generation and follow-through.</p>
+        </section>
+
+        <section class="panel">
+            <h2>What I learned</h2>
+            <ul>
+                <li>For this audience, consistency support is more valuable than raw content volume.</li>
+                <li>Small UX constraints (fewer choices, clearer wording) improve completion and trust.</li>
+                <li>Technical quality matters, but framing and usability determine whether people actually use the output.</li>
+            </ul>
+        </section>
+
+        <section class="panel">
+            <h2>What’s next</h2>
+            <p>Next iterations will focus on stronger progress tracking and lightweight accountability loops while preserving the product’s low-friction experience.</p>
+        </section>
+    </main>
+
+    <footer class="site-footer">
+        <div class="container footer-wrap">
+            <p>Contact: <a href="mailto:ali@pakfro.dev">ali@pakfro.dev</a></p>
+            <p><a href="https://github.com/alitahir6001" target="_blank" rel="noopener noreferrer">GitHub</a> · <a href="https://linkedin.com/in/ali-t-06748432" target="_blank" rel="noopener noreferrer">LinkedIn</a></p>
+        </div>
+    </footer>
+</body>
+</html>
