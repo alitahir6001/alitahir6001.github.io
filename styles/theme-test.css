@@ -267,50 +267,6 @@ h1 {
   animation: floaty 21s ease-in-out infinite reverse;
 }
 
-.bg-ufo {
-  width: 52px;
-  height: 24px;
-  border-radius: 18px 18px 8px 8px;
-  background: linear-gradient(180deg, #c9d8ff, #7fa0ff);
-  position: fixed;
-  z-index: 1;
-  box-shadow: 0 0 16px rgba(142,195,255,0.4);
-}
-
-.bg-ufo::before {
-  content: "";
-  position: absolute;
-  left: 14px;
-  top: -9px;
-  width: 24px;
-  height: 12px;
-  border-radius: 12px 12px 4px 4px;
-  background: linear-gradient(180deg, #b7f5ff, #8ec3ff);
-  border: 1px solid rgba(255,255,255,0.4);
-}
-
-.bg-ufo::after {
-  content: "";
-  position: absolute;
-  left: 8px;
-  right: 8px;
-  bottom: -12px;
-  height: 10px;
-  background: radial-gradient(circle at 50% 0%, rgba(142,195,255,0.65), transparent 70%);
-}
-
-.ufo-a {
-  top: 22%;
-  left: 14%;
-  animation: ufoFloat 9s ease-in-out infinite;
-}
-
-.ufo-b {
-  top: 36%;
-  right: 12%;
-  animation: ufoFloat 12s ease-in-out infinite reverse;
-}
-
 @keyframes twinkle {
   from { opacity: 0.46; }
   to { opacity: 0.82; }
@@ -326,11 +282,6 @@ h1 {
   50% { transform: translateY(-16px); }
 }
 
-@keyframes ufoFloat {
-  0%, 100% { transform: translateY(0) translateX(0); }
-  50% { transform: translateY(-10px) translateX(8px); }
-}
-
 @media (max-width: 900px) {
   .variants-grid,
   .component-grid { grid-template-columns: 1fr; }
@@ -340,7 +291,6 @@ h1 {
   .bg-stars,
   .bg-grid,
   .bg-orb,
-  .bg-ufo,
   .btn {
     animation: none !important;
     transition: none !important;
