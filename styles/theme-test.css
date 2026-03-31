@@ -80,6 +80,18 @@ main { padding: 2.4rem 0 4rem; }
   letter-spacing: 0.14em;
 }
 
+.pixel-chip {
+  display: inline-block;
+  margin: 0.1rem 0 0.7rem;
+  padding: 0.2rem 0.5rem;
+  border: 1px solid rgba(255, 180, 126, 0.6);
+  color: var(--accent-3);
+  font: 700 0.68rem/1.2 "JetBrains Mono", "Courier New", monospace;
+  letter-spacing: 0.08em;
+  background: rgba(255, 180, 126, 0.08);
+  text-transform: uppercase;
+}
+
 h1 {
   margin: 0;
   font-size: clamp(1.9rem, 4vw, 3rem);
@@ -105,12 +117,13 @@ h1 {
   background:
     linear-gradient(180deg, rgba(18, 29, 56, 0.95), rgba(12, 18, 34, 0.94)),
     repeating-linear-gradient(0deg, transparent 0 8px, rgba(142,195,255,0.03) 8px 9px);
-  border-radius: 10px;
+  border-radius: 2px;
   position: relative;
   overflow: hidden;
   box-shadow:
     0 0 0 1px rgba(202, 159, 255, 0.16) inset,
-    0 18px 40px rgba(0, 0, 0, 0.36);
+    0 18px 40px rgba(0, 0, 0, 0.36),
+    6px 6px 0 rgba(0,0,0,0.32);
 }
 
 .panel::before,
@@ -148,8 +161,8 @@ h1 {
   cursor: pointer;
   padding: 0.68rem 1.05rem;
   font-weight: 800;
-  border-radius: 7px;
-  transition: transform 120ms ease, box-shadow 120ms ease;
+  border-radius: 2px;
+  transition: transform 120ms steps(4, end), box-shadow 120ms steps(4, end);
 }
 
 .btn:hover {
@@ -254,6 +267,50 @@ h1 {
   animation: floaty 21s ease-in-out infinite reverse;
 }
 
+.bg-ufo {
+  width: 52px;
+  height: 24px;
+  border-radius: 18px 18px 8px 8px;
+  background: linear-gradient(180deg, #c9d8ff, #7fa0ff);
+  position: fixed;
+  z-index: 1;
+  box-shadow: 0 0 16px rgba(142,195,255,0.4);
+}
+
+.bg-ufo::before {
+  content: "";
+  position: absolute;
+  left: 14px;
+  top: -9px;
+  width: 24px;
+  height: 12px;
+  border-radius: 12px 12px 4px 4px;
+  background: linear-gradient(180deg, #b7f5ff, #8ec3ff);
+  border: 1px solid rgba(255,255,255,0.4);
+}
+
+.bg-ufo::after {
+  content: "";
+  position: absolute;
+  left: 8px;
+  right: 8px;
+  bottom: -12px;
+  height: 10px;
+  background: radial-gradient(circle at 50% 0%, rgba(142,195,255,0.65), transparent 70%);
+}
+
+.ufo-a {
+  top: 22%;
+  left: 14%;
+  animation: ufoFloat 9s ease-in-out infinite;
+}
+
+.ufo-b {
+  top: 36%;
+  right: 12%;
+  animation: ufoFloat 12s ease-in-out infinite reverse;
+}
+
 @keyframes twinkle {
   from { opacity: 0.46; }
   to { opacity: 0.82; }
@@ -269,6 +326,11 @@ h1 {
   50% { transform: translateY(-16px); }
 }
 
+@keyframes ufoFloat {
+  0%, 100% { transform: translateY(0) translateX(0); }
+  50% { transform: translateY(-10px) translateX(8px); }
+}
+
 @media (max-width: 900px) {
   .variants-grid,
   .component-grid { grid-template-columns: 1fr; }
@@ -278,6 +340,7 @@ h1 {
   .bg-stars,
   .bg-grid,
   .bg-orb,
+  .bg-ufo,
   .btn {
     animation: none !important;
     transition: none !important;
