@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Theme sandbox for testing a 16-bit retro + modern hybrid visual system.">
+  <title>Theme Test | Retro x Modern</title>
+  <link rel="stylesheet" href="/styles/theme-test.css">
+</head>
+<body>
+  <div class="bg-stars" aria-hidden="true"></div>
+  <div class="bg-grid" aria-hidden="true"></div>
+  <div class="bg-orb orb-a" aria-hidden="true"></div>
+  <div class="bg-orb orb-b" aria-hidden="true"></div>
+
+  <header class="topbar">
+    <div class="container topbar-inner">
+      <a class="brand" href="/">Ali Tahir</a>
+      <nav>
+        <a href="/">Home</a>
+        <a href="/projects.html">Project</a>
+        <a href="/theme-test.html" aria-current="page">Theme Lab</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="container">
+    <section class="hero panel">
+      <p class="eyebrow">Theme Sandbox</p>
+      <h1>16-bit retro × modern UI (50/50 balance)</h1>
+      <p class="lead">This page is a controlled visual playground so we can test aesthetics before touching the rest of the site. It mixes retro cues (pixel frames, palette, scanline texture) with modern spacing and typography.</p>
+      <div class="hero-actions">
+        <button class="btn btn-primary" type="button">Primary Action</button>
+        <button class="btn btn-outline" type="button">Secondary Action</button>
+      </div>
+    </section>
+
+    <section class="section-block">
+      <h2>Theme Variants</h2>
+      <div class="variants-grid">
+        <article class="panel variant-card">
+          <p class="variant-title">Variant A — Deep Space</p>
+          <p>Most restrained option. Prioritizes readability with retro details in the frame and accent palette.</p>
+          <div class="swatches">
+            <span style="--c:#090d1f"></span>
+            <span style="--c:#101a38"></span>
+            <span style="--c:#7cc7ff"></span>
+            <span style="--c:#c89cff"></span>
+          </div>
+        </article>
+
+        <article class="panel variant-card">
+          <p class="variant-title">Variant B — Metroid Pulse</p>
+          <p>Higher-retro expression through warmer accent tones and stronger panel contrast, still modern in layout.</p>
+          <div class="swatches">
+            <span style="--c:#100c1d"></span>
+            <span style="--c:#241847"></span>
+            <span style="--c:#ffaa6b"></span>
+            <span style="--c:#8ef5ff"></span>
+          </div>
+        </article>
+
+        <article class="panel variant-card">
+          <p class="variant-title">Variant C — CRT Night</p>
+          <p>Adds subtle scanline texture and cooler neon highlights. Strongest retro vibe while keeping professional hierarchy.</p>
+          <div class="swatches">
+            <span style="--c:#05070f"></span>
+            <span style="--c:#1a294f"></span>
+            <span style="--c:#8db3ff"></span>
+            <span style="--c:#9effd5"></span>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section class="section-block">
+      <h2>Component feel tests</h2>
+      <div class="component-grid">
+        <article class="panel">
+          <h3>Project Card Treatment</h3>
+          <p>Pixel-corner frame + modern card spacing. Helps the retro look show up without turning into a novelty site.</p>
+          <a href="#" class="inline-link">Read full breakdown →</a>
+        </article>
+        <article class="panel">
+          <h3>Data / Proof Card</h3>
+          <ul>
+            <li>Readable body text and contrast first</li>
+            <li>Retro accents only in supporting details</li>
+            <li>Animation remains ambient and non-blocking</li>
+          </ul>
+        </article>
+      </div>
+    </section>
+  </main>
+</body>
+</html>
