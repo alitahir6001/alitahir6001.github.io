@@ -5,8 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Pocket Professor demo: generate structured learning plans with AI-assisted guidance.">
     <title>Pocket Professor Demo | Ali Tahir</title>
+    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:ital,wght@0,300;0,400;0,500;0,600;1,400&display=swap" rel="stylesheet"/>
     <link rel="stylesheet" href="/styles/demo_style.css">
-    <!-- SECURITY: Added Subresource Integrity (SRI) hashes. -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"
             integrity="sha512-BNaRQnYJYiPSqHHDb58B0yaPfCu+Wgds8Gp/gU33kqBtgNS4tSPHuGibyoeqMV/TJlSKda6BTzYlEjY/eaMAHQ=="
             crossorigin="anonymous" referrerpolicy="no-referrer"></script>
@@ -15,70 +15,85 @@
             crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 </head>
 <body>
-    <header class="site-header">
-        <div class="container">
-            <nav>
-                <a href="/" class="logo-link">⬅️ Back to Main Page</a>
-                <ul class="nav-links">
-                    <li><a href="/about.html">About</a></li>
-                    <li><a href="/resume.html">Resume</a></li>
-                    <li><a href="https://forms.gle/N436zSXQdDGXAMBE7" target="_blank" rel="noopener noreferrer">App Feedback</a></li>
-                </ul>
-            </nav>
+    <nav>
+        <div class="nav-logo">
+            <div class="product">// Pocket Professor</div>
+            <div class="title">AI Learning Plan<br/>Demo</div>
+            <div class="subtitle">v0.1 · Theme Trial</div>
         </div>
-    </header>
+        <div class="nav-section-label">Navigate</div>
+        <a href="#demo-start" class="active"><span class="icon">◆</span> Generator</a>
+        <a href="#example-block"><span class="icon">○</span> Examples</a>
+        <a href="/projects.html"><span class="icon">↠</span> Project Writeup</a>
+        <a href="/"><span class="icon">↩</span> Home</a>
+        <div class="nav-footer">Built by <span>Ali Tahir</span><br/>Feedback welcome</div>
+    </nav>
 
-    <div class="container">
-        <div class="page-header">
-            <h1 class="page-title">The Pocket Professor</h1>
-            <p class="tagline">Your AI-powered learning guide that creates personalized curricula for any subject</p>
+    <main>
+        <div class="page-header" id="demo-start">
+            <div class="tag">Interactive Demo</div>
+            <h1>Pocket Professor</h1>
+            <p class="desc">Generate a structured learning plan based on your goals, current level, and available hours per week.</p>
+            <div class="meta-strip">
+                <div class="meta-item"><span class="dot"></span>AI-assisted plan generation</div>
+                <div class="meta-item"><span class="dot"></span>Personalized pacing</div>
+                <div class="meta-item"><span class="dot"></span>PDF export support</div>
+            </div>
         </div>
 
-        <div class="form-container">
-            <form id="syllabusForm">
-                <!-- Form groups... -->
-                <div class="form-group">
-                    <label for="subject">What do you want to learn?</label>
-                    <input type="text" id="subject" class="form-control" placeholder="e.g., React.js, Data Science, Spanish, Guitar" required>
+        <section class="section">
+            <div class="section-header">
+                <span class="section-num">01</span>
+                <h2>Build Your Learning Plan</h2>
+                <span class="section-badge primary">Live</span>
+            </div>
+            <div class="section-divider"></div>
+            <div class="section-body">
+                <div class="card">
+                    <form id="syllabusForm">
+                        <div class="form-group">
+                            <label for="subject">What do you want to learn?</label>
+                            <input type="text" id="subject" class="form-control" placeholder="e.g., React.js, Data Science, Spanish, Guitar" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="difficulty">Your current level</label>
+                            <select id="difficulty" class="form-control" required>
+                                <option value="">Select your level...</option>
+                                <option value="complete beginner">Complete Beginner</option>
+                                <option value="novice">Novice</option>
+                                <option value="intermediate">Intermediate</option>
+                                <option value="advanced">Advanced</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="goal">What's your learning goal?</label>
+                            <select id="goal" class="form-control" required>
+                                <option value="">Select your goal...</option>
+                                <option value="career change">Career Change</option>
+                                <option value="get a job">Get a Job</option>
+                                <option value="skill improvement">Skill Improvement</option>
+                                <option value="academic project">Academic Project</option>
+                                <option value="pass certification">Pass Certification</option>
+                                <option value="personal interest">Personal Interest</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="timeCommitment">How many hours per week can you dedicate?</label>
+                            <select id="timeCommitment" class="form-control" required>
+                                <option value="">Select time commitment...</option>
+                                <option value="2-3 hours">2-3 hours</option>
+                                <option value="4-6 hours">4-6 hours</option>
+                                <option value="7-10 hours">7-10 hours</option>
+                                <option value="10+ hours">10+ hours</option>
+                            </select>
+                        </div>
+                        <button type="submit" class="btn btn-primary" id="generateBtn">Generate My Learning Plan</button>
+                        <button type="button" class="btn btn-secondary" id="clearFormBtn">Clear Form</button>
+                    </form>
+                    <div class="error" id="errorMessage"></div>
                 </div>
-                <div class="form-group">
-                    <label for="difficulty">Your current level</label>
-                    <select id="difficulty" class="form-control" required>
-                        <option value="">Select your level...</option>
-                        <option value="complete beginner">Complete Beginner</option>
-                        <option value="novice">Novice</option>
-                        <option value="intermediate">Intermediate</option>
-                        <option value="advanced">Advanced</option>
-                    </select>
-                </div>
-                <div class="form-group">
-                    <label for="goal">What's your learning goal?</label>
-                    <select id="goal" class="form-control" required>
-                        <option value="">Select your goal...</option>
-                        <option value="career change">Career Change</option>
-                        <option value="get a job">Get a Job</option>
-                        <option value="skill improvement">Skill Improvement</option>
-                        <option value="academic project">Academic Project</option>
-                        <option value="pass certification">Pass Certification</option>
-                        <option value="personal interest">Personal Interest</option>
-                    </select>
-                </div>
-                <div class="form-group">
-                    <label for="timeCommitment">How many hours per week can you dedicate?</label>
-                    <select id="timeCommitment" class="form-control" required>
-                        <option value="">Select time commitment...</option>
-                        <option value="2-3 hours">2-3 hours</option>
-                        <option value="4-6 hours">4-6 hours</option>
-                        <option value="7-10 hours">7-10 hours</option>
-                        <option value="10+ hours">10+ hours</option>
-                    </select>
-                </div>
-                <button type="submit" class="btn" id="generateBtn">Generate My Learning Plan 🚀</button>
-                <button type="button" class="btn clear-btn" id="clearFormBtn">Clear Form ✖️</button>
-
-            </form>
-            <div class="error" id="errorMessage"></div>
-        </div>
+            </div>
+        </section>
 
         <div class="loading" id="loading">
             <div class="spinner"></div>
@@ -88,30 +103,38 @@
 
         <div class="results" id="results">
             <h2>Your Personalized Learning Syllabus</h2>
-            <button id="downloadPdfBtn" class="btn pdf-btn">⬇️ Download as PDF</button>
+            <button id="downloadPdfBtn" class="btn pdf-btn">Download as PDF</button>
             <div class="syllabus-content" id="syllabusContent"></div>
         </div>
+
+        <section class="section" id="example-block">
+            <div class="section-header">
+                <span class="section-num">02</span>
+                <h2>Try Example Inputs</h2>
+                <span class="section-badge blue">Quick Start</span>
+            </div>
+            <div class="section-divider"></div>
+            <div class="section-body">
+                <div class="card demo-examples">
+                    <div class="example-buttons">
+                        <button class="example-btn" onclick="fillExample('react')">Learn React.js</button>
+                        <button class="example-btn" onclick="fillExample('python')">Python for Data Science</button>
+                        <button class="example-btn" onclick="fillExample('aws')">AWS Certification</button>
+                    </div>
+                </div>
+            </div>
+        </section>
 
         <div class="feedback-prompt" id="feedbackPrompt">    
             <p>Find this tool helpful? I'd love to hear your thoughts -- <a href="https://forms.gle/N436zSXQdDGXAMBE7" target="_blank" rel="noopener noreferrer">Please share your feedback!</a></p>
         </div>
 
         <div class="back-to-top-container" id="backToTopContainer" style="display:none; margin-top: 10px;">
-            <button class="btn" id="backToTopBtn">⬆️ Back to Top</button>
+            <button class="btn btn-secondary" id="backToTopBtn">Back to Top</button>
         </div>
+    </main>
 
-
-        <div class="demo-examples">
-            <h3>Try these examples:</h3><br>
-            <div class="example-buttons">
-                <button class="example-btn" onclick="fillExample('react')">Learn React.js</button>
-                <button class="example-btn" onclick="fillExample('python')">Python for Data Science</button>
-                <button class="example-btn" onclick="fillExample('aws')">AWS Certification</button>
-            </div>
-        </div>
-    </div>
-
-    <script>
+<script>
     // --- Element Variables ---
     const form = document.getElementById('syllabusForm');
     const loading = document.getElementById('loading');
