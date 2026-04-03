@@ -3,84 +3,49 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Engineering notes from Ali Tahir on AI implementation, product tradeoffs, and practical software delivery.">
     <link rel="stylesheet" href="/styles/index_style.css">
-    <title>Blog - Pakfro Insights</title>
+    <title>Blog | Ali Tahir</title>
 </head>
 <body>
-    <header id="header">
-        <div class="container">
-            <nav>
-                <div class="logo">Ali Tahir | Blog</div>
-                <ul class="nav-links">
-                    <li><a href="/">Home</a></li>
-                    <li><a href="#blog-list">Posts</a></li>
-                    <li><a href="/resume.html">Resume</a></li>
-                    <li><a href="/demo.html">Pocket Professor</a></li>
-                    <li><a href="/bio.html">My Story</a></li>
-                </ul>
-                <div class="mobile-menu">
-                    <span class="bar"></span>
-                    <span class="bar"></span>
-                    <span class="bar"></span>
-                </div>
+    <header class="site-header">
+        <div class="container nav-wrap">
+            <a href="/" class="brand">Ali Tahir</a>
+            <nav class="site-nav" aria-label="Main navigation">
+                <a href="/projects.html">Project</a>
+                <a href="/about.html">About</a>
+                <a href="/resume.html">Resume</a>
+                <a href="/blog.html">Blog</a>
             </nav>
         </div>
     </header>
 
-    <p>WORK IN PROGRESS</p>
+    <main class="section">
+        <div class="container" style="max-width: 840px;">
+            <p class="eyebrow">Writing</p>
+            <h1 style="margin-top: 0;">Engineering notes and build lessons</h1>
+            <p class="lead">This section stays simple: short, practical posts about building AI-adjacent products with real user constraints.</p>
 
-    
-    <!-- <main>
-        <section id="blog-header" class="section" style="padding-top: 8rem; text-align: center;">
-            <div class="container fade-in">
-                <h1 style="font-size: 3.5rem; margin-bottom: 0.5rem; font-weight: 800;">
-                    Pakfro <span>Musings</span>
-                </h1>
-                <p style="font-size: 1.2rem; opacity: 0.8;">
-                    Thoughts on AI, EdTech, Systems, and the Art of Self-Learning.
-                </p>
+            <div class="proof-grid" style="grid-template-columns: 1fr; margin-top: 1.6rem;">
+                <article class="proof-card">
+                    <h3 style="margin-bottom: 0.4rem;">How I scoped Pocket Professor for real users, not demo hype</h3>
+                    <p style="margin-top: 0;">A breakdown of what I intentionally cut from the initial idea and why scope discipline mattered more than adding “smart” features.</p>
+                    <a class="text-link" href="#">Draft in progress →</a>
+                </article>
+                <article class="proof-card">
+                    <h3 style="margin-bottom: 0.4rem;">Prompt quality vs product quality: where people get confused</h3>
+                    <p style="margin-top: 0;">Notes on why output usefulness often depends more on UX framing and task boundaries than raw model capability.</p>
+                    <a class="text-link" href="#">Draft in progress →</a>
+                </article>
             </div>
-        </section>
-
-        <section id="blog-list" class="section">
-            <div class="container">
-                <h2 class="section-title fade-in" style="margin-bottom: 3rem;">Latest <span>Articles</span></h2>                
-                <div class="blog-grid">
-                    <div class="post-card fade-in">
-                        <h3><a href="/blog/ai-llm-local-workflow.html">Integrating Local LLMs: A Developer's Guide to Ollama and FastAPI</a></h3>
-                        <p class="post-meta">October 19, 2025 • AI, Systems</p>
-                        <p>A deep dive into how I containerized Ollama and FastAPI to run my 'Pocket Professor' demo, balancing cost-efficiency with performance for custom LLM solutions.</p>
-                        <a href="/blog/ai-llm-local-workflow.html" class="read-more">Read Article →</a>
-                    </div>
-                    
-                    <div class="post-card fade-in">
-                        <h3><a href="/blog/neuromyths-learning.html">Why "Learning Styles" Are a Myth and What Really Works</a></h3>
-                        <p class="post-meta">September 28, 2025 • EdTech, Psychology</p>
-                        <p>Leveraging my background in experimental psychology to discuss the pitfalls of popular learning models and introduce the mechanics behind effective self-teaching.</p>
-                        <a href="/blog/neuromyths-learning.html" class="read-more">Read Article →</a>
-                    </div>
-
-                    <div class="post-card fade-in">
-                        <h3><a href="/blog/terraform-vs-manual-config.html">Terraform vs. Console: Why IaC is Non-Negotiable for Cloud Security</a></h3>
-                        <p class="post-meta">September 1, 2025 • DevOps, Cloud</p>
-                        <p>A look at the SSO migration project and how Infrastructure as Code ensured auditability and stability during a critical stack transition.</p>
-                        <a href="/blog/terraform-vs-manual-config.html" class="read-more">Read Article →</a>
-                    </div>
-                </div>
-
-                <div style="text-align: center; margin-top: 4rem;" class="fade-in">
-                    <p style="margin-bottom: 1rem;">Looking for more? Check out my full archives.</p>
-                    <a href="https://drpakfro.substack.com/" class="btn" target="_blank" rel="noopener noreferrer">Visit Full Substack Archive</a>
-                </div>
-
-            </div>
-        </section>
-    </main> -->
-
-    <footer>
-        <div class="container">
-            <p class="copyright">© <span id="year">2025 </span> ali@pakfro.dev</p>
         </div>
-    </footer>    
+    </main>
+
+    <footer class="site-footer">
+        <div class="container footer-wrap">
+            <p>Contact: <a href="mailto:ali@pakfro.dev">ali@pakfro.dev</a></p>
+            <p><a href="https://github.com/alitahir6001" target="_blank" rel="noopener noreferrer">GitHub</a> · <a href="https://linkedin.com/in/ali-t-06748432" target="_blank" rel="noopener noreferrer">LinkedIn</a></p>
+        </div>
+    </footer>
 </body>
 </html>
