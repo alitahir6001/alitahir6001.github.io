@@ -23,6 +23,7 @@
 - [x] Core pages parse as valid HTML.
 - [x] Internal navigation links resolve to existing pages.
 - [x] `CNAME` is set to `pakfro.dev`.
-- [ ] Accessibility pass (keyboard/focus/landmarks/contrast).
+- [x] Basic accessibility shell pass (semantic nav labels + structural checks).
+- [ ] Full accessibility pass (keyboard/focus order + contrast audit).
 - [ ] Mobile viewport smoke check on all core pages.
 - [ ] Content polish pass after placeholders are replaced.
