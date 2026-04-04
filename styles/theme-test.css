@@ -205,13 +205,15 @@ h1 {
   margin-top: 0.8rem;
 }
 
-.swatches span {
+.swatches .sw {
   width: 1.7rem;
   height: 1.7rem;
   border-radius: 4px;
-  background: var(--c);
   border: 1px solid rgba(255, 255, 255, 0.25);
 }
+.sw-1{background:#090d1f}.sw-2{background:#101a38}.sw-3{background:#7cc7ff}.sw-4{background:#c89cff}
+.sw-5{background:#100c1d}.sw-6{background:#241847}.sw-7{background:#ffaa6b}.sw-8{background:#8ef5ff}
+.sw-9{background:#05070f}.sw-10{background:#1a294f}.sw-11{background:#8db3ff}.sw-12{background:#9effd5}
 
 .inline-link {
   color: var(--accent);

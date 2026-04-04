@@ -3,6 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; base-uri 'self'; object-src 'none'; frame-ancestors 'none'; img-src 'self' data:; font-src 'self' https://fonts.gstatic.com; style-src 'self' https://fonts.googleapis.com; script-src 'self' https://cdnjs.cloudflare.com; connect-src 'self'; form-action 'self' https://forms.gle; upgrade-insecure-requests">
+    <meta name="referrer" content="strict-origin-when-cross-origin">
+    <meta http-equiv="Permissions-Policy" content="geolocation=(), microphone=(), camera=()">
     <title>Pocket Professor - Feedback</title>
     <link rel="stylesheet" href="/styles/form_style.css">
 </head>
@@ -47,41 +50,7 @@
         </div>
     </div>
 
-    <script>
-        const form = document.getElementById('feedbackForm');
-        const formContainer = document.getElementById('feedbackFormContainer');
-        const thankYouMessage = document.getElementById('thankYouMessage');
+    <script src="/js/form.js" defer></script>
 
-        form.addEventListener('submit', async (e) => {
-            e.preventDefault();
-            const submitButton = form.querySelector('.btn');
-            submitButton.disabled = true;
-            submitButton.textContent = 'Submitting...';
-
-            const data = {
-                frustration: document.getElementById('q1').value,
-                helpfulness_rating: parseInt(document.getElementById('q2').value, 10),
-                quiz_value: document.getElementById('q3').value,
-                submitted_at: new Date().toISOString()
-            };
-
-            // This is the technical hurdle: we need to decide where to send this data.
-            // For now, this is a placeholder URL.
-            const response = await fetch('YOUR_BACKEND_URL_HERE/submit-feedback', {
-                method: 'POST',
-                headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify(data)
-            });
-
-            if (response.ok) {
-                formContainer.style.display = 'none';
-                thankYouMessage.style.display = 'block';
-            } else {
-                alert('There was an error submitting your feedback. Please try again.');
-                submitButton.disabled = false;
-                submitButton.textContent = 'Submit Feedback';
-            }
-        });
-    </script>
 </body>
 </html>

@@ -27,3 +27,7 @@
 - [ ] Full accessibility pass (keyboard/focus order + contrast audit).
 - [ ] Mobile viewport smoke check on all core pages.
 - [ ] Content polish pass after placeholders are replaced.
+
+- [x] Security hardening pass (CSP/referrer/permissions policies + docs).
+
+- [ ] Backend security enforcement for future DB/AI integration (parameterized SQL, server-side validation, prompt-injection guardrails).
