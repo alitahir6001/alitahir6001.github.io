@@ -3,62 +3,30 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; base-uri 'self'; object-src 'none'; frame-ancestors 'none'; img-src 'self' data:; font-src 'self' https://fonts.gstatic.com; style-src 'self' https://fonts.googleapis.com; script-src 'self' https://cdnjs.cloudflare.com; connect-src 'self'; form-action 'self' https://forms.gle; upgrade-insecure-requests">
-    <meta name="referrer" content="strict-origin-when-cross-origin">
-    <meta http-equiv="Permissions-Policy" content="geolocation=(), microphone=(), camera=()">
-  <meta name="description" content="Ali Tahir portfolio home and flagship project overview.">
-  <title>Ali Tahir | Home</title>
-  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:ital,wght@0,300;0,400;0,500;0,600;1,400&display=swap" rel="stylesheet"/>
-  <link rel="stylesheet" href="/styles/site_dw.css">
+  <title>Ali Tahir — Console Dossier</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+  <style>
+    html, body { margin: 0; padding: 0; background: #08080a; }
+  </style>
+  <!-- Production React (minified). No in-browser Babel — JSX is precompiled into build/*.js -->
+  <script src="https://unpkg.com/react@18.3.1/umd/react.production.min.js" crossorigin="anonymous"></script>
+  <script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.production.min.js" crossorigin="anonymous"></script>
 </head>
 <body>
-<nav aria-label="Primary">
-  <div class="nav-logo">
-    <div class="product">// Ali Tahir</div>
-    <div class="title">Engineering Portfolio</div>
-    <div class="subtitle">AI-focused SWE</div>
-  </div>
-  <div class="nav-section-label">Navigate</div>
-  <a href="/" class="active"><span class="icon">◆</span> Home</a>
-  <a href="/projects.html"><span class="icon">○</span> Project</a>
-  <a href="/blog.html"><span class="icon">○</span> Blog</a>
-  <a href="/about.html"><span class="icon">○</span> About</a>
-  <a href="/resume.html"><span class="icon">○</span> Resume</a>
-  <a href="/demo.html"><span class="icon">↠</span> Demo</a>
-  <div class="nav-footer">Contact: <span>ali@pakfro.dev</span></div>
-</nav>
-
-<main>
-  <div class="page-header">
-    <div class="tag">Landing</div>
-    <h1>&lt;write your hero/landing page headline here&gt;</h1>
-    <p class="desc">&lt;write your hero/landing page description here&gt;</p>
-    <div class="meta-strip">
-      <div class="meta-item"><span class="dot"></span>Software Engineer</div>
-      <div class="meta-item"><span class="dot"></span>AI-focused</div>
-      <div class="meta-item"><span class="dot"></span>Portfolio in progress</div>
-    </div>
-  </div>
-
-  <section class="section">
-    <div class="section-header"><span class="section-num">01</span><h2>Flagship Project</h2></div>
-    <div class="section-divider"></div>
-    <div class="card">
-      <h3>&lt;project name here&gt;</h3>
-      <p>&lt;place description of pocket professor here&gt;</p>
-      <p>&lt;place short project narrative/teaser here&gt;</p>
-      <a class="inline-link" href="/projects.html">Read full breakdown →</a>
-    </div>
-  </section>
-
-  <section class="section">
-    <div class="section-header"><span class="section-num">02</span><h2>Proof Points</h2></div>
-    <div class="section-divider"></div>
-    <div class="grid-2">
-      <div class="card"><h3>&lt;proof point title #1&gt;</h3><p>&lt;proof point description #1&gt;</p></div>
-      <div class="card"><h3>&lt;proof point title #2&gt;</h3><p>&lt;proof point description #2&gt;</p></div>
-    </div>
-  </section>
-</main>
+  <div id="root"></div>
+  <!-- Compiled output of the cd-*.jsx files. Load order is load-bearing:
+       tweaks-panel + cd-theme define globals the pages use; cd-app renders last. -->
+  <script src="build/tweaks-panel.js"></script>
+  <script src="build/cd-theme.js"></script>
+  <script src="build/cd-home.js"></script>
+  <script src="build/cd-detail.js"></script>
+  <script src="build/cd-projects.js"></script>
+  <script src="build/cd-fieldnotes.js"></script>
+  <script src="build/cd-trajectory.js"></script>
+  <script src="build/cd-about.js"></script>
+  <script src="build/cd-hire.js"></script>
+  <script src="build/cd-app.js"></script>
 </body>
 </html>
