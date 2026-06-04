@@ -1,4 +1,4 @@
-const OXBLOOD={id:"oxblood",vars:{"--bg":"#08080a","--bg-2":"#0d0d10","--paper":"#d8d4cb","--paper-2":"#9a958a","--paper-3":"#5b574f","--paper-4":"#2c2a26","--rule":"#1a1a1e","--rule-2":"#232227","--accent":"#a32733","--accent-deep":"#5b1820","--accent-ink":"#c34050"}};function useReveal(dep){React.useEffect(()=>{let raf=0;const reveal=()=>{const h=window.innerHeight||800;document.querySelectorAll("[data-reveal]:not(.is-in)").forEach(el=>{if(el.getBoundingClientRect().top<h*0.92)el.classList.add("is-in")})};const onScroll=()=>{cancelAnimationFrame(raf);raf=requestAnimationFrame(reveal)};reveal();const t1=setTimeout(reveal,60);const t2=setTimeout(reveal,320);window.addEventListener("scroll",onScroll,{passive:true});window.addEventListener("resize",onScroll);return()=>{window.removeEventListener("scroll",onScroll);window.removeEventListener("resize",onScroll);clearTimeout(t1);clearTimeout(t2);cancelAnimationFrame(raf)}},[dep])}function GlobalStyle(){return React.createElement("style",null,`
+const OXBLOOD={id:"oxblood",vars:{"--bg":"#08080a","--bg-2":"#0d0d10","--paper":"#d8d4cb","--paper-2":"#9a958a","--paper-3":"#5b574f","--paper-4":"#2c2a26","--rule":"#1a1a1e","--rule-2":"#232227","--accent":"#a32733","--accent-deep":"#5b1820","--accent-ink":"#c34050"}};function useReveal(a){React.useEffect(()=>{let r=0;const e=()=>{const c=window.innerHeight||800;document.querySelectorAll("[data-reveal]:not(.is-in)").forEach(o=>{o.getBoundingClientRect().top<c*.92&&o.classList.add("is-in")})},t=()=>{cancelAnimationFrame(r),r=requestAnimationFrame(e)};e();const p=setTimeout(e,60),i=setTimeout(e,320);return window.addEventListener("scroll",t,{passive:!0}),window.addEventListener("resize",t),()=>{window.removeEventListener("scroll",t),window.removeEventListener("resize",t),clearTimeout(p),clearTimeout(i),cancelAnimationFrame(r)}},[a])}function GlobalStyle(){return React.createElement("style",null,`
       :root { color-scheme: dark; }
       html { scroll-behavior: smooth; }
       body { margin: 0; }
@@ -8,7 +8,7 @@ const OXBLOOD={id:"oxblood",vars:{"--bg":"#08080a","--bg-2":"#0d0d10","--paper":
         background: var(--bg); color: var(--paper);
         min-height: 100vh; font-size: 13px; line-height: 1.62; letter-spacing: .005em;
 
-        /* vertical rhythm — overridden per data-space */
+        /* vertical rhythm \u2014 overridden per data-space */
         --sp-hero-t: 168px; --sp-hero-b: 128px;
         --sp-section: 132px;   /* between major sections */
         --sp-band: 34px;       /* below a section band, before its content */
@@ -25,7 +25,7 @@ const OXBLOOD={id:"oxblood",vars:{"--bg":"#08080a","--bg-2":"#0d0d10","--paper":
       }
       .cd *, .cd *::before, .cd *::after { box-sizing: border-box; }
 
-      /* dim-lounge ambient light — a single warm oxblood pool, fixed, behind all */
+      /* dim-lounge ambient light \u2014 a single warm oxblood pool, fixed, behind all */
       .cd::before {
         content: ''; position: fixed; inset: 0; pointer-events: none; z-index: 0;
         background:
@@ -42,7 +42,7 @@ const OXBLOOD={id:"oxblood",vars:{"--bg":"#08080a","--bg-2":"#0d0d10","--paper":
         [data-reveal], .cd-tele.rev .cell { opacity: 1 !important; transform: none !important; transition: none !important; }
       }
 
-      /* status bar — quieter, more leading */
+      /* status bar \u2014 quieter, more leading */
       .cd-status { padding: 40px 0 18px; display: grid; grid-template-columns: auto 1fr auto auto auto; gap: 28px; align-items: center; font-size: 10.5px; letter-spacing: .2em; text-transform: uppercase; color: var(--paper-3); }
       .cd-status .station { color: var(--paper); font-size: 12.5px; letter-spacing: .2em; }
       .cd-status .station .a { color: var(--accent-ink); }
@@ -59,7 +59,7 @@ const OXBLOOD={id:"oxblood",vars:{"--bg":"#08080a","--bg-2":"#0d0d10","--paper":
       .cd-nav a.cur { color: var(--accent-ink); }
       .cd-nav a:hover { color: var(--paper); }
 
-      /* operator block — the airy hero, now the tone for the whole page */
+      /* operator block \u2014 the airy hero, now the tone for the whole page */
       .cd-operator { padding: var(--sp-hero-t) 0 var(--sp-hero-b); max-width: 72ch; }
       .cd-operator .k { color: var(--paper-3); font-size: 10.5px; letter-spacing: .26em; text-transform: uppercase; margin-bottom: 30px; }
       .cd-operator .id { font-size: 26px; font-weight: 500; letter-spacing: .04em; color: var(--paper); text-transform: uppercase; margin: 0 0 34px; line-height: 1.5; }
@@ -75,7 +75,7 @@ const OXBLOOD={id:"oxblood",vars:{"--bg":"#08080a","--bg-2":"#0d0d10","--paper":
       .cd-band .ln { height: 1px; background: var(--rule-2); }
       .cd-band .end { color: var(--paper-3); }
 
-      /* flagship console — let it sit in open space, no boxed framing */
+      /* flagship console \u2014 let it sit in open space, no boxed framing */
       .cd-console { position: relative; margin-top: var(--sp-band); }
       .cd-console .pad { padding: 0; }
       .cd-console .chid { color: var(--paper-3); font-size: 10.5px; letter-spacing: .24em; text-transform: uppercase; margin-bottom: 22px; }
@@ -83,7 +83,7 @@ const OXBLOOD={id:"oxblood",vars:{"--bg":"#08080a","--bg-2":"#0d0d10","--paper":
       .cd-console h1 { margin: 0 0 20px; font-weight: 500; font-size: 46px; letter-spacing: -.015em; color: var(--paper); line-height: 1.08; }
       .cd-console .sub { margin: 0; color: var(--paper-2); font-size: 16px; max-width: 56ch; line-height: 1.8; }
 
-      /* telemetry — open readout row, hairline separators, no boxed grid */
+      /* telemetry \u2014 open readout row, hairline separators, no boxed grid */
       .cd-tele { display: flex; flex-wrap: wrap; margin-top: var(--tele-mt); row-gap: 28px; }
       .cd-tele .cell { flex: 1 1 0; min-width: 150px; padding: 2px 36px; }
       .cd-tele .cell:first-child { padding-left: 0; }
@@ -101,7 +101,7 @@ const OXBLOOD={id:"oxblood",vars:{"--bg":"#08080a","--bg-2":"#0d0d10","--paper":
       .cd-tele.rev.is-in .cell:nth-child(5){transition-delay:.28s}
       .cd-tele.rev.is-in .cell:nth-child(6){transition-delay:.35s}
 
-      /* CTA buttons — calmer, roomier */
+      /* CTA buttons \u2014 calmer, roomier */
       .cd-cta { display: flex; gap: 16px; margin-top: 52px; max-width: 720px; }
       .cd-cta a { flex: 1; padding: 18px 22px; text-decoration: none; font-size: 11.5px; letter-spacing: .16em; text-transform: uppercase; color: var(--paper); border: 1px solid var(--rule-2); display: flex; justify-content: space-between; align-items: center; background: color-mix(in srgb, var(--bg-2) 70%, transparent); transition: border-color .2s, color .2s, background .2s; }
       .cd-cta a.primary { background: var(--accent-deep); border-color: var(--accent); }
@@ -109,7 +109,7 @@ const OXBLOOD={id:"oxblood",vars:{"--bg":"#08080a","--bg-2":"#0d0d10","--paper":
       .cd-cta a .ar { color: var(--accent-ink); }
       .cd-cta a.primary .ar { color: var(--paper); }
 
-      /* secondary channels — open 3-column readout, generous, hairline divides */
+      /* secondary channels \u2014 open 3-column readout, generous, hairline divides */
       .cd-ch { padding: var(--sp-ch) 0; border-bottom: 1px solid var(--rule); display: grid; grid-template-columns: 150px 1fr 190px; gap: 40px; align-items: start; }
       .cd-ch:first-of-type { border-top: 1px solid var(--rule); }
       .cd-ch .id { color: var(--accent-ink); font-size: 11px; letter-spacing: .2em; text-transform: uppercase; }
@@ -117,7 +117,7 @@ const OXBLOOD={id:"oxblood",vars:{"--bg":"#08080a","--bg-2":"#0d0d10","--paper":
       .cd-ch h3 { margin: 0 0 14px; color: var(--paper); font-weight: 500; font-size: 22px; letter-spacing: .005em; }
       .cd-ch p { margin: 0 0 14px; color: var(--paper-2); font-size: 13.5px; max-width: 56ch; line-height: 1.75; }
       .cd-ch .stack { color: var(--paper-3); font-size: 11px; }
-      .cd-ch .stack span + span::before { content: ' · '; margin: 0 2px; }
+      .cd-ch .stack span + span::before { content: ' \xB7 '; margin: 0 2px; }
       .cd-ch .right { text-align: right; font-size: 10.5px; letter-spacing: .14em; text-transform: uppercase; color: var(--paper-2); line-height: 2.2; }
       .cd-ch .right .k { color: var(--paper-3); }
       .cd-ch .right .v { color: var(--paper); }
@@ -149,7 +149,7 @@ const OXBLOOD={id:"oxblood",vars:{"--bg":"#08080a","--bg-2":"#0d0d10","--paper":
       .cd-prose p strong { color: var(--paper); font-weight: 500; }
       .cd-prose .a { color: var(--accent-ink); }
 
-      /* steps — open rows, hairline divides, no filled grid */
+      /* steps \u2014 open rows, hairline divides, no filled grid */
       .cd-steps { margin-top: var(--sp-band); }
       .cd-steps .step { padding: 30px 0; border-bottom: 1px solid var(--rule); display: grid; grid-template-columns: 60px 1fr; gap: 28px; align-items: baseline; }
       .cd-steps .step:first-child { border-top: 1px solid var(--rule); }
@@ -157,7 +157,7 @@ const OXBLOOD={id:"oxblood",vars:{"--bg":"#08080a","--bg-2":"#0d0d10","--paper":
       .cd-steps .step h4 { margin: 0 0 10px; color: var(--paper); font-weight: 500; font-size: 17px; }
       .cd-steps .step p { margin: 0; color: var(--paper-2); font-size: 13.5px; line-height: 1.75; max-width: 60ch; }
 
-      /* params — open two-column list, hairline rows */
+      /* params \u2014 open two-column list, hairline rows */
       .cd-params { margin-top: var(--sp-band); display: grid; grid-template-columns: repeat(2, 1fr); column-gap: 56px; }
       .cd-params .row { padding: 18px 0; border-bottom: 1px solid var(--rule); display: flex; justify-content: space-between; gap: 16px; align-items: baseline; }
       .cd-params .row .k { color: var(--paper-3); font-size: 11px; letter-spacing: .14em; text-transform: uppercase; }
@@ -204,7 +204,7 @@ const OXBLOOD={id:"oxblood",vars:{"--bg":"#08080a","--bg-2":"#0d0d10","--paper":
       .cd-role .role-sum { margin: 0 0 16px; color: var(--paper-2); font-size: 13.5px; line-height: 1.7; max-width: 62ch; }
       .cd-role ul { margin: 0; padding: 0; list-style: none; }
       .cd-role li { position: relative; padding-left: 20px; margin-bottom: 11px; color: var(--paper-2); font-size: 13px; line-height: 1.7; max-width: 62ch; }
-      .cd-role li::before { content: '·'; position: absolute; left: 4px; color: var(--accent-ink); }
+      .cd-role li::before { content: '\xB7'; position: absolute; left: 4px; color: var(--accent-ink); }
       .cd-role li strong { color: var(--paper); font-weight: 500; }
       .cd-role li .m { color: var(--accent-ink); }
 
@@ -258,4 +258,4 @@ const OXBLOOD={id:"oxblood",vars:{"--bg":"#08080a","--bg-2":"#0d0d10","--paper":
         .cd-figure.right { float: none; width: 100%; margin-left: 0; }
         .cd-contact a, .cd-contact .row { grid-template-columns: 1fr; gap: 6px; }
       }
-    `)}const CD_NAV=[{key:"index",label:"Index",href:"#/"},{key:"projects",label:"Projects",href:"#/projects"},{key:"notes",label:"Field Notes",href:"#/field-notes"},{key:"trajectory",label:"Trajectory",href:"#/trajectory"},{key:"about",label:"About",href:"#/about"},{key:"hire",label:"AOI / Hire",href:"#/hire"}];function StatusBar({station,cur}){return React.createElement(React.Fragment,null,React.createElement("div",{className:"cd-status"},React.createElement("div",{className:"station"},station," ",React.createElement("span",{className:"a"},"/")," ALI TAHIR"),React.createElement("div",null),React.createElement("div",{className:"pill"},"OPEN \xB7 MID-LEVEL SWE"),React.createElement("div",{className:"stamp"},"UTC",React.createElement("span",{className:"v"},"14:27:08")),React.createElement("div",{className:"stamp"},"DATE",React.createElement("span",{className:"v"},"2026.05.29"))),React.createElement("div",{className:"cd-rule thick"}),React.createElement("nav",{className:"cd-nav"},React.createElement("span",{className:"lbl"},"CHANNELS"),CD_NAV.map(n=>React.createElement("a",{key:n.key,className:cur===n.key?"cur":"",href:n.href},n.label))))}function Foot({left,ack}){return React.createElement("div",{className:"cd-foot"},React.createElement("div",{className:"left"},left),React.createElement("div",{className:"links"},React.createElement("a",{href:"mailto:ali@pakfro.dev"},"ali@pakfro.dev"),React.createElement("a",{href:"#/"},"github"),React.createElement("a",{href:"#/"},"linkedin"),React.createElement("a",{href:"#/"},"/rss")),React.createElement("div",{className:"right"},ack))}Object.assign(window,{OXBLOOD,useReveal,GlobalStyle,StatusBar,Foot});
+    `)}const CD_NAV=[{key:"index",label:"Index",href:"#/"},{key:"projects",label:"Projects",href:"#/projects"},{key:"notes",label:"Field Notes",href:"#/field-notes"},{key:"trajectory",label:"Trajectory",href:"#/trajectory"},{key:"about",label:"About",href:"#/about"},{key:"hire",label:"AOI / Hire",href:"#/hire"}];function StatusBar({station:a,cur:r}){return React.createElement(React.Fragment,null,React.createElement("div",{className:"cd-status"},React.createElement("div",{className:"station"},a," ",React.createElement("span",{className:"a"},"/")," ALI TAHIR"),React.createElement("div",null),React.createElement("div",{className:"pill"},"OPEN \xB7 MID-LEVEL SWE"),React.createElement("div",{className:"stamp"},"UTC",React.createElement("span",{className:"v"},"14:27:08")),React.createElement("div",{className:"stamp"},"DATE",React.createElement("span",{className:"v"},"2026.05.29"))),React.createElement("div",{className:"cd-rule thick"}),React.createElement("nav",{className:"cd-nav"},React.createElement("span",{className:"lbl"},"CHANNELS"),CD_NAV.map(e=>React.createElement("a",{key:e.key,className:r===e.key?"cur":"",href:e.href},e.label))))}function Foot({left:a,ack:r}){return React.createElement("div",{className:"cd-foot"},React.createElement("div",{className:"left"},a),React.createElement("div",{className:"links"},React.createElement("a",{href:"mailto:ali@pakfro.dev"},"ali@pakfro.dev"),React.createElement("a",{href:"#/"},"github"),React.createElement("a",{href:"#/"},"linkedin"),React.createElement("a",{href:"#/"},"/rss")),React.createElement("div",{className:"right"},r))}Object.assign(window,{OXBLOOD,useReveal,GlobalStyle,StatusBar,Foot});

@@ -3,26 +3,6 @@
 // tone; the flagship sits in open space; telemetry is a 4-stat readout row;
 // secondary channels breathe. Console vocabulary kept, density removed.
 
-function HomeTelemetry() {
-  const cells = [
-    { k: 'Mission Status', v: '● LIVE', a: true, sub: 'since 2025.11' },
-    { k: 'Uptime · 90d', v: '99.8 %', a: true, sub: '2 min planned dt' },
-    { k: 'Eval Coverage', v: '94 %', a: true, sub: 'schema-locked' },
-    { k: 'Stack', v: 'PY · TS · PG', sub: 'fastapi · react · openai' },
-  ];
-  return (
-    <div className="cd-tele rev" data-reveal>
-      {cells.map((c, i) => (
-        <div className="cell" key={i}>
-          <div className="k">{c.k}</div>
-          <div className={'v' + (c.a ? ' a' : '')}>{c.v}</div>
-          <div className="sub">{c.sub}</div>
-        </div>
-      ))}
-    </div>
-  );
-}
-
 function Home({ theme }) {
   useReveal('home');
   return (
@@ -32,38 +12,36 @@ function Home({ theme }) {
       {/* Airy hero — compact identity, no giant name */}
       <section className="cd-operator">
         <div className="k" data-reveal>— Operator</div>
-        <div className="id" data-reveal>ALI TAHIR <span className="a">·</span> SOFTWARE ENGINEER <span className="a">/</span> AI-FOCUSED</div>
+        <div className="id" data-reveal>ALI TAHIR <span className="a">·</span> [ DESCRIPTOR — TBD ]</div>
         <p className="stmt" data-reveal>
           Five years shipping production software — <strong>the last two with LLMs in the loop.</strong>
           Currently building <span className="a">Pocket Professor</span>, an AI curriculum generator
-          built for clarity and evaluated like a real product.
+          built for autodidacts like me who want to learn anything.
         </p>
-        <div className="open" data-reveal>● Open to senior &amp; staff roles</div>
+        <div className="open" data-reveal>● Open to mid-level engineering roles</div>
       </section>
 
       {/* Primary channel — flagship project */}
       <div className="cd-band" data-reveal>
         <span className="a">PRIMARY CHANNEL</span>
         <span className="ln"></span>
-        <span className="end">console readout · live</span>
+        <span className="end">status readout · pre-pilot</span>
       </div>
 
       <article className="cd-console" data-reveal>
         <div className="pad">
-          <div className="chid">CH-01 <span className="a">·</span> FLAGSHIP <span className="a">·</span> OPERATIONAL</div>
+          <div className="chid">CH-01 <span className="a">·</span> FLAGSHIP <span className="a">·</span> PRE-PILOT</div>
           <h1>Pocket Professor</h1>
           <p className="sub">
-            AI curriculum generator for career-transition learners. Subject + skill level + goal +
-            weekly hours → a structured plan with prerequisites, weekly projects, and vetted
-            resources. Output is a JSON syllabus and an exportable PDF.
+            A guided learning platform for self-taught learners — the structure of college or a
+            bootcamp without the cost. An onboarding counselor, an instructor's guidance, and a
+            career coach that connects what you learn to real jobs. Built for people in
+            high-attrition industries who want out but are short on time, money, or both.
           </p>
         </div>
 
-        <HomeTelemetry />
-
         <div className="cd-cta">
           <a className="primary" href="#/pocket-professor"><span>▶  Open project file</span><span className="ar">→</span></a>
-          <a href="old-site/demo.html" target="_blank" rel="noopener"><span>▶  Launch live demo</span><span className="ar">→</span></a>
         </div>
       </article>
 
