@@ -3,30 +3,76 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Ali Tahir — Console Dossier</title>
+  <!-- Security headers (no scripts on this page at all) -->
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'none'; object-src 'none'; base-uri 'self'; frame-ancestors 'none'; img-src 'self' data:; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; upgrade-insecure-requests">
+  <meta name="referrer" content="strict-origin-when-cross-origin">
+  <meta http-equiv="Permissions-Policy" content="geolocation=(), microphone=(), camera=()">
+  <!-- Keep the under-construction page out of search results -->
+  <meta name="robots" content="noindex, nofollow">
+  <meta name="description" content="Ali Tahir — site under development. New build incoming.">
+  <title>Ali Tahir — Under Development</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
   <style>
-    html, body { margin: 0; padding: 0; background: #08080a; }
+    :root {
+      --bg: #08080a; --paper: #d8d4cb; --paper-2: #9a958a; --paper-3: #5b574f;
+      --accent: #a32733; --accent-deep: #5b1820; --accent-ink: #c34050; --rule: #232227;
+    }
+    * { box-sizing: border-box; }
+    html, body { margin: 0; padding: 0; }
+    body {
+      min-height: 100vh; background: var(--bg); color: var(--paper);
+      font-family: 'JetBrains Mono', ui-monospace, Menlo, monospace;
+      font-size: 13px; line-height: 1.62; letter-spacing: .005em;
+      display: flex; align-items: center; justify-content: center;
+      position: relative; overflow: hidden;
+    }
+    /* dim-lounge ambient oxblood glow — matches the main site */
+    body::before {
+      content: ''; position: fixed; inset: 0; pointer-events: none; z-index: 0;
+      background:
+        radial-gradient(115% 70% at 50% -8%, color-mix(in srgb, var(--accent) 30%, transparent), transparent 56%),
+        radial-gradient(90% 60% at 88% 4%, color-mix(in srgb, var(--accent-deep) 50%, transparent), transparent 60%);
+      opacity: .55;
+    }
+    .wrap { position: relative; z-index: 1; width: 100%; max-width: 640px; padding: 48px 32px; }
+    .k { color: var(--paper-3); font-size: 10.5px; letter-spacing: .26em; text-transform: uppercase; margin-bottom: 26px; }
+    .k .a { color: var(--accent-ink); }
+    h1 { margin: 0 0 26px; font-weight: 500; font-size: clamp(30px, 7vw, 46px); letter-spacing: .03em; text-transform: uppercase; line-height: 1.2; }
+    h1 .a { color: var(--accent-ink); }
+    .lead { margin: 0 0 36px; font-size: clamp(16px, 3.4vw, 20px); line-height: 1.8; color: var(--paper-2); max-width: 48ch; }
+    .lead strong { color: var(--paper); font-weight: 500; }
+    .pill {
+      display: inline-block; padding: 6px 14px; background: var(--accent-deep);
+      color: var(--accent-ink); border: 1px solid var(--accent);
+      letter-spacing: .16em; font-size: 10.5px; text-transform: uppercase;
+    }
+    .rule { height: 0; border-top: 1px solid var(--rule); margin: 40px 0 28px; }
+    .foot { display: flex; gap: 24px; flex-wrap: wrap; font-size: 11px; letter-spacing: .14em; text-transform: uppercase; color: var(--paper-3); }
+    .foot a { color: var(--paper-2); text-decoration: none; }
+    .foot a:hover { color: var(--accent-ink); }
+    .blink { color: var(--accent-ink); animation: blink 1.4s step-end infinite; }
+    @keyframes blink { 50% { opacity: 0; } }
+    @media (prefers-reduced-motion: reduce) { .blink { animation: none; } }
   </style>
-  <!-- Production React (minified). No in-browser Babel — JSX is precompiled into build/*.js -->
-  <script src="https://unpkg.com/react@18.3.1/umd/react.production.min.js" crossorigin="anonymous"></script>
-  <script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.production.min.js" crossorigin="anonymous"></script>
 </head>
 <body>
-  <div id="root"></div>
-  <!-- Compiled output of the cd-*.jsx files. Load order is load-bearing:
-       tweaks-panel + cd-theme define globals the pages use; cd-app renders last. -->
-  <script src="build/tweaks-panel.js"></script>
-  <script src="build/cd-theme.js"></script>
-  <script src="build/cd-home.js"></script>
-  <script src="build/cd-detail.js"></script>
-  <script src="build/cd-projects.js"></script>
-  <script src="build/cd-fieldnotes.js"></script>
-  <script src="build/cd-trajectory.js"></script>
-  <script src="build/cd-about.js"></script>
-  <script src="build/cd-hire.js"></script>
-  <script src="build/cd-app.js"></script>
+  <main class="wrap">
+    <div class="k">— Ground Station <span class="a">/</span> Status</div>
+    <h1>Ali Tahir <span class="a">·</span><br>Under Construction</h1>
+    <p class="lead">
+      The site is being rebuilt from the ground up — new design, new writing,
+      and a fresh look at <strong>Pocket Professor</strong>.
+      <span class="blink">▌</span>
+    </p>
+    <span class="pill">● Transmission resuming soon</span>
+    <div class="rule"></div>
+    <div class="foot">
+      <a href="mailto:ali@pakfro.dev">ali@pakfro.dev</a>
+      <a href="https://github.com/alitahir6001" target="_blank" rel="noopener noreferrer">github</a>
+      <a href="https://linkedin.com/in/ali-t-06748432" target="_blank" rel="noopener noreferrer">linkedin</a>
+    </div>
+  </main>
 </body>
 </html>
