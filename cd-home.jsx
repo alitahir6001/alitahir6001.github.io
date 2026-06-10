@@ -12,7 +12,7 @@ function Home({ theme }) {
       {/* Airy hero — compact identity, no giant name */}
       <section className="cd-operator">
         <div className="k" data-reveal>— Operator</div>
-        <div className="id" data-reveal>ALI TAHIR <span className="a">·</span> [ DESCRIPTOR — TBD ]</div>
+        <div className="id" data-reveal>ALI TAHIR</div>
         <p className="stmt" data-reveal>
           Five years shipping production software — <strong>the last two with LLMs in the loop.</strong>
           Currently building <span className="a">Pocket Professor</span>, an AI curriculum generator
@@ -49,7 +49,7 @@ function Home({ theme }) {
       <div className="cd-band" data-reveal>
         <span className="a">SECONDARY CHANNELS</span>
         <span className="ln"></span>
-        <span className="end">2 of 4 routed</span>
+        <span className="end">2 routed</span>
       </div>
 
       <article className="cd-ch" data-reveal>
@@ -57,8 +57,8 @@ function Home({ theme }) {
         <div>
           <h3>Field Notes</h3>
           <p>
-            Long-form writing on prompts, evals, schema-locked outputs, and the small engineering
-            decisions that keep AI features from regressing in production.
+            Long-form writing on building with LLMs, the engineering decisions behind AI features,
+            and lessons from shipping real software.
           </p>
           <p className="stack"><span>essays</span><span>02 drafting</span><span><a href="#/field-notes" style={{color:'var(--accent-ink)',textDecoration:'none'}}>open log →</a></span></p>
         </div>
@@ -70,35 +70,19 @@ function Home({ theme }) {
       </article>
 
       <article className="cd-ch" data-reveal>
-        <div className="id">CH-03<span className="of">staged · pre-launch</span></div>
-        <div>
-          <h3>[ Classified — acquisition pending ]</h3>
-          <p>
-            Evaluation harness for non-deterministic systems. Test rigs, regression diffs, cost
-            accounting. More telemetry once it clears review.
-          </p>
-          <p className="stack"><span>in progress</span><span>v0.1 draft</span></p>
-        </div>
-        <div className="right">
-          <div><span className="k">FIRST</span><span className="v"> · Q3 2026</span></div>
-          <div><span className="k">CREW</span><span className="v"> · 01</span></div>
-          <div className="badge warn">PRE-LAUNCH</div>
-        </div>
-      </article>
-
-      <article className="cd-ch" data-reveal>
-        <div className="id">CH-04<span className="of">archive · stable</span></div>
+        <div className="id">CH-03<span className="of">archive · stable</span></div>
         <div>
           <h3>Earlier work</h3>
           <p>
-            Production services and internal tools from five years before the AI shift — enterprise
-            SSO, data pipelines, the unglamorous plumbing that taught the rest.
+            Enterprise authentication at scale before the AI shift — SSO services that tens of
+            thousands of people depended on, and the unglamorous production plumbing that taught
+            the rest.
           </p>
-          <p className="stack"><span>2019 — 2024</span><span><a href="#/trajectory" style={{color:'var(--accent-ink)',textDecoration:'none'}}>service record →</a></span></p>
+          <p className="stack"><span>2021 — 2024</span><span><a href="#/trajectory" style={{color:'var(--accent-ink)',textDecoration:'none'}}>service record →</a></span></p>
         </div>
         <div className="right">
-          <div><span className="k">SPAN</span><span className="v"> · 5 yrs</span></div>
-          <div><span className="k">ROLE</span><span className="v"> · IC → senior</span></div>
+          <div><span className="k">SPAN</span><span className="v"> · 3 yrs</span></div>
+          <div><span className="k">ROLE</span><span className="v"> · Engineer</span></div>
           <div className="badge">ARCHIVE</div>
         </div>
       </article>

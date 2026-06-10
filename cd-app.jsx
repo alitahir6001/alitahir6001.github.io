@@ -8,6 +8,19 @@ const TWEAK_DEFAULTS = /*EDITMODE-BEGIN*/{
   "frame": "stamp"
 }/*EDITMODE-END*/;
 
+// The Tweaks panel is a design tool, not for public visitors. Show it only on a
+// local preview (localhost / file://) or when explicitly enabled via
+// localStorage.setItem('cdTweaks', '1'). Hidden on the live site.
+const SHOW_TWEAKS = (() => {
+  try {
+    const h = location.hostname;
+    if (h === 'localhost' || h === '127.0.0.1' || h === '') return true;
+    return localStorage.getItem('cdTweaks') === '1';
+  } catch (e) {
+    return false;
+  }
+})();
+
 function App() {
   const [t, setTweak] = useTweaks(TWEAK_DEFAULTS);
   const [route, setRoute] = React.useState(() => location.hash || '#/');
@@ -37,30 +50,32 @@ function App() {
         <Page theme={OXBLOOD} />
       </div>
 
-      <TweaksPanel title="Tweaks">
-        <TweakSection label="Room" />
-        <TweakRadio
-          label="Spacing"
-          value={t.space}
-          options={['relaxed', 'open', 'lounge']}
-          onChange={(v) => setTweak('space', v)}
-        />
-        <TweakSlider
-          label="Ambient glow"
-          value={t.glow}
-          min={0}
-          max={100}
-          unit="%"
-          onChange={(v) => setTweak('glow', v)}
-        />
-        <TweakSection label="Framing" />
-        <TweakRadio
-          label="Rules"
-          value={t.frame}
-          options={['stamp', 'hairline']}
-          onChange={(v) => setTweak('frame', v)}
-        />
-      </TweaksPanel>
+      {SHOW_TWEAKS && (
+        <TweaksPanel title="Tweaks">
+          <TweakSection label="Room" />
+          <TweakRadio
+            label="Spacing"
+            value={t.space}
+            options={['relaxed', 'open', 'lounge']}
+            onChange={(v) => setTweak('space', v)}
+          />
+          <TweakSlider
+            label="Ambient glow"
+            value={t.glow}
+            min={0}
+            max={100}
+            unit="%"
+            onChange={(v) => setTweak('glow', v)}
+          />
+          <TweakSection label="Framing" />
+          <TweakRadio
+            label="Rules"
+            value={t.frame}
+            options={['stamp', 'hairline']}
+            onChange={(v) => setTweak('frame', v)}
+          />
+        </TweaksPanel>
+      )}
     </React.Fragment>
   );
 }

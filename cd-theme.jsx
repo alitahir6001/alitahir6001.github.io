@@ -315,6 +315,22 @@ const CD_NAV = [
   { key: 'hire', label: 'AOI / Hire', href: '#/hire' },
 ];
 
+// Live UTC clock — replaces the old hardcoded (frozen) time/date stamps.
+function StatusClock() {
+  const [now, setNow] = React.useState(() => new Date());
+  React.useEffect(() => {
+    const id = setInterval(() => setNow(new Date()), 1000);
+    return () => clearInterval(id);
+  }, []);
+  const iso = now.toISOString();
+  return (
+    <React.Fragment>
+      <div className="stamp">UTC<span className="v">{iso.slice(11, 19)}</span></div>
+      <div className="stamp">DATE<span className="v">{iso.slice(0, 10).replace(/-/g, '.')}</span></div>
+    </React.Fragment>
+  );
+}
+
 function StatusBar({ station, cur }) {
   return (
     <React.Fragment>
@@ -322,8 +338,7 @@ function StatusBar({ station, cur }) {
         <div className="station">{station} <span className="a">/</span> ALI TAHIR</div>
         <div></div>
         <div className="pill">OPEN · MID-LEVEL SWE</div>
-        <div className="stamp">UTC<span className="v">14:27:08</span></div>
-        <div className="stamp">DATE<span className="v">2026.05.29</span></div>
+        <StatusClock />
       </div>
       <div className="cd-rule thick"></div>
       <nav className="cd-nav">
@@ -342,9 +357,8 @@ function Foot({ left, ack }) {
       <div className="left">{left}</div>
       <div className="links">
         <a href="mailto:ali@pakfro.dev">ali@pakfro.dev</a>
-        <a href="#/">github</a>
-        <a href="#/">linkedin</a>
-        <a href="#/">/rss</a>
+        <a href="https://github.com/alitahir6001" target="_blank" rel="noopener noreferrer">github</a>
+        <a href="https://linkedin.com/in/ali-t-06748432" target="_blank" rel="noopener noreferrer">linkedin</a>
       </div>
       <div className="right">{ack}</div>
     </div>

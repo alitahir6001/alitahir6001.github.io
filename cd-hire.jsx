@@ -53,6 +53,7 @@ function Hire() {
         <a href="mailto:ali@pakfro.dev"><span className="k">Email</span><span className="v">ali@pakfro.dev</span><span className="go">→</span></a>
         <a href="https://github.com/alitahir6001" target="_blank" rel="noopener"><span className="k">GitHub</span><span className="v">github.com/alitahir6001</span><span className="go">→</span></a>
         <a href="https://linkedin.com/in/ali-t-06748432" target="_blank" rel="noopener"><span className="k">LinkedIn</span><span className="v">linkedin.com/in/ali-t</span><span className="go">→</span></a>
+        <a href="docs/ali-tahir-resume.pdf" target="_blank" rel="noopener"><span className="k">Résumé</span><span className="v">PDF · download</span><span className="go">→</span></a>
         <div className="row"><span className="k">Status</span><span className="v">Open · responding within ~48h</span><span className="go" style={{ color: 'var(--accent-ink)' }}>●</span></div>
       </div>
 

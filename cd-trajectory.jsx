@@ -4,52 +4,74 @@
 
 const TRAJ_ROLES = [
   {
-    when: '2025 — NOW', co: 'Independent', meta: 'Builder · solo',
-    title: 'Founder / Engineer — Pocket Professor',
-    sum: 'Designing and shipping an AI curriculum generator end to end — frontend, Python backend, model layer, and an eval harness that keeps the output honest.',
+    when: '2025 — NOW', co: 'Personal project', meta: 'Founder · solo',
+    title: 'Pocket Professor — adaptive learning platform',
+    sum: 'A structured learning platform for service-industry career-switchers, built solo alongside my day job — React/Vite frontend, a Node/TypeScript (Fastify) backend, a deterministic multi-agent adaptation engine, and Postgres.',
     bullets: [
-      ['Built a Python service integrating local + hosted LLMs to generate structured, week-by-week learning plans across ', '15+ technical subjects', '.'],
-      ['Schema-locked every output and scored it through a custom eval harness — ', '94% coverage', ' before anything reaches a user.'],
-      ['Modular model layer (Claude, DeepSeek, Qwen) so the system survives a bad day from any single provider.'],
+      ['Architected a ', 'deterministic multi-agent engine', ' — onboarding, professor, and career-coach agents that build a plan and adapt it to real behavior signals.'],
+      ['Made every plan change ', 'transactional and fail-closed', ', with agents under strict schema contracts so malformed output never reaches a learner.'],
+      ['Shipped v1 first — a Python · FastAPI · Gemini syllabus generator on Railway — then rewrote it in TypeScript around the engine; now ', 'pre-pilot', '.'],
     ],
   },
   {
-    when: '2024 — 2025', co: 'Accenture', meta: 'Security Specialist',
-    title: 'Security Specialist — SSO',
-    sum: 'Leading security implementations and SSO services for enterprise authentication across multiple GE business units.',
+    when: '2025 — NOW', co: 'IDEA · Richmond, VA', meta: 'Systems Developer II',
+    title: 'Systems Developer II',
+    sum: 'Generalist on a small product-engineering team building the Data Whispers BI platform — a Django/React UI, a .NET ingestion service, and a legacy SQL Server pipeline that arrived with no documentation, no automated deploys, and no defined SDLC.',
     bullets: [
-      ['Maintained SSO services and authentication systems across GE Corporate, Vernova, and Aerospace.'],
-      ['Implemented advanced security protocols and best practices for enterprise-scale applications.'],
+      ['Built a ', 'NetSuite widget in vanilla JS', ' that cut Customer Success data-load times by ', '90%', ', scoping retrieval to recent call history instead of decades of legacy records.'],
+      ['Stood up a ', 'full technical-documentation library from scratch', ' across two product systems — architecture guides, data-flow diagrams, deploy SOPs, runbooks — using AI-assisted tooling (Codex CLI, MCP).'],
+      ['Migrated the team off AWS CodeCommit (', '560+ branches, no strategy', ') to GitHub with a standardized PR workflow, and ran the training.'],
+      ['Now ', 'leading CI/CD from scratch', ' on GitHub Actions — build, test, secrets externalization, and deploy for both the Django/React and .NET stacks.'],
+      ['Ran the Scrum board and daily standups across two teams; fixed production bugs in user-management and pre-validation.'],
+    ],
+  },
+  {
+    when: '2024 — 2025', co: 'Accenture · at GE', meta: 'Security Specialist',
+    title: 'Security Specialist — SSO',
+    sum: 'Continued enterprise SSO services and authentication maintenance across multiple GE business units through the GE/Accenture organizational transition.',
+    bullets: [
+      ['Maintained SSO services across GE Corporate, GE Vernova, and GE Aerospace during the restructuring.'],
+      ['Implemented security protocols and best practices for enterprise-scale authentication.'],
     ],
   },
   {
     when: '2021 — 2024', co: 'General Electric', meta: 'SWE Specialist · SSO Team',
     title: 'Software Engineering Specialist — SSO Team',
-    sum: 'End-to-end SDLC for 14 mission-critical SSO APIs serving 80,000+ employees, contractors, and B2B customers across three GE business units.',
+    sum: 'End-to-end SDLC for 14 mission-critical SSO APIs serving 80,000+ employees, contractors, and B2B customers across GE Corporate, Vernova, and Aerospace.',
     bullets: [
       ['Architected and delivered ', '14 SSO APIs in 11 months', ', modernizing 15+ year legacy Java systems through simultaneous IdP, database, and codebase migrations.'],
-      ['Held ', '99% uptime', ' since production launch — and ran the entire enterprise SSO infrastructure ', 'solo for 10 months', ' during the GE/Accenture transition, without interruption.'],
+      ['Held ', '99% uptime', ' since launch and ran the entire enterprise SSO infrastructure ', 'solo for 10 months', ' through the GE/Accenture transition, without interruption.'],
       ['Cut API latency from ', 'seconds to milliseconds', ' with GraphQL for large directory queries.'],
-      ['Implemented mTLS (OpenSSL · Terraform · Envoy) and migrated CI/CD from Jenkins to TeamCity for all three business units.'],
+      ['Implemented mTLS (OpenSSL · Terraform · Envoy) and migrated CI/CD from Jenkins to TeamCity across all three business units.'],
     ],
   },
   {
     when: '2021 — 2022', co: 'MAXX Potential', meta: 'Technology Apprentice',
     title: 'Technology Apprentice',
-    sum: 'Accelerated career-development program across the VA/NC region.',
+    sum: 'Accelerated tech-apprenticeship program across the VA/NC region.',
     bullets: [
       ['Completed a typically 1–3 year apprenticeship in ', '6 months', ', then placed on the GE assignment that became a full-time engineering role.'],
+    ],
+  },
+  {
+    when: '2015 — 2020', co: 'HerbNCurry', meta: 'Owner / Operator',
+    title: 'Owner / Operator — solo catering business',
+    sum: 'Built and ran a specialized catering business solo while completing an undergraduate degree.',
+    bullets: [
+      ['Grew from startup to ', '155 events a year', ' at peak — ', '$64,800', ' in the best year (2019) — through client acquisition and operational discipline.'],
+      ['Owned end-to-end operations: clients, menus, logistics, inventory, and on-site cooking. ', '80%+ repeat business', '.'],
+      ['Closed in 2020 (COVID) — the catalyst for the move into software.'],
     ],
   },
 ];
 
 const TRAJ_SKILLS = [
-  { k: 'Languages & Frameworks', v: 'Python · TypeScript · JavaScript · Node.js · FastAPI · Flask · HTML/CSS' },
-  { k: 'Cloud & DevOps', v: 'AWS (ECS, EC2, CloudFormation, CloudWatch, Secrets Manager, SSM, RDS, S3, IAM) · Docker · Terraform · CI/CD (TeamCity, Jenkins)' },
-  { k: 'Security & APIs', v: 'mTLS · OpenSSL · certificate management · Apigee · GraphQL · REST' },
-  { k: 'AI / ML', v: 'Claude · Llama 3–4 · DeepSeek R1 · Qwen2.5 · Gemma3 · Granite3 · Phi4 · Ollama · LM Studio' },
-  { k: 'Delivery', v: 'Agile / Scrum (SAFe 2023) · Kanban · Rally admin · standups, sprint reviews, retros' },
-  { k: 'Tooling & Testing', v: 'VS Code · PyCharm · Cursor · Git/GitHub · Postman · Chai/Mocha · unittest' },
+  { k: 'AI-Assisted Development', v: 'Codex (CLI · VS Code · desktop) · Claude Code · Gemini CLI · MCP server integration · prompt engineering · multi-agent & persistent-memory agent architecture' },
+  { k: 'LLM Models & Tooling', v: 'Claude (Sonnet · Opus 4.x) · Gemini 2.5–3 · GPT-o4–5 · Llama 3–4 · DeepSeek R1 · Qwen2.5 · Gemma · Dolphin · Ollama · LM Studio' },
+  { k: 'Languages & Frameworks', v: 'Node.js · TypeScript · JavaScript · React · HTML/CSS · Python, FastAPI & Flask (earlier work) · C#, Django (exposure)' },
+  { k: 'Cloud & DevOps', v: 'AWS (ECS, EC2, CloudFormation, CloudWatch, Secrets Manager, SSM, RDS, S3, IAM) · Docker · Terraform · GitHub Actions · TeamCity · Jenkins · Git' },
+  { k: 'Data, APIs & Security', v: 'PostgreSQL · SQL Server · GraphQL · REST · Apigee · mTLS · OpenSSL · certificate management · SSO / IAM · enterprise authentication' },
+  { k: 'Delivery & Leadership', v: 'Agile / Scrum · SAFe (2023) · Kanban · Jira · Rally · standup facilitation · sprint reviews & retros · technical docs & runbooks · stakeholder demos' },
 ];
 
 function Trajectory() {
@@ -63,11 +85,12 @@ function Trajectory() {
         <div className="k" data-reveal>— Trajectory · Service Record</div>
         <h1 data-reveal>Five years from<br />bootcamp to <span className="a">production.</span></h1>
         <p className="lead" data-reveal>
-          Enterprise authentication at scale, then independent AI product work. The throughline is
+          Enterprise authentication at scale, a current systems-developer role reviving undocumented
+          platforms, and an AI learning platform built on the side. The throughline is
           <strong> systems that have to stay up</strong> — and the discipline to keep them there.
         </p>
         <div className="cd-cta" data-reveal>
-          <a className="primary" href="old-site/resume.html" target="_blank" rel="noopener"><span>▶  Download résumé · PDF</span><span className="ar">→</span></a>
+          <a className="primary" href="docs/ali-tahir-resume.pdf" target="_blank" rel="noopener"><span>▶  Download résumé · PDF</span><span className="ar">→</span></a>
           <a href="https://github.com/alitahir6001" target="_blank" rel="noopener"><span>▶  GitHub · alitahir6001</span><span className="ar">→</span></a>
         </div>
       </section>
@@ -114,7 +137,7 @@ function Trajectory() {
         <div className="row"><span className="k">AWS Cloud Practitioner</span><span className="v">2023</span></div>
         <div className="row"><span className="k">SAFe® Scrum Master</span><span className="v">2023</span></div>
         <div className="row"><span className="k">Coding Dojo · Red Belt</span><span className="v">2021</span></div>
-        <div className="row"><span className="k">AWS Developer</span><span className="v a">in progress</span></div>
+        <div className="row"><span className="k">AWS Certified AI Practitioner</span><span className="v a">in progress</span></div>
         <div className="row"><span className="k">Full-Stack Bootcamp · Coding Dojo</span><span className="v">2021</span></div>
         <div className="row"><span className="k">B.S. Experimental Psychology · UTSA</span><span className="v">2018</span></div>
       </div>

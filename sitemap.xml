@@ -1,10 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
+<!-- Single-page app: all routes are hash fragments (#/projects, #/about, …) that
+     crawlers don't index separately, so only the root URL is listed. -->
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url><loc>https://pakfro.dev/</loc></url>
-  <url><loc>https://pakfro.dev/about.html</loc></url>
-  <url><loc>https://pakfro.dev/projects.html</loc></url>
-  <url><loc>https://pakfro.dev/blog.html</loc></url>
-  <url><loc>https://pakfro.dev/resume.html</loc></url>
-  <url><loc>https://pakfro.dev/demo.html</loc></url>
-  <url><loc>https://pakfro.dev/theme-test.html</loc></url>
 </urlset>

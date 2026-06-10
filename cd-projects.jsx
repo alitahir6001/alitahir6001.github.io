@@ -1,36 +1,24 @@
 // Console Dossier — Projects (#/projects). Full channel catalog: the Pocket
-// Professor flagship plus the side builds (eval harness, home lab, hardware/IoT)
-// and the enterprise archive. Reuses the cd-ch readout. Data-driven — add a
+// Professor flagship plus the side builds (home lab, hardware/IoT) and the
+// enterprise archive. Reuses the cd-ch readout. Data-driven — add a
 // channel by adding an entry to PROJECT_CHANNELS.
 
 const PROJECT_CHANNELS = [
   {
-    id: 'CH-01', of: 'flagship · operational', title: 'Pocket Professor',
-    body: 'AI curriculum generator for career-transition learners. Subject + skill level + goal + weekly hours → a structured, schema-locked plan with prerequisites, weekly projects, and a printable PDF syllabus.',
-    stack: ['python · fastapi', 'react · ts', 'openai · ollama'],
-    right: [['STATUS', ' · LIVE'], ['SINCE', ' · 2025.11']], badge: 'LIVE', badgeCls: 'live',
+    id: 'CH-01', of: 'flagship · pre-pilot', title: 'Pocket Professor',
+    body: 'A structured learning platform for career-switchers leaving high-attrition work. A deterministic multi-agent engine — onboarding, professor, and career coach — builds a plan and adapts it to your real behavior, with fail-closed, auditable decisions.',
+    stack: ['node · fastify · ts', 'react · vite · tailwind', 'postgres'],
+    right: [['STATUS', ' · PRE-PILOT'], ['SINCE', ' · 2025']], badge: 'PRE-PILOT', badgeCls: 'warn',
     href: '#/pocket-professor',
   },
   {
-    id: 'CH-02', of: 'staged · pre-launch', title: '[ Classified — acquisition pending ]',
-    body: 'Evaluation harness for non-deterministic systems. Test rigs, regression diffs, cost accounting. The quiet infrastructure that keeps the flagship honest. More telemetry once it clears review.',
-    stack: ['in progress', 'v0.1 draft'],
-    right: [['FIRST', ' · Q3 2026'], ['CREW', ' · 01']], badge: 'PRE-LAUNCH', badgeCls: 'warn',
-  },
-  {
-    id: 'CH-03', of: 'routed · self-hosted', title: 'Home lab & infrastructure',
-    body: 'A self-run lab for keeping the fundamentals sharp: Docker-containerized services, network monitoring and alerting, the unglamorous plumbing that production teaches you to respect.',
-    stack: ['docker', 'monitoring', 'self-hosted'],
-    right: [['SPAN', ' · ongoing'], ['HOST', ' · on-prem']], badge: 'STABLE',
-  },
-  {
-    id: 'CH-04', of: 'archive · tinkering', title: 'Hardware & IoT',
+    id: 'CH-02', of: 'archive · tinkering', title: 'Hardware & IoT',
     body: 'Where the curiosity goes when it leaves the screen: Arduino nodebots with Johnny-Five, Raspberry Pi retro-gaming builds, and hardware-security research on the Flipper Zero.',
     stack: ['arduino · johnny-five', 'raspberry pi', 'flipper zero'],
     right: [['SPAN', ' · 2022 —'], ['TYPE', ' · personal']], badge: 'ARCHIVE',
   },
   {
-    id: 'CH-05', of: 'archive · enterprise', title: 'Enterprise SSO platform · GE',
+    id: 'CH-03', of: 'archive · enterprise', title: 'Enterprise SSO platform · GE',
     body: '14 mission-critical SSO APIs serving 80,000+ people across three GE business units. Legacy Java modernization, mTLS, GraphQL latency wins, and a CI/CD migration — run solo for ten months during the corporate transition.',
     stack: ['node · ts', 'graphql · mtls', 'aws · terraform'],
     right: [['RUN', ' · 2021—24'], ['UPTIME', ' · 99%']], badge: 'ARCHIVE',

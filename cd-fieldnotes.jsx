@@ -32,8 +32,8 @@ function FieldNotes() {
         <div className="k" data-reveal>— Field Notes · Transmission Log</div>
         <h1 data-reveal>Short, practical notes<br />from the <span className="a">build.</span></h1>
         <p className="lead" data-reveal>
-          Engineering notes on prompts, evals, schema-locked outputs, and the small decisions that
-          keep AI features from regressing in production. <strong>Kept honest, kept brief.</strong>
+          Engineering notes on building with LLMs, the decisions behind AI features, and lessons
+          from shipping real software. <strong>Kept honest, kept brief.</strong>
         </p>
       </section>
 

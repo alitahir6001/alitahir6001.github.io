@@ -5,11 +5,11 @@
 
 function DetailTelemetry() {
   const cells = [
-    { k: 'Mission Status', v: '● LIVE', a: true, sub: 'since 2025.11' },
-    { k: 'Uptime · 90d', v: '99.8 %', a: true, sub: '2 min planned dt' },
-    { k: 'Eval Coverage', v: '94 %', a: true, sub: 'schema-locked' },
-    { k: 'Plans Built', v: '2,310', sub: 'all-time' },
-    { k: 'Median Gen', v: '11.4 s', sub: 'p95 · 19 s' },
+    { k: 'Mission Status', v: '● PRE-PILOT', a: true, sub: 'v1 retired for rebuild' },
+    { k: 'Stage', v: 'v2 · IN DESIGN', a: true, sub: 'curriculum engine' },
+    { k: 'Frontend', v: 'REACT · VITE', sub: 'tailwind' },
+    { k: 'Backend', v: 'FASTIFY · TS', sub: 'node' },
+    { k: 'Store', v: 'POSTGRES', sub: 'on railway (v1)' },
   ];
   return (
     <div className="cd-tele rev" data-reveal>
@@ -36,29 +36,28 @@ function Detail({ theme }) {
 
       {/* Header — airy */}
       <section className="cd-operator" style={{ paddingBottom: 40 }}>
-        <div className="k" data-reveal>— Channel CH-01 · Flagship · Operational</div>
+        <div className="k" data-reveal>— Channel CH-01 · Flagship · Pre-pilot</div>
         <div className="id" data-reveal>POCKET PROFESSOR<span className="a">.</span></div>
         <p className="stmt" data-reveal>
-          An AI curriculum generator for career-transition learners. Tell it what you want to
-          learn, where you're starting, and how much time you have — it returns a
-          <strong> structured, week-by-week plan</strong> you can actually follow.
+          A structured learning platform for career-switchers — built for people leaving
+          high-attrition work. Three agents — <strong>onboarding, professor, and career
+          coach</strong> — shape your plan and adapt it as your real progress and setbacks change.
         </p>
       </section>
 
       <article className="cd-console" data-reveal>
         <div className="pad">
-          <div className="chid">TELEMETRY <span className="a">·</span> 90-DAY WINDOW <span className="a">·</span> NOMINAL</div>
+          <div className="chid">STATUS <span className="a">·</span> CURRENT <span className="a">·</span> PRE-PILOT</div>
         </div>
         <DetailTelemetry />
         <div className="cd-cta">
-          <a className="primary" href="old-site/demo.html" target="_blank" rel="noopener"><span>▶  Launch live demo</span><span className="ar">→</span></a>
-          <a href="https://github.com/alitahir6001" target="_blank" rel="noopener"><span>▶  Source on GitHub</span><span className="ar">→</span></a>
+          <a href="https://github.com/alitahir6001" target="_blank" rel="noopener"><span>▶  GitHub · alitahir6001</span><span className="ar">→</span></a>
         </div>
       </article>
 
       {/* Product shot */}
       <div className="cd-shot" data-reveal>
-        <div className="cap"><span className="a">FIG.01</span> &nbsp; product shot — generator output, exported syllabus PDF</div>
+        <div className="cap"><span className="a">FIG.01</span> &nbsp; UI preview — captured at pilot</div>
       </div>
 
       {/* Overview prose */}
@@ -67,15 +66,17 @@ function Detail({ theme }) {
       </div>
       <div className="cd-prose" data-reveal>
         <p>
-          Most learning plans online are either a wall of links or a course someone's selling.
-          Pocket Professor sits in between: it <strong>reasons about prerequisites</strong>,
-          sequences topics so each week builds on the last, and attaches a small project to every
-          week so the learning compounds into something real.
+          Most learning plans are a static wall of links. Pocket Professor is built to
+          <strong> adapt</strong>: an onboarding agent profiles where you're starting, a professor
+          agent sequences the work toward your goal, and a career coach agent steps in when you
+          stall or want to pivot toward a different career.
         </p>
         <p>
-          The hard part isn't generating text — it's keeping the output <span className="a">trustworthy</span>.
-          Every plan is schema-locked and run through an eval harness before it reaches the user,
-          so a bad model day can't ship a broken curriculum.
+          The core is a <span className="a">deterministic adaptation engine</span> — given the same
+          inputs it always reaches the same decision, and every adjustment is written to an audit
+          record. Structural changes to a plan are transactional and <strong>fail closed</strong>:
+          if a change can't be applied safely, it isn't applied at all. The agents run against
+          strict schema contracts, so malformed output is rejected rather than shown to a learner.
         </p>
       </div>
 
@@ -87,29 +88,29 @@ function Detail({ theme }) {
         <div className="step" data-reveal>
           <div className="n">01</div>
           <div>
-            <h4>Intake</h4>
-            <p>Subject, current skill level, target outcome, and weekly hours. Four fields, no account required.</p>
+            <h4>Onboard</h4>
+            <p>The onboarding agent profiles where you're starting, your goal, and your real constraints — time, schedule, and the life you're learning around.</p>
           </div>
         </div>
         <div className="step" data-reveal>
           <div className="n">02</div>
           <div>
-            <h4>Plan synthesis</h4>
-            <p>The model drafts a prerequisite graph, then sequences it into weeks against the available time budget.</p>
+            <h4>Plan</h4>
+            <p>The professor agent sequences a structured plan toward that goal, paced to the hours you actually have.</p>
           </div>
         </div>
         <div className="step" data-reveal>
           <div className="n">03</div>
           <div>
-            <h4>Eval &amp; lock</h4>
-            <p>Output is validated against a JSON schema and scored by an eval harness — coverage, ordering, resource quality.</p>
+            <h4>Adapt</h4>
+            <p>As you go, the engine reads behavior signals — missed sessions, late-night cramming, topic resistance, a run of completions — and applies the first matching rule: reduce workload, shift the schedule, raise difficulty, or escalate to the career coach.</p>
           </div>
         </div>
         <div className="step" data-reveal>
           <div className="n">04</div>
           <div>
-            <h4>Deliver</h4>
-            <p>The learner gets an interactive plan plus a clean, printable PDF syllabus to keep.</p>
+            <h4>Audit</h4>
+            <p>Every adjustment is deterministic and written to an audit record, so the plan evolves safely and you can always see why it changed.</p>
           </div>
         </div>
       </div>
@@ -119,36 +120,39 @@ function Detail({ theme }) {
         <span className="a">§ 03</span><span className="ln"></span><span className="end">specifications</span>
       </div>
       <div className="cd-params" data-reveal>
-        <div className="row"><span className="k">Frontend</span><span className="v">React · TypeScript · Vite</span></div>
-        <div className="row"><span className="k">Backend</span><span className="v">Python · FastAPI</span></div>
-        <div className="row"><span className="k">Model layer</span><span className="v a">OpenAI · schema-locked</span></div>
-        <div className="row"><span className="k">Store</span><span className="v">Postgres</span></div>
-        <div className="row"><span className="k">Host</span><span className="v">Railway</span></div>
-        <div className="row"><span className="k">Eval harness</span><span className="v a">custom · 94% coverage</span></div>
+        <div className="row"><span className="k">Frontend</span><span className="v">React · Vite · Tailwind</span></div>
+        <div className="row"><span className="k">Backend</span><span className="v">Node · Fastify · TypeScript</span></div>
+        <div className="row"><span className="k">Model layer</span><span className="v a">Gemini → OpenAI → Claude</span></div>
+        <div className="row"><span className="k">Store</span><span className="v">PostgreSQL</span></div>
+        <div className="row"><span className="k">Host</span><span className="v">Railway <span className="a">· v1 offline</span></span></div>
         <div className="row"><span className="k">Crew</span><span className="v">Solo build</span></div>
-        <div className="row"><span className="k">Run</span><span className="v">2025.11 — now</span></div>
+        <div className="row"><span className="k">Stage</span><span className="v a">Pre-pilot · v2 in design</span></div>
       </div>
 
       {/* Build log */}
       <div className="cd-band cd-spec-title" data-reveal>
-        <span className="a">§ 04</span><span className="ln"></span><span className="end">build log · recent</span>
+        <span className="a">§ 04</span><span className="ln"></span><span className="end">build log · v1 → v2</span>
       </div>
       <div className="cd-log">
         <div className="entry" data-reveal>
-          <div className="date">2026.05.21<span className="rev">REV·07</span></div>
-          <p><strong>Exported PDF redesign.</strong> Typeset syllabus output, week dividers, printable margins.</p>
+          <div className="date">2026.05<span className="rev">v2 · pilot</span></div>
+          <p><strong>Pilot readiness.</strong> Onboarding flow plus a Vite/Tailwind frontend, aimed at real non-technical users from service-industry work.</p>
         </div>
         <div className="entry" data-reveal>
-          <div className="date">2026.04.30<span className="rev">REV·06</span></div>
-          <p><strong>Eval coverage to 94%.</strong> Added ordering checks and resource-link validation to the harness.</p>
+          <div className="date">2026.03<span className="rev">v2 · phase 3</span></div>
+          <p><strong>Adaptation engine.</strong> Fastify runtime + Postgres persistence, deterministic smoke checks, fail-closed audit writes; patched a Fastify advisory along the way.</p>
         </div>
         <div className="entry" data-reveal>
-          <div className="date">2026.03.12<span className="rev">REV·05</span></div>
-          <p><strong>Prerequisite graph.</strong> Replaced flat topic lists with a dependency-aware sequencer.</p>
+          <div className="date">2026.02<span className="rev">v2 · the pivot</span></div>
+          <p><strong>Re-architected from scratch.</strong> Behavioral design + system architecture for a deterministic multi-agent engine — onboarding, professor, and career-coach agents under strict schema contracts.</p>
         </div>
         <div className="entry" data-reveal>
-          <div className="date">2025.11.02<span className="rev">REV·01</span></div>
-          <p><strong>First deploy.</strong> Intake → plan → PDF, end to end, on Railway.</p>
+          <div className="date">2025.07<span className="rev">v0.3–0.4</span></div>
+          <p><strong>MVP + demo.</strong> The syllabus generator went hosted — Python · FastAPI · Gemini on Railway — through an MVP and a TechCrunch-ready demo build.</p>
+        </div>
+        <div className="entry" data-reveal>
+          <div className="date">2025.03<span className="rev">v0.1</span></div>
+          <p><strong>First prototype.</strong> The original idea: an LLM-driven Q&amp;A that drafted a learning syllabus from a few inputs.</p>
         </div>
       </div>
 

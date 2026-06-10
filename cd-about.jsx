@@ -1,7 +1,7 @@
-// Console Dossier — About (#/about). Personnel file: the real bio narrative from
-// __bio.html, set in the dossier vocabulary. Two framed photographs (childhood in
-// Rock Creek Park; the Pocket Professor backend), a pull quote, and a short
-// "prior life" note. Medium density — richer than the landing, still calm.
+// Console Dossier — About (#/about). Personnel file: Ali's real bio narrative set in
+// the dossier vocabulary. Two framed photographs (childhood in Rock Creek Park; the
+// v1 Pocket Professor backend), a pull quote, and a short "prior life" note.
+// Medium density — richer than the landing, still calm.
 
 function About() {
   useReveal('about');
@@ -64,9 +64,9 @@ function About() {
 
       <figure className="cd-figure" data-reveal>
         <div className="frame" data-tag="FIG.B · BACKEND">
-          <img src="images/pockProf_code_snapshot.png" alt="The Python backend for the Pocket Professor syllabus generator" />
+          <img src="images/pockProf_code_snapshot.png" alt="The early v1 Python backend for the first Pocket Professor syllabus generator" />
         </div>
-        <div className="cap"><span className="a">FIG.B</span> &nbsp; The Python backend for the Pocket Professor syllabus generator</div>
+        <div className="cap"><span className="a">FIG.B</span> &nbsp; The v1 Python backend — Pocket Professor's first syllabus generator</div>
       </figure>
 
       <blockquote className="cd-quote" data-reveal>
