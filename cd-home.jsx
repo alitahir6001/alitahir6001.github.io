@@ -15,8 +15,6 @@ function Home({ theme }) {
         <div className="id" data-reveal>ALI TAHIR</div>
         <p className="stmt" data-reveal>
           Five years shipping production software — <strong>the last two with LLMs in the loop.</strong>
-          Currently building <span className="a">Pocket Professor</span>, an AI curriculum generator
-          built for autodidacts like me who want to learn anything.
         </p>
         <div className="open" data-reveal>● Open to mid-level engineering roles</div>
       </section>
@@ -57,14 +55,14 @@ function Home({ theme }) {
         <div>
           <h3>Field Notes</h3>
           <p>
-            Long-form writing on building with LLMs, the engineering decisions behind AI features,
-            and lessons from shipping real software.
+            Engineering lessons, AI, and the occasional love letter to the old software and hardware
+            that made me a builder.
           </p>
-          <p className="stack"><span>essays</span><span>02 drafting</span><span><a href="#/field-notes" style={{color:'var(--accent-ink)',textDecoration:'none'}}>open log →</a></span></p>
+          <p className="stack"><span>essays</span><span>01 published</span><span><a href="#/field-notes" style={{color:'var(--accent-ink)',textDecoration:'none'}}>open log →</a></span></p>
         </div>
         <div className="right">
-          <div><span className="k">FIRST</span><span className="v"> · 2024.04</span></div>
-          <div><span className="k">LAST</span><span className="v"> · 2026.05</span></div>
+          <div><span className="k">POSTS</span><span className="v"> · 01</span></div>
+          <div><span className="k">LATEST</span><span className="v"> · 2026.06</span></div>
           <div className="badge">WRITING</div>
         </div>
       </article>

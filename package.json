@@ -1,6 +1,6 @@
 {
   "name": "pakfro-site",
-  "version": "1.0.0",
+  "version": "2.1.0",
   "private": true,
   "description": "Console Dossier — personal site (React, hash-routed, precompiled JSX).",
   "scripts": {

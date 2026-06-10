@@ -42,10 +42,17 @@ Run `npm run build` before committing so `build/*.js` matches the `.jsx` sources
 - [ ] **PP V1 date** — résumé says 2024; first commit 2025-03. Pick which is public.
 - [ ] **Hire** — content honest; only dead footer links remain (see Chrome).
 
-## Blog / Field Notes (chosen: in-app reader)
+## Blog / Field Notes (in-app reader) — ✅ DONE (v1)
 
-- [ ] Build post-detail route + a way to author post bodies (JSX/HTML or Markdown).
-- [ ] Load real drafts; set home "Field Notes" first/last dates accordingly.
+- [x] In-app reader built: `FieldNotePost` renders at `#/field-notes/<slug>`; `FieldNotes`
+      routes list vs post. Add a post = entry in `FIELD_NOTES` with `slug` + `body[]`.
+- [x] First real post "Old is Gold" live (typos fixed, voice preserved); blog framing broadened;
+      home Field Notes card updated to "01 published".
+- [ ] Load remaining real drafts when Ali provides them.
+- [ ] **(Ali) Add pics/screenshots of the apps & tech in "Old is Gold"** — Darkroom editor,
+      Winamp 2.95, Zune, Creative Zen, Sony Walkman, AIWA CD player, floppy disks, ZSNES,
+      HP Pavilion. Drop into `images/`; I'll lay them into the reader (inline figures).
+- [ ] (Optional later) Markdown support / emphasis rendering (post uses literal `* *`).
 
 ## Chrome / theme (affects every page) — ✅ DONE
 

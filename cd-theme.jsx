@@ -87,12 +87,15 @@ function GlobalStyle() {
       }
 
       /* status bar — quieter, more leading */
-      .cd-status { padding: 40px 0 18px; display: grid; grid-template-columns: auto 1fr auto auto auto; gap: 28px; align-items: center; font-size: 10.5px; letter-spacing: .2em; text-transform: uppercase; color: var(--paper-3); }
+      .cd-status { padding: 40px 0 18px; display: grid; grid-template-columns: auto 1fr auto auto; gap: 28px; align-items: center; font-size: 10.5px; letter-spacing: .2em; text-transform: uppercase; color: var(--paper-3); }
       .cd-status .station { color: var(--paper); font-size: 12.5px; letter-spacing: .2em; }
       .cd-status .station .a { color: var(--accent-ink); }
       .cd-status .pill { padding: 5px 12px; background: var(--accent-deep); color: var(--accent-ink); border: 1px solid var(--accent); letter-spacing: .16em; font-size: 10px; white-space: nowrap; }
       .cd-status .stamp { white-space: nowrap; }
       .cd-status .stamp .v { color: var(--paper); margin-left: 6px; }
+      .cd-status .clock { line-height: 1.55; text-align: right; }
+      .cd-status .clock .z { display: inline-block; min-width: 34px; text-align: left; }
+      .cd-status .clock .lo { color: var(--accent-ink); }
 
       .cd-rule { height: 0; border-top: 1px solid var(--rule-2); margin: 0; }
       .cd[data-frame="stamp"] .cd-rule.thick { border-top: 4px double var(--paper-3); }
@@ -192,6 +195,8 @@ function GlobalStyle() {
       .cd-prose p { color: var(--paper-2); font-size: 16px; line-height: 1.9; margin: 0 0 24px; }
       .cd-prose p strong { color: var(--paper); font-weight: 500; }
       .cd-prose .a { color: var(--accent-ink); }
+      /* wider reading measure for long-form blog posts (Field Notes reader) */
+      .cd-prose.cd-article { max-width: 80ch; }
 
       /* steps — open rows, hairline divides, no filled grid */
       .cd-steps { margin-top: var(--sp-band); }
@@ -315,7 +320,7 @@ const CD_NAV = [
   { key: 'hire', label: 'AOI / Hire', href: '#/hire' },
 ];
 
-// Live UTC clock — replaces the old hardcoded (frozen) time/date stamps.
+// Live clock — UTC on top, the viewer's local time (with timezone) right below.
 function StatusClock() {
   const [now, setNow] = React.useState(() => new Date());
   React.useEffect(() => {
@@ -323,11 +328,19 @@ function StatusClock() {
     return () => clearInterval(id);
   }, []);
   const iso = now.toISOString();
+  const utcTime = iso.slice(11, 19);
+  const utcDate = iso.slice(0, 10).replace(/-/g, '.');
+  // Viewer's local time + timezone abbreviation (e.g. "22:17:08 EDT").
+  const loc = now.toLocaleTimeString('en-US', { hour12: false, timeZoneName: 'short' });
+  const m = loc.match(/^(\d{1,2}:\d{2}:\d{2})\s+(.+)$/);
+  const localTime = m ? m[1].padStart(8, '0') : loc;
+  const tz = m ? m[2] : 'LOCAL';
+  const localDate = now.getFullYear() + '.' + String(now.getMonth() + 1).padStart(2, '0') + '.' + String(now.getDate()).padStart(2, '0');
   return (
-    <React.Fragment>
-      <div className="stamp">UTC<span className="v">{iso.slice(11, 19)}</span></div>
-      <div className="stamp">DATE<span className="v">{iso.slice(0, 10).replace(/-/g, '.')}</span></div>
-    </React.Fragment>
+    <div className="stamp clock">
+      <div><span className="z">UTC</span><span className="v">{utcTime}</span> · {utcDate}</div>
+      <div><span className="z lo">{tz}</span><span className="v">{localTime}</span> · {localDate}</div>
+    </div>
   );
 }
 

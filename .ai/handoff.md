@@ -1,7 +1,16 @@
 # Handoff — Live State
 
 ## Last Updated
-2026-06-09 · session 1 (site overhaul kickoff) — after holdover cleanup
+2026-06-09 · session 1 — committed checkpoint eb5ca67; now in page-by-page text review
+
+## Review progress (page-by-page with Ali)
+- **Index: done** — clock now shows UTC + viewer-local time (StatusClock in cd-theme);
+  home statement trimmed to one sentence; footer "ACK" stamps kept (decorative, intentional).
+- **Field Notes: done** — built the in-app reader (`FieldNotePost` at `#/field-notes/<slug>`,
+  `FieldNotes` routes list vs post). First real post **"Old is Gold"** live (from
+  `docs/old-is-gold.txt`), light typo fixes applied (voice preserved). Removed 2 fabricated
+  draft placeholders; broadened blog framing; home Field Notes card → "01 published".
+  (All uncommitted on top of eb5ca67.)
 
 ## Current State
 Working on branch **`dev`** (the full WIP site; never deploys). **`main`** holds only an
