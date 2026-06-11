@@ -1,51 +1,42 @@
 # Handoff — Live State
 
 ## Last Updated
-2026-06-09 · session 1 — committed checkpoint eb5ca67; now in page-by-page text review
-
-## Review progress (page-by-page with Ali)
-- **Index: done** — clock now shows UTC + viewer-local time (StatusClock in cd-theme);
-  home statement trimmed to one sentence; footer "ACK" stamps kept (decorative, intentional).
-- **Field Notes: done** — built the in-app reader (`FieldNotePost` at `#/field-notes/<slug>`,
-  `FieldNotes` routes list vs post). First real post **"Old is Gold"** live (from
-  `docs/old-is-gold.txt`), light typo fixes applied (voice preserved). Removed 2 fabricated
-  draft placeholders; broadened blog framing; home Field Notes card → "01 published".
-  (All uncommitted on top of eb5ca67.)
+2026-06-10 · session 1 PAUSED here — resume after Ali runs the PP v2 pilot
 
 ## Current State
-Working on branch **`dev`** (the full WIP site; never deploys). **`main`** holds only an
-under-construction splash and is what GitHub Pages serves at pakfro.dev. The site is a
-hash-routed React SPA; edit `cd-*.jsx`, run `npm run build` (esbuild → `build/*.js`, which
-ARE committed because Pages has no build step). This session: stood up build tooling, split
-the branches, and did a full **placeholder + fabrication purge** across every page —
-no fabricated content strings remain. Pocket Professor's real stack (Node·Fastify·TS·Postgres,
-not Python/FastAPI) and complete version history are now documented and reflected on-site.
-Trajectory was rebuilt from the real résumé (added the IDEA day-job; PP correctly framed as a
-personal project). Résumé PDF, live clock, footer links, and Tweaks-panel gating all done.
-**Changes on `dev` are uncommitted** — safe to commit/push to `dev` anytime (won't deploy).
+Working on branch **`dev`** (full WIP site; never deploys). **`main`** = under-construction
+splash, which is what GitHub Pages serves at pakfro.dev. Hash-routed React SPA: edit `cd-*.jsx`,
+`npm run build` (esbuild → `build/*.js`, committed because Pages has no build step). The whole
+**placeholder/fabrication purge is done** across every page; Trajectory rebuilt from the real
+résumé (IDEA day-job added, PP framed as a personal project); résumé PDF, live UTC+local clock,
+footer links, gated Tweaks panel all done; holdover files removed. Now doing a **page-by-page
+text review with Ali**. Most work is committed+pushed to `dev` through the Field Notes review;
+the latest **Projects restructure + PP card reframe are built but uncommitted**.
 
-## Changed Files (this session, on `dev`)
-- New: `package.json`, `package-lock.json`, `build.mjs`, `.gitignore` (+node_modules),
-  `docs/pocket-professor-version-history.md`, `docs/ali-tahir-resume.pdf`, `TODO.md` (rewritten),
-  `.ai/*` (this state dir).
-- Edited: all `cd-*.jsx` (home, detail, projects, trajectory, about, fieldnotes, hire, theme, app)
-  + regenerated `build/*.js`.
-- `main` branch (separate): reduced to splash `index.html` + `CNAME` + `README` + `robots.txt`
-  (`Disallow: /`). `app.html` was a discarded interim idea (not on dev).
-- **Holdover cleanup done:** removed `__bio.html`, `theme-test.html`, `demo.html`+`js/demo.js`,
-  `form.html`+`js/form.js`, `images/kitty1.jpg`, `INTEGRATION.md`; rewrote `sitemap.xml` → root only.
-- Uncommitted on `dev`: the cleanup deletions + new `.ai/`, `CLAUDE.md`, `docs/` (not git-added yet).
+## Review progress (page-by-page with Ali)
+- **Index: done** — clock shows UTC + viewer-local time; home statement trimmed; footer
+  "ACK" stamps kept (decorative, intentional).
+- **Field Notes: done** — in-app reader (`FieldNotePost` @ `#/field-notes/<slug>`); "Old is Gold"
+  live (typos fixed, voice intact); list blurb auto-excerpts body[0]; wider reading column
+  (`.cd-article` 80ch). TODO: Ali to add period-tech images later.
+- **Projects: mostly done** — dropped the GE SSO card (it's a job, in the résumé); added
+  **job-apply** + **intake-assistant** (drafted from their repo READMEs); fixed Hardware card
+  (Raspberry Pi = classic-gaming console). PP **card** body reframed to "motivated autodidacts
+  who want to leave their current industry / adapts to how you learn best."
+- **PP card + detail page: PARKED** ⛔ — Ali will get the **Pocket Professor v2 pilot running**
+  first, so he can describe today's real behavior honestly, then return to refine the card +
+  detail. DO NOT rewrite PP detail behavior from assumptions until then.
+- **Not yet reviewed:** Trajectory, About, Hire.
 
 ## Open Threads
-- **"Old is Gold" blog post** — user is sending the text; blog reader not yet built.
-- **PP product screenshot** — none exists (v2 unlaunched); FIG.01 is an honest placeholder. User.
-- **PP V1 date** — résumé says 2024, first commit is 2025-03. User to pick which is public.
-- Security audit not started; `SECURITY.md` still references the deleted demo/form files.
-- `PRODUCTION-BUILD.md` kept but partly stale; `README.md` has a stale "disabled" note.
-- Skills list keeps Python/FastAPI/Flask marked "(earlier work)" per user's honest-depth note.
+- **PP card + detail final content — BLOCKED on Ali running the v2 pilot.** (Also PP FIG.01
+  screenshot pending pilot; PP V1 date kept as 2025 — first commit 2025-03 vs résumé's "2024".)
+- **job-apply / intake-assistant cards** drafted from READMEs — need Ali's review; job-apply
+  stack says generic "browser automation" → name the real lib (Playwright/Puppeteer?).
+- Security audit not started; `SECURITY.md` references now-deleted demo/form files.
+- `PRODUCTION-BUILD.md` partly stale; `README.md` has a stale "disabled" note.
 
 ## Next Recommended Step
-Build the **in-app blog (Field Notes) reader** — add a post-detail route + a way to author
-post bodies — and load "Old is Gold" as the first real post once the text arrives. The
-**holdover cleanup** (`__bio.html`, `theme-test.html`, `sitemap.xml`, `form.html`/`demo.html`)
-is fully unblocked and can be done in parallel.
+Continue the page-by-page review on the **unblocked pages — Trajectory, About, Hire** (and, if
+Ali wants, finish refining the job-apply/intake-assistant cards). The **security audit** is also
+unblocked. **Resume the PP card + detail page only after Ali has run the v2 pilot.**

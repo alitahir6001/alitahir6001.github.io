@@ -64,8 +64,10 @@ not yet relaunched. Live state → `.ai/handoff.md`.
 - Don't commit `node_modules/` (gitignored). No secrets here — fully static and public.
 
 ## Recent context
-- **2026-06-09 (session 1):** Stood up esbuild tooling + the main/dev branch split. Purged all
-  placeholder/fabricated content across every page; corrected PP's stack and documented its full
-  version history; rebuilt Trajectory from the real résumé (added the IDEA job, framed PP as a
-  personal project); wired the résumé PDF; fixed chrome (live clock, footer links, gated Tweaks
-  panel). Next: build the in-app Field Notes reader (first post: "Old is Gold").
+- **2026-06-09/10 (session 1):** Stood up esbuild tooling + the main/dev branch split; purged all
+  placeholder/fabricated content site-wide; corrected PP's stack + documented its full version
+  history; rebuilt Trajectory from the résumé (added the IDEA job, PP = personal project); wired
+  the résumé PDF; chrome fixes (live clock, footer, gated Tweaks panel); removed holdover files;
+  built the in-app Field Notes reader ("Old is Gold" live). Then a page-by-page review with Ali —
+  Index, Field Notes, Projects done. **PP card + detail page PARKED** until Ali runs the v2 pilot
+  to describe its real behavior honestly. Next: review Trajectory/About/Hire; security audit.
