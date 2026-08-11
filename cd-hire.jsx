@@ -1,6 +1,7 @@
 // Console Dossier — AOI / Hire (#/hire). Area of Interest. Deliberately minimal
-// and honest: mid-level SWE roles, what I bring, where I'm still leveling up, and
+// and honest: AI engineering roles, what I bring, where I'm still leveling up, and
 // how to reach me. No compensation talk.
+// This is the ONLY page that states availability — the status-bar pill is gated to it.
 
 function Hire() {
   useReveal('hire');
@@ -10,9 +11,9 @@ function Hire() {
 
       <section className="cd-intro">
         <div className="k" data-reveal>— AOI · Open Channel</div>
-        <h1 data-reveal>Open to <span className="a">mid-level</span><br />engineering roles.</h1>
+        <h1 data-reveal>Open to <span className="a">AI engineering</span><br />roles.</h1>
         <p className="lead" data-reveal>
-          Backend, full-stack, or AI-adjacent. I do my best work on
+          Agent tooling, MCP integrations, and the backend systems underneath them. I do my best work on
           <strong> systems that have to stay up</strong> and teams that actually ship. Remote, or
           around the Washington, D.C. area.
         </p>
@@ -24,11 +25,12 @@ function Hire() {
       </div>
       <div className="cd-prose" data-reveal>
         <p>
-          Five years shipping production software — enterprise authentication at scale, then
-          independent AI product work. I'm comfortable owning a service end to end, keeping it alive
-          under pressure, and being the person who stays calm when it's <span className="a">3 a.m. and
-          the pager goes off.</span> I write to be maintained, and I lead standups and reviews when a
-          team needs it.
+          Five years shipping production software — enterprise authentication at scale, then applied
+          AI work that reached real adoption: an MCP server my team, the PM, and sales all use, and a
+          queryable knowledge base that cut troubleshooting on an undocumented database from days to
+          minutes. I build <span className="a">agent tooling that survives contact with a real team</span>,
+          not demos. I'm comfortable owning a service end to end, keeping it alive under pressure, and
+          I lead standups and reviews when a team needs it.
         </p>
       </div>
 
@@ -38,10 +40,11 @@ function Hire() {
       </div>
       <div className="cd-prose" data-reveal>
         <p>
-          I'm targeting <strong>mid-level</strong> on purpose. There's depth in system design and data
-          structures &amp; algorithms that I'm still building toward staff-grade — and I'd rather be
-          honest about that than oversell. Put me on a strong team with hard problems and I'll close
-          the gap fast. That's the whole pitch.
+          My AI work is <strong>applied</strong>, not research — agent architecture, MCP servers, model
+          routing, retrieval and persistent memory. I don't train models, and I'd rather say so than
+          oversell. I'm deepening the ML side deliberately (AWS Machine Learning Engineer, in progress),
+          and there's system-design depth I'm still building toward staff-grade. Put me on a strong team
+          with hard problems and I'll close the gap fast. That's the whole pitch.
         </p>
       </div>
 

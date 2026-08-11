@@ -352,7 +352,8 @@ function StatusBar({ station, cur }) {
       <div className="cd-status">
         <div className="station">{station} <span className="a">/</span> ALI TAHIR</div>
         <div></div>
-        <div className="pill">OPEN · MID-LEVEL SWE</div>
+        {/* availability lives on the Hire page only — not site chrome */}
+        {cur === 'hire' ? <div className="pill">OPEN · AI ENGINEERING</div> : <div></div>}
         <StatusClock />
       </div>
       <div className="cd-rule thick"></div>

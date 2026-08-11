@@ -16,7 +16,6 @@ function Home({ theme }) {
         <p className="stmt" data-reveal>
           Five years shipping production software — <strong>the last two with LLMs in the loop.</strong>
         </p>
-        <div className="open" data-reveal>● Open to mid-level engineering roles</div>
       </section>
 
       {/* Primary channel — flagship project */}
@@ -76,10 +75,10 @@ function Home({ theme }) {
             thousands of people depended on, and the unglamorous production plumbing that taught
             the rest.
           </p>
-          <p className="stack"><span>2021 — 2024</span><span><a href="#/trajectory" style={{color:'var(--accent-ink)',textDecoration:'none'}}>service record →</a></span></p>
+          <p className="stack"><span>2021 — 2025</span><span><a href="#/trajectory" style={{color:'var(--accent-ink)',textDecoration:'none'}}>service record →</a></span></p>
         </div>
         <div className="right">
-          <div><span className="k">SPAN</span><span className="v"> · 3 yrs</span></div>
+          <div><span className="k">SPAN</span><span className="v"> · 4 yrs</span></div>
           <div><span className="k">ROLE</span><span className="v"> · Engineer</span></div>
           <div className="badge">ARCHIVE</div>
         </div>

@@ -1,6 +1,6 @@
 // Console Dossier — Projects (#/projects). Channel catalog: the Pocket Professor
-// flagship plus side projects (job-apply, intake-assistant, hardware/IoT). Data-driven
-// — add a channel by adding an entry to PROJECT_CHANNELS.
+// flagship plus the personal projects on the résumé (job-apply, agent harness, ZuneHD)
+// and client/archive work. Data-driven — add a channel by adding an entry to PROJECT_CHANNELS.
 // art: null = placeholder; swap in a URL string to show a screenshot.
 
 const PROJECT_CHANNELS = [
@@ -14,20 +14,34 @@ const PROJECT_CHANNELS = [
   },
   {
     id: 'CH-02', of: '· tool · job hunt', title: 'job-apply',
-    body: 'Scrapes job boards, ranks postings against my résumé with an LLM, tailors résumé + cover letter, and auto-fills application forms. Stops before submit.',
-    stack: ['node · js · sqlite', 'playwright', 'llm api'],
+    body: 'Scrapes 13 job boards (550–600 postings a run), scores every posting against a base résumé with batched LLM calls, and generates a tailored résumé and cover letter per job in 20–30 seconds. A Manifest V3 Chrome extension fills Greenhouse and Lever forms in my own browser — deterministic answers for factual screening questions, mandatory human review before submit.',
+    stack: ['node · sqlite · playwright', 'chrome extension · mv3', 'anthropic · openai · gemini'],
     badge: 'ACTIVE',
     art: null,
   },
   {
-    id: 'CH-03', of: '· tool · client work', title: 'Oneness Suite',
+    id: 'CH-03', of: '· tool · agent harness', title: 'AI Agent Harness Extensions',
+    body: 'Two extensions to my own coding-agent setup. The Advisor is a model-agnostic MCP server that routes architectural and hard-to-reverse decisions to a second opinion on a different model — cheap models carry the everyday load. Alongside it, a persistent project-memory system that lets agents resume multi-session work without re-deriving context.',
+    stack: ['python · mcp · stdio json-rpc', 'stdlib only · no install step', 'anthropic · gemini'],
+    badge: 'ACTIVE',
+    art: null,
+  },
+  {
+    id: 'CH-04', of: '· hardware · revival', title: 'ZuneHD Artist Metadata Updater',
+    body: 'Restores artist biographies and background images on ZuneHD hardware after Microsoft retired the Zune.net backend. Resolves artists against MusicBrainz, writes MBIDs into ID3 tags, and delivers the data over the device\'s encrypted USB MTP stack — PPP/TCP/HTTP tunnelled over MTP.',
+    stack: ['.net 8 · c# · p/invoke', 'macos iokit · win winusb · linux libusb', 'musicbrainz'],
+    badge: 'SHIPPED',
+    art: null,
+  },
+  {
+    id: 'CH-05', of: '· tool · client work', title: 'Oneness Suite',
     body: 'Custom local-only dashboard for a solo therapist\'s practice. Three tools: intake screening, reschedule outreach, and social content drafting. HIPAA-informed — no cloud, no third-party data exposure.',
     stack: ['node 22 · ts · express', 'google sheets · calendar · nodemailer', 'multi-provider ai'],
     badge: 'SHIPPED',
     art: null,
   },
   {
-    id: 'CH-04', of: '· archive · tinkering', title: 'Hardware & IoT',
+    id: 'CH-06', of: '· archive · tinkering', title: 'Hardware & IoT',
     body: 'Arduino nodebots, a Raspberry Pi gaming console, and Flipper Zero hardware security.',
     stack: ['arduino · johnny-five', 'raspberry pi', 'flipper zero'],
     badge: 'ARCHIVE',
@@ -45,8 +59,8 @@ function Projects() {
         <div className="k" data-reveal>— Projects · Channel Directory</div>
         <h1 data-reveal>Everything currently<br />on the <span className="a">air.</span></h1>
         <p className="lead" data-reveal>
-          One flagship under active build, plus a few side projects — automation tools and hardware
-          tinkering — that keep the curiosity and the fundamentals sharp.
+          One flagship under active build, plus the agent tooling, automation, and hardware work
+          that keeps the curiosity and the fundamentals sharp.
           <strong> Open the flagship for its full file.</strong>
         </p>
       </section>

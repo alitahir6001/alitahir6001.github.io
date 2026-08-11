@@ -4,44 +4,47 @@
 
 const TRAJ_ROLES = [
   {
-    when: '2025 — NOW', co: 'Personal project', meta: 'Founder · solo',
+    when: '2024 — NOW', co: 'Personal project', meta: 'Founder · solo',
     title: 'Pocket Professor — adaptive learning platform',
-    sum: 'A structured learning platform for service-industry career-switchers, built solo alongside my day job — React/Vite frontend, a Node/TypeScript (Fastify) backend, a deterministic multi-agent adaptation engine, and Postgres.',
+    sum: 'An adaptive learning platform for service-industry workers (35+) changing careers — a domain informed by 15 years of personal industry experience. Built solo alongside my day job on TypeScript, Node.js, Postgres, and GitHub Actions.',
     bullets: [
-      ['Architected a ', 'deterministic multi-agent engine', ' — onboarding, professor, and career-coach agents that build a plan and adapt it to real behavior signals.'],
-      ['Made every plan change ', 'transactional and fail-closed', ', with agents under strict schema contracts so malformed output never reaches a learner.'],
-      ['Shipped v1 first — a Python · FastAPI · Gemini syllabus generator on Railway — then rewrote it in TypeScript around the engine; now ', 'pre-pilot', '.'],
+      ['V2 is a ', 'deterministic multi-agent rebuild', ' — onboarding, professor, and career-coach agents under strict agent contracts, with schema validation and policy-gated output.'],
+      ['An ', 'append-only event store', ' keeps plan adaptation reproducible, so a learner\'s plan can be replayed and explained rather than guessed at.'],
+      ['Shipped v1 first — a Python · FastAPI · Gemini syllabus generator — then rewrote it in TypeScript around the engine. Now in ', 'pre-pilot hardening', '.'],
     ],
   },
   {
     when: '2025 — NOW', co: 'IDEA · Richmond, VA', meta: 'Systems Developer II',
-    title: 'Systems Developer II',
-    sum: 'Generalist on a small product-engineering team building the Data Whispers BI platform — a Django/React UI, a .NET ingestion service, and a legacy SQL Server pipeline that arrived with no documentation, no automated deploys, and no defined SDLC.',
+    title: 'Systems Developer II — Data Whispers team',
+    sum: 'Multi-stack team building a customer-facing BI platform: a Django/React customer UI, a .NET ingestion service, and a SQL Server analytics database. I established the documentation, deployment automation, and delivery processes it runs on, and I\'m currently the sole in-house developer on its core services.',
     bullets: [
-      ['Built a ', 'NetSuite widget in vanilla JS', ' that cut Customer Success data-load times by ', '90%', ', scoping retrieval to recent call history instead of decades of legacy records.'],
-      ['Stood up a ', 'full technical-documentation library from scratch', ' across two product systems — architecture guides, data-flow diagrams, deploy SOPs, runbooks — using AI-assisted tooling (Codex CLI, MCP).'],
-      ['Migrated the team off AWS CodeCommit (', '560+ branches, no strategy', ') to GitHub with a standardized PR workflow, and ran the training.'],
-      ['Now ', 'leading CI/CD from scratch', ' on GitHub Actions — build, test, secrets externalization, and deploy for both the Django/React and .NET stacks.'],
-      ['Ran the Scrum board and daily standups across two teams; fixed production bugs in user-management and pre-validation.'],
+      ['Co-built ', 'metabase-mcp', ', a custom MCP server in TypeScript exposing 8 tools for schema and stored-procedure introspection, native SQL queries, and Metabase card writes — across separate credential boundaries for the agent, the database, and HTTPS. In use by two dev teams, the PM, and colleagues outside engineering.'],
+      ['Used those tools to generate a queryable, evidence-governed JSONL knowledge base mapping ', '544 stored procedures, 247 tables, and 3,670+ dependency relationships', ' — every answer ranked to a confidence level and checked against the live database. Troubleshooting went from days to minutes.'],
+      ['Leading a ', 'ground-up rebuild of the .NET ingestion service', ', replacing an unstable legacy implementation with a documented 3-phase ETL pipeline — client-validated intake, rule-based sanitation to target schema, automated ingestion — with business rules reverse-engineered from a manual process only one teammate could execute.'],
+      ['Delivered the company\'s ', 'first CI/CD pipelines', ' for two applications on distinct stacks (.NET 9/IIS and Django/Ubuntu on AWS), replacing manual releases with test-gated GitHub Actions deployment across 8 automated stages.'],
+      ['Built a ', 'NetSuite widget in vanilla JS', ' that cut Customer Success data-load times by ', '90%', ', scoping retrieval to recent call history.'],
+      ['Migrated the team off AWS CodeCommit (', '560+ branches, no strategy', ') to GitHub with standardized PR workflows and hands-on training; ran standups, JIRA, and sprint planning as team spokesperson.'],
     ],
   },
   {
     when: '2021 — 2025', co: 'General Electric → Accenture', meta: 'SWE Specialist · SSO Team',
-    title: 'Software Engineering Specialist — SSO Team',
-    sum: 'End-to-end SDLC for 14 mission-critical SSO APIs serving 80,000+ employees, contractors, and B2B customers across GE Corporate, Vernova, and Aerospace.',
+    title: 'Software Engineering Specialist / Security Specialist — SSO Team',
+    sum: 'End-to-end SDLC ownership of 14 mission-critical SSO APIs serving 80,000+ employees, contractors, and B2B customers across GE Corporate, GE Vernova, and GE Aerospace — through the GE/Accenture transition.',
     bullets: [
-      ['Architected and delivered ', '14 SSO APIs in 11 months', ', modernizing 15+ year legacy Java systems through simultaneous IdP, database, and codebase migrations.'],
-      ['Held ', '99% uptime', ' since launch and ran the entire enterprise SSO infrastructure ', 'solo for 10 months', ' through the GE/Accenture transition, without interruption.'],
-      ['Cut API latency from ', 'seconds to milliseconds', ' with GraphQL for large directory queries.'],
-      ['Implemented mTLS (OpenSSL · Terraform · Envoy) and migrated CI/CD from Jenkins to TeamCity across all three business units.'],
+      ['Architected and delivered ', '14 SSO APIs in 11 months', ', modernizing 15+ year legacy Java systems through simultaneous identity-provider, database, and codebase migrations.'],
+      ['Held ', '99% uptime', ' since production deployment, serving 80,000+ users across three business units during GE\'s historic corporate restructuring.'],
+      ['Ran the entire enterprise SSO infrastructure ', 'solo for 10 months', ' as the sole remaining developer through the transition — no service interruption — while running daily standups, sprint reviews, and quarterly retrospectives.'],
+      ['Cut API latency from ', 'seconds to milliseconds', ' with GraphQL for large dataset queries and directory operations.'],
+      ['Implemented ', 'mTLS', ' (OpenSSL · Terraform · Envoy) to secure internal API traffic, and migrated CI/CD from Jenkins to TeamCity with custom build scripts and templates for all three GE business units.'],
     ],
   },
   {
     when: '2021 — 2022', co: 'MAXX Potential', meta: 'Technology Apprentice',
     title: 'Technology Apprentice',
-    sum: 'Accelerated tech-apprenticeship program across the VA/NC region.',
+    sum: 'Accelerated career-development program providing technical support across the VA/NC region.',
     bullets: [
-      ['Completed a typically 1–3 year apprenticeship in ', '6 months', ', then placed on the GE assignment that became a full-time engineering role.'],
+      ['Placed on a paid client engagement within ', '2 months of hire', ' and converted to a full-time GE software-engineering role in ', '7 months', ' — against a typical 1–3 year apprenticeship track.'],
+      ['Ran a 2-week program of instruction and Q&A, onboarding a cohort of ', '12+ prospective apprentices', ' through MAXX Career Labs.'],
     ],
   },
   {
@@ -57,12 +60,14 @@ const TRAJ_ROLES = [
 ];
 
 const TRAJ_SKILLS = [
-  { k: 'AI-Assisted Development', v: 'Codex (CLI · VS Code · desktop) · Claude Code · Gemini CLI · MCP server integration · prompt engineering · multi-agent & persistent-memory agent architecture' },
-  { k: 'LLM Models & Tooling', v: 'Claude (Sonnet · Opus 4.x) · Gemini 2.5–3 · GPT-o4–5 · Llama 3–4 · DeepSeek R1 · Qwen2.5 · Gemma · Dolphin · Ollama · LM Studio' },
-  { k: 'Languages & Frameworks', v: 'Node.js · TypeScript · JavaScript · React · HTML/CSS · Python, FastAPI & Flask (earlier work) · C#, Django (exposure)' },
-  { k: 'Cloud & DevOps', v: 'AWS (ECS, EC2, CloudFormation, CloudWatch, Secrets Manager, SSM, RDS, S3, IAM) · Docker · Terraform · GitHub Actions · TeamCity · Jenkins · Git' },
-  { k: 'Data, APIs & Security', v: 'PostgreSQL · SQL Server · GraphQL · REST · Apigee · mTLS · OpenSSL · certificate management · SSO / IAM · enterprise authentication' },
-  { k: 'Delivery & Leadership', v: 'Agile / Scrum · SAFe (2023) · Kanban · Jira · Rally · standup facilitation · sprint reviews & retros · technical docs & runbooks · stakeholder demos' },
+  { k: 'AI-Assisted Development', v: 'Codex · Claude Code · Gemini CLI · Google Antigravity · MCP server integration · prompt engineering · agent architecture (persistent memory, multi-agent workflows) · agentic problem-solving patterns' },
+  { k: 'LLM Models & Hosting', v: 'Hands-on across Anthropic, OpenAI, and Google models plus open-weight (Llama · Qwen · DeepSeek) · local hosting via Ollama and LM Studio · provider-agnostic dispatch with fallback' },
+  { k: 'Languages & Frameworks', v: 'TypeScript · JavaScript · Node.js · Python · C#/.NET · React · HTML/CSS · Django · FastAPI · Flask · Playwright · Chrome Extensions (Manifest V3)' },
+  { k: 'Cloud & DevOps', v: 'GitHub Actions · AWS (ECS, EC2, CloudFormation, CloudWatch, Secrets Manager, SSM, RDS, S3, IAM) · Docker · Terraform · Jenkins · TeamCity · Git/GitHub' },
+  { k: 'Databases & APIs', v: 'SQL Server · SQLite · GraphQL · REST APIs · Apigee · EDI file processing and B-view mapping · PostgreSQL (working knowledge)' },
+  { k: 'Security', v: 'mTLS · OpenSSL · Envoy · certificate management · deploy keys · SSO / IAM systems · enterprise authentication architecture' },
+  { k: 'Delivery & Leadership', v: 'Agile · Scrum · Kanban · Jira · Rally · standup facilitation · sprint planning, reviews and retrospectives · end-to-end change management · stakeholder progress reporting' },
+  { k: 'Documentation', v: 'Technical SOPs · user guides · database architecture docs · data-flow diagrams · deployment runbooks · knowledge transfer out of zero-documentation environments' },
 ];
 
 function Trajectory() {
@@ -77,8 +82,8 @@ function Trajectory() {
         <h1 data-reveal>Five years from<br />bootcamp to <span className="a">production.</span></h1>
         <p className="lead" data-reveal>
           Enterprise authentication at scale, a current systems-developer role reviving undocumented
-          platforms, and an AI learning platform built on the side. The throughline is
-          <strong> systems that have to stay up</strong> — and the discipline to keep them there.
+          platforms with agent tooling, and an AI learning platform built on the side. The throughline
+          is <strong> systems that have to stay up</strong> — and the discipline to keep them there.
         </p>
         <div className="cd-cta" data-reveal>
           <a className="primary" href="docs/ali-tahir-resume.pdf" target="_blank" rel="noopener"><span>▶  Download résumé · PDF</span><span className="ar">→</span></a>
@@ -125,10 +130,9 @@ function Trajectory() {
         <span className="a">§ 03</span><span className="ln"></span><span className="end">credentials</span>
       </div>
       <div className="cd-params" data-reveal>
-        <div className="row"><span className="k">AWS Cloud Practitioner</span><span className="v">2023</span></div>
+        <div className="row"><span className="k">AWS Machine Learning Engineer</span><span className="v a">in progress</span></div>
         <div className="row"><span className="k">SAFe® Scrum Master</span><span className="v">2023</span></div>
-        <div className="row"><span className="k">Coding Dojo · Red Belt</span><span className="v">2021</span></div>
-        <div className="row"><span className="k">AWS Certified AI Practitioner</span><span className="v a">in progress</span></div>
+        <div className="row"><span className="k">AWS Cloud Practitioner</span><span className="v">2023</span></div>
         <div className="row"><span className="k">Full-Stack Bootcamp · Coding Dojo</span><span className="v">2021</span></div>
         <div className="row"><span className="k">B.S. Experimental Psychology · UTSA</span><span className="v">2018</span></div>
       </div>
