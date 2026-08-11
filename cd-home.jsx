@@ -51,10 +51,10 @@ function Home({ theme }) {
         <span className="end">2 routed</span>
       </div>
 
-      <article className="cd-ch" data-reveal>
+      <article className="cd-chan" data-reveal>
         <div className="id">CH-02<span className="of">routed · ground</span></div>
         <div>
-          <h3>Field Notes</h3>
+          <h3><a href="#/field-notes">Field Notes</a></h3>
           <p>
             Engineering lessons, AI, and the occasional love letter to the old software and hardware
             that made me a builder.
@@ -68,10 +68,10 @@ function Home({ theme }) {
         </div>
       </article>
 
-      <article className="cd-ch" data-reveal>
+      <article className="cd-chan" data-reveal>
         <div className="id">CH-03<span className="of">archive · stable</span></div>
         <div>
-          <h3>Earlier work</h3>
+          <h3><a href="#/trajectory">Earlier work</a></h3>
           <p>
             Enterprise authentication at scale before the AI shift — SSO services that tens of
             thousands of people depended on, and the unglamorous production plumbing that taught

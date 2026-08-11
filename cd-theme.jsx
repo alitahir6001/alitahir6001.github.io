@@ -174,6 +174,26 @@ function GlobalStyle() {
       .cd-ch .badge.warn { color: var(--accent-ink); border-color: var(--accent-ink); }
       .cd-ch a.read { color: var(--accent-ink); text-decoration: none; font-size: 11px; letter-spacing: .14em; text-transform: uppercase; }
 
+      /* home secondary channels — a row, not a card. Kept separate from .cd-ch:
+         the Projects grid owns that class and the two layouts are incompatible. */
+      /* bottom rule only — the section band above already draws the opening line.
+         (A :first-of-type top border would never match: .cd-console is the first article.) */
+      .cd-chan { padding: var(--sp-ch) 0; border-bottom: 1px solid var(--rule); display: grid; grid-template-columns: 150px 1fr 190px; gap: 40px; align-items: start; }
+      .cd-chan .id { color: var(--accent-ink); font-size: 11px; letter-spacing: .2em; text-transform: uppercase; }
+      .cd-chan .id .of { display: block; color: var(--paper-3); font-size: 10px; margin-top: 9px; letter-spacing: .1em; }
+      .cd-chan h3 { margin: 0 0 14px; color: var(--paper); font-weight: 500; font-size: 22px; letter-spacing: .005em; }
+      .cd-chan h3 a { color: inherit; text-decoration: none; }
+      .cd-chan h3 a:hover { color: var(--accent-ink); }
+      .cd-chan p { margin: 0 0 14px; color: var(--paper-2); font-size: 13.5px; max-width: 56ch; line-height: 1.75; }
+      .cd-chan .stack { color: var(--paper-3); font-size: 11px; }
+      .cd-chan .stack span + span::before { content: ' · '; margin: 0 2px; }
+      .cd-chan .right { text-align: right; font-size: 10.5px; letter-spacing: .14em; text-transform: uppercase; color: var(--paper-2); line-height: 2.2; }
+      .cd-chan .right .k { color: var(--paper-3); }
+      .cd-chan .right .v { color: var(--paper); }
+      .cd-chan .right .badge { display: inline-block; padding: 4px 12px; border: 1px solid var(--rule-2); margin-top: 14px; color: var(--paper-2); }
+      .cd-chan .right .badge.live { background: var(--accent); border-color: var(--accent); color: var(--paper); }
+      .cd-chan .right .badge.warn { color: var(--accent-ink); border-color: var(--accent-ink); }
+
       /* foot */
       .cd-foot { margin-top: var(--sp-section); padding: 26px 0 96px; border-top: 1px solid var(--rule-2); display: grid; grid-template-columns: auto 1fr auto; gap: 24px; align-items: baseline; color: var(--paper-3); font-size: 10.5px; letter-spacing: .2em; text-transform: uppercase; }
       .cd[data-frame="stamp"] .cd-foot { border-top: 4px double var(--paper-3); }
@@ -295,6 +315,8 @@ function GlobalStyle() {
         .cd-tele .cell + .cell { border-left: 0; }
         .cd-ch-grid { grid-template-columns: 1fr; }
         .cd-ch-art { height: 140px; }
+        .cd-chan { grid-template-columns: 1fr; gap: 16px; }
+        .cd-chan .right { text-align: left; }
         .cd-console h1 { font-size: 34px; }
         .cd-operator { padding: 88px 0 64px; }
         .cd-operator .stmt { font-size: 19px; }
