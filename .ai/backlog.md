@@ -1,6 +1,21 @@
 # Backlog — recent sessions (newest first)
 
-## Last session: 2026-08-10 (session 3)
+## Last session: 2026-08-10 (session 3, part 2)
+**Résumé sync + second launch (`82403f3`).** Ali supplied two résumés (a 2-page recruiter version
+and a 3-page all-projects version) and asked for three things: drop the "open to mid-level roles"
+line from the front page, add the résumé's projects to the Projects page, and make the 2-pager the
+downloadable artifact while rebuilding Trajectory from the 3-pager. All done. Availability now
+lives **only** on the Hire page — the status-bar pill is gated to it and reads `OPEN · AI
+ENGINEERING`, and Hire was reframed from mid-level SWE to AI engineering at Ali's direction, with
+an honest "applied AI, not research" section. Projects grew to 6 channels (added AI Agent Harness
+Extensions and the ZuneHD Metadata Updater). Cross-checking the site against both résumés surfaced
+five factual drifts, all fixed: MAXX 6→7 months, AWS Certified AI Practitioner→AWS Machine Learning
+Engineer, PP 2025→2024, home "Earlier work" 2021-2024/3yrs→2021-2025/4yrs, and a duplicate Coding
+Dojo credential row. That also closed both long-open user questions (job-apply stack; PP V1 date).
+**Gotcha worth keeping:** this machine has no `pdftotext`/`pypdf`/poppler, and PDFKit returns text
+character-reversed *and* line-order-reversed — decode before trusting it.
+
+## Last session: 2026-08-10 (session 3, part 1)
 **Launched the site.** Ali applied to a job listing pakfro.dev and needed it live immediately, so
 we took the shortest honest path: committed the finished ~06-24 work (Projects 2×2 grid, Oneness
 Suite, Trajectory merge) after `check-build-fresh.sh` passed, then fixed the launch-blocking header

@@ -26,9 +26,9 @@ Marks: `[ ]` not started · `[~]` in progress · `[x]` done · `[!]` blocked
    scripts) so cold sessions can carry the site forward. — agent
 9. `[x]` **Commit the finished ~2026-06-24 work** — Projects 2×2 card grid + `art` slot,
    CH-03 → Oneness Suite, Trajectory GE/Accenture role merge. Committed in `7824b97`.
-10. `[~]` **Page-by-page text review with Ali.** Done: Index, Field Notes, Projects.
-    Remaining: **Trajectory, About, Hire** — these are now LIVE and still unreviewed,
-    which makes this the top follow-up. — agent + user
+10. `[~]` **Page-by-page text review with Ali.** Done: Index, Field Notes, Projects,
+    Trajectory + Hire (both rebuilt from the résumés in launch 2). Remaining: **About**
+    — the only page never checked against a résumé. — agent + user
 11. `[!]` **PP card + detail page final pass — BLOCKED** until Ali runs the PP v2 pilot and
     can describe today's real behavior honestly. Resume after. — user (pilot), then agent
     - ⚠️ **This does NOT block launch.** The detail page was already de-bogused in session 1
@@ -41,8 +41,10 @@ Marks: `[ ]` not started · `[~]` in progress · `[x]` done · `[!]` blocked
     Permissions-Policy, robots `index,follow`, description, canonical, OG + Twitter tags
     all in `index.html`. Remaining: unpkg SRI or self-host React, full `/security-review`
     pass, drop the `frame-ancestors` directive (ignored in a `<meta>`). — agent
-13. `[ ]` Confirm job-apply card stack (now says Playwright · sqlite). — user
-14. `[ ]` **Decide PP V1 public date** — résumé says 2024, first commit is 2025-03. — user
+13. `[x]` Confirm job-apply card stack — résumé confirms Node · SQLite · Playwright ·
+    MV3 Chrome extension. Card rewritten with the real figures.
+14. `[x]` **PP V1 public date decided: 2024** — the 3-page résumé dates it 2024 – Present,
+    so the résumé wins over the 2025-03 first commit. Site updated.
 15. `[ ]` Content gaps (user): PP product screenshot (post-pilot), "Old is Gold" period images.
 
 ## 🚦 Launch gate — ✅ LAUNCHED 2026-08-10
@@ -56,9 +58,12 @@ Old splash preserved at tag `splash-archive` (`764493d`).
 Every future launch is the same command and still needs Ali to say so explicitly:
 `git checkout main && git reset --hard dev && git push --force origin main`
 
-Now-live-but-unfinished, in priority order: Trajectory / About / Hire never reviewed (step 10);
-job-apply stack claim unconfirmed (13); PP V1 date contradicts the résumé (14). All three are
-factual-accuracy items on a public hiring portfolio — fix them next, not eventually.
+**Second launch, same day — `82403f3`:** full résumé sync (see `handoff.md`). Steps 13 and 14 are
+now answered from the résumés, and Trajectory + Hire were rebuilt, so the accuracy debt from the
+first launch is largely paid. Rollback tag: `prelaunch-82403f3` (`7824b97`).
+
+Still live-but-unreviewed: **`cd-about.jsx`** (step 10) — the last page never checked against a
+résumé.
 
 ## Out of scope / blocked (for now)
 - **PP card + detail content** — parked pending Ali running the v2 pilot (don't write PP
