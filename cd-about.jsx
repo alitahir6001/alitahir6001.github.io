@@ -92,8 +92,8 @@ function About() {
           processes, not just hand you a list of topics.
         </p>
         <p>
-          It's for people like me: motivated mid-career professionals standing at the edge of a
-          change, paralyzed by the chaos of self-education. I'm building the structured,
+          It's for people like me: motivated service-industry workers standing mid-career at the
+          edge of a change, paralyzed by the chaos of self-education. I'm building the structured,
           confidence-building bridge to the other side — without the absurd time and cost it usually
           demands.
         </p>

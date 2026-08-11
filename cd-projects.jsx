@@ -6,8 +6,8 @@
 const PROJECT_CHANNELS = [
   {
     id: 'CH-01', of: '· flagship · pre-pilot', title: 'Pocket Professor',
-    body: 'A structured learning tool for career-changers. Adapts to how you think.',
-    stack: ['node · fastify · ts', 'react · vite · tailwind', 'postgres'],
+    body: 'An adaptive learning platform for service-industry workers (35+) changing careers — a domain informed by 15 years of personal industry experience. Three agents (onboarding, professor, career coach) build a plan and adapt it to real progress, under strict contracts with an append-only event store so every adaptation is reproducible.',
+    stack: ['node · fastify · ts', 'react · vite · tailwind', 'postgres · github actions'],
     badge: 'PRE-PILOT', badgeCls: 'warn',
     href: '#/pocket-professor',
     art: null,

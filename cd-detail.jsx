@@ -6,7 +6,7 @@
 function DetailTelemetry() {
   const cells = [
     { k: 'Mission Status', v: '● PRE-PILOT', a: true, sub: 'v1 retired for rebuild' },
-    { k: 'Stage', v: 'v2 · IN DESIGN', a: true, sub: 'curriculum engine' },
+    { k: 'Stage', v: 'v2 · HARDENING', a: true, sub: 'pre-pilot' },
     { k: 'Frontend', v: 'REACT · VITE', sub: 'tailwind' },
     { k: 'Backend', v: 'FASTIFY · TS', sub: 'node' },
     { k: 'Store', v: 'POSTGRES', sub: 'on railway (v1)' },
@@ -39,9 +39,10 @@ function Detail({ theme }) {
         <div className="k" data-reveal>— Channel CH-01 · Flagship · Pre-pilot</div>
         <div className="id" data-reveal>POCKET PROFESSOR<span className="a">.</span></div>
         <p className="stmt" data-reveal>
-          A structured learning platform for career-switchers — built for people leaving
-          high-attrition work. Three agents — <strong>onboarding, professor, and career
-          coach</strong> — shape your plan and adapt it as your real progress and setbacks change.
+          An adaptive learning platform for service-industry workers (35+) changing careers — a
+          domain informed by 15 years of personal industry experience. Three agents —
+          <strong> onboarding, professor, and career coach</strong> — shape your plan and adapt it
+          as your real progress and setbacks change.
         </p>
       </section>
 
@@ -72,11 +73,13 @@ function Detail({ theme }) {
           stall or want to pivot toward a different career.
         </p>
         <p>
-          The core is a <span className="a">deterministic adaptation engine</span> — given the same
-          inputs it always reaches the same decision, and every adjustment is written to an audit
-          record. Structural changes to a plan are transactional and <strong>fail closed</strong>:
-          if a change can't be applied safely, it isn't applied at all. The agents run against
-          strict schema contracts, so malformed output is rejected rather than shown to a learner.
+          V2 is a <span className="a">deterministic multi-agent rebuild</span> — given the same
+          inputs it always reaches the same decision, and every adjustment lands in an
+          <strong> append-only event store</strong>, so plan adaptation stays reproducible and can be
+          replayed rather than guessed at. Structural changes are transactional and
+          <strong> fail closed</strong>: if a change can't be applied safely, it isn't applied at
+          all. The agents run under strict contracts with schema validation and policy-gated output,
+          so malformed output is rejected rather than shown to a learner.
         </p>
       </div>
 
@@ -109,8 +112,8 @@ function Detail({ theme }) {
         <div className="step" data-reveal>
           <div className="n">04</div>
           <div>
-            <h4>Audit</h4>
-            <p>Every adjustment is deterministic and written to an audit record, so the plan evolves safely and you can always see why it changed.</p>
+            <h4>Record</h4>
+            <p>Every adjustment is deterministic and appended to an event store that is never rewritten, so the plan evolves safely and you can always replay why it changed.</p>
           </div>
         </div>
       </div>
@@ -123,10 +126,11 @@ function Detail({ theme }) {
         <div className="row"><span className="k">Frontend</span><span className="v">React · Vite · Tailwind</span></div>
         <div className="row"><span className="k">Backend</span><span className="v">Node · Fastify · TypeScript</span></div>
         <div className="row"><span className="k">Model layer</span><span className="v a">Gemini → OpenAI → Claude</span></div>
-        <div className="row"><span className="k">Store</span><span className="v">PostgreSQL</span></div>
+        <div className="row"><span className="k">Store</span><span className="v">PostgreSQL <span className="a">· append-only event store</span></span></div>
+        <div className="row"><span className="k">CI</span><span className="v">GitHub Actions</span></div>
         <div className="row"><span className="k">Host</span><span className="v">Railway <span className="a">· v1 offline</span></span></div>
         <div className="row"><span className="k">Crew</span><span className="v">Solo build</span></div>
-        <div className="row"><span className="k">Stage</span><span className="v a">Pre-pilot · v2 in design</span></div>
+        <div className="row"><span className="k">Stage</span><span className="v a">Pre-pilot hardening · v2</span></div>
       </div>
 
       {/* Build log */}

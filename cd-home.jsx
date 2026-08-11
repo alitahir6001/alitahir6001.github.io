@@ -30,10 +30,12 @@ function Home({ theme }) {
           <div className="chid">CH-01 <span className="a">·</span> FLAGSHIP <span className="a">·</span> PRE-PILOT</div>
           <h1>Pocket Professor</h1>
           <p className="sub">
-            A guided learning platform for self-taught learners — the structure of college or a
-            bootcamp without the cost. An onboarding counselor, an instructor's guidance, and a
-            career coach that connects what you learn to real jobs. Built for people in
-            high-attrition industries who want out but are short on time, money, or both.
+            An adaptive learning platform for service-industry workers changing careers — the
+            structure of college or a bootcamp without the cost. Three agents — an
+            <strong> onboarding</strong> agent, a <strong>professor</strong>, and a
+            <strong> career coach</strong> — build a plan and adapt it to real progress and
+            setbacks. Built for people in high-attrition work who want out but are short on
+            time, money, or both.
           </p>
         </div>
 
