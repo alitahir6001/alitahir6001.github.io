@@ -1,7 +1,7 @@
 # Handoff — Live State
 
 ## Last Updated
-2026-08-11 · session 3 (four launches)
+2026-08-11 · session 3 (five launches)
 
 ## Current State
 **🚀 THE SITE IS LAUNCHED**, and has since been launched a second time with a full résumé sync.
@@ -10,13 +10,13 @@ pakfro.dev serves it. Both launches were at Ali's explicit request (he applied t
 the site). Verified live after each: Pages build `built`, assets 200 from pakfro.dev, pages render
 with theme and fonts intact, **zero console errors**.
 
-`main` and `dev` are currently **identical** at `cabd3a1`. Continue editing on `dev`; each future
+`main` and `dev` are currently **identical** at `5e9c032`. Continue editing on `dev`; each future
 launch is another `git checkout main && git reset --hard dev && git push --force origin main`.
 
-Recovery tags on origin, newest first: **`prelaunch-cabd3a1`** (`129adbe`, before the home layout
-fix) · **`prelaunch-129adbe`** (`82403f3`, before the PP consistency pass) ·
-**`prelaunch-82403f3`** (`7824b97`, before the résumé sync) · **`splash-archive`** (`764493d`,
-the old under-construction splash).
+Recovery tags on origin, newest first: **`prelaunch-5e9c032`** (`cabd3a1`, before hiding Field
+Notes) · **`prelaunch-cabd3a1`** (`129adbe`, before the home layout fix) · **`prelaunch-129adbe`**
+(`82403f3`, before the PP consistency pass) · **`prelaunch-82403f3`** (`7824b97`, before the résumé
+sync) · **`splash-archive`** (`764493d`, the old under-construction splash).
 
 ⚠️ **Verifying a launch in the browser is misleading** — the Browser pane serves cached
 `build/*.js` and will happily show you the *previous* version of a page minutes after a successful
@@ -85,6 +85,18 @@ instructor's guidance"; they are onboarding / professor / career coach everywher
 - **Channel headings are now links** — "Field Notes" → `#/field-notes`, "Earlier work" →
   `#/trajectory`. Only the small "open log →" links were clickable before.
 
+**Launch 5 — `5e9c032`, Field Notes hidden:**
+Ali's call — one published post plus unfinished drafts isn't enough to carry the channel, and he
+doesn't want to rush them. **Nothing was deleted.** `cd-fieldnotes.jsx` still builds and still
+loads from `index.html`; everything is gated on one flag, `SHOW_FIELD_NOTES` in `cd-theme.jsx`
+(~line 341). Gates three things: the `CD_NAV` entry, the home CH-02 channel (with "Earlier work"
+taking CH-02 and the band count following, 2 routed → 1 routed), and the `#/field-notes` route —
+an old link now falls through to Home rather than showing a half-live page. **Verified both
+directions before committing**: flipping to `true` + `npm run build` restores nav, both channels
+with correct numbering, and "2 routed".
+⚠️ The one live post ("Old is Gold") is now unreachable. `sitemap.xml` lists only the root so
+nothing points at it, but if the URL was ever indexed it silently lands on Home instead of 404ing.
+
 ## Open Threads
 - **`cd-about.jsx` is still the last page never reviewed end-to-end.** Launch 3 touched only its
   §03 audience line; the rest (§01 bio, §02 blockquote, §04 prior life) has never been checked
@@ -103,6 +115,9 @@ instructor's guidance"; they are onboarding / professor / career coach everywher
   CH-01 card, detail page, `TRAJ_ROLES`, and About §03.
 - **The Hire page is now the ONLY place availability is stated.** If Ali's target role changes
   again, both `cd-hire.jsx` and the pill string in `cd-theme.jsx`'s StatusBar need updating.
+- **To bring Field Notes back:** flip `SHOW_FIELD_NOTES` to `true` in `cd-theme.jsx`,
+  `npm run build`, commit both the `.jsx` and `build/*.js`. That is the whole job — no markup to
+  restore. Ali will do this once he has finished more posts (he has drafts, deliberately unrushed).
 - **`.cd-ch` vs `.cd-chan` — do not merge them.** `.cd-ch` = Projects grid card (flex column,
   padding in `.cd-ch-body`). `.cd-chan` = home secondary-channel row (3-col grid, own padding).
   They share a visual language but not a DOM shape; collapsing them is what caused the regression.
