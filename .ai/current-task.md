@@ -24,11 +24,11 @@ Marks: `[ ]` not started · `[~]` in progress · `[x]` done · `[!]` blocked
 7. `[x]` Blog: in-app reader built; "Old is Gold" live; wider reading column. — agent
 8. `[x]` Project skill library at `.claude/skills/` (5 skills + 2 verified diagnostic
    scripts) so cold sessions can carry the site forward. — agent
-9. `[~]` **Commit the finished ~2026-06-24 work** — Projects 2×2 card grid + `art` slot,
-   CH-03 → Oneness Suite, Trajectory GE/Accenture role merge. Build output verified in
-   sync; just needs committing. — agent
+9. `[x]` **Commit the finished ~2026-06-24 work** — Projects 2×2 card grid + `art` slot,
+   CH-03 → Oneness Suite, Trajectory GE/Accenture role merge. Committed in `7824b97`.
 10. `[~]` **Page-by-page text review with Ali.** Done: Index, Field Notes, Projects.
-    Remaining unblocked: **Trajectory, About, Hire**. — agent + user
+    Remaining: **Trajectory, About, Hire** — these are now LIVE and still unreviewed,
+    which makes this the top follow-up. — agent + user
 11. `[!]` **PP card + detail page final pass — BLOCKED** until Ali runs the PP v2 pilot and
     can describe today's real behavior honestly. Resume after. — user (pilot), then agent
     - ⚠️ **This does NOT block launch.** The detail page was already de-bogused in session 1
@@ -37,29 +37,28 @@ Marks: `[ ]` not started · `[~]` in progress · `[x]` done · `[!]` blocked
       behavior from assumptions" — not "this page is false." Launching with the current
       honest PRE-PILOT framing and refining after the pilot is a legitimate option, and is
       the recommended one given `main` is currently a splash converting nobody.
-12. `[ ]` Security audit. First concrete task: `dev`'s `index.html` has only `charset` +
-    `viewport`, while `main`'s splash carries CSP/referrer/permissions/robots/description —
-    **launching as-is regresses security headers.** Then: description + OG tags, unpkg SRI
-    or self-host, full `/security-review` pass. — agent
+12. `[~]` Security audit. Header regression **fixed** in `7824b97` — CSP, referrer,
+    Permissions-Policy, robots `index,follow`, description, canonical, OG + Twitter tags
+    all in `index.html`. Remaining: unpkg SRI or self-host React, full `/security-review`
+    pass, drop the `frame-ancestors` directive (ignored in a `<meta>`). — agent
 13. `[ ]` Confirm job-apply card stack (now says Playwright · sqlite). — user
 14. `[ ]` **Decide PP V1 public date** — résumé says 2024, first commit is 2025-03. — user
 15. `[ ]` Content gaps (user): PP product screenshot (post-pilot), "Old is Gold" period images.
 
-## 🚦 Launch gate
-Launch = `git checkout main && git reset --hard dev && git push --force origin main`
-**(Ali must explicitly say "launch" — never run this otherwise.)**
+## 🚦 Launch gate — ✅ LAUNCHED 2026-08-10
+`main` was reset to `dev` @ `7824b97` and force-pushed; pakfro.dev serves the full site.
+Ali called it: he had applied to a job listing the site and needed it live in whatever state
+it was in. Step 9 was committed and step 12's header regression fixed first; steps 10, 13, 14
+were **knowingly shipped incomplete**.
 
-Must ALL be true first — these are the only true blockers:
-- `[~]` Step 9 committed.
-- `[~]` Step 10 done: Trajectory / About / Hire reviewed with Ali.
-- `[ ]` Step 12's **header regression fixed** (meta/CSP block ported from `main` + description
-  and OG tags). The rest of the security audit can follow post-launch.
-- `[ ]` Steps 13 + 14 answered — both are one-minute user decisions, both are factual claims
-  on a hiring site.
+Old splash preserved at tag `splash-archive` (`764493d`).
 
-Explicitly NOT gating launch: step 11 (see the note above), unpkg SRI, `/security-review`
-full pass, stale `README.md`/`SECURITY.md` (repo docs, invisible to visitors), PP screenshot,
-"Old is Gold" images, a11y + mobile audit.
+Every future launch is the same command and still needs Ali to say so explicitly:
+`git checkout main && git reset --hard dev && git push --force origin main`
+
+Now-live-but-unfinished, in priority order: Trajectory / About / Hire never reviewed (step 10);
+job-apply stack claim unconfirmed (13); PP V1 date contradicts the résumé (14). All three are
+factual-accuracy items on a public hiring portfolio — fix them next, not eventually.
 
 ## Out of scope / blocked (for now)
 - **PP card + detail content** — parked pending Ali running the v2 pilot (don't write PP

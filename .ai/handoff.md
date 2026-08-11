@@ -1,57 +1,56 @@
 # Handoff — Live State
 
 ## Last Updated
-2026-07-07 · session 2
+2026-08-10 · session 3
 
 ## Current State
-Working on branch **`dev`** (full WIP site; never deploys). **`main`** = under-construction
-splash, which is what GitHub Pages serves at pakfro.dev. Hash-routed React SPA: edit `cd-*.jsx`,
-`npm run build` (esbuild → `build/*.js`, committed because Pages has no build step).
+**🚀 THE SITE IS LAUNCHED.** `main` no longer holds the under-construction splash — it now holds
+the full Console Dossier site, and pakfro.dev serves it. Launch was done at Ali's explicit request
+(he applied to a job and listed the site, needed it live immediately). Verified live: Pages build
+`built`, `index.html` + `build/cd-app.js` both 200 from pakfro.dev, home page renders with theme
+and fonts intact, no blocking console errors.
 
-Session 2 did **no site-content work** — it built a project skill library at `.claude/skills/`
-(5 skills) so future cold sessions and smaller models can carry the site forward without
-re-deriving context. Site content is unchanged from where session 1 left it, **plus** a batch of
-finished-but-uncommitted work from ~2026-06-24 that was never logged (Ali confirms it is done, not
-WIP): the Projects page moved to a 2×2 card grid with an `art` image slot, CH-03 became **Oneness
-Suite** (was intake-assistant), copy was tightened across all four channels, and Trajectory merged
-the two GE/Accenture entries into one **2021 — 2025 "General Electric → Accenture"** role.
-Verified this session: the committed `build/*.js` is **byte-identical** to a fresh esbuild run, so
-the tree is genuinely in sync — that work is ready to commit as-is.
+`main` and `dev` are currently **identical** at `7824b97`. Continue editing on `dev`; each future
+launch is another `git checkout main && git reset --hard dev && git push --force origin main`.
+The old splash is preserved at tag **`splash-archive`** (`764493d`), pushed to origin, in case it
+is ever needed again.
 
-## Changed Files (session 2)
-- **New:** `.claude/skills/` — `pakfro-site-change-control`, `console-dossier-content-reference`,
-  `pakfro-site-architecture-contract`, `pakfro-site-runbook` (+ `scripts/check-build-fresh.sh`,
-  `scripts/check-wiring.sh`), `pakfro-site-research-frontier`.
-- **Modified:** `.ai/*` (this update). No `.jsx`, no `build/`, no site files touched.
-- **Still uncommitted from ~06-24:** `cd-projects.jsx`, `cd-theme.jsx`, `cd-trajectory.jsx` +
-  their three `build/*.js`, and the `.ai/backlog.md` linktree idea.
+## Changed Files (session 3)
+- **`index.html`** — ported `main`'s security block into `dev` (CSP, referrer, Permissions-Policy),
+  widened CSP for the unpkg React UMD (`script-src 'self' https://unpkg.com`) and cd-theme's
+  injected `<style>` (`style-src 'unsafe-inline'`); set `robots` to **index, follow** (was absent;
+  splash had noindex); added description, canonical, OG, and Twitter tags.
+- **Committed the ~06-24 backlog** — `cd-projects.jsx`, `cd-theme.jsx`, `cd-trajectory.jsx` + their
+  three `build/*.js` (Projects 2×2 grid + `art` slot, CH-03 → Oneness Suite, Trajectory GE/Accenture
+  merge). `check-build-fresh.sh` passed before the commit.
+- **`.claude/skills/`** — session 2's skill library, now tracked. `.claude/settings.local.json`
+  added to `.gitignore`.
+- Commit `7824b97` on `dev`, pushed; `main` force-updated to it.
 
 ## Open Threads
-- **Launching `dev` as-is would REGRESS security headers.** `dev`'s `index.html` has only
-  `charset` + `viewport`; the `main` splash carries CSP, referrer, permissions, robots, and a
-  description. `dev` also has **no** description/OG/Twitter/JSON-LD at all. Must be fixed as part
-  of the security audit, before launch.
-- **PP card + detail final content — still BLOCKED** on Ali running the v2 pilot. *Refinement
-  only; not a launch gate — the page is accurate today.* (PP FIG.01
-  screenshot pending; PP V1 date still unresolved — first commit 2025-03 vs résumé's "2024".)
-- **PP is described in four places** (home hero, CH-01 card, detail, `TRAJ_ROLES`) with drifting
-  framings. Reconcile all four in one pass when the park lifts.
-- job-apply card now names Playwright + sqlite (was generic "browser automation") — Ali to confirm.
-- Security audit not started. `SECURITY.md` still references deleted demo/form files;
-  `README.md` still says the site is disabled; `PRODUCTION-BUILD.md` partly stale.
-- Two design questions parked in `pakfro-site-research-frontier`: the analytics privacy bar (F2)
-  and markdown-vs-structured-body for Field Notes (F4).
+- **Cosmetic:** console logs `CSP directive 'frame-ancestors' is ignored when delivered via a
+  <meta> element` — true and harmless (it was inherited from the splash, which had the same line).
+  `frame-ancestors` only works as a real HTTP header, which GitHub Pages can't set. Either drop the
+  directive from the meta tag or accept the notice. 2-minute fix, next launch.
+- **Trajectory / About / Hire never got the page-by-page review with Ali** — they are LIVE now,
+  unreviewed. Highest-value follow-up: read those three pages as a stranger would.
+- **Two factual items still unanswered and now public:** job-apply card claims Playwright · sqlite
+  (Ali to confirm); PP V1 public date says résumé's 2024 while the first commit is 2025-03.
+- **PP card + detail — still parked** pending Ali's v2 pilot. Accurate and PRE-PILOT-labeled today,
+  so being live is fine; refine after the pilot. PP is described in four places (home hero, CH-01,
+  detail, `TRAJ_ROLES`) with drifting framings — reconcile all four in one pass when the park lifts.
+- Rest of the security audit still open: unpkg SRI or self-hosting React, full `/security-review`.
+- `SECURITY.md` references deleted demo/form files; `README.md` still says the site is disabled;
+  `PRODUCTION-BUILD.md` partly stale. Repo docs, invisible to visitors, but now the repo is the
+  thing a hiring manager might click through to.
+- No OG image exists (`images/` has only the PP code snapshot and a personal photo), so shared
+  links render a text-only preview card.
+- Two design questions parked in `pakfro-site-research-frontier`: analytics privacy bar (F2),
+  markdown-vs-structured body for Field Notes (F4).
 
 ## Next Recommended Step
-Shortest path to live — see the **🚦 Launch gate** in `current-task.md` for the full list:
-1. **Commit the ~06-24 work** (Projects grid + Oneness Suite + Trajectory merge) — it is finished
-   and its build output is verified in sync. — agent
-2. **Fix the header regression**: port `main`'s meta/CSP block into `dev`'s `index.html`, add
-   description + OG tags. — agent
-3. **Review Trajectory / About / Hire** with Ali (one sitting). — agent + user
-4. Ali answers two one-minute factual questions: job-apply stack (Playwright · sqlite?) and the
-   PP V1 public date (2024 vs 2025-03).
-
-**The PP v2 pilot does NOT gate launch** — the detail page is already accurate and PRE-PILOT
-labeled; refining it post-pilot is the recommended sequence. Resume the PP *refinement* only
-after Ali runs the pilot.
+The site is up, so everything below is improvement, not unblocking:
+1. **Review Trajectory / About / Hire with Ali** — live and unreviewed. — agent + user
+2. Ali answers the two factual questions (job-apply stack; PP V1 date) and we correct in place.
+3. Drop `frame-ancestors` from the meta CSP; consider an OG image.
+4. Resume the security audit (unpkg SRI, `/security-review`), then the stale repo docs.

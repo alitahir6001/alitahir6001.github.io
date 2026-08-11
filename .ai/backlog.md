@@ -1,5 +1,17 @@
 # Backlog — recent sessions (newest first)
 
+## Last session: 2026-08-10 (session 3)
+**Launched the site.** Ali applied to a job listing pakfro.dev and needed it live immediately, so
+we took the shortest honest path: committed the finished ~06-24 work (Projects 2×2 grid, Oneness
+Suite, Trajectory merge) after `check-build-fresh.sh` passed, then fixed the launch-blocking header
+regression — ported `main`'s CSP/referrer/Permissions-Policy into `dev`, widened CSP for the unpkg
+React UMD and cd-theme's injected `<style>`, set `robots` to index,follow, and added description /
+canonical / OG / Twitter tags. Verified the new CSP locally (no console errors, theme and fonts
+intact) before pushing. Tagged the old splash `splash-archive` (`764493d`), reset `main` to `dev`
+@ `7824b97`, force-pushed, and confirmed live. Shipped knowingly incomplete: Trajectory / About /
+Hire were never reviewed with Ali, and the job-apply stack claim and PP V1 date are still
+unconfirmed — those are the top follow-ups.
+
 ## Last session: 2026-07-07 (session 2)
 Built a project skill library at `.claude/skills/` — 5 skills (change-control, content
 reference, architecture contract, runbook, research frontier) plus two read-only diagnostic
