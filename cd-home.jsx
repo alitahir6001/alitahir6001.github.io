@@ -48,28 +48,30 @@ function Home({ theme }) {
       <div className="cd-band" data-reveal>
         <span className="a">SECONDARY CHANNELS</span>
         <span className="ln"></span>
-        <span className="end">2 routed</span>
+        <span className="end">{SHOW_FIELD_NOTES ? '2 routed' : '1 routed'}</span>
       </div>
 
-      <article className="cd-chan" data-reveal>
-        <div className="id">CH-02<span className="of">routed · ground</span></div>
-        <div>
-          <h3><a href="#/field-notes">Field Notes</a></h3>
-          <p>
-            Engineering lessons, AI, and the occasional love letter to the old software and hardware
-            that made me a builder.
-          </p>
-          <p className="stack"><span>essays</span><span>01 published</span><span><a href="#/field-notes" style={{color:'var(--accent-ink)',textDecoration:'none'}}>open log →</a></span></p>
-        </div>
-        <div className="right">
-          <div><span className="k">POSTS</span><span className="v"> · 01</span></div>
-          <div><span className="k">LATEST</span><span className="v"> · 2026.06</span></div>
-          <div className="badge">WRITING</div>
-        </div>
-      </article>
+      {SHOW_FIELD_NOTES && (
+        <article className="cd-chan" data-reveal>
+          <div className="id">CH-02<span className="of">routed · ground</span></div>
+          <div>
+            <h3><a href="#/field-notes">Field Notes</a></h3>
+            <p>
+              Engineering lessons, AI, and the occasional love letter to the old software and hardware
+              that made me a builder.
+            </p>
+            <p className="stack"><span>essays</span><span>01 published</span><span><a href="#/field-notes" style={{color:'var(--accent-ink)',textDecoration:'none'}}>open log →</a></span></p>
+          </div>
+          <div className="right">
+            <div><span className="k">POSTS</span><span className="v"> · 01</span></div>
+            <div><span className="k">LATEST</span><span className="v"> · 2026.06</span></div>
+            <div className="badge">WRITING</div>
+          </div>
+        </article>
+      )}
 
       <article className="cd-chan" data-reveal>
-        <div className="id">CH-03<span className="of">archive · stable</span></div>
+        <div className="id">{SHOW_FIELD_NOTES ? 'CH-03' : 'CH-02'}<span className="of">archive · stable</span></div>
         <div>
           <h3><a href="#/trajectory">Earlier work</a></h3>
           <p>

@@ -335,14 +335,19 @@ function GlobalStyle() {
   );
 }
 
+// Field Notes is hidden until there is more than one post. Flip to true to bring
+// back the nav entry, the home channel, and the #/field-notes route in one move —
+// cd-fieldnotes.jsx stays built and loaded, nothing else needs touching.
+const SHOW_FIELD_NOTES = false;
+
 const CD_NAV = [
   { key: 'index', label: 'Index', href: '#/' },
   { key: 'projects', label: 'Projects', href: '#/projects' },
-  { key: 'notes', label: 'Field Notes', href: '#/field-notes' },
+  { key: 'notes', label: 'Field Notes', href: '#/field-notes', gated: !SHOW_FIELD_NOTES },
   { key: 'trajectory', label: 'Trajectory', href: '#/trajectory' },
   { key: 'about', label: 'About', href: '#/about' },
   { key: 'hire', label: 'AOI / Hire', href: '#/hire' },
-];
+].filter((n) => !n.gated);
 
 // Live clock — UTC on top, the viewer's local time (with timezone) right below.
 function StatusClock() {

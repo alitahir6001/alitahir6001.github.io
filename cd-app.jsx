@@ -38,7 +38,7 @@ function App() {
   let Page = Home;
   if (route.indexOf('pocket-professor') !== -1) Page = Detail;
   else if (route.indexOf('projects') !== -1) Page = Projects;
-  else if (route.indexOf('field-notes') !== -1) Page = FieldNotes;
+  else if (SHOW_FIELD_NOTES && route.indexOf('field-notes') !== -1) Page = FieldNotes;
   else if (route.indexOf('trajectory') !== -1) Page = Trajectory;
   else if (route.indexOf('about') !== -1) Page = About;
   else if (route.indexOf('hire') !== -1) Page = Hire;
