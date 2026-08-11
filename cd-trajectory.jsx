@@ -6,7 +6,7 @@ const TRAJ_ROLES = [
   {
     when: '2024 — NOW', co: 'Personal project', meta: 'Founder · solo',
     title: 'Pocket Professor — adaptive learning platform',
-    sum: 'An adaptive learning platform for service-industry workers (35+) changing careers — a domain informed by 15 years of personal industry experience. Built solo alongside my day job on TypeScript, Node.js, Postgres, and GitHub Actions.',
+    sum: 'An adaptive learning platform for motivated autodidacts who want to change careers — a problem informed by 15 years of my own service-industry work. Built solo alongside my day job on TypeScript, Node.js, Postgres, and GitHub Actions.',
     bullets: [
       ['V2 is a ', 'deterministic multi-agent rebuild', ' — onboarding, professor, and career-coach agents under strict agent contracts, with schema validation and policy-gated output.'],
       ['An ', 'append-only event store', ' keeps plan adaptation reproducible, so a learner\'s plan can be replayed and explained rather than guessed at.'],

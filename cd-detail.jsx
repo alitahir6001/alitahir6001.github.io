@@ -39,8 +39,8 @@ function Detail({ theme }) {
         <div className="k" data-reveal>— Channel CH-01 · Flagship · Pre-pilot</div>
         <div className="id" data-reveal>POCKET PROFESSOR<span className="a">.</span></div>
         <p className="stmt" data-reveal>
-          An adaptive learning platform for service-industry workers (35+) changing careers — a
-          domain informed by 15 years of personal industry experience. Three agents —
+          An adaptive learning platform for motivated autodidacts who want to change careers — a
+          problem informed by 15 years of my own service-industry work. Three agents —
           <strong> onboarding, professor, and career coach</strong> — shape your plan and adapt it
           as your real progress and setbacks change.
         </p>

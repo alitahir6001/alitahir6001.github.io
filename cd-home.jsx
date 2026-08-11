@@ -30,8 +30,8 @@ function Home({ theme }) {
           <div className="chid">CH-01 <span className="a">·</span> FLAGSHIP <span className="a">·</span> PRE-PILOT</div>
           <h1>Pocket Professor</h1>
           <p className="sub">
-            An adaptive learning platform for service-industry workers changing careers — the
-            structure of college or a bootcamp without the cost. Three agents — an
+            An adaptive learning platform for motivated autodidacts who want to change careers —
+            the structure of college or a bootcamp without the cost. Three agents — an
             <strong> onboarding</strong> agent, a <strong>professor</strong>, and a
             <strong> career coach</strong> — build a plan and adapt it to real progress and
             setbacks. Built for people in high-attrition work who want out but are short on
