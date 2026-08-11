@@ -1,7 +1,7 @@
 # Handoff — Live State
 
 ## Last Updated
-2026-08-11 · session 3 (three launches)
+2026-08-11 · session 3 (four launches)
 
 ## Current State
 **🚀 THE SITE IS LAUNCHED**, and has since been launched a second time with a full résumé sync.
@@ -10,12 +10,13 @@ pakfro.dev serves it. Both launches were at Ali's explicit request (he applied t
 the site). Verified live after each: Pages build `built`, assets 200 from pakfro.dev, pages render
 with theme and fonts intact, **zero console errors**.
 
-`main` and `dev` are currently **identical** at `129adbe`. Continue editing on `dev`; each future
+`main` and `dev` are currently **identical** at `cabd3a1`. Continue editing on `dev`; each future
 launch is another `git checkout main && git reset --hard dev && git push --force origin main`.
 
-Recovery tags on origin, newest first: **`prelaunch-129adbe`** (`82403f3`, before the PP
-consistency pass) · **`prelaunch-82403f3`** (`7824b97`, before the résumé sync) ·
-**`splash-archive`** (`764493d`, the old under-construction splash).
+Recovery tags on origin, newest first: **`prelaunch-cabd3a1`** (`129adbe`, before the home layout
+fix) · **`prelaunch-129adbe`** (`82403f3`, before the PP consistency pass) ·
+**`prelaunch-82403f3`** (`7824b97`, before the résumé sync) · **`splash-archive`** (`764493d`,
+the old under-construction splash).
 
 ⚠️ **Verifying a launch in the browser is misleading** — the Browser pane serves cached
 `build/*.js` and will happily show you the *previous* version of a page minutes after a successful
@@ -68,6 +69,22 @@ instructor's guidance"; they are onboarding / professor / career coach everywher
 - **`cd-home.jsx`**, **`cd-projects.jsx`** (CH-01 body + `github actions` stack chip),
   **`cd-about.jsx`** (§03 audience line).
 
+**Launch 4 — `cabd3a1`, audience rewording + a shipped CSS regression:**
+- **PP audience is now "motivated autodidacts who want to change careers"** on all five surfaces
+  (Ali's wording, `e822796`). Two knock-ons: dropped "(35+)", and "a domain informed by 15 years of
+  personal industry experience" became "a problem informed by 15 years of my own service-industry
+  work" — the old phrasing made the service industry *the domain*, which stops following once the
+  audience is autodidacts generally. ⚠️ **This now DIVERGES from the résumé**, which still says
+  "service-industry workers (35+) changing careers". Ali's call, made knowingly.
+- **Fixed a layout regression this session shipped in `7824b97`.** The ~06-24 Projects work
+  redefined `.cd-ch` as a flex card for the 2×2 grid and moved padding into `.cd-ch-body`. The home
+  page's secondary channels use `.cd-ch` with a *different* DOM shape (id | body | right, no body
+  wrapper), so they lost their 3-column grid, 60px block padding, and separator rules — rendering
+  cramped on the live site until Ali spotted it. Restored as **`.cd-chan`** (own class, can't
+  collide with the grid again). Verified live at 1280px: `150px 468px 190px`, `60px 0`, gap 40.
+- **Channel headings are now links** — "Field Notes" → `#/field-notes`, "Earlier work" →
+  `#/trajectory`. Only the small "open log →" links were clickable before.
+
 ## Open Threads
 - **`cd-about.jsx` is still the last page never reviewed end-to-end.** Launch 3 touched only its
   §03 audience line; the rest (§01 bio, §02 blockquote, §04 prior life) has never been checked
@@ -86,6 +103,11 @@ instructor's guidance"; they are onboarding / professor / career coach everywher
   CH-01 card, detail page, `TRAJ_ROLES`, and About §03.
 - **The Hire page is now the ONLY place availability is stated.** If Ali's target role changes
   again, both `cd-hire.jsx` and the pill string in `cd-theme.jsx`'s StatusBar need updating.
+- **`.cd-ch` vs `.cd-chan` — do not merge them.** `.cd-ch` = Projects grid card (flex column,
+  padding in `.cd-ch-body`). `.cd-chan` = home secondary-channel row (3-col grid, own padding).
+  They share a visual language but not a DOM shape; collapsing them is what caused the regression.
+- **The PP audience line now disagrees with the résumé on purpose** (see launch 4). If Ali updates
+  the résumé to match, re-sync all five surfaces *and* `docs/ali-tahir-resume.pdf`.
 - **The two source résumés live outside this repo** (`~/Desktop/projects/job-apply/data/…`) and the
   2-pager is the one committed to `docs/`. If Ali edits a résumé, the site does not follow
   automatically — re-run the sync.

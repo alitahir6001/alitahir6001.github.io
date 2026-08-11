@@ -1,5 +1,19 @@
 # Backlog — recent sessions (newest first)
 
+## Last session: 2026-08-11 (session 3, part 4)
+**Audience reword + a shipped CSS regression caught by Ali (`cabd3a1`, fourth launch).** Ali
+changed the PP audience to "motivated autodidacts who want to change careers"; applied to all five
+surfaces, which forced dropping "(35+)" and rewording the "15 years of personal industry
+experience" clause. This **knowingly diverges from the résumé** — noted in handoff. Then Ali
+reported cramped spacing on the home page's secondary channels: it was a regression *this session
+launched*. The ~06-24 Projects work had redefined `.cd-ch` as a flex grid card with padding in
+`.cd-ch-body`; the home rows use `.cd-ch` with a different DOM shape and silently lost their
+3-column grid, padding, and rules. Restored as a separate `.cd-chan` class so the two layouts can
+never collide again, and made the channel headings actual links (Field Notes → #/field-notes,
+Earlier work → #/trajectory) — previously only the tiny "open log →" link worked.
+**Lesson:** reusing a class for two different DOM shapes is how a redesign silently breaks another
+page; the Projects grid work was verified on the Projects page only.
+
 ## Last session: 2026-08-11 (session 3, part 3)
 **Pocket Professor consistency pass + third launch (`129adbe`).** PP turned out to be described
 **five** ways, not four: the audience alone was "self-taught learners" / "career-changers" /
