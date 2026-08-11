@@ -1,7 +1,7 @@
 # Handoff — Live State
 
 ## Last Updated
-2026-08-10 · session 3 (two launches)
+2026-08-11 · session 3 (three launches)
 
 ## Current State
 **🚀 THE SITE IS LAUNCHED**, and has since been launched a second time with a full résumé sync.
@@ -10,11 +10,18 @@ pakfro.dev serves it. Both launches were at Ali's explicit request (he applied t
 the site). Verified live after each: Pages build `built`, assets 200 from pakfro.dev, pages render
 with theme and fonts intact, **zero console errors**.
 
-`main` and `dev` are currently **identical** at `82403f3`. Continue editing on `dev`; each future
+`main` and `dev` are currently **identical** at `129adbe`. Continue editing on `dev`; each future
 launch is another `git checkout main && git reset --hard dev && git push --force origin main`.
 
-Recovery tags on origin: **`splash-archive`** (`764493d`, the old under-construction splash) and
-**`prelaunch-82403f3`** (`7824b97`, the first launched version, before the résumé sync).
+Recovery tags on origin, newest first: **`prelaunch-129adbe`** (`82403f3`, before the PP
+consistency pass) · **`prelaunch-82403f3`** (`7824b97`, before the résumé sync) ·
+**`splash-archive`** (`764493d`, the old under-construction splash).
+
+⚠️ **Verifying a launch in the browser is misleading** — the Browser pane serves cached
+`build/*.js` and will happily show you the *previous* version of a page minutes after a successful
+deploy. Verify with `curl` against `https://pakfro.dev/build/<file>.js`, or navigate with a
+cache-busting query (`https://pakfro.dev/?cb=<sha>#/route`). This cost a false "the launch didn't
+work" scare twice in this session.
 
 ## Changed Files (session 3)
 **Launch 1 — `7824b97`:**
@@ -46,20 +53,37 @@ the 2-page `tennr-backend-apply/Tahir, Ali - Resume.pdf` and the 3-page
 - **`index.html`** — dropped `frame-ancestors` from the meta CSP (ignored outside a real HTTP
   header; it was the only console error). Console is now clean.
 
+**Launch 3 — `129adbe`, Pocket Professor consistency pass:**
+PP was described **five** different ways; the résumé's PERSONAL PROJECTS entry is now canonical and
+every surface matches. Audience was the worst drift — "self-taught learners" (home) / "career-
+changers" (CH-01) / "career-switchers leaving high-attrition work" (detail) / "service-industry
+workers 35+" (Trajectory) / "mid-career professionals" (About §03) — all now service-industry
+workers changing careers. Home had also renamed the agents to "an onboarding counselor, an
+instructor's guidance"; they are onboarding / professor / career coach everywhere now.
+- **`cd-detail.jsx`** — telemetry said `v2 · IN DESIGN` and the spec table said `Pre-pilot · v2 in
+  design`, both contradicting the page's own 2026.05 build-log entry ("Pilot readiness") **and** the
+  résumé. Now `v2 · HARDENING` / `Pre-pilot hardening · v2`. Picked up the mechanics the résumé
+  names that the site only half-had: append-only event store (was "audit record"), schema
+  validation, policy-gated output. Step 04 renamed Audit → Record. Added a CI row (GitHub Actions).
+- **`cd-home.jsx`**, **`cd-projects.jsx`** (CH-01 body + `github actions` stack chip),
+  **`cd-about.jsx`** (§03 audience line).
+
 ## Open Threads
-- **`cd-about.jsx` is the last page never reviewed against a résumé** — Trajectory and Hire were
-  rebuilt in launch 2, but About was not touched in this session at all. Read it next.
+- **`cd-about.jsx` is still the last page never reviewed end-to-end.** Launch 3 touched only its
+  §03 audience line; the rest (§01 bio, §02 blockquote, §04 prior life) has never been checked
+  against a résumé. Read it next.
 - **Both factual questions are now RESOLVED by the résumés** (they were open since session 1):
   job-apply is Node · SQLite · Playwright · MV3 Chrome extension ✅; **Pocket Professor dates from
   2024** ✅ — the résumé's 2024 wins over the 2025-03 first commit, and the site now says 2024.
 - **Corrections applied in launch 2** (the site had drifted from the résumé): MAXX apprenticeship
   7 months not 6; cert is AWS **Machine Learning** Engineer not AWS Certified AI Practitioner;
   duplicate "Coding Dojo · Red Belt" credential row dropped.
-- **PP card + detail — still parked** pending Ali's v2 pilot. Accurate and PRE-PILOT-labeled today,
-  so being live is fine; refine after the pilot. PP is described in four places (home hero, CH-01,
-  detail, `TRAJ_ROLES`) with drifting framings — reconcile all four in one pass when the park lifts.
-  Note `TRAJ_ROLES` now carries the résumé's PP framing (service-industry workers 35+, append-only
-  event store) while the home hero and CH-01 still carry the older one.
+- **PP card + detail — still parked** pending Ali's v2 pilot, but the ✅ **five-surface drift is
+  RESOLVED** (launch 3). The park covers *behavior written from assumptions*; the consistency pass
+  only propagated claims Ali had already written in his own résumé, which is why it was in bounds.
+  Post-pilot work remaining: FIG.01 product screenshot, and replacing the PRE-PILOT framing with
+  observed v2 behavior. **When that happens, five surfaces need updating, not one** — home hero,
+  CH-01 card, detail page, `TRAJ_ROLES`, and About §03.
 - **The Hire page is now the ONLY place availability is stated.** If Ali's target role changes
   again, both `cd-hire.jsx` and the pill string in `cd-theme.jsx`'s StatusBar need updating.
 - **The two source résumés live outside this repo** (`~/Desktop/projects/job-apply/data/…`) and the
@@ -79,9 +103,7 @@ the 2-page `tennr-backend-apply/Tahir, Ali - Resume.pdf` and the 3-page
 
 ## Next Recommended Step
 The site is up and matches the résumé, so everything below is improvement, not unblocking:
-1. **Review `cd-about.jsx` with Ali** — the one page never checked against a résumé. — agent + user
-2. **Reconcile the four PP descriptions** (home hero, CH-01, detail, `TRAJ_ROLES`) — Trajectory now
-   uses the résumé framing and the other three don't. Cheap consistency win even pre-pilot. — agent
-3. Consider an OG image — shared links still preview as text only (`images/` has nothing suitable).
-4. Resume the security audit (unpkg SRI, `/security-review`), then the stale repo docs
+1. **Review `cd-about.jsx` with Ali** — the one page never checked end-to-end. — agent + user
+2. Consider an OG image — shared links still preview as text only (`images/` has nothing suitable).
+3. Resume the security audit (unpkg SRI, `/security-review`), then the stale repo docs
    (`README.md` still says the site is disabled; `SECURITY.md` cites deleted files).

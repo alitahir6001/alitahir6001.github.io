@@ -1,5 +1,19 @@
 # Backlog — recent sessions (newest first)
 
+## Last session: 2026-08-11 (session 3, part 3)
+**Pocket Professor consistency pass + third launch (`129adbe`).** PP turned out to be described
+**five** ways, not four: the audience alone was "self-taught learners" / "career-changers" /
+"career-switchers leaving high-attrition work" / "service-industry workers 35+" / "mid-career
+professionals" across home, CH-01, detail, Trajectory, and About §03. Made the résumé canonical and
+aligned all five. The home page had also renamed the agents ("onboarding counselor, instructor's
+guidance"), and the detail page contradicted itself — telemetry said "v2 · IN DESIGN" while its own
+2026.05 build-log entry said "Pilot readiness"; both now say pre-pilot hardening. Detail also picked
+up the mechanics the résumé names that the site only half-had (append-only event store, schema
+validation, policy-gated output). Judged this in-bounds despite the PP park: the park forbids
+writing PP behavior from assumptions, and this only propagated claims Ali wrote himself.
+**Gotcha:** the Browser pane caches `build/*.js` and showed stale pages after two successful
+launches — verify deploys with `curl` or a cache-busting query, not a plain navigate.
+
 ## Last session: 2026-08-10 (session 3, part 2)
 **Résumé sync + second launch (`82403f3`).** Ali supplied two résumés (a 2-page recruiter version
 and a 3-page all-projects version) and asked for three things: drop the "open to mid-level roles"

@@ -29,8 +29,10 @@ Marks: `[ ]` not started · `[~]` in progress · `[x]` done · `[!]` blocked
 10. `[~]` **Page-by-page text review with Ali.** Done: Index, Field Notes, Projects,
     Trajectory + Hire (both rebuilt from the résumés in launch 2). Remaining: **About**
     — the only page never checked against a résumé. — agent + user
-11. `[!]` **PP card + detail page final pass — BLOCKED** until Ali runs the PP v2 pilot and
-    can describe today's real behavior honestly. Resume after. — user (pilot), then agent
+11. `[!]` **PP card + detail page final pass — still BLOCKED** on the v2 pilot for *behavior*.
+    The five-surface consistency drift is fixed (launch 3, `129adbe`) — every PP description
+    now matches the résumé. What's left needs the pilot: FIG.01 screenshot and observed v2
+    behavior replacing the PRE-PILOT framing. — user (pilot), then agent
     - ⚠️ **This does NOT block launch.** The detail page was already de-bogused in session 1
       (real status, build log from the repo, no dead demo button, honest caption) and is
       accurate today, labeled PRE-PILOT throughout. The park means "don't write PP's real
@@ -62,8 +64,11 @@ Every future launch is the same command and still needs Ali to say so explicitly
 now answered from the résumés, and Trajectory + Hire were rebuilt, so the accuracy debt from the
 first launch is largely paid. Rollback tag: `prelaunch-82403f3` (`7824b97`).
 
-Still live-but-unreviewed: **`cd-about.jsx`** (step 10) — the last page never checked against a
-résumé.
+**Third launch — `129adbe`:** Pocket Professor reconciled across all five surfaces against the
+résumé. Rollback tag: `prelaunch-129adbe` (`82403f3`).
+
+Still live-but-unreviewed: **`cd-about.jsx`** (step 10) — only its §03 audience line has been
+checked; the rest never has.
 
 ## Out of scope / blocked (for now)
 - **PP card + detail content** — parked pending Ali running the v2 pilot (don't write PP
