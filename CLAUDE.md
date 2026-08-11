@@ -53,6 +53,13 @@ not yet relaunched. Live state → `.ai/handoff.md`.
    only ever adds `.is-in` (revealed content never flickers out).
 7. **Pocket Professor lives in OTHER repos** (`pock_prof_playground` = current; also `pocket_professor`,
    `pocket_professor_POC`). Real stack = Node/Fastify/TS/Postgres (NOT Python/FastAPI). Use `gh`.
+8. **`dev`'s `index.html` has NO security/SEO meta tags** — only `charset` + `viewport`. The `main`
+   splash has CSP, referrer, permissions, robots, and a description. **Launching `dev` as-is
+   REGRESSES security headers** and ships with no description/OG tags. Fix before launch.
+9. **`.claude/skills/` holds the project skill library** (5 skills: change-control, content
+   reference, architecture contract, runbook, research frontier). Procedure lives there; `.ai/`
+   holds session state. Two read-only checks worth running: `check-build-fresh.sh` before every
+   commit, `check-wiring.sh` after adding a page — both in `pakfro-site-runbook/scripts/`.
 
 ## Conventions / what NOT to do
 - **Don't fabricate content.** This site shipped with AI-generated fake metrics/claims — all since
@@ -64,6 +71,10 @@ not yet relaunched. Live state → `.ai/handoff.md`.
 - Don't commit `node_modules/` (gitignored). No secrets here — fully static and public.
 
 ## Recent context
+- **2026-07-07 (session 2):** Built the `.claude/skills/` library (see gotcha 9); no site content
+  touched. Confirmed committed `build/*.js` matches a fresh esbuild run byte-for-byte, so the
+  finished-but-uncommitted ~06-24 work (Projects 2×2 grid, CH-03 → Oneness Suite, Trajectory
+  GE/Accenture merge) is safe to commit. Found the meta-tag/launch regression in gotcha 8.
 - **2026-06-09/10 (session 1):** Stood up esbuild tooling + the main/dev branch split; purged all
   placeholder/fabricated content site-wide; corrected PP's stack + documented its full version
   history; rebuilt Trajectory from the résumé (added the IDEA job, PP = personal project); wired

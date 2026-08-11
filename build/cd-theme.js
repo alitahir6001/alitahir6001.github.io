@@ -1,4 +1,4 @@
-const OXBLOOD={id:"oxblood",vars:{"--bg":"#08080a","--bg-2":"#0d0d10","--paper":"#d8d4cb","--paper-2":"#9a958a","--paper-3":"#5b574f","--paper-4":"#2c2a26","--rule":"#1a1a1e","--rule-2":"#232227","--accent":"#a32733","--accent-deep":"#5b1820","--accent-ink":"#c34050"}};function useReveal(r){React.useEffect(()=>{let a=0;const e=()=>{const o=window.innerHeight||800;document.querySelectorAll("[data-reveal]:not(.is-in)").forEach(i=>{i.getBoundingClientRect().top<o*.92&&i.classList.add("is-in")})},t=()=>{cancelAnimationFrame(a),a=requestAnimationFrame(e)};e();const c=setTimeout(e,60),p=setTimeout(e,320);return window.addEventListener("scroll",t,{passive:!0}),window.addEventListener("resize",t),()=>{window.removeEventListener("scroll",t),window.removeEventListener("resize",t),clearTimeout(c),clearTimeout(p),cancelAnimationFrame(a)}},[r])}function GlobalStyle(){return React.createElement("style",null,`
+const OXBLOOD={id:"oxblood",vars:{"--bg":"#08080a","--bg-2":"#0d0d10","--paper":"#d8d4cb","--paper-2":"#9a958a","--paper-3":"#5b574f","--paper-4":"#2c2a26","--rule":"#1a1a1e","--rule-2":"#232227","--accent":"#a32733","--accent-deep":"#5b1820","--accent-ink":"#c34050"}};function useReveal(r){React.useEffect(()=>{let a=0;const e=()=>{const o=window.innerHeight||800;document.querySelectorAll("[data-reveal]:not(.is-in)").forEach(n=>{n.getBoundingClientRect().top<o*.92&&n.classList.add("is-in")})},t=()=>{cancelAnimationFrame(a),a=requestAnimationFrame(e)};e();const i=setTimeout(e,60),c=setTimeout(e,320);return window.addEventListener("scroll",t,{passive:!0}),window.addEventListener("resize",t),()=>{window.removeEventListener("scroll",t),window.removeEventListener("resize",t),clearTimeout(i),clearTimeout(c),cancelAnimationFrame(a)}},[r])}function GlobalStyle(){return React.createElement("style",null,`
       :root { color-scheme: dark; }
       html { scroll-behavior: smooth; }
       body { margin: 0; }
@@ -112,21 +112,23 @@ const OXBLOOD={id:"oxblood",vars:{"--bg":"#08080a","--bg-2":"#0d0d10","--paper":
       .cd-cta a .ar { color: var(--accent-ink); }
       .cd-cta a.primary .ar { color: var(--paper); }
 
-      /* secondary channels \u2014 open 3-column readout, generous, hairline divides */
-      .cd-ch { padding: var(--sp-ch) 0; border-bottom: 1px solid var(--rule); display: grid; grid-template-columns: 150px 1fr 190px; gap: 40px; align-items: start; }
-      .cd-ch:first-of-type { border-top: 1px solid var(--rule); }
+      /* projects \u2014 2\xD72 card grid */
+      .cd-ch-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1px; background: var(--rule-2); border: 1px solid var(--rule-2); }
+      .cd-ch { display: flex; flex-direction: column; background: var(--bg); }
+      .cd-ch-art { height: 180px; background: var(--bg-2); display: flex; align-items: center; justify-content: center; color: var(--paper-4); font-size: 22px; overflow: hidden; }
+      .cd-ch-art img { width: 100%; height: 100%; object-fit: cover; }
+      .cd-ch-body { padding: 24px 28px 28px; flex: 1; display: flex; flex-direction: column; gap: 10px; }
       .cd-ch .id { color: var(--accent-ink); font-size: 11px; letter-spacing: .2em; text-transform: uppercase; }
-      .cd-ch .id .of { display: block; color: var(--paper-3); font-size: 10px; margin-top: 9px; letter-spacing: .1em; }
-      .cd-ch h3 { margin: 0 0 14px; color: var(--paper); font-weight: 500; font-size: 22px; letter-spacing: .005em; }
-      .cd-ch p { margin: 0 0 14px; color: var(--paper-2); font-size: 13.5px; max-width: 56ch; line-height: 1.75; }
+      .cd-ch .id .of { color: var(--paper-3); font-size: 10px; letter-spacing: .1em; }
+      .cd-ch h3 { margin: 0; color: var(--paper); font-weight: 500; font-size: 20px; letter-spacing: .005em; }
+      .cd-ch p { margin: 0; color: var(--paper-2); font-size: 13px; line-height: 1.7; flex: 1; }
       .cd-ch .stack { color: var(--paper-3); font-size: 11px; }
       .cd-ch .stack span + span::before { content: ' \xB7 '; margin: 0 2px; }
-      .cd-ch .right { text-align: right; font-size: 10.5px; letter-spacing: .14em; text-transform: uppercase; color: var(--paper-2); line-height: 2.2; }
-      .cd-ch .right .k { color: var(--paper-3); }
-      .cd-ch .right .v { color: var(--paper); }
-      .cd-ch .right .badge { display: inline-block; padding: 4px 12px; border: 1px solid var(--rule-2); margin-top: 14px; color: var(--paper-2); }
-      .cd-ch .right .badge.live { background: var(--accent); border-color: var(--accent); color: var(--paper); }
-      .cd-ch .right .badge.warn { color: var(--accent-ink); border-color: var(--accent-ink); }
+      .cd-ch .ch-foot { display: flex; align-items: center; justify-content: space-between; padding-top: 6px; }
+      .cd-ch .badge { display: inline-block; padding: 3px 10px; border: 1px solid var(--rule-2); color: var(--paper-2); font-size: 10.5px; letter-spacing: .14em; text-transform: uppercase; }
+      .cd-ch .badge.live { background: var(--accent); border-color: var(--accent); color: var(--paper); }
+      .cd-ch .badge.warn { color: var(--accent-ink); border-color: var(--accent-ink); }
+      .cd-ch a.read { color: var(--accent-ink); text-decoration: none; font-size: 11px; letter-spacing: .14em; text-transform: uppercase; }
 
       /* foot */
       .cd-foot { margin-top: var(--sp-section); padding: 26px 0 96px; border-top: 1px solid var(--rule-2); display: grid; grid-template-columns: auto 1fr auto; gap: 24px; align-items: baseline; color: var(--paper-3); font-size: 10.5px; letter-spacing: .2em; text-transform: uppercase; }
@@ -247,8 +249,8 @@ const OXBLOOD={id:"oxblood",vars:{"--bg":"#08080a","--bg-2":"#0d0d10","--paper":
         .cd-status { grid-template-columns: 1fr 1fr; gap: 12px; }
         .cd-tele .cell { flex: 1 1 45%; min-width: 0; padding: 2px 0; }
         .cd-tele .cell + .cell { border-left: 0; }
-        .cd-ch { grid-template-columns: 1fr; gap: 16px; }
-        .cd-ch .right { text-align: left; }
+        .cd-ch-grid { grid-template-columns: 1fr; }
+        .cd-ch-art { height: 140px; }
         .cd-console h1 { font-size: 34px; }
         .cd-operator { padding: 88px 0 64px; }
         .cd-operator .stmt { font-size: 19px; }
@@ -263,4 +265,4 @@ const OXBLOOD={id:"oxblood",vars:{"--bg":"#08080a","--bg-2":"#0d0d10","--paper":
         .cd-figure.right { float: none; width: 100%; margin-left: 0; }
         .cd-contact a, .cd-contact .row { grid-template-columns: 1fr; gap: 6px; }
       }
-    `)}const CD_NAV=[{key:"index",label:"Index",href:"#/"},{key:"projects",label:"Projects",href:"#/projects"},{key:"notes",label:"Field Notes",href:"#/field-notes"},{key:"trajectory",label:"Trajectory",href:"#/trajectory"},{key:"about",label:"About",href:"#/about"},{key:"hire",label:"AOI / Hire",href:"#/hire"}];function StatusClock(){const[r,a]=React.useState(()=>new Date);React.useEffect(()=>{const s=setInterval(()=>a(new Date),1e3);return()=>clearInterval(s)},[]);const e=r.toISOString(),t=e.slice(11,19),c=e.slice(0,10).replace(/-/g,"."),p=r.toLocaleTimeString("en-US",{hour12:!1,timeZoneName:"short"}),o=p.match(/^(\d{1,2}:\d{2}:\d{2})\s+(.+)$/),i=o?o[1].padStart(8,"0"):p,n=o?o[2]:"LOCAL",l=r.getFullYear()+"."+String(r.getMonth()+1).padStart(2,"0")+"."+String(r.getDate()).padStart(2,"0");return React.createElement("div",{className:"stamp clock"},React.createElement("div",null,React.createElement("span",{className:"z"},"UTC"),React.createElement("span",{className:"v"},t)," \xB7 ",c),React.createElement("div",null,React.createElement("span",{className:"z lo"},n),React.createElement("span",{className:"v"},i)," \xB7 ",l))}function StatusBar({station:r,cur:a}){return React.createElement(React.Fragment,null,React.createElement("div",{className:"cd-status"},React.createElement("div",{className:"station"},r," ",React.createElement("span",{className:"a"},"/")," ALI TAHIR"),React.createElement("div",null),React.createElement("div",{className:"pill"},"OPEN \xB7 MID-LEVEL SWE"),React.createElement(StatusClock,null)),React.createElement("div",{className:"cd-rule thick"}),React.createElement("nav",{className:"cd-nav"},React.createElement("span",{className:"lbl"},"CHANNELS"),CD_NAV.map(e=>React.createElement("a",{key:e.key,className:a===e.key?"cur":"",href:e.href},e.label))))}function Foot({left:r,ack:a}){return React.createElement("div",{className:"cd-foot"},React.createElement("div",{className:"left"},r),React.createElement("div",{className:"links"},React.createElement("a",{href:"mailto:ali@pakfro.dev"},"ali@pakfro.dev"),React.createElement("a",{href:"https://github.com/alitahir6001",target:"_blank",rel:"noopener noreferrer"},"github"),React.createElement("a",{href:"https://linkedin.com/in/ali-t-06748432",target:"_blank",rel:"noopener noreferrer"},"linkedin")),React.createElement("div",{className:"right"},a))}Object.assign(window,{OXBLOOD,useReveal,GlobalStyle,StatusBar,Foot});
+    `)}const CD_NAV=[{key:"index",label:"Index",href:"#/"},{key:"projects",label:"Projects",href:"#/projects"},{key:"notes",label:"Field Notes",href:"#/field-notes"},{key:"trajectory",label:"Trajectory",href:"#/trajectory"},{key:"about",label:"About",href:"#/about"},{key:"hire",label:"AOI / Hire",href:"#/hire"}];function StatusClock(){const[r,a]=React.useState(()=>new Date);React.useEffect(()=>{const s=setInterval(()=>a(new Date),1e3);return()=>clearInterval(s)},[]);const e=r.toISOString(),t=e.slice(11,19),i=e.slice(0,10).replace(/-/g,"."),c=r.toLocaleTimeString("en-US",{hour12:!1,timeZoneName:"short"}),o=c.match(/^(\d{1,2}:\d{2}:\d{2})\s+(.+)$/),n=o?o[1].padStart(8,"0"):c,p=o?o[2]:"LOCAL",l=r.getFullYear()+"."+String(r.getMonth()+1).padStart(2,"0")+"."+String(r.getDate()).padStart(2,"0");return React.createElement("div",{className:"stamp clock"},React.createElement("div",null,React.createElement("span",{className:"z"},"UTC"),React.createElement("span",{className:"v"},t)," \xB7 ",i),React.createElement("div",null,React.createElement("span",{className:"z lo"},p),React.createElement("span",{className:"v"},n)," \xB7 ",l))}function StatusBar({station:r,cur:a}){return React.createElement(React.Fragment,null,React.createElement("div",{className:"cd-status"},React.createElement("div",{className:"station"},r," ",React.createElement("span",{className:"a"},"/")," ALI TAHIR"),React.createElement("div",null),React.createElement("div",{className:"pill"},"OPEN \xB7 MID-LEVEL SWE"),React.createElement(StatusClock,null)),React.createElement("div",{className:"cd-rule thick"}),React.createElement("nav",{className:"cd-nav"},React.createElement("span",{className:"lbl"},"CHANNELS"),CD_NAV.map(e=>React.createElement("a",{key:e.key,className:a===e.key?"cur":"",href:e.href},e.label))))}function Foot({left:r,ack:a}){return React.createElement("div",{className:"cd-foot"},React.createElement("div",{className:"left"},r),React.createElement("div",{className:"links"},React.createElement("a",{href:"mailto:ali@pakfro.dev"},"ali@pakfro.dev"),React.createElement("a",{href:"https://github.com/alitahir6001",target:"_blank",rel:"noopener noreferrer"},"github"),React.createElement("a",{href:"https://linkedin.com/in/ali-t-06748432",target:"_blank",rel:"noopener noreferrer"},"linkedin")),React.createElement("div",{className:"right"},a))}Object.assign(window,{OXBLOOD,useReveal,GlobalStyle,StatusBar,Foot});

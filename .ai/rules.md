@@ -28,6 +28,22 @@ without re-deriving context. **Read all four files at session start, in this ord
 - **`backlog.md`** — leave empty until first session wrap, then prepend
   `## Last session: <YYYY-MM-DD> (session N)` + 2-3 sentence summary.
 
+## Project-specific rules
+
+- **`.claude/skills/` is the durable how-to layer; `.ai/` is the state layer.** Skills hold
+  rules, architecture invariants, content shapes, and runbook commands. These files hold what
+  is true *this session*. When they disagree, `.ai/` wins on state, skills win on procedure.
+  Update the relevant skill when a procedure changes — don't record procedure here.
+- **Before committing, run** `.claude/skills/pakfro-site-runbook/scripts/check-build-fresh.sh`.
+  It fails if any `.jsx` is newer than its `build/*.js`, or if a modified `.jsx` has an
+  unmodified build output. This is the repo's most-violated rule, now mechanically checkable.
+- **After adding a page or touching `index.html`/`build.mjs`, run** `check-wiring.sh` in the
+  same directory — it asserts sources ↔ `build.mjs` ENTRIES ↔ `index.html` agree, `cd-app`
+  loads last, every source publishes a `window.*` global, and every page calls `useReveal`.
+- **A finished-but-uncommitted working tree is a real state** — record it in `handoff.md`
+  under Changed Files, not just in git. Session 1 ended with three modified `.jsx` files that
+  went unlogged for two weeks.
+
 ## Core mindset
 
 - `handoff.md` is **state**, not a diary. Rewrite sections; don't append.

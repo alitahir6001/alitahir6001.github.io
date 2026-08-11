@@ -3,7 +3,22 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- script-src must allow unpkg (React UMD); style-src unsafe-inline for cd-theme's injected <style> -->
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' https://unpkg.com; object-src 'none'; base-uri 'self'; frame-ancestors 'none'; img-src 'self' data:; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; connect-src 'self'; upgrade-insecure-requests">
+  <meta name="referrer" content="strict-origin-when-cross-origin">
+  <meta http-equiv="Permissions-Policy" content="geolocation=(), microphone=(), camera=()">
+  <meta name="robots" content="index, follow">
   <title>Ali Tahir — Console Dossier</title>
+  <meta name="description" content="Ali Tahir — software engineer. Projects, field notes, and career trajectory, filed as a console dossier.">
+  <link rel="canonical" href="https://pakfro.dev/">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://pakfro.dev/">
+  <meta property="og:title" content="Ali Tahir — Console Dossier">
+  <meta property="og:description" content="Ali Tahir — software engineer. Projects, field notes, and career trajectory, filed as a console dossier.">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Ali Tahir — Console Dossier">
+  <meta name="twitter:description" content="Ali Tahir — software engineer. Projects, field notes, and career trajectory, filed as a console dossier.">
+
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">

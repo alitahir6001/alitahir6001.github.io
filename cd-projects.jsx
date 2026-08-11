@@ -1,32 +1,37 @@
 // Console Dossier — Projects (#/projects). Channel catalog: the Pocket Professor
-// flagship plus side projects (job-apply, intake-assistant, hardware/IoT). Reuses
-// the cd-ch readout. Data-driven — add a channel by adding an entry to PROJECT_CHANNELS.
+// flagship plus side projects (job-apply, intake-assistant, hardware/IoT). Data-driven
+// — add a channel by adding an entry to PROJECT_CHANNELS.
+// art: null = placeholder; swap in a URL string to show a screenshot.
 
 const PROJECT_CHANNELS = [
   {
-    id: 'CH-01', of: 'flagship · pre-pilot', title: 'Pocket Professor',
-    body: 'A structured learning tool for motivated autodidacts who want to leave their current industry. Adapts to how you learn best to help you reach your learning goals.',
+    id: 'CH-01', of: '· flagship · pre-pilot', title: 'Pocket Professor',
+    body: 'A structured learning tool for career-changers. Adapts to how you think.',
     stack: ['node · fastify · ts', 'react · vite · tailwind', 'postgres'],
-    right: [['STATUS', ' · PRE-PILOT'], ['SINCE', ' · 2025']], badge: 'PRE-PILOT', badgeCls: 'warn',
+    badge: 'PRE-PILOT', badgeCls: 'warn',
     href: '#/pocket-professor',
+    art: null,
   },
   {
-    id: 'CH-02', of: 'tool · job hunt', title: 'job-apply',
-    body: 'A local-only job-hunt automation pipeline. It scrapes remote boards, ranks every posting against my résumé in a single batched LLM call, tailors a résumé and cover letter per job, then fills the application in a real browser window for me to review and submit. I stay in the loop on everything that goes out.',
-    stack: ['node · javascript', 'browser automation', 'llm ranking pipeline'],
-    right: [['STATUS', ' · ACTIVE'], ['TYPE', ' · personal tool']], badge: 'ACTIVE',
+    id: 'CH-02', of: '· tool · job hunt', title: 'job-apply',
+    body: 'Scrapes job boards, ranks postings against my résumé with an LLM, tailors résumé + cover letter, and auto-fills application forms. Stops before submit.',
+    stack: ['node · js · sqlite', 'playwright', 'llm api'],
+    badge: 'ACTIVE',
+    art: null,
   },
   {
-    id: 'CH-03', of: 'tool · automation', title: 'intake-assistant',
-    body: 'A small automation for client intake: when someone submits a Google Form, it runs eligibility checks (state, insurance, in-person), has an LLM summarize their message and draft follow-up questions, and pings me on Telegram. Built for a real intake workflow.',
-    stack: ['typescript · node', 'google sheets api', 'telegram · llm'],
-    right: [['STATUS', ' · SHIPPED'], ['TYPE', ' · client tool']], badge: 'SHIPPED',
+    id: 'CH-03', of: '· tool · client work', title: 'Oneness Suite',
+    body: 'Custom local-only dashboard for a solo therapist\'s practice. Three tools: intake screening, reschedule outreach, and social content drafting. HIPAA-informed — no cloud, no third-party data exposure.',
+    stack: ['node 22 · ts · express', 'google sheets · calendar · nodemailer', 'multi-provider ai'],
+    badge: 'SHIPPED',
+    art: null,
   },
   {
-    id: 'CH-04', of: 'archive · tinkering', title: 'Hardware & IoT',
-    body: 'Where the curiosity goes when it leaves the screen: Arduino nodebots with Johnny-Five, a Raspberry Pi turned into a classic-gaming console, and hardware-security research on the Flipper Zero.',
+    id: 'CH-04', of: '· archive · tinkering', title: 'Hardware & IoT',
+    body: 'Arduino nodebots, a Raspberry Pi gaming console, and Flipper Zero hardware security.',
     stack: ['arduino · johnny-five', 'raspberry pi', 'flipper zero'],
-    right: [['SPAN', ' · 2022 —'], ['TYPE', ' · personal']], badge: 'ARCHIVE',
+    badge: 'ARCHIVE',
+    art: null,
   },
 ];
 
@@ -52,21 +57,25 @@ function Projects() {
         <span className="end">{PROJECT_CHANNELS.length} routed</span>
       </div>
 
-      {PROJECT_CHANNELS.map((c) => (
-        <article className="cd-ch" data-reveal key={c.id}>
-          <div className="id">{c.id}<span className="of">{c.of}</span></div>
-          <div>
-            <h3>{c.title}</h3>
-            <p>{c.body}</p>
-            <p className="stack">{c.stack.map((s, i) => <span key={i}>{s}</span>)}</p>
-            {c.href ? <a className="read" style={{ color: 'var(--accent-ink)', textDecoration: 'none', fontSize: 11, letterSpacing: '.14em', textTransform: 'uppercase' }} href={c.href}>▶ Open project file →</a> : null}
-          </div>
-          <div className="right">
-            {c.right.map((r, i) => <div key={i}><span className="k">{r[0]}</span><span className="v">{r[1]}</span></div>)}
-            <div className={'badge ' + (c.badgeCls || '')}>{c.badge}</div>
-          </div>
-        </article>
-      ))}
+      <div className="cd-ch-grid" data-reveal>
+        {PROJECT_CHANNELS.map((c) => (
+          <article className="cd-ch" key={c.id}>
+            <div className="cd-ch-art">
+              {c.art ? <img src={c.art} alt={c.title} /> : <span>—</span>}
+            </div>
+            <div className="cd-ch-body">
+              <div className="id">{c.id}<span className="of">{c.of}</span></div>
+              <h3>{c.title}</h3>
+              <p>{c.body}</p>
+              <p className="stack">{c.stack.map((s, i) => <span key={i}>{s}</span>)}</p>
+              <div className="ch-foot">
+                <div className={'badge ' + (c.badgeCls || '')}>{c.badge}</div>
+                {c.href ? <a className="read" href={c.href}>▶ Open file →</a> : null}
+              </div>
+            </div>
+          </article>
+        ))}
+      </div>
 
       <Foot left="— END OF DIRECTORY" ack="DIR · 05" />
     </div>

@@ -156,21 +156,23 @@ function GlobalStyle() {
       .cd-cta a .ar { color: var(--accent-ink); }
       .cd-cta a.primary .ar { color: var(--paper); }
 
-      /* secondary channels — open 3-column readout, generous, hairline divides */
-      .cd-ch { padding: var(--sp-ch) 0; border-bottom: 1px solid var(--rule); display: grid; grid-template-columns: 150px 1fr 190px; gap: 40px; align-items: start; }
-      .cd-ch:first-of-type { border-top: 1px solid var(--rule); }
+      /* projects — 2×2 card grid */
+      .cd-ch-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1px; background: var(--rule-2); border: 1px solid var(--rule-2); }
+      .cd-ch { display: flex; flex-direction: column; background: var(--bg); }
+      .cd-ch-art { height: 180px; background: var(--bg-2); display: flex; align-items: center; justify-content: center; color: var(--paper-4); font-size: 22px; overflow: hidden; }
+      .cd-ch-art img { width: 100%; height: 100%; object-fit: cover; }
+      .cd-ch-body { padding: 24px 28px 28px; flex: 1; display: flex; flex-direction: column; gap: 10px; }
       .cd-ch .id { color: var(--accent-ink); font-size: 11px; letter-spacing: .2em; text-transform: uppercase; }
-      .cd-ch .id .of { display: block; color: var(--paper-3); font-size: 10px; margin-top: 9px; letter-spacing: .1em; }
-      .cd-ch h3 { margin: 0 0 14px; color: var(--paper); font-weight: 500; font-size: 22px; letter-spacing: .005em; }
-      .cd-ch p { margin: 0 0 14px; color: var(--paper-2); font-size: 13.5px; max-width: 56ch; line-height: 1.75; }
+      .cd-ch .id .of { color: var(--paper-3); font-size: 10px; letter-spacing: .1em; }
+      .cd-ch h3 { margin: 0; color: var(--paper); font-weight: 500; font-size: 20px; letter-spacing: .005em; }
+      .cd-ch p { margin: 0; color: var(--paper-2); font-size: 13px; line-height: 1.7; flex: 1; }
       .cd-ch .stack { color: var(--paper-3); font-size: 11px; }
       .cd-ch .stack span + span::before { content: ' · '; margin: 0 2px; }
-      .cd-ch .right { text-align: right; font-size: 10.5px; letter-spacing: .14em; text-transform: uppercase; color: var(--paper-2); line-height: 2.2; }
-      .cd-ch .right .k { color: var(--paper-3); }
-      .cd-ch .right .v { color: var(--paper); }
-      .cd-ch .right .badge { display: inline-block; padding: 4px 12px; border: 1px solid var(--rule-2); margin-top: 14px; color: var(--paper-2); }
-      .cd-ch .right .badge.live { background: var(--accent); border-color: var(--accent); color: var(--paper); }
-      .cd-ch .right .badge.warn { color: var(--accent-ink); border-color: var(--accent-ink); }
+      .cd-ch .ch-foot { display: flex; align-items: center; justify-content: space-between; padding-top: 6px; }
+      .cd-ch .badge { display: inline-block; padding: 3px 10px; border: 1px solid var(--rule-2); color: var(--paper-2); font-size: 10.5px; letter-spacing: .14em; text-transform: uppercase; }
+      .cd-ch .badge.live { background: var(--accent); border-color: var(--accent); color: var(--paper); }
+      .cd-ch .badge.warn { color: var(--accent-ink); border-color: var(--accent-ink); }
+      .cd-ch a.read { color: var(--accent-ink); text-decoration: none; font-size: 11px; letter-spacing: .14em; text-transform: uppercase; }
 
       /* foot */
       .cd-foot { margin-top: var(--sp-section); padding: 26px 0 96px; border-top: 1px solid var(--rule-2); display: grid; grid-template-columns: auto 1fr auto; gap: 24px; align-items: baseline; color: var(--paper-3); font-size: 10.5px; letter-spacing: .2em; text-transform: uppercase; }
@@ -291,8 +293,8 @@ function GlobalStyle() {
         .cd-status { grid-template-columns: 1fr 1fr; gap: 12px; }
         .cd-tele .cell { flex: 1 1 45%; min-width: 0; padding: 2px 0; }
         .cd-tele .cell + .cell { border-left: 0; }
-        .cd-ch { grid-template-columns: 1fr; gap: 16px; }
-        .cd-ch .right { text-align: left; }
+        .cd-ch-grid { grid-template-columns: 1fr; }
+        .cd-ch-art { height: 140px; }
         .cd-console h1 { font-size: 34px; }
         .cd-operator { padding: 88px 0 64px; }
         .cd-operator .stmt { font-size: 19px; }

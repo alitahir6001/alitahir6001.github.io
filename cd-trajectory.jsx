@@ -26,16 +26,7 @@ const TRAJ_ROLES = [
     ],
   },
   {
-    when: '2024 — 2025', co: 'Accenture · at GE', meta: 'Security Specialist',
-    title: 'Security Specialist — SSO',
-    sum: 'Continued enterprise SSO services and authentication maintenance across multiple GE business units through the GE/Accenture organizational transition.',
-    bullets: [
-      ['Maintained SSO services across GE Corporate, GE Vernova, and GE Aerospace during the restructuring.'],
-      ['Implemented security protocols and best practices for enterprise-scale authentication.'],
-    ],
-  },
-  {
-    when: '2021 — 2024', co: 'General Electric', meta: 'SWE Specialist · SSO Team',
+    when: '2021 — 2025', co: 'General Electric → Accenture', meta: 'SWE Specialist · SSO Team',
     title: 'Software Engineering Specialist — SSO Team',
     sum: 'End-to-end SDLC for 14 mission-critical SSO APIs serving 80,000+ employees, contractors, and B2B customers across GE Corporate, Vernova, and Aerospace.',
     bullets: [
