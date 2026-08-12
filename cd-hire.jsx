@@ -14,8 +14,8 @@ function Hire() {
         <h1 data-reveal>Open to <span className="a">AI engineering</span><br />roles.</h1>
         <p className="lead" data-reveal>
           Agent tooling, MCP integrations, and the backend systems underneath them. I do my best work on
-          <strong> systems that have to stay up</strong> and teams that actually ship. Remote, or
-          around the Washington, D.C. area.
+          <strong> systems that have to stay up</strong> and teams that actually ship. Based in
+          Richmond, Virginia.
         </p>
       </section>
 
@@ -26,7 +26,8 @@ function Hire() {
       <div className="cd-prose" data-reveal>
         <p>
           Five years shipping production software — enterprise authentication at scale, then applied
-          AI work that reached real adoption: an MCP server my team, the PM, and sales all use, and a
+          AI work that reached real adoption: an MCP server used by two dev teams, the PM, and
+          colleagues outside engineering, plus a
           queryable knowledge base that cut troubleshooting on an undocumented database from days to
           minutes. I build <span className="a">agent tooling that survives contact with a real team</span>,
           not demos. I'm comfortable owning a service end to end, keeping it alive under pressure, and
@@ -54,9 +55,9 @@ function Hire() {
       </div>
       <div className="cd-contact" data-reveal>
         <a href="mailto:ali@pakfro.dev"><span className="k">Email</span><span className="v">ali@pakfro.dev</span><span className="go">→</span></a>
-        <a href="https://github.com/alitahir6001" target="_blank" rel="noopener"><span className="k">GitHub</span><span className="v">github.com/alitahir6001</span><span className="go">→</span></a>
-        <a href="https://linkedin.com/in/ali-t-06748432" target="_blank" rel="noopener"><span className="k">LinkedIn</span><span className="v">linkedin.com/in/ali-t</span><span className="go">→</span></a>
-        <div className="row"><span className="k">Status</span><span className="v">Open · responding within ~48h</span><span className="go" style={{ color: 'var(--accent-ink)' }}>●</span></div>
+        <a href="https://github.com/alitahir6001" target="_blank" rel="noopener noreferrer"><span className="k">GitHub</span><span className="v">github.com/alitahir6001</span><span className="go">→</span></a>
+        <a href="https://linkedin.com/in/ali-t-06748432" target="_blank" rel="noopener noreferrer"><span className="k">LinkedIn</span><span className="v">linkedin.com/in/ali-t-06748432</span><span className="go">→</span></a>
+        <div className="row"><span className="k">Status</span><span className="v">Open</span><span className="go" style={{ color: 'var(--accent-ink)' }}>●</span></div>
       </div>
 
       <Foot left="— END OF CHANNEL" ack="AOI · 06" />
