@@ -38,9 +38,31 @@ const TRAJ_ROLES = [
     ],
   },
   {
+    when: '2016', co: 'Hermann Spermatogenesis Lab · UTSA', meta: 'Lab Assistant · Work-Study',
+    title: 'Lab Assistant — Hermann Spermatogenesis Lab',
+    sum: 'Work-study assistant to Dr. Brian Hermann and Dr. Nadine Mutoji, supporting sample processing and day-to-day lab operations.',
+    bullets: [
+      ['Rebuilt the lab\'s sample filing system after the existing database grew too disorganized to search — reorganized it ', 'chronologically and by sample type', ', migrated every file into monthly network folders, documented the new convention, and notified the researchers who depended on it.'],
+      ['Ran routine protocol work: PCR container labeling, frozen-tissue organization for slides and assays, and solution synthesis (', '4% paraformaldehyde, ethanol dilutions', ').'],
+      ['Handled and disposed of hazardous biological and animal materials under ', 'UTSA Risk Management SOP', ', and maintained the chemical inventory for annual certification review.'],
+    ],
+  },
+  {
+    when: '2013 — 2014', co: 'Lab Animal Resources Center · UTSA', meta: 'Animal Attendant',
+    title: 'Animal Attendant — Lab Animal Resources Center',
+    sum: 'First paid research position: vivarium husbandry, equipment sterilization, and inter-facility logistics across two UTSA sites.',
+    bullets: [
+      ['Verified sanitation on a fixed monthly schedule using ', 'TSA plates, swabs, and contact sampling', ' — so contamination surfaced as data rather than as a failed experiment weeks later.'],
+      ['Owned the transport chain out to the START Company at the San Antonio Medical Center, with ', 'inventory tracked and signed for at both ends', '.'],
+      ['Maintained autoclave and sterilization workflows for cages, bottles, and surgical instruments under LARC SOP, ', 'PPE and N95 certified', '.'],
+    ],
+  },
+  // Listed last on purpose: it funded the degree and the lab work above rather than
+  // competing with them, so it reads as background, not as the headline job.
+  {
     when: '2015 — 2020', co: 'HerbNCurry', meta: 'Owner / Operator',
     title: 'Owner / Operator — solo catering business',
-    sum: 'Built and ran a specialized catering business solo while completing an undergraduate degree.',
+    sum: 'The business that paid for the rest of this page. Built and ran solo, concurrent with the undergraduate degree, both lab positions, and the thesis above — labs and coursework by day, kitchens and events by night.',
     bullets: [
       ['Grew from startup to ', '155 events a year', ' at peak — ', '$64,800', ' in the best year (2019) — through client acquisition and operational discipline.'],
       ['Owned end-to-end operations: clients, menus, logistics, inventory, and on-site cooking. ', '80%+ repeat business', '.'],
@@ -120,7 +142,7 @@ function Trajectory() {
 
       {/* §02 — experience */}
       <div className="cd-band" data-reveal>
-        <span className="a">§ 02</span><span className="ln"></span><span className="end">experience · most recent first</span>
+        <span className="a">§ 02</span><span className="ln"></span><span className="end">experience · engineering, research, operations</span>
       </div>
       {TRAJ_ROLES.map((r, i) => (
         <article className="cd-role" data-reveal key={i}>
@@ -145,6 +167,7 @@ function Trajectory() {
       </div>
       <div className="cd-params" data-reveal>
         <div className="row"><span className="k">B.S. Experimental Psychology · University of Texas at San Antonio</span><span className="v">2018</span></div>
+        <div className="row"><span className="k">Undergraduate thesis · cultural stressors in first-generation young adults — poster, UTSA thesis conference</span><span className="v">2018</span></div>
         <div className="row"><span className="k">Full-Stack Development Bootcamp · Coding Dojo</span><span className="v">2021</span></div>
         <div className="row"><span className="k">AWS Machine Learning Engineer</span><span className="v a">in progress</span></div>
         <div className="row"><span className="k">SAFe® Scrum Master</span><span className="v">2023</span></div>
