@@ -1,7 +1,33 @@
 // Console Dossier — About (#/about). Personnel file: Ali's real bio narrative set in
 // the dossier vocabulary. Two framed photographs (childhood in Rock Creek Park; the
-// v1 Pocket Professor backend), a pull quote, and a short "prior life" note.
+// v1 Pocket Professor backend), a pull quote, the research record, and the kitchen years.
 // Medium density — richer than the landing, still calm.
+
+// §04. The page claims a researcher's instincts throughout; this section is the evidence
+// for it. Sourced from the 2019 résumé — every duty here is one Ali actually performed.
+const RESEARCH_RECORD = [
+  {
+    id: 'STUDY', of: 'own design · 2017 — 2018',
+    title: 'Cultural stressors in first-generation young adults',
+    body: 'My own study, aimed at a question I grew up inside: what does it cost to be raised in two cultures at once? A 2×3 factorial design — two age bands (14–19, 20–24) against three stressor types, financial, educational, and social — surveyed 138 respondents, roughly three quarters in San Antonio and the rest in the D.C. metro. Self-report was triangulated against Bexar County and forty years of US Census demographics, plus a meta-analysis of existing work on cultural stressors and dominance-hierarchy paradigms. The dominant pressure turned out to be social — conforming on language, behavioral norms, etiquette — with financial pressure close behind, tracking the immigrant communities most respondents came from. Presented as a poster at UTSA\'s undergraduate thesis conference in 2018.',
+    stack: ['2×3 factorial', 'n = 138 · two metros', 'survey · census · meta-analysis'],
+    badge: 'THESIS',
+  },
+  {
+    id: 'LAB', of: 'work-study · 2016',
+    title: 'Hermann Spermatogenesis Lab · UTSA',
+    body: 'Lab assistant to Dr. Brian Hermann and Dr. Nadine Mutoji. Most of it was protocol execution — synthesizing fixatives and ethanol dilutions, labeling PCR containers, organizing frozen tissue for slides and assays, running the autoclave, moving biohazard and animal waste under Risk Management SOP. The piece I would still defend is the filing system: the lab\'s sample database had grown to where nobody could find anything in it, so I restructured it chronologically and by sample type, migrated every file into monthly network folders, wrote the convention down, and told the people who depended on it. Provenance is the whole game in a wet lab — a tube you cannot trace is a tube you cannot use.',
+    stack: ['pcr · tissue prep', '4% pfa · ethanol dilutions', 'data migration · sop'],
+    badge: 'WORK-STUDY',
+  },
+  {
+    id: 'LARC', of: 'animal attendant · 2013 — 2014',
+    title: 'Lab Animal Resources Center · UTSA',
+    body: 'The first research job that paid. Husbandry and equipment sterilization across two facilities, plus the transport chain out to the START Company at the medical center — inventory tracked and signed for at both ends. Sanitation was verified rather than assumed: TSA plates and swabs sampled on a fixed monthly schedule, so contamination surfaced as data instead of as a ruined experiment months later. A controlled environment turns out to be something you maintain on a schedule, not something you declare once.',
+    stack: ['husbandry · autoclave', 'chain of custody', 'environmental sampling'],
+    badge: '2013 — 2014',
+  },
+];
 
 function About() {
   useReveal('about');
@@ -13,8 +39,9 @@ function About() {
         <div className="k" data-reveal>— Personnel · Background</div>
         <h1 data-reveal>The researcher who<br />learned to <span className="a">ship.</span></h1>
         <p className="lead" data-reveal>
-          I'm a software engineer who debugs systems with a behavioral researcher's instincts —
-          <strong> evidence over fashion, the architecture under the behavior.</strong>
+          I'm a software engineer with an experimental psychology degree, and I still work the way
+          the lab taught me — <strong>state the claim, design the check, trust the evidence over
+          the story.</strong> The subjects are systems now.
         </p>
       </section>
 
@@ -99,19 +126,39 @@ function About() {
         </p>
       </div>
 
-      {/* §04 — prior life */}
+      {/* §04 — the research record: evidence for the claims made above */}
       <div className="cd-band" data-reveal>
-        <span className="a">§ 04</span><span className="ln"></span><span className="end">prior life · before the terminal</span>
+        <span className="a">§ 04</span><span className="ln"></span><span className="end">research record · 2013 — 2018</span>
       </div>
-      <article className="cd-ch" data-reveal>
+      {RESEARCH_RECORD.map((r) => (
+        <article className="cd-chan" data-reveal key={r.id}>
+          <div className="id">{r.id}<span className="of">{r.of}</span></div>
+          <div>
+            <h3>{r.title}</h3>
+            <p>{r.body}</p>
+            <p className="stack">{r.stack.map((s, i) => <span key={i}>{s}</span>)}</p>
+          </div>
+          <div className="right">
+            <div className="badge">{r.badge}</div>
+          </div>
+        </article>
+      ))}
+
+      {/* §05 — prior life. Was .cd-ch (a flex-column grid card), which stacked the right
+          rail full-width under the body. .cd-chan is the row component this markup wants. */}
+      <div className="cd-band" data-reveal>
+        <span className="a">§ 05</span><span className="ln"></span><span className="end">prior life · before the terminal</span>
+      </div>
+      <article className="cd-chan" data-reveal>
         <div className="id">ARCHIVE<span className="of">2015 — 2020</span></div>
         <div>
           <h3>Chef, operator, undergraduate</h3>
           <p>
-            Before the terminal I ran <strong style={{ color: 'var(--paper)', fontWeight: 500 }}>HerbNCurry</strong>,
-            a solo on-site catering business — built through college to ~155 events a year at its peak.
-            End-to-end ownership: clients, menus, logistics, the cooking. It taught me operations,
-            reliability, and how to keep a promise to a customer. The same instincts I bring to shipping software.
+            All of the above ran alongside <strong style={{ color: 'var(--paper)', fontWeight: 500 }}>HerbNCurry</strong>,
+            a solo on-site catering business I built through college to ~155 events a year at its peak.
+            End-to-end ownership: clients, menus, logistics, the cooking. Labs by day, kitchens by night.
+            It taught me operations, reliability, and how to keep a promise to a customer — the same
+            instincts I bring to shipping software.
           </p>
           <p className="stack"><span>B.S. Experimental Psychology · UTSA</span><span>Punjabi · Urdu · English · Spanish</span></p>
         </div>
