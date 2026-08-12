@@ -1,6 +1,6 @@
 // Console Dossier — Trajectory (#/trajectory). Career record from the résumé.
-// Order is deliberate: §01 roles, §02 capabilities, §03 credentials, §04 personal
-// projects LAST — personal work should not lead a job-history page.
+// Section order mirrors the résumé: §01 capabilities, §02 experience, §03 education
+// & certifications, §04 personal projects LAST (personal work shouldn't lead).
 
 const TRAJ_ROLES = [
   {
@@ -105,9 +105,22 @@ function Trajectory() {
         </div>
       </section>
 
-      {/* §01 — experience */}
+      {/* §01 — capabilities first, mirroring the résumé's skills-before-experience order */}
       <div className="cd-band" data-reveal>
-        <span className="a">§ 01</span><span className="ln"></span><span className="end">experience · most recent first</span>
+        <span className="a">§ 01</span><span className="ln"></span><span className="end">capabilities</span>
+      </div>
+      <div className="cd-skills">
+        {TRAJ_SKILLS.map((s, i) => (
+          <div className="grp" data-reveal key={i}>
+            <div className="k">{s.k}</div>
+            <p>{s.v}</p>
+          </div>
+        ))}
+      </div>
+
+      {/* §02 — experience */}
+      <div className="cd-band" data-reveal>
+        <span className="a">§ 02</span><span className="ln"></span><span className="end">experience · most recent first</span>
       </div>
       {TRAJ_ROLES.map((r, i) => (
         <article className="cd-role" data-reveal key={i}>
@@ -126,29 +139,16 @@ function Trajectory() {
         </article>
       ))}
 
-      {/* §02 — capabilities */}
+      {/* §03 — education first, then certifications (matches the résumé's combined section) */}
       <div className="cd-band" data-reveal>
-        <span className="a">§ 02</span><span className="ln"></span><span className="end">capabilities</span>
-      </div>
-      <div className="cd-skills">
-        {TRAJ_SKILLS.map((s, i) => (
-          <div className="grp" data-reveal key={i}>
-            <div className="k">{s.k}</div>
-            <p>{s.v}</p>
-          </div>
-        ))}
-      </div>
-
-      {/* §03 — credentials */}
-      <div className="cd-band" data-reveal>
-        <span className="a">§ 03</span><span className="ln"></span><span className="end">credentials</span>
+        <span className="a">§ 03</span><span className="ln"></span><span className="end">education &amp; certifications</span>
       </div>
       <div className="cd-params" data-reveal>
+        <div className="row"><span className="k">B.S. Experimental Psychology · University of Texas at San Antonio</span><span className="v">2018</span></div>
+        <div className="row"><span className="k">Full-Stack Development Bootcamp · Coding Dojo</span><span className="v">2021</span></div>
         <div className="row"><span className="k">AWS Machine Learning Engineer</span><span className="v a">in progress</span></div>
         <div className="row"><span className="k">SAFe® Scrum Master</span><span className="v">2023</span></div>
         <div className="row"><span className="k">AWS Cloud Practitioner</span><span className="v">2023</span></div>
-        <div className="row"><span className="k">Full-Stack Bootcamp · Coding Dojo</span><span className="v">2021</span></div>
-        <div className="row"><span className="k">B.S. Experimental Psychology · UTSA</span><span className="v">2018</span></div>
       </div>
 
       {/* §04 — personal projects, deliberately last and visually lighter than the roles */}
