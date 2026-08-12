@@ -21,7 +21,10 @@ Marks: `[ ]` not started · `[~]` in progress · `[x]` done · `[!]` blocked
 4. `[x]` Trajectory rebuilt from résumé (added IDEA job; PP = personal project). — agent
 5. `[x]` Résumé PDF wired in; chrome fixes (live clock, footer, gated Tweaks panel). — agent
 6. `[x]` Holdover cleanup (removed stale html/js/img + INTEGRATION.md; sitemap → root). — agent
-7. `[x]` Blog: in-app reader built; "Old is Gold" live; wider reading column. — agent
+7. `[~]` Blog: in-app reader built; "Old is Gold" written; wider reading column. **The page
+   is HIDDEN as of `5e9c032`** (`SHOW_FIELD_NOTES = false` in `cd-theme.jsx`) — one post
+   isn't enough to carry a channel. Reader and post are intact, not deleted. Ali brings it
+   back by flipping the flag once more drafts are finished. — agent (built), user (content)
 8. `[x]` Project skill library at `.claude/skills/` (5 skills + 2 verified diagnostic
    scripts) so cold sessions can carry the site forward. — agent
 9. `[x]` **Commit the finished ~2026-06-24 work** — Projects 2×2 card grid + `art` slot,
@@ -66,6 +69,13 @@ first launch is largely paid. Rollback tag: `prelaunch-82403f3` (`7824b97`).
 
 **Third launch — `129adbe`:** Pocket Professor reconciled across all five surfaces against the
 résumé. Rollback tag: `prelaunch-129adbe` (`82403f3`).
+
+**Fourth launch — `cabd3a1`:** PP audience reworded to "motivated autodidacts who want to change
+careers" (diverges from the résumé on purpose), plus a fix for the home secondary-channel layout
+regression this session had shipped. Rollback tag: `prelaunch-cabd3a1` (`129adbe`).
+
+**Fifth launch — `5e9c032`:** Field Notes hidden behind `SHOW_FIELD_NOTES`. Rollback tag:
+`prelaunch-5e9c032` (`cabd3a1`).
 
 Still live-but-unreviewed: **`cd-about.jsx`** (step 10) — only its §03 audience line has been
 checked; the rest never has.

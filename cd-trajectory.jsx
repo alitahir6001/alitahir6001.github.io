@@ -1,20 +1,10 @@
-// Console Dossier — Trajectory (#/trajectory). Career record from the résumé,
-// tech-forward. Timeline of roles (cd-role), capability groups (cd-skills),
-// credentials, and a résumé action. Medium density — a reference page.
+// Console Dossier — Trajectory (#/trajectory). Career record from the résumé.
+// Order is deliberate: §01 roles, §02 capabilities, §03 credentials, §04 personal
+// projects LAST — personal work should not lead a job-history page.
 
 const TRAJ_ROLES = [
   {
-    when: '2024 — NOW', co: 'Personal project', meta: 'Founder · solo',
-    title: 'Pocket Professor — adaptive learning platform',
-    sum: 'An adaptive learning platform for motivated autodidacts who want to change careers — a problem informed by 15 years of my own service-industry work. Built solo alongside my day job on TypeScript, Node.js, Postgres, and GitHub Actions.',
-    bullets: [
-      ['V2 is a ', 'deterministic multi-agent rebuild', ' — onboarding, professor, and career-coach agents under strict agent contracts, with schema validation and policy-gated output.'],
-      ['An ', 'append-only event store', ' keeps plan adaptation reproducible, so a learner\'s plan can be replayed and explained rather than guessed at.'],
-      ['Shipped v1 first — a Python · FastAPI · Gemini syllabus generator — then rewrote it in TypeScript around the engine. Now in ', 'pre-pilot hardening', '.'],
-    ],
-  },
-  {
-    when: '2025 — NOW', co: 'IDEA · Richmond, VA', meta: 'Systems Developer II',
+    when: '2025 — NOW', co: 'IDEA', meta: 'Systems Developer II',
     title: 'Systems Developer II — Data Whispers team',
     sum: 'Multi-stack team building a customer-facing BI platform: a Django/React customer UI, a .NET ingestion service, and a SQL Server analytics database. I established the documentation, deployment automation, and delivery processes it runs on, and I\'m currently the sole in-house developer on its core services.',
     bullets: [
@@ -59,6 +49,31 @@ const TRAJ_ROLES = [
   },
 ];
 
+// Personal projects — kept out of TRAJ_ROLES on purpose: they are not jobs, and
+// they render in their own lighter section at the bottom of the page.
+const TRAJ_PROJECTS = [
+  {
+    when: '2024 — NOW', title: 'Pocket Professor',
+    sum: 'An adaptive learning platform for motivated autodidacts who want to change careers. V2 is a deterministic multi-agent rebuild — onboarding, professor, and career-coach agents under strict contracts, with an append-only event store so plan adaptation stays reproducible. In pre-pilot hardening.',
+    stack: ['typescript · node', 'postgres', 'github actions'],
+  },
+  {
+    when: '2026 — NOW', title: 'AI Agent Harness Extensions',
+    sum: 'The Advisor — a model-agnostic MCP server that routes architectural and hard-to-reverse decisions to a stronger model, while cheap models carry the everyday workload — plus a persistent project-memory system that lets coding agents resume multi-session work without re-deriving context.',
+    stack: ['python · mcp', 'stdio json-rpc', 'claude code plugin'],
+  },
+  {
+    when: '2026 — NOW', title: 'Job Application Automation Pipeline',
+    sum: 'Scrapes 13 job boards, scores every posting against a base résumé with batched LLM calls, and generates a tailored résumé and cover letter per job in 20–30 seconds. A Manifest V3 Chrome extension fills the forms in my own browser and stops before submit.',
+    stack: ['node · sqlite', 'playwright', 'chrome extension · mv3'],
+  },
+  {
+    when: '2026', title: 'ZuneHD Artist Metadata Updater',
+    sum: 'Restores artist biographies and background images on ZuneHD hardware after Microsoft retired the Zune.net backend — resolving artists against MusicBrainz and delivering the data over the device\'s encrypted USB MTP stack.',
+    stack: ['.net 8 · c#', 'native interop', 'musicbrainz'],
+  },
+];
+
 const TRAJ_SKILLS = [
   { k: 'AI-Assisted Development', v: 'Codex · Claude Code · Gemini CLI · Google Antigravity · MCP server integration · prompt engineering · agent architecture (persistent memory, multi-agent workflows) · agentic problem-solving patterns' },
   { k: 'LLM Models & Hosting', v: 'Hands-on across Anthropic, OpenAI, and Google models plus open-weight (Llama · Qwen · DeepSeek) · local hosting via Ollama and LM Studio · provider-agnostic dispatch with fallback' },
@@ -77,17 +92,16 @@ function Trajectory() {
     <div className="cd-wrap">
       <StatusBar station="SERVICE RECORD" cur="trajectory" />
 
-      <section className="cd-intro">
-        <div className="k" data-reveal>— Trajectory · Service Record</div>
-        <h1 data-reveal>Five years from<br />bootcamp to <span className="a">production.</span></h1>
+      <section className="cd-intro tight">
+        <div className="k" data-reveal>— Trajectory</div>
+        <h1 data-reveal>Service <span className="a">record.</span></h1>
         <p className="lead" data-reveal>
-          Enterprise authentication at scale, a current systems-developer role reviving undocumented
-          platforms with agent tooling, and an AI learning platform built on the side. The throughline
-          is <strong> systems that have to stay up</strong> — and the discipline to keep them there.
+          Enterprise authentication at GE, then systems and agent tooling at IDEA.
+          Personal projects are at the bottom.
         </p>
         <div className="cd-cta" data-reveal>
-          <a className="primary" href="docs/ali-tahir-resume.pdf" target="_blank" rel="noopener"><span>▶  Download résumé · PDF</span><span className="ar">→</span></a>
-          <a href="https://github.com/alitahir6001" target="_blank" rel="noopener"><span>▶  GitHub · alitahir6001</span><span className="ar">→</span></a>
+          <a href="https://github.com/alitahir6001" target="_blank" rel="noopener"><span>▶  GitHub</span><span className="ar">→</span></a>
+          <a href="https://linkedin.com/in/ali-t-06748432" target="_blank" rel="noopener"><span>▶  LinkedIn</span><span className="ar">→</span></a>
         </div>
       </section>
 
@@ -136,6 +150,21 @@ function Trajectory() {
         <div className="row"><span className="k">Full-Stack Bootcamp · Coding Dojo</span><span className="v">2021</span></div>
         <div className="row"><span className="k">B.S. Experimental Psychology · UTSA</span><span className="v">2018</span></div>
       </div>
+
+      {/* §04 — personal projects, deliberately last and visually lighter than the roles */}
+      <div className="cd-band" data-reveal>
+        <span className="a">§ 04</span><span className="ln"></span><span className="end">personal projects · built on my own time</span>
+      </div>
+      {TRAJ_PROJECTS.map((p, i) => (
+        <article className="cd-proj" data-reveal key={i}>
+          <div className="when">{p.when}</div>
+          <div>
+            <h3>{p.title}</h3>
+            <p>{p.sum}</p>
+            <p className="stack">{p.stack.map((s, j) => <span key={j}>{s}</span>)}</p>
+          </div>
+        </article>
+      ))}
 
       <Foot left="— END OF RECORD" ack="SVC · 04" />
     </div>

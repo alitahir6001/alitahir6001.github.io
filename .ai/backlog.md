@@ -1,5 +1,14 @@
 # Backlog — recent sessions (newest first)
 
+## Last session: 2026-08-11 (session 3, part 5)
+**Field Notes hidden (`5e9c032`, fifth launch).** Ali's call: one published post plus several
+unfinished drafts he doesn't want to rush isn't enough to carry a channel. Hid it behind a single
+`SHOW_FIELD_NOTES` flag in `cd-theme.jsx` rather than deleting anything — `cd-fieldnotes.jsx` still
+builds and loads, so restoring it is flipping the flag and rebuilding. The flag gates the nav
+entry, the home channel (with "Earlier work" renumbered to CH-02 and the band count following), and
+the route, so an old `#/field-notes` link falls through to Home instead of a half-live page.
+Verified both directions before committing rather than asserting reversibility.
+
 ## Last session: 2026-08-11 (session 3, part 4)
 **Audience reword + a shipped CSS regression caught by Ali (`cabd3a1`, fourth launch).** Ali
 changed the PP audience to "motivated autodidacts who want to change careers"; applied to all five
