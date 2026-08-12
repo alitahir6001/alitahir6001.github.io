@@ -100,7 +100,7 @@ const TRAJ_SKILLS = [
   { k: 'AI-Assisted Development', v: 'Codex · Claude Code · Gemini CLI · Google Antigravity · MCP server integration · prompt engineering · agent architecture (persistent memory, multi-agent workflows) · agentic problem-solving patterns' },
   { k: 'LLM Models & Hosting', v: 'Hands-on across Anthropic, OpenAI, and Google models plus open-weight (Llama · Qwen · DeepSeek) · local hosting via Ollama and LM Studio · provider-agnostic dispatch with fallback' },
   { k: 'Languages & Frameworks', v: 'TypeScript · JavaScript · Node.js · Python · C#/.NET · React · HTML/CSS · Django · FastAPI · Flask · Playwright · Chrome Extensions (Manifest V3)' },
-  { k: 'Cloud & DevOps', v: 'GitHub Actions · AWS (ECS, EC2, CloudFormation, RDS, S3, IAM) · Docker · Terraform · TeamCity' },
+  { k: 'Cloud & DevOps', v: 'GitHub Actions · AWS (ECS, EC2, CloudFormation, RDS, S3, IAM) · Docker · Terraform · Jenkins · TeamCity' },
   { k: 'Databases & APIs', v: 'SQL Server · SQLite · GraphQL · REST APIs · Apigee · EDI file processing and B-view mapping · PostgreSQL (working knowledge)' },
   { k: 'Security', v: 'mTLS · OpenSSL · Envoy · certificate management · deploy keys · SSO / IAM systems · enterprise authentication architecture' },
   { k: 'Delivery & Leadership', v: 'SAFe Agile with Jira · Kanban with Rally · Scrum · standup facilitation across two teams · sprint planning and retrospectives · end-to-end change management · cross-team reviews · stakeholder progress reporting' },
