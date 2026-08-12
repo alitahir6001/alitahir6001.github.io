@@ -1,13 +1,13 @@
 // Console Dossier — homepage. A directory, not a pitch: a short greeting, then
-// one routed channel per page. The flagship project lives on Projects now, not
-// here — the index's job is to send people to the right page fast.
+// one routed channel per page. Project content lives on Projects now, not here —
+// the index's job is to send people to the right page fast.
 
 // Field Notes is filtered out when SHOW_FIELD_NOTES is false; channel numbers
 // come from position, so the list renumbers itself.
 const HOME_CHANNELS = [
   {
     href: '#/projects', label: 'Projects', of: 'builds · routed',
-    blurb: "Here's some stuff I've made — a flagship in pre-pilot, the tools I use daily, and a few hardware detours.",
+    blurb: "Here's some stuff I've made — a learning platform in pre-pilot, the agent tooling I use daily, and a few hardware detours.",
     badge: 'BUILDS',
   },
   {

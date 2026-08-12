@@ -124,7 +124,7 @@ function GlobalStyle() {
       .cd-band .ln { height: 1px; background: var(--rule-2); }
       .cd-band .end { color: var(--paper-3); }
 
-      /* flagship console — let it sit in open space, no boxed framing */
+      /* project console — let it sit in open space, no boxed framing */
       .cd-console { position: relative; margin-top: var(--sp-band); }
       .cd-console .pad { padding: 0; }
       .cd-console .chid { color: var(--paper-3); font-size: 10.5px; letter-spacing: .24em; text-transform: uppercase; margin-bottom: 22px; }

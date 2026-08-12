@@ -58,14 +58,14 @@ const TRAJ_PROJECTS = [
     stack: ['typescript · node', 'postgres', 'github actions'],
   },
   {
-    when: '2026 — NOW', title: 'AI Agent Harness Extensions',
-    sum: 'The Advisor — a model-agnostic MCP server that routes architectural and hard-to-reverse decisions to a stronger model, while cheap models carry the everyday workload — plus a persistent project-memory system that lets coding agents resume multi-session work without re-deriving context.',
+    when: '2026 — NOW', title: 'The Advisor',
+    sum: 'A Claude Code plugin that routes architectural and hard-to-reverse decisions to a stronger model for a second opinion, while a cheap workhorse model carries the everyday load. Model-agnostic across Claude, Gemini, and GPT; standard library only; every consult logged verbatim.',
     stack: ['python · mcp', 'stdio json-rpc', 'claude code plugin'],
   },
   {
-    when: '2026 — NOW', title: 'Job Application Automation Pipeline',
-    sum: 'Scrapes 13 job boards, scores every posting against a base résumé with batched LLM calls, and generates a tailored résumé and cover letter per job in 20–30 seconds. A Manifest V3 Chrome extension fills the forms in my own browser and stops before submit.',
-    stack: ['node · sqlite', 'playwright', 'chrome extension · mv3'],
+    when: '2026 — NOW', title: 'Agent Memory & Session State',
+    sum: 'A memory protocol for coding agents — durable knowledge in a generated skill library, live state in a small set of session files — so multi-session work resumes without re-deriving context. Behavior claims are verified in the tool-call stream rather than taken from the model\'s reply.',
+    stack: ['claude code skills', 'session-state protocol', 'stream-json verification'],
   },
   {
     when: '2026', title: 'ZuneHD Artist Metadata Updater',
