@@ -122,8 +122,8 @@ function Trajectory() {
           Personal projects are at the bottom.
         </p>
         <div className="cd-cta" data-reveal>
-          <a href="https://github.com/alitahir6001" target="_blank" rel="noopener"><span>▶  GitHub</span><span className="ar">→</span></a>
-          <a href="https://linkedin.com/in/ali-t-06748432" target="_blank" rel="noopener"><span>▶  LinkedIn</span><span className="ar">→</span></a>
+          <a href="https://github.com/alitahir6001" target="_blank" rel="noopener noreferrer"><span>▶  GitHub</span><span className="ar">→</span></a>
+          <a href="https://linkedin.com/in/ali-t-06748432" target="_blank" rel="noopener noreferrer"><span>▶  LinkedIn</span><span className="ar">→</span></a>
         </div>
       </section>
 

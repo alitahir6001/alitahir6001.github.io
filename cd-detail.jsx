@@ -52,7 +52,7 @@ function Detail({ theme }) {
         </div>
         <DetailTelemetry />
         <div className="cd-cta">
-          <a href="https://github.com/alitahir6001" target="_blank" rel="noopener"><span>▶  GitHub · alitahir6001</span><span className="ar">→</span></a>
+          <a href="https://github.com/alitahir6001" target="_blank" rel="noopener noreferrer"><span>▶  GitHub · alitahir6001</span><span className="ar">→</span></a>
         </div>
       </article>
 
