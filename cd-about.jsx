@@ -160,7 +160,7 @@ function About() {
             It taught me operations, reliability, and how to keep a promise to a customer — the same
             instincts I bring to shipping software.
           </p>
-          <p className="stack"><span>B.S. Experimental Psychology · UTSA</span><span>Punjabi · Urdu · English · Spanish</span></p>
+          <p className="stack"><span>B.S. Experimental Psychology · UTSA</span><span>English (native)</span><span>Urdu/Hindi (native)</span><span>Punjabi (receptive fluency)</span><span>Spanish (conversational)</span></p>
         </div>
         <div className="right">
           <div><span className="k">PEAK</span><span className="v"> · 155 ev/yr</span></div>
