@@ -100,10 +100,10 @@ const TRAJ_SKILLS = [
   { k: 'AI-Assisted Development', v: 'Codex · Claude Code · Gemini CLI · Google Antigravity · MCP server integration · prompt engineering · agent architecture (persistent memory, multi-agent workflows) · agentic problem-solving patterns' },
   { k: 'LLM Models & Hosting', v: 'Hands-on across Anthropic, OpenAI, and Google models plus open-weight (Llama · Qwen · DeepSeek) · local hosting via Ollama and LM Studio · provider-agnostic dispatch with fallback' },
   { k: 'Languages & Frameworks', v: 'TypeScript · JavaScript · Node.js · Python · C#/.NET · React · HTML/CSS · Django · FastAPI · Flask · Playwright · Chrome Extensions (Manifest V3)' },
-  { k: 'Cloud & DevOps', v: 'GitHub Actions · AWS (ECS, EC2, CloudFormation, CloudWatch, Secrets Manager, SSM, RDS, S3, IAM) · Docker · Terraform · Jenkins · TeamCity · Git/GitHub' },
+  { k: 'Cloud & DevOps', v: 'GitHub Actions · AWS (ECS, EC2, CloudFormation, RDS, S3, IAM) · Docker · Terraform · TeamCity' },
   { k: 'Databases & APIs', v: 'SQL Server · SQLite · GraphQL · REST APIs · Apigee · EDI file processing and B-view mapping · PostgreSQL (working knowledge)' },
   { k: 'Security', v: 'mTLS · OpenSSL · Envoy · certificate management · deploy keys · SSO / IAM systems · enterprise authentication architecture' },
-  { k: 'Delivery & Leadership', v: 'Agile · Scrum · Kanban · Jira · Rally · standup facilitation · sprint planning, reviews and retrospectives · end-to-end change management · stakeholder progress reporting' },
+  { k: 'Delivery & Leadership', v: 'SAFe Agile with Jira · Kanban with Rally · Scrum · standup facilitation across two teams · sprint planning and retrospectives · end-to-end change management · cross-team reviews · stakeholder progress reporting' },
   { k: 'Documentation', v: 'Technical SOPs · user guides · database architecture docs · data-flow diagrams · deployment runbooks · knowledge transfer out of zero-documentation environments' },
 ];
 
@@ -163,15 +163,18 @@ function Trajectory() {
 
       {/* §03 — education first, then certifications (matches the résumé's combined section) */}
       <div className="cd-band" data-reveal>
-        <span className="a">§ 03</span><span className="ln"></span><span className="end">education &amp; certifications</span>
+        <span className="a">§ 03</span><span className="ln"></span><span className="end">education · certifications · community</span>
       </div>
       <div className="cd-params" data-reveal>
         <div className="row"><span className="k">B.S. Experimental Psychology · University of Texas at San Antonio</span><span className="v">2018</span></div>
-        <div className="row"><span className="k">Undergraduate thesis · cultural stressors in first-generation young adults — poster, UTSA thesis conference</span><span className="v">2018</span></div>
+        <div className="row"><span className="k">Sponsored into graduate-level (5000) research</span><span className="v">2018</span></div>
+        <div className="row"><span className="k">Thesis · “Cross Cultural Stressors of Adolescents and Young Adults Ages 14–24 in a Bi-Cultural Upbringing” — poster, UTSA thesis conference</span><span className="v">2018</span></div>
         <div className="row"><span className="k">Full-Stack Development Bootcamp · Coding Dojo</span><span className="v">2021</span></div>
         <div className="row"><span className="k">AWS Machine Learning Engineer</span><span className="v a">in progress</span></div>
         <div className="row"><span className="k">SAFe® Scrum Master</span><span className="v">2023</span></div>
         <div className="row"><span className="k">AWS Cloud Practitioner</span><span className="v">2023</span></div>
+        <div className="row"><span className="k">Community · Meadowbridge Community Market (MAD RVA), monthly volunteer crew</span><span className="v">2025 — now</span></div>
+        <div className="row"><span className="k">Community · TechCrunch All Stage, Boston</span><span className="v">2025</span></div>
       </div>
 
       {/* §04 — personal projects, deliberately last and visually lighter than the roles */}
