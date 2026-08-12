@@ -8,8 +8,8 @@
 const RESEARCH_RECORD = [
   {
     id: 'STUDY', of: 'own design · 2017 — 2018',
-    title: 'Cultural stressors in first-generation young adults',
-    body: 'My own study, aimed at a question I grew up inside: what does it cost to be raised in two cultures at once? A 2×3 factorial design — two age bands (14–19, 20–24) against three stressor types, financial, educational, and social — surveyed 138 respondents, roughly three quarters in San Antonio and the rest in the D.C. metro. Self-report was triangulated against Bexar County and forty years of US Census demographics, plus a meta-analysis of existing work on cultural stressors and dominance-hierarchy paradigms. The dominant pressure turned out to be social — conforming on language, behavioral norms, etiquette — with financial pressure close behind, tracking the immigrant communities most respondents came from. Presented as a poster at UTSA\'s undergraduate thesis conference in 2018.',
+    title: '“Cross Cultural Stressors of Adolescents and Young Adults Ages 14–24 in a Bi-Cultural Upbringing”',
+    body: 'My own thesis, sponsored into graduate-level (5000) research as an undergraduate, aimed at a question I grew up inside: what does it cost to be raised in two cultures at once? A 2×3 factorial design — two age bands (14–19, 20–24) against three stressor types, financial, educational, and social — surveyed 138 respondents, roughly three quarters in San Antonio and the rest in the D.C. metro. Self-report was triangulated against Bexar County and forty years of US Census demographics, plus a meta-analysis of existing work on cultural stressors and dominance-hierarchy paradigms. The dominant pressure turned out to be social — conforming on language, behavioral norms, etiquette — with financial pressure close behind, tracking the immigrant communities most respondents came from. Presented as a poster at UTSA\'s thesis conference in 2018.',
     stack: ['2×3 factorial', 'n = 138 · two metros', 'survey · census · meta-analysis'],
     badge: 'THESIS',
   },
@@ -160,7 +160,7 @@ function About() {
             It taught me operations, reliability, and how to keep a promise to a customer — the same
             instincts I bring to shipping software.
           </p>
-          <p className="stack"><span>B.S. Experimental Psychology · UTSA</span><span>Punjabi · Urdu · English · Spanish</span></p>
+          <p className="stack"><span>B.S. Experimental Psychology · UTSA</span><span>English (native)</span><span>Urdu/Hindi (native)</span><span>Punjabi (receptive fluency)</span><span>Spanish (conversational)</span></p>
         </div>
         <div className="right">
           <div><span className="k">PEAK</span><span className="v"> · 155 ev/yr</span></div>
