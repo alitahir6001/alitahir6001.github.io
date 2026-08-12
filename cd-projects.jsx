@@ -1,11 +1,11 @@
-// Console Dossier — Projects (#/projects). Channel catalog: the Pocket Professor
-// flagship plus the personal projects on the résumé (job-apply, agent harness, ZuneHD)
-// and client/archive work. Data-driven — add a channel by adding an entry to PROJECT_CHANNELS.
-// art: null = placeholder; swap in a URL string to show a screenshot.
+// Console Dossier — Projects (#/projects). Channel catalog: Pocket Professor, the agent
+// tooling, and the hardware/client work. Data-driven — add a channel by adding an entry
+// to PROJECT_CHANNELS. art: null = placeholder; swap in a URL string to show a screenshot.
+// href = internal route (▶ Open file); repo = public GitHub URL (▶ Source).
 
 const PROJECT_CHANNELS = [
   {
-    id: 'CH-01', of: '· flagship · pre-pilot', title: 'Pocket Professor',
+    id: 'CH-01', of: '· learning platform · pre-pilot', title: 'Pocket Professor',
     body: 'An adaptive learning platform for motivated autodidacts who want to change careers — a problem informed by 15 years of my own service-industry work. Three agents (onboarding, professor, career coach) build a plan and adapt it to real progress, under strict contracts with an append-only event store so every adaptation is reproducible.',
     stack: ['node · fastify · ts', 'react · vite · tailwind', 'postgres · github actions'],
     badge: 'PRE-PILOT', badgeCls: 'warn',
@@ -13,17 +13,19 @@ const PROJECT_CHANNELS = [
     art: null,
   },
   {
-    id: 'CH-02', of: '· tool · job hunt', title: 'job-apply',
-    body: 'Scrapes 13 job boards (550–600 postings a run), scores every posting against a base résumé with batched LLM calls, and generates a tailored résumé and cover letter per job in 20–30 seconds. A Manifest V3 Chrome extension fills Greenhouse and Lever forms in my own browser — deterministic answers for factual screening questions, mandatory human review before submit.',
-    stack: ['node · sqlite · playwright', 'chrome extension · mv3', 'anthropic · openai · gemini'],
-    badge: 'ACTIVE',
+    id: 'CH-02', of: '· tool · agent harness', title: 'The Advisor',
+    body: 'A Claude Code plugin that routes architectural and hard-to-reverse decisions to a stronger model for a second opinion, while a cheap workhorse model carries the everyday load. Model-agnostic — Claude, Gemini, or GPT, over either a vendor CLI or an API key. Python standard library only, no install step, and every consult is logged verbatim as JSON so the escalation is auditable.',
+    stack: ['python · mcp · stdio json-rpc', 'claude code plugin', 'anthropic · gemini · openai'],
+    badge: 'SHIPPED',
+    repo: 'https://github.com/alitahir6001/the-advisor',
     art: null,
   },
   {
-    id: 'CH-03', of: '· tool · agent harness', title: 'AI Agent Harness Extensions',
-    body: 'Two extensions to my own coding-agent setup. The Advisor is a model-agnostic MCP server that routes architectural and hard-to-reverse decisions to a second opinion on a different model — cheap models carry the everyday load. Alongside it, a persistent project-memory system that lets agents resume multi-session work without re-deriving context.',
-    stack: ['python · mcp · stdio json-rpc', 'stdlib only · no install step', 'anthropic · gemini'],
+    id: 'CH-03', of: '· method · agent memory', title: 'Agent Memory & Session State',
+    body: 'A working notebook for making coding agents behave, and the memory protocol that came out of it: durable knowledge in a generated skill library, live state in a small set of session files, per-turn rules in one place — so an agent resumes multi-session work without re-deriving context. Behavior claims are only accepted here after a fresh session proves them in the tool-call stream, tested against a small model on purpose.',
+    stack: ['claude code skills', 'session-state protocol', 'stream-json verification'],
     badge: 'ACTIVE',
+    repo: 'https://github.com/alitahir6001/harness',
     art: null,
   },
   {
@@ -59,9 +61,8 @@ function Projects() {
         <div className="k" data-reveal>— Projects · Channel Directory</div>
         <h1 data-reveal>Everything currently<br />on the <span className="a">air.</span></h1>
         <p className="lead" data-reveal>
-          One flagship under active build, plus the agent tooling, automation, and hardware work
-          that keeps the curiosity and the fundamentals sharp.
-          <strong> Open the flagship for its full file.</strong>
+          A learning platform under active build, the agent tooling I use every day, and the
+          hardware and client work that keeps the curiosity and the fundamentals sharp.
         </p>
       </section>
 
@@ -85,6 +86,7 @@ function Projects() {
               <div className="ch-foot">
                 <div className={'badge ' + (c.badgeCls || '')}>{c.badge}</div>
                 {c.href ? <a className="read" href={c.href}>▶ Open file →</a> : null}
+                {c.repo ? <a className="read" href={c.repo} target="_blank" rel="noopener noreferrer">▶ Source →</a> : null}
               </div>
             </div>
           </article>

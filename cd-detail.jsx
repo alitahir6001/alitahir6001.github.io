@@ -36,7 +36,7 @@ function Detail({ theme }) {
 
       {/* Header — airy */}
       <section className="cd-operator" style={{ paddingBottom: 40 }}>
-        <div className="k" data-reveal>— Channel CH-01 · Flagship · Pre-pilot</div>
+        <div className="k" data-reveal>— Channel CH-01 · Learning platform · Pre-pilot</div>
         <div className="id" data-reveal>POCKET PROFESSOR<span className="a">.</span></div>
         <p className="stmt" data-reveal>
           An adaptive learning platform for motivated autodidacts who want to change careers — a

@@ -80,7 +80,7 @@ const OXBLOOD={id:"oxblood",vars:{"--bg":"#08080a","--bg-2":"#0d0d10","--paper":
       .cd-band .ln { height: 1px; background: var(--rule-2); }
       .cd-band .end { color: var(--paper-3); }
 
-      /* flagship console \u2014 let it sit in open space, no boxed framing */
+      /* project console \u2014 let it sit in open space, no boxed framing */
       .cd-console { position: relative; margin-top: var(--sp-band); }
       .cd-console .pad { padding: 0; }
       .cd-console .chid { color: var(--paper-3); font-size: 10.5px; letter-spacing: .24em; text-transform: uppercase; margin-bottom: 22px; }
