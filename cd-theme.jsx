@@ -109,11 +109,13 @@ function GlobalStyle() {
       /* operator block — the airy hero, now the tone for the whole page */
       .cd-operator { padding: var(--sp-hero-t) 0 var(--sp-hero-b); max-width: 72ch; }
       .cd-operator .k { color: var(--paper-3); font-size: 10.5px; letter-spacing: .26em; text-transform: uppercase; margin-bottom: 30px; }
-      .cd-operator .id { font-size: 26px; font-weight: 500; letter-spacing: .04em; color: var(--paper); text-transform: uppercase; margin: 0 0 34px; line-height: 1.5; }
+      /* no text-transform — the home greeting is sentence case; cd-detail's .id is literally uppercase */
+      .cd-operator .id { font-size: 26px; font-weight: 500; letter-spacing: .04em; color: var(--paper); margin: 0 0 34px; line-height: 1.5; }
       .cd-operator .id .a { color: var(--accent-ink); }
       .cd-operator .stmt { font-size: 22px; line-height: 1.85; color: var(--paper-2); max-width: 50ch; margin: 0 0 34px; font-weight: 400; }
       .cd-operator .stmt strong { color: var(--paper); font-weight: 500; }
       .cd-operator .stmt .a { color: var(--accent-ink); }
+      .cd-operator .stmt.sub { font-size: 15px; line-height: 1.9; color: var(--paper-3); }
       .cd-operator .open { color: var(--accent-ink); font-size: 11.5px; letter-spacing: .18em; text-transform: uppercase; }
 
       /* section band */

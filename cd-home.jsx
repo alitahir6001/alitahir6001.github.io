@@ -1,7 +1,36 @@
-// Console Dossier — homepage. Locked to OXBLOOD, rebuilt calm: a dimly-lit
-// lounge readout rather than a packed mission-control board. Airy hero sets the
-// tone; the flagship sits in open space; telemetry is a 4-stat readout row;
-// secondary channels breathe. Console vocabulary kept, density removed.
+// Console Dossier — homepage. A directory, not a pitch: a short greeting, then
+// one routed channel per page. The flagship project lives on Projects now, not
+// here — the index's job is to send people to the right page fast.
+
+// Field Notes is filtered out when SHOW_FIELD_NOTES is false; channel numbers
+// come from position, so the list renumbers itself.
+const HOME_CHANNELS = [
+  {
+    href: '#/projects', label: 'Projects', of: 'builds · routed',
+    blurb: "Here's some stuff I've made — a flagship in pre-pilot, the tools I use daily, and a few hardware detours.",
+    badge: 'BUILDS',
+  },
+  {
+    href: '#/field-notes', label: 'Field Notes', of: 'writing · routed', gated: !SHOW_FIELD_NOTES,
+    blurb: 'Engineering lessons, AI, and the occasional love letter to the old software and hardware that made me a builder.',
+    badge: 'WRITING',
+  },
+  {
+    href: '#/trajectory', label: 'Trajectory', of: 'record · stable',
+    blurb: 'What I can do and where I did it — enterprise SSO at scale, then the shift to building with LLMs.',
+    badge: 'RECORD',
+  },
+  {
+    href: '#/about', label: 'About', of: 'personal · stable',
+    blurb: 'How a psychology researcher ended up shipping production software, and what carried over.',
+    badge: 'PERSONAL',
+  },
+  {
+    href: '#/hire', label: 'AOI / Hire', of: 'contact · open',
+    blurb: "What I'm looking for, the work I want to do next, and how to reach me.",
+    badge: 'CONTACT',
+  },
+].filter((c) => !c.gated);
 
 function Home({ theme }) {
   useReveal('home');
@@ -9,84 +38,36 @@ function Home({ theme }) {
     <div className="cd-wrap">
       <StatusBar station="GROUND STATION" cur="index" />
 
-      {/* Airy hero — compact identity, no giant name */}
       <section className="cd-operator">
         <div className="k" data-reveal>— Operator</div>
-        <div className="id" data-reveal>ALI TAHIR</div>
+        <h1 className="id" data-reveal>Hi, I'm Ali</h1>
         <p className="stmt" data-reveal>
-          Five years shipping production software — <strong>the last two with LLMs in the loop.</strong>
+          I'm a research nerd who likes to <strong>make stuff.</strong>
+        </p>
+        <p className="stmt sub" data-reveal>
+          Five years shipping production software — the last two with LLMs in the loop.
         </p>
       </section>
 
-      {/* Primary channel — flagship project */}
       <div className="cd-band" data-reveal>
-        <span className="a">PRIMARY CHANNEL</span>
+        <span className="a">CHANNELS</span>
         <span className="ln"></span>
-        <span className="end">status readout · pre-pilot</span>
+        <span className="end">{String(HOME_CHANNELS.length).padStart(2, '0')} routed</span>
       </div>
 
-      <article className="cd-console" data-reveal>
-        <div className="pad">
-          <div className="chid">CH-01 <span className="a">·</span> FLAGSHIP <span className="a">·</span> PRE-PILOT</div>
-          <h1>Pocket Professor</h1>
-          <p className="sub">
-            An adaptive learning platform for motivated autodidacts who want to change careers —
-            the structure of college or a bootcamp without the cost. Three agents — an
-            <strong> onboarding</strong> agent, a <strong>professor</strong>, and a
-            <strong> career coach</strong> — build a plan and adapt it to real progress and
-            setbacks. Built for people in high-attrition work who want out but are short on
-            time, money, or both.
-          </p>
-        </div>
-
-        <div className="cd-cta">
-          <a className="primary" href="#/pocket-professor"><span>▶  Open project file</span><span className="ar">→</span></a>
-        </div>
-      </article>
-
-      {/* Secondary channels — open readout, room to breathe */}
-      <div className="cd-band" data-reveal>
-        <span className="a">SECONDARY CHANNELS</span>
-        <span className="ln"></span>
-        <span className="end">{SHOW_FIELD_NOTES ? '2 routed' : '1 routed'}</span>
-      </div>
-
-      {SHOW_FIELD_NOTES && (
-        <article className="cd-chan" data-reveal>
-          <div className="id">CH-02<span className="of">routed · ground</span></div>
+      {HOME_CHANNELS.map((c, i) => (
+        <article className="cd-chan" data-reveal key={c.href}>
+          <div className="id">CH-{String(i + 1).padStart(2, '0')}<span className="of">{c.of}</span></div>
           <div>
-            <h3><a href="#/field-notes">Field Notes</a></h3>
-            <p>
-              Engineering lessons, AI, and the occasional love letter to the old software and hardware
-              that made me a builder.
-            </p>
-            <p className="stack"><span>essays</span><span>01 published</span><span><a href="#/field-notes" style={{color:'var(--accent-ink)',textDecoration:'none'}}>open log →</a></span></p>
+            <h3><a href={c.href}>{c.label}</a></h3>
+            <p>{c.blurb}</p>
+            <p className="stack"><span><a href={c.href} style={{color:'var(--accent-ink)',textDecoration:'none'}}>open →</a></span></p>
           </div>
           <div className="right">
-            <div><span className="k">POSTS</span><span className="v"> · 01</span></div>
-            <div><span className="k">LATEST</span><span className="v"> · 2026.06</span></div>
-            <div className="badge">WRITING</div>
+            <div className="badge">{c.badge}</div>
           </div>
         </article>
-      )}
-
-      <article className="cd-chan" data-reveal>
-        <div className="id">{SHOW_FIELD_NOTES ? 'CH-03' : 'CH-02'}<span className="of">archive · stable</span></div>
-        <div>
-          <h3><a href="#/trajectory">Earlier work</a></h3>
-          <p>
-            Enterprise authentication at scale before the AI shift — SSO services that tens of
-            thousands of people depended on, and the unglamorous production plumbing that taught
-            the rest.
-          </p>
-          <p className="stack"><span>2021 — 2025</span><span><a href="#/trajectory" style={{color:'var(--accent-ink)',textDecoration:'none'}}>service record →</a></span></p>
-        </div>
-        <div className="right">
-          <div><span className="k">SPAN</span><span className="v"> · 4 yrs</span></div>
-          <div><span className="k">ROLE</span><span className="v"> · Engineer</span></div>
-          <div className="badge">ARCHIVE</div>
-        </div>
-      </article>
+      ))}
 
       <Foot left="— END OF FEED" ack="ACK · 07" />
     </div>
