@@ -170,11 +170,12 @@ function GlobalStyle() {
       .cd-ch p { margin: 0; color: var(--paper-2); font-size: 13px; line-height: 1.7; flex: 1; }
       .cd-ch .stack { color: var(--paper-3); font-size: 11px; }
       .cd-ch .stack span + span::before { content: ' · '; margin: 0 2px; }
-      .cd-ch .ch-foot { display: flex; align-items: center; justify-content: space-between; padding-top: 6px; }
-      .cd-ch .badge { display: inline-block; padding: 3px 10px; border: 1px solid var(--rule-2); color: var(--paper-2); font-size: 10.5px; letter-spacing: .14em; text-transform: uppercase; }
+      /* badge pinned left, links grouped right — a card can carry both Open file and Source */
+      .cd-ch .ch-foot { display: flex; align-items: center; flex-wrap: wrap; gap: 8px 16px; padding-top: 6px; }
+      .cd-ch .badge { display: inline-block; padding: 3px 10px; border: 1px solid var(--rule-2); color: var(--paper-2); font-size: 10.5px; letter-spacing: .14em; text-transform: uppercase; margin-right: auto; white-space: nowrap; }
       .cd-ch .badge.live { background: var(--accent); border-color: var(--accent); color: var(--paper); }
       .cd-ch .badge.warn { color: var(--accent-ink); border-color: var(--accent-ink); }
-      .cd-ch a.read { color: var(--accent-ink); text-decoration: none; font-size: 11px; letter-spacing: .14em; text-transform: uppercase; }
+      .cd-ch a.read { color: var(--accent-ink); text-decoration: none; font-size: 11px; letter-spacing: .14em; text-transform: uppercase; white-space: nowrap; }
 
       /* home secondary channels — a row, not a card. Kept separate from .cd-ch:
          the Projects grid owns that class and the two layouts are incompatible. */

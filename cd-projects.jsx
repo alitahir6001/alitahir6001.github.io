@@ -10,6 +10,8 @@ const PROJECT_CHANNELS = [
     stack: ['node · fastify · ts', 'react · vite · tailwind', 'postgres · github actions'],
     badge: 'PRE-PILOT', badgeCls: 'warn',
     href: '#/pocket-professor',
+    // the v2 repo is incomplete — point at the playground, which is public and runnable
+    repo: 'https://github.com/alitahir6001/pock_prof_playground',
     art: null,
   },
   {
@@ -33,6 +35,7 @@ const PROJECT_CHANNELS = [
     body: 'Restores artist biographies and background images on ZuneHD hardware after Microsoft retired the Zune.net backend. Resolves artists against MusicBrainz, writes MBIDs into ID3 tags, and delivers the data over the device\'s encrypted USB MTP stack — PPP/TCP/HTTP tunnelled over MTP.',
     stack: ['.net 8 · c# · p/invoke', 'macos iokit · win winusb · linux libusb', 'musicbrainz'],
     badge: 'SHIPPED',
+    repo: 'https://github.com/alitahir6001/zune-artist-updater',
     art: null,
   },
   {
