@@ -251,6 +251,19 @@ function GlobalStyle() {
       .cd-intro .lead { margin: 0; font-size: 19px; line-height: 1.85; color: var(--paper-2); max-width: 52ch; }
       .cd-intro .lead strong { color: var(--paper); font-weight: 500; }
       .cd-intro .lead .a { color: var(--accent-ink); }
+      /* tight variant — reference pages that shouldn't open with a hero */
+      .cd-intro.tight { padding: calc(var(--sp-hero-t) * .5) 0 calc(var(--sp-hero-b) * .42); max-width: 64ch; }
+      .cd-intro.tight h1 { font-size: 28px; letter-spacing: -.005em; margin: 0 0 18px; }
+      .cd-intro.tight .lead { font-size: 15px; line-height: 1.8; max-width: 58ch; }
+      .cd-intro.tight .cd-cta { margin-top: 34px; max-width: 560px; }
+
+      /* personal projects — lighter than .cd-role, so it never reads as a job */
+      .cd-proj { padding: 30px 0; border-bottom: 1px solid var(--rule); display: grid; grid-template-columns: 180px 1fr; gap: 40px; align-items: start; }
+      .cd-proj .when { color: var(--accent-ink); font-size: 11px; letter-spacing: .14em; text-transform: uppercase; }
+      .cd-proj h3 { margin: 0 0 8px; color: var(--paper); font-weight: 500; font-size: 16px; }
+      .cd-proj p { margin: 0 0 10px; color: var(--paper-2); font-size: 13px; line-height: 1.7; max-width: 62ch; }
+      .cd-proj .stack { margin: 0; color: var(--paper-3); font-size: 11px; }
+      .cd-proj .stack span + span::before { content: ' · '; margin: 0 2px; }
 
       /* ---- framed figure (real photography in the dossier) ---- */
       .cd-figure { margin: var(--sp-band) 0 0; }
@@ -317,6 +330,7 @@ function GlobalStyle() {
         .cd-ch-art { height: 140px; }
         .cd-chan { grid-template-columns: 1fr; gap: 16px; }
         .cd-chan .right { text-align: left; }
+        .cd-proj { grid-template-columns: 1fr; gap: 12px; }
         .cd-console h1 { font-size: 34px; }
         .cd-operator { padding: 88px 0 64px; }
         .cd-operator .stmt { font-size: 19px; }
