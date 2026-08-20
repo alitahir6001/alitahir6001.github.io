@@ -86,6 +86,8 @@ function GlobalStyle() {
         opacity: var(--glow, .55);
       }
       .cd-wrap { position: relative; z-index: 1; width: 100%; max-width: 1000px; margin: 0 auto; padding: 0 56px; }
+      /* pages with no Foot need the bottom room the footer used to supply */
+      .cd-wrap.no-foot { padding-bottom: 96px; }
 
       /* reveal */
       [data-reveal] { opacity: 0; transform: translateY(18px); transition: opacity .9s cubic-bezier(.2,.6,.2,1), transform .9s cubic-bezier(.2,.6,.2,1); }
@@ -95,10 +97,9 @@ function GlobalStyle() {
       }
 
       /* status bar — quieter, more leading */
-      .cd-status { padding: 40px 0 18px; display: grid; grid-template-columns: auto 1fr auto auto; gap: 28px; align-items: center; font-size: 10.5px; letter-spacing: .2em; text-transform: uppercase; color: var(--paper-3); }
+      .cd-status { padding: 40px 0 18px; display: grid; grid-template-columns: auto 1fr auto; gap: 28px; align-items: center; font-size: 10.5px; letter-spacing: .2em; text-transform: uppercase; color: var(--paper-3); }
       .cd-status .station { color: var(--paper); font-size: 12.5px; letter-spacing: .2em; }
       .cd-status .station .a { color: var(--accent-ink); }
-      .cd-status .pill { padding: 5px 12px; background: var(--accent-deep); color: var(--accent-ink); border: 1px solid var(--accent); letter-spacing: .16em; font-size: 10px; white-space: nowrap; }
       .cd-status .stamp { white-space: nowrap; }
       .cd-status .stamp .v { color: var(--paper); margin-left: 6px; }
       .cd-status .clock { line-height: 1.55; text-align: right; }
@@ -262,6 +263,8 @@ function GlobalStyle() {
       .cd-intro .lead { font-family: var(--font-prose); margin: 0; font-size: calc(19px * var(--prose-scale)); line-height: 1.85; color: var(--paper-2); max-width: 52ch; }
       .cd-intro .lead strong { color: var(--paper); font-weight: 500; }
       .cd-intro .lead .a { color: var(--accent-ink); }
+      .cd-intro .lead + .lead { margin-top: 22px; }
+      .cd-intro .lead.sub { font-size: calc(16px * var(--prose-scale)); color: var(--paper-3); }
       /* tight variant — reference pages that shouldn't open with a hero */
       .cd-intro.tight { padding: calc(var(--sp-hero-t) * .5) 0 calc(var(--sp-hero-b) * .42); max-width: 64ch; }
       .cd-intro.tight h1 { font-size: 28px; letter-spacing: -.005em; margin: 0 0 18px; }
@@ -371,7 +374,7 @@ const CD_NAV = [
   { key: 'notes', label: 'Field Notes', href: '#/field-notes', gated: !SHOW_FIELD_NOTES },
   { key: 'trajectory', label: 'Trajectory', href: '#/trajectory' },
   { key: 'about', label: 'About', href: '#/about' },
-  { key: 'hire', label: 'AOI / Hire', href: '#/hire' },
+  { key: 'hire', label: 'Hit me up', href: '#/hire' },
 ].filter((n) => !n.gated);
 
 // Live clock — UTC on top, the viewer's local time (with timezone) right below.
@@ -404,8 +407,6 @@ function StatusBar({ station, cur }) {
       <div className="cd-status">
         <div className="station">{station} <span className="a">/</span> ALI TAHIR</div>
         <div></div>
-        {/* availability lives on the Hire page only — not site chrome */}
-        {cur === 'hire' ? <div className="pill">OPEN · AI ENGINEERING</div> : <div></div>}
         <StatusClock />
       </div>
       <div className="cd-rule thick"></div>
