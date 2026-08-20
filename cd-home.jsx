@@ -26,8 +26,8 @@ const HOME_CHANNELS = [
     badge: 'PERSONAL',
   },
   {
-    href: '#/hire', label: 'AOI / Hire', of: 'contact · open',
-    blurb: "What I'm looking for, the work I want to do next, and how to reach me.",
+    href: '#/hire', label: 'Hit me up', of: 'contact · open',
+    blurb: "The work I want to do next — AI at the intersection of human behavior — and how to reach me.",
     badge: 'CONTACT',
   },
 ].filter((c) => !c.gated);
