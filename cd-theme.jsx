@@ -48,7 +48,15 @@ function GlobalStyle() {
       body { margin: 0; }
       .cd {
         position: relative;
-        font-family: 'JetBrains Mono','IBM Plex Mono',ui-monospace,Menlo,monospace;
+        /* Two faces on purpose. Mono is the console chrome — labels, IDs, badges, data.
+           Prose is running body copy. Monospace only reads as "terminal" when something
+           else isn't. Kill switch: set --font-prose to var(--font-mono). */
+        --font-mono: 'JetBrains Mono','IBM Plex Mono',ui-monospace,Menlo,monospace;
+        --font-prose: ui-serif, Georgia, Cambria, 'Times New Roman', serif;
+        /* ONE KNOB for all body-copy size. Sizes were tuned for mono; Georgia's x-height
+           is ~14% smaller at the same px, so it renders visually smaller. 1 = original. */
+        --prose-scale: 1.25;
+        font-family: var(--font-mono);
         background: var(--bg); color: var(--paper);
         min-height: 100vh; font-size: 13px; line-height: 1.62; letter-spacing: .005em;
 
@@ -78,6 +86,8 @@ function GlobalStyle() {
         opacity: var(--glow, .55);
       }
       .cd-wrap { position: relative; z-index: 1; width: 100%; max-width: 1000px; margin: 0 auto; padding: 0 56px; }
+      /* pages with no Foot need the bottom room the footer used to supply */
+      .cd-wrap.no-foot { padding-bottom: 96px; }
 
       /* reveal */
       [data-reveal] { opacity: 0; transform: translateY(18px); transition: opacity .9s cubic-bezier(.2,.6,.2,1), transform .9s cubic-bezier(.2,.6,.2,1); }
@@ -87,10 +97,9 @@ function GlobalStyle() {
       }
 
       /* status bar — quieter, more leading */
-      .cd-status { padding: 40px 0 18px; display: grid; grid-template-columns: auto 1fr auto auto; gap: 28px; align-items: center; font-size: 10.5px; letter-spacing: .2em; text-transform: uppercase; color: var(--paper-3); }
+      .cd-status { padding: 40px 0 18px; display: grid; grid-template-columns: auto 1fr auto; gap: 28px; align-items: center; font-size: 10.5px; letter-spacing: .2em; text-transform: uppercase; color: var(--paper-3); }
       .cd-status .station { color: var(--paper); font-size: 12.5px; letter-spacing: .2em; }
       .cd-status .station .a { color: var(--accent-ink); }
-      .cd-status .pill { padding: 5px 12px; background: var(--accent-deep); color: var(--accent-ink); border: 1px solid var(--accent); letter-spacing: .16em; font-size: 10px; white-space: nowrap; }
       .cd-status .stamp { white-space: nowrap; }
       .cd-status .stamp .v { color: var(--paper); margin-left: 6px; }
       .cd-status .clock { line-height: 1.55; text-align: right; }
@@ -112,10 +121,10 @@ function GlobalStyle() {
       /* no text-transform — the home greeting is sentence case; cd-detail's .id is literally uppercase */
       .cd-operator .id { font-size: 26px; font-weight: 500; letter-spacing: .04em; color: var(--paper); margin: 0 0 34px; line-height: 1.5; }
       .cd-operator .id .a { color: var(--accent-ink); }
-      .cd-operator .stmt { font-size: 22px; line-height: 1.85; color: var(--paper-2); max-width: 50ch; margin: 0 0 34px; font-weight: 400; }
+      .cd-operator .stmt { font-family: var(--font-prose); font-size: calc(22px * var(--prose-scale)); line-height: 1.85; color: var(--paper-2); max-width: 50ch; margin: 0 0 34px; font-weight: 400; }
       .cd-operator .stmt strong { color: var(--paper); font-weight: 500; }
       .cd-operator .stmt .a { color: var(--accent-ink); }
-      .cd-operator .stmt.sub { font-size: 15px; line-height: 1.9; color: var(--paper-3); }
+      .cd-operator .stmt.sub { font-size: calc(15px * var(--prose-scale)); line-height: 1.9; color: var(--paper-3); }
       .cd-operator .open { color: var(--accent-ink); font-size: 11.5px; letter-spacing: .18em; text-transform: uppercase; }
 
       /* section band */
@@ -130,7 +139,7 @@ function GlobalStyle() {
       .cd-console .chid { color: var(--paper-3); font-size: 10.5px; letter-spacing: .24em; text-transform: uppercase; margin-bottom: 22px; }
       .cd-console .chid .a { color: var(--accent-ink); }
       .cd-console h1 { margin: 0 0 20px; font-weight: 500; font-size: 46px; letter-spacing: -.015em; color: var(--paper); line-height: 1.08; }
-      .cd-console .sub { margin: 0; color: var(--paper-2); font-size: 16px; max-width: 56ch; line-height: 1.8; }
+      .cd-console .sub { font-family: var(--font-prose); margin: 0; color: var(--paper-2); font-size: calc(16px * var(--prose-scale)); max-width: 56ch; line-height: 1.8; }
 
       /* telemetry — open readout row, hairline separators, no boxed grid */
       .cd-tele { display: flex; flex-wrap: wrap; margin-top: var(--tele-mt); row-gap: 28px; }
@@ -167,8 +176,8 @@ function GlobalStyle() {
       .cd-ch .id { color: var(--accent-ink); font-size: 11px; letter-spacing: .2em; text-transform: uppercase; }
       .cd-ch .id .of { color: var(--paper-3); font-size: 10px; letter-spacing: .1em; }
       .cd-ch h3 { margin: 0; color: var(--paper); font-weight: 500; font-size: 20px; letter-spacing: .005em; }
-      .cd-ch p { margin: 0; color: var(--paper-2); font-size: 13px; line-height: 1.7; flex: 1; }
-      .cd-ch .stack { color: var(--paper-3); font-size: 11px; }
+      .cd-ch p { font-family: var(--font-prose); margin: 0; color: var(--paper-2); font-size: calc(13px * var(--prose-scale)); line-height: 1.7; flex: 1; }
+      .cd-ch .stack { font-family: var(--font-mono); color: var(--paper-3); font-size: 11px; }
       .cd-ch .stack span + span::before { content: ' · '; margin: 0 2px; }
       /* badge pinned left, links grouped right — a card can carry both Open file and Source */
       .cd-ch .ch-foot { display: flex; align-items: center; flex-wrap: wrap; gap: 8px 16px; padding-top: 6px; }
@@ -187,8 +196,8 @@ function GlobalStyle() {
       .cd-chan h3 { margin: 0 0 14px; color: var(--paper); font-weight: 500; font-size: 22px; letter-spacing: .005em; }
       .cd-chan h3 a { color: inherit; text-decoration: none; }
       .cd-chan h3 a:hover { color: var(--accent-ink); }
-      .cd-chan p { margin: 0 0 14px; color: var(--paper-2); font-size: 13.5px; max-width: 56ch; line-height: 1.75; }
-      .cd-chan .stack { color: var(--paper-3); font-size: 11px; }
+      .cd-chan p { font-family: var(--font-prose); margin: 0 0 14px; color: var(--paper-2); font-size: calc(13.5px * var(--prose-scale)); max-width: 56ch; line-height: 1.75; }
+      .cd-chan .stack { font-family: var(--font-mono); color: var(--paper-3); font-size: 11px; }
       .cd-chan .stack span + span::before { content: ' · '; margin: 0 2px; }
       .cd-chan .right { text-align: right; font-size: 10.5px; letter-spacing: .14em; text-transform: uppercase; color: var(--paper-2); line-height: 2.2; }
       .cd-chan .right .k { color: var(--paper-3); }
@@ -217,7 +226,7 @@ function GlobalStyle() {
       .cd-shot .cap .a { color: var(--accent-ink); }
 
       .cd-prose { max-width: 60ch; margin-top: var(--sp-band); }
-      .cd-prose p { color: var(--paper-2); font-size: 16px; line-height: 1.9; margin: 0 0 24px; }
+      .cd-prose p { font-family: var(--font-prose); color: var(--paper-2); font-size: calc(16px * var(--prose-scale)); line-height: 1.9; margin: 0 0 24px; }
       .cd-prose p strong { color: var(--paper); font-weight: 500; }
       .cd-prose .a { color: var(--accent-ink); }
       /* wider reading measure for long-form blog posts (Field Notes reader) */
@@ -229,7 +238,7 @@ function GlobalStyle() {
       .cd-steps .step:first-child { border-top: 1px solid var(--rule); }
       .cd-steps .step .n { color: var(--accent-ink); font-size: 24px; font-weight: 500; line-height: 1; }
       .cd-steps .step h4 { margin: 0 0 10px; color: var(--paper); font-weight: 500; font-size: 17px; }
-      .cd-steps .step p { margin: 0; color: var(--paper-2); font-size: 13.5px; line-height: 1.75; max-width: 60ch; }
+      .cd-steps .step p { font-family: var(--font-prose); margin: 0; color: var(--paper-2); font-size: calc(13.5px * var(--prose-scale)); line-height: 1.75; max-width: 60ch; }
 
       /* params — open two-column list, hairline rows */
       .cd-params { margin-top: var(--sp-band); display: grid; grid-template-columns: repeat(2, 1fr); column-gap: 56px; }
@@ -243,7 +252,7 @@ function GlobalStyle() {
       .cd-log .entry:first-child { border-top: 1px solid var(--rule); }
       .cd-log .entry .date { color: var(--accent-ink); font-size: 11px; letter-spacing: .14em; text-transform: uppercase; }
       .cd-log .entry .date .rev { display: block; color: var(--paper-3); margin-top: 7px; }
-      .cd-log .entry p { margin: 0; color: var(--paper-2); font-size: 14px; line-height: 1.75; max-width: 60ch; }
+      .cd-log .entry p { font-family: var(--font-prose); margin: 0; color: var(--paper-2); font-size: calc(14px * var(--prose-scale)); line-height: 1.75; max-width: 60ch; }
       .cd-log .entry p strong { color: var(--paper); font-weight: 500; }
 
       /* ---- page intro (shared header for inner pages) ---- */
@@ -251,9 +260,11 @@ function GlobalStyle() {
       .cd-intro .k { color: var(--paper-3); font-size: 10.5px; letter-spacing: .26em; text-transform: uppercase; margin-bottom: 26px; }
       .cd-intro h1 { margin: 0 0 28px; font-weight: 500; font-size: 44px; letter-spacing: -.015em; color: var(--paper); line-height: 1.1; }
       .cd-intro h1 .a { color: var(--accent-ink); }
-      .cd-intro .lead { margin: 0; font-size: 19px; line-height: 1.85; color: var(--paper-2); max-width: 52ch; }
+      .cd-intro .lead { font-family: var(--font-prose); margin: 0; font-size: calc(19px * var(--prose-scale)); line-height: 1.85; color: var(--paper-2); max-width: 52ch; }
       .cd-intro .lead strong { color: var(--paper); font-weight: 500; }
       .cd-intro .lead .a { color: var(--accent-ink); }
+      .cd-intro .lead + .lead { margin-top: 22px; }
+      .cd-intro .lead.sub { font-size: calc(16px * var(--prose-scale)); color: var(--paper-3); }
       /* tight variant — reference pages that shouldn't open with a hero */
       .cd-intro.tight { padding: calc(var(--sp-hero-t) * .5) 0 calc(var(--sp-hero-b) * .42); max-width: 64ch; }
       .cd-intro.tight h1 { font-size: 28px; letter-spacing: -.005em; margin: 0 0 18px; }
@@ -279,7 +290,7 @@ function GlobalStyle() {
 
       /* ---- pull quote ---- */
       .cd-quote { margin: 44px 0; padding: 0 0 0 28px; border-left: 2px solid var(--accent); max-width: 56ch; }
-      .cd-quote p { margin: 0; color: var(--paper); font-size: 19px; line-height: 1.7; font-style: italic; letter-spacing: .005em; }
+      .cd-quote p { font-family: var(--font-prose); margin: 0; color: var(--paper); font-size: calc(19px * var(--prose-scale)); line-height: 1.7; font-style: italic; letter-spacing: .005em; }
 
       /* ---- career timeline (trajectory) ---- */
       .cd-role { padding: var(--sp-ch) 0; border-bottom: 1px solid var(--rule); display: grid; grid-template-columns: 180px 1fr; gap: 40px; align-items: start; }
@@ -288,12 +299,12 @@ function GlobalStyle() {
       .cd-role .when .co { display: block; color: var(--paper); font-size: 13px; margin-top: 10px; letter-spacing: .04em; text-transform: none; }
       .cd-role .when .meta { display: block; color: var(--paper-3); font-size: 10px; margin-top: 8px; letter-spacing: .12em; }
       .cd-role h3 { margin: 0 0 10px; color: var(--paper); font-weight: 500; font-size: 18px; }
-      .cd-role .role-sum { margin: 0 0 16px; color: var(--paper-2); font-size: 13.5px; line-height: 1.7; max-width: 62ch; }
+      .cd-role .role-sum { font-family: var(--font-prose); margin: 0 0 16px; color: var(--paper-2); font-size: calc(13.5px * var(--prose-scale)); line-height: 1.7; max-width: 62ch; }
       .cd-role ul { margin: 0; padding: 0; list-style: none; }
-      .cd-role li { position: relative; padding-left: 20px; margin-bottom: 11px; color: var(--paper-2); font-size: 13px; line-height: 1.7; max-width: 62ch; }
+      .cd-role li { font-family: var(--font-prose); position: relative; padding-left: 20px; margin-bottom: 11px; color: var(--paper-2); font-size: calc(13px * var(--prose-scale)); line-height: 1.7; max-width: 62ch; }
       .cd-role li::before { content: '·'; position: absolute; left: 4px; color: var(--accent-ink); }
       .cd-role li strong { color: var(--paper); font-weight: 500; }
-      .cd-role li .m { color: var(--accent-ink); }
+      .cd-role li .m { font-family: var(--font-mono); color: var(--accent-ink); }
 
       /* ---- skill groups ---- */
       .cd-skills { margin-top: var(--sp-band); display: grid; grid-template-columns: repeat(2, 1fr); column-gap: 56px; row-gap: 0; }
@@ -336,12 +347,12 @@ function GlobalStyle() {
         .cd-proj { grid-template-columns: 1fr; gap: 12px; }
         .cd-console h1 { font-size: 34px; }
         .cd-operator { padding: 88px 0 64px; }
-        .cd-operator .stmt { font-size: 19px; }
+        .cd-operator .stmt { font-size: calc(19px * var(--prose-scale)); }
         .cd-cta { flex-direction: column; }
         .cd-params { grid-template-columns: 1fr; column-gap: 0; }
         .cd-steps .step, .cd-log .entry { grid-template-columns: 1fr; gap: 12px; }
         .cd-intro h1 { font-size: 32px; }
-        .cd-intro .lead { font-size: 17px; }
+        .cd-intro .lead { font-size: calc(17px * var(--prose-scale)); }
         .cd-role, .cd-post { grid-template-columns: 1fr; gap: 14px; }
         .cd-post .right { text-align: left; }
         .cd-skills { grid-template-columns: 1fr; column-gap: 0; }
@@ -363,7 +374,7 @@ const CD_NAV = [
   { key: 'notes', label: 'Field Notes', href: '#/field-notes', gated: !SHOW_FIELD_NOTES },
   { key: 'trajectory', label: 'Trajectory', href: '#/trajectory' },
   { key: 'about', label: 'About', href: '#/about' },
-  { key: 'hire', label: 'AOI / Hire', href: '#/hire' },
+  { key: 'hire', label: 'Hit me up', href: '#/hire' },
 ].filter((n) => !n.gated);
 
 // Live clock — UTC on top, the viewer's local time (with timezone) right below.
@@ -396,8 +407,6 @@ function StatusBar({ station, cur }) {
       <div className="cd-status">
         <div className="station">{station} <span className="a">/</span> ALI TAHIR</div>
         <div></div>
-        {/* availability lives on the Hire page only — not site chrome */}
-        {cur === 'hire' ? <div className="pill">OPEN · AI ENGINEERING</div> : <div></div>}
         <StatusClock />
       </div>
       <div className="cd-rule thick"></div>

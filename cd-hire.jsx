@@ -1,57 +1,34 @@
-// Console Dossier — AOI / Hire (#/hire). Area of Interest. Deliberately minimal
-// and honest: AI engineering roles, what I bring, where I'm still leveling up, and
-// how to reach me. No compensation talk.
-// This is the ONLY page that states availability — the status-bar pill is gated to it.
+// Console Dossier — Hit me up (#/hire). Contact page. Deliberately minimal: what I'm
+// looking for and how to reach me. No compensation talk, no capability list — the
+// capabilities live on Trajectory and the evidence lives on About.
+// This is the ONLY page that states availability.
 
 function Hire() {
   useReveal('hire');
   return (
-    <div className="cd-wrap">
-      <StatusBar station="AREA OF INTEREST" cur="hire" />
+    <div className="cd-wrap no-foot">
+      <StatusBar station="OPEN CHANNEL" cur="hire" />
 
       <section className="cd-intro">
-        <div className="k" data-reveal>— AOI · Open Channel</div>
-        <h1 data-reveal>Open to <span className="a">AI engineering</span><br />roles.</h1>
+        <div className="k" data-reveal>— Contact · Open channel</div>
+        <h1 data-reveal>Hit me <span className="a">up.</span></h1>
         <p className="lead" data-reveal>
-          Agent tooling, MCP integrations, and the backend systems underneath them. I do my best work on
-          <strong> systems that have to stay up</strong> and teams that actually ship. Based in
-          Richmond, Virginia.
+          I'm open to <strong>AI engineering</strong> roles — agent tooling, MCP integrations, and the
+          backend systems underneath them. What I'm actually chasing is the part of that work sitting
+          at the <span className="a">intersection of AI and human behavior</span>: how people come to
+          trust these systems, learn from them, and change what they do because of them.
+        </p>
+        <p className="lead sub" data-reveal>
+          That's not a career pivot, it's the same thread. I studied psychology and ran my own research
+          before I wrote production software, and the two have never been separate for me — Pocket
+          Professor is a learning-behavior problem wearing a backend. If your team is building
+          something people have to understand, adopt, or be changed by, that's the work I want. Based
+          in Richmond, Virginia.
         </p>
       </section>
 
-      {/* what I bring */}
       <div className="cd-band" data-reveal>
-        <span className="a">§ 01</span><span className="ln"></span><span className="end">what I bring</span>
-      </div>
-      <div className="cd-prose" data-reveal>
-        <p>
-          Five years shipping production software — enterprise authentication at scale, then applied
-          AI work that reached real adoption: an MCP server used by two dev teams, the PM, and
-          colleagues outside engineering, plus a
-          queryable knowledge base that cut troubleshooting on an undocumented database from days to
-          minutes. I build <span className="a">agent tooling that survives contact with a real team</span>,
-          not demos. I'm comfortable owning a service end to end, keeping it alive under pressure, and
-          I lead standups and reviews when a team needs it.
-        </p>
-      </div>
-
-      {/* honest about level */}
-      <div className="cd-band" data-reveal>
-        <span className="a">§ 02</span><span className="ln"></span><span className="end">where I'm leveling up</span>
-      </div>
-      <div className="cd-prose" data-reveal>
-        <p>
-          My AI work is <strong>applied</strong>, not research — agent architecture, MCP servers, model
-          routing, retrieval and persistent memory. I don't train models, and I'd rather say so than
-          oversell. I'm deepening the ML side deliberately (AWS Machine Learning Engineer, in progress),
-          and there's system-design depth I'm still building toward staff-grade. Put me on a strong team
-          with hard problems and I'll close the gap fast. That's the whole pitch.
-        </p>
-      </div>
-
-      {/* contact */}
-      <div className="cd-band" data-reveal>
-        <span className="a">§ 03</span><span className="ln"></span><span className="end">open a channel</span>
+        <span className="a">§ 01</span><span className="ln"></span><span className="end">how to reach me</span>
       </div>
       <div className="cd-contact" data-reveal>
         <a href="mailto:ali@pakfro.dev"><span className="k">Email</span><span className="v">ali@pakfro.dev</span><span className="go">→</span></a>
@@ -59,8 +36,6 @@ function Hire() {
         <a href="https://linkedin.com/in/ali-t-06748432" target="_blank" rel="noopener noreferrer"><span className="k">LinkedIn</span><span className="v">linkedin.com/in/ali-t-06748432</span><span className="go">→</span></a>
         <div className="row"><span className="k">Status</span><span className="v">Open</span><span className="go" style={{ color: 'var(--accent-ink)' }}>●</span></div>
       </div>
-
-      <Foot left="— END OF CHANNEL" ack="AOI · 06" />
     </div>
   );
 }
