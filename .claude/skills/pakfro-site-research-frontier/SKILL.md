@@ -84,28 +84,27 @@ in one session produces three distinct route events in the dashboard, with no co
 
 ---
 
-## F3 — Removing the unpkg dependency
+## F3 — Removing the unpkg dependency — ✅ MOSTLY SOLVED 2026-09-02
 
-**Why the current approach falls short.** `index.html` loads React and ReactDOM 18.3.1
-from unpkg with `crossorigin="anonymous"` but **no `integrity` attribute** (verified
-2026-07-06). A compromised or hijacked CDN response executes with full page privileges on
-a site whose entire purpose is professional credibility. It is also a single point of
-failure: unpkg down means the site renders nothing at all.
+**What was done.** React and ReactDOM 18.3.1 were downloaded into a new committed `vendor/`
+directory and the two `<script>` tags repointed at them. The CSP went from
+`script-src 'self' https://unpkg.com` to `script-src 'self'`, so the site now has **no
+third-party script origin at all** — SRI became unnecessary rather than being added.
+Provenance was checked before landing: both files are byte-identical (sha384) between unpkg
+and jsdelivr, and the version string reads `18.3.1`. `vendor/README.md` holds the upgrade
+procedure and the verification command.
 
-**The asset.** React is already pinned to an exact version, and `build/` is already a
-committed-artifact directory — so self-hosting adds no new concept.
+`build/` was deliberately *not* used as the destination — it is esbuild's output directory,
+and mixing vendored input into it invites a future `--bundle` or clean step to eat it.
 
-**First three steps.**
-1. Decide between SRI (keep the CDN, add `integrity` hashes) and self-hosting (download
-   both `.production.min.js` files into `build/`, repoint the `src`). Self-hosting is
-   stronger: it removes the third-party request entirely, which SRI does not.
-2. If self-hosting: place the two files in `build/`, update the two `<script>` tags, and
-   confirm `build.mjs` never deletes them (it writes per-file, so it won't — verify).
-3. Re-check the Google Fonts request separately; self-hosting React but keeping a
-   `fonts.gstatic.com` call still leaves one third-party dependency.
+**What is still open.** Google Fonts. `fonts.googleapis.com` (stylesheet) and
+`fonts.gstatic.com` (font files) remain the last third-party origins, and the CSP still
+allows both. Self-hosting JetBrains Mono — woff2 files into `vendor/fonts/` plus an
+`@font-face` block — would close it and let `style-src`/`font-src` drop to `'self'`.
 
-**You have a result when:** devtools → Network, filtered to third-party origins, is empty
-on a full page load, and the site renders identically offline after a cache clear.
+**You have a result when:** devtools → Network, filtered to third-party origins, is empty on
+a full page load, and the site renders identically offline after a cache clear. As of
+2026-09-02 that filter shows Google Fonts only.
 
 ---
 
@@ -192,7 +191,7 @@ that currently ships fine.
 Authored 2026-07-06 against `dev` @ `156e4d9`. Verified for this file: `index.html` on
 `dev` contains only `charset` and `viewport` meta tags (zero description/OG/Twitter/JSON-LD),
 while `main`'s splash carries CSP + referrer + permissions + robots + description; React
-18.3.1 is loaded from unpkg with `crossorigin` and no `integrity`; `sitemap.xml` lists
+18.3.1 was vendored into `vendor/` on 2026-09-02 (was unpkg, no `integrity`); `sitemap.xml` lists
 the root URL only; `FIELD_NOTES` bodies are plain strings. The linktree/analytics idea is
 Ali's own, from `.ai/backlog.md`.
 
