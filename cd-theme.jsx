@@ -162,6 +162,7 @@ function GlobalStyle() {
       /* CTA buttons — calmer, roomier */
       .cd-cta { display: flex; gap: 16px; margin-top: 52px; max-width: 720px; }
       .cd-cta a { flex: 1; padding: 18px 22px; text-decoration: none; font-size: 11.5px; letter-spacing: .16em; text-transform: uppercase; color: var(--paper); border: 1px solid var(--rule-2); display: flex; justify-content: space-between; align-items: center; background: color-mix(in srgb, var(--bg-2) 70%, transparent); transition: border-color .2s, color .2s, background .2s; }
+      .cd-cta.one { max-width: 300px; }
       .cd-cta a.primary { background: var(--accent-deep); border-color: var(--accent); }
       .cd-cta a:hover { border-color: var(--accent-ink); background: color-mix(in srgb, var(--accent-deep) 40%, var(--bg-2)); }
       .cd-cta a .ar { color: var(--accent-ink); }
