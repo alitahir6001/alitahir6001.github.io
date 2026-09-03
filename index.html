@@ -3,8 +3,9 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <!-- script-src must allow unpkg (React UMD); style-src unsafe-inline for cd-theme's injected <style> -->
-  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' https://unpkg.com; object-src 'none'; base-uri 'self'; img-src 'self' data:; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; connect-src 'self'; upgrade-insecure-requests">
+  <!-- script-src is 'self' only — React is vendored, no third-party script origin.
+       style-src keeps unsafe-inline for cd-theme's injected <style>. -->
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; object-src 'none'; base-uri 'self'; img-src 'self' data:; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; connect-src 'self'; upgrade-insecure-requests">
   <meta name="referrer" content="strict-origin-when-cross-origin">
   <meta http-equiv="Permissions-Policy" content="geolocation=(), microphone=(), camera=()">
   <meta name="robots" content="index, follow">
@@ -25,9 +26,11 @@
   <style>
     html, body { margin: 0; padding: 0; background: #08080a; }
   </style>
-  <!-- Production React (minified). No in-browser Babel — JSX is precompiled into build/*.js -->
-  <script src="https://unpkg.com/react@18.3.1/umd/react.production.min.js" crossorigin="anonymous"></script>
-  <script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.production.min.js" crossorigin="anonymous"></script>
+  <!-- Production React 18.3.1 (minified), vendored in vendor/ — see vendor/README.md to update.
+       Self-hosted so the site has no third-party script origin and survives a CDN outage.
+       No in-browser Babel — JSX is precompiled into build/*.js -->
+  <script src="vendor/react.production.min.js"></script>
+  <script src="vendor/react-dom.production.min.js"></script>
 </head>
 <body>
   <div id="root"></div>

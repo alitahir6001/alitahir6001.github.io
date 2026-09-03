@@ -6,7 +6,7 @@ straight from `main`.
 
 ## Stack
 
-React 18 loaded as a UMD bundle from unpkg, JSX precompiled with esbuild, hash routing,
+React 18 as a self-hosted UMD bundle (`vendor/`), JSX precompiled with esbuild, hash routing,
 no framework and no router library. There is **no backend and no server-side build** —
 GitHub Pages serves the files in this repo exactly as they are committed.
 

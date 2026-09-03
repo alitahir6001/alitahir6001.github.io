@@ -97,7 +97,7 @@ file.**
 | `--glow` CSS var | `cd-app.jsx:36` | `t.glow / 100`, spread onto the root `.cd` element with `OXBLOOD.vars`. |
 | `data-space` / `data-frame` | `cd-app.jsx:49` | `relaxed｜open｜lounge` and `stamp｜hairline` — drive vertical rhythm and rule weight in `cd-theme.jsx` CSS. |
 | `--watch` | `build.mjs:44` (`process.argv`) | The only CLI flag. Switches esbuild to watch mode. |
-| React / ReactDOM version | `index.html:14-15` | Pinned `18.3.1` production UMD from unpkg. `crossorigin="anonymous"`, **no SRI** (open security item). |
+| React / ReactDOM version | `index.html` `<head>` | Pinned `18.3.1` production UMD, **self-hosted in `vendor/`** since 2026-09-02. To upgrade, follow `vendor/README.md` — no rebuild needed, React isn't bundled into `build/*.js`. |
 | `CNAME` | repo root | `pakfro.dev` — the custom domain. Don't delete it; Pages needs it. |
 | `robots.txt` | repo root | `Allow: /` + sitemap pointer. |
 | `sitemap.xml` | repo root | Root URL only — deliberate, since all routes are hash fragments crawlers don't index separately. |
@@ -120,7 +120,7 @@ which is how the site was switched off in Jan 2026 (source set to "none").
 | **Tweaks panel showing on the live site** | `localStorage.cdTweaks === '1'` in that browser. | `localStorage.removeItem('cdTweaks')`. |
 | **Tweaks panel missing locally** | Serving from a hostname that isn't localhost/127.0.0.1. | Use `localhost`, or set `localStorage.cdTweaks = '1'`. |
 | **Styles totally broken** | `cd-theme.js` failed to load or `GlobalStyle` isn't rendered. | Check the network tab for `build/cd-theme.js`; it must load before the pages. |
-| **Everything is unstyled AND React is undefined** | unpkg CDN unreachable/blocked. | Confirms the open CDN-dependency risk; check network. |
+| **Everything is unstyled AND React is undefined** | `vendor/react*.js` missing or not served (they are committed — check they weren't dropped from the repo). | Confirm `GET /vendor/react.production.min.js` returns 200. No longer a CDN-outage symptom; React is self-hosted. |
 | **Build fails after adding a page** | New file not in `build.mjs` ENTRIES, or a JSX syntax error. | esbuild prints file + line; `check-wiring.sh` catches the ENTRIES omission. |
 
 ## The validation bar — what counts as evidence here

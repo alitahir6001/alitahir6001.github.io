@@ -1,6 +1,8 @@
 // Console Dossier — Trajectory (#/trajectory). Career record from the résumé.
-// Section order mirrors the résumé: §01 capabilities, §02 experience, §03 education
-// & certifications, §04 personal projects LAST (personal work shouldn't lead).
+// §01 capabilities, §02 research, §03 experience, §04 education, §05 a pointer to
+// the Projects page. Research sits above the employment record on purpose — it is
+// where the trajectory starts, and it was previously one small row near the bottom.
+// The thesis has no link by design: the paper is in UTSA's archives, not in hand.
 
 const TRAJ_ROLES = [
   {
@@ -71,31 +73,6 @@ const TRAJ_ROLES = [
   },
 ];
 
-// Personal projects — kept out of TRAJ_ROLES on purpose: they are not jobs, and
-// they render in their own lighter section at the bottom of the page.
-const TRAJ_PROJECTS = [
-  {
-    when: '2024 — NOW', title: 'Pocket Professor',
-    sum: 'An adaptive learning platform for motivated autodidacts who want to change careers. V2 is a deterministic multi-agent rebuild — onboarding, professor, and career-coach agents under strict contracts, with an append-only event store so plan adaptation stays reproducible. In pre-pilot hardening.',
-    stack: ['typescript · node', 'postgres', 'github actions'],
-  },
-  {
-    when: '2026 — NOW', title: 'The Advisor',
-    sum: 'A Claude Code plugin that routes architectural and hard-to-reverse decisions to a stronger model for a second opinion, while a cheap workhorse model carries the everyday load. Model-agnostic across Claude, Gemini, and GPT; standard library only; every consult logged verbatim.',
-    stack: ['python · mcp', 'stdio json-rpc', 'claude code plugin'],
-  },
-  {
-    when: '2026 — NOW', title: 'Agent Memory & Session State',
-    sum: 'A memory protocol for coding agents — durable knowledge in a generated skill library, live state in a small set of session files — so multi-session work resumes without re-deriving context. Behavior claims are verified in the tool-call stream rather than taken from the model\'s reply.',
-    stack: ['claude code skills', 'session-state protocol', 'stream-json verification'],
-  },
-  {
-    when: '2026', title: 'ZuneHD Artist Metadata Updater',
-    sum: 'Restores artist biographies and background images on ZuneHD hardware after Microsoft retired the Zune.net backend — resolving artists against MusicBrainz and delivering the data over the device\'s encrypted USB MTP stack.',
-    stack: ['.net 8 · c#', 'native interop', 'musicbrainz'],
-  },
-];
-
 const TRAJ_SKILLS = [
   { k: 'AI-Assisted Development', v: 'Codex · Claude Code · Gemini CLI · Google Antigravity · MCP server integration · prompt engineering · agent architecture (persistent memory, multi-agent workflows) · agentic problem-solving patterns' },
   { k: 'LLM Models & Hosting', v: 'Hands-on across Anthropic, OpenAI, and Google models plus open-weight (Llama · Qwen · DeepSeek) · local hosting via Ollama and LM Studio · provider-agnostic dispatch with fallback' },
@@ -118,8 +95,8 @@ function Trajectory() {
         <div className="k" data-reveal>— Trajectory</div>
         <h1 data-reveal>Service <span className="a">record.</span></h1>
         <p className="lead" data-reveal>
-          Enterprise authentication at GE, then systems and agent tooling at IDEA.
-          Personal projects are at the bottom.
+          Psychology research first, then enterprise authentication at GE, then systems
+          and agent tooling at IDEA.
         </p>
         <div className="cd-cta" data-reveal>
           <a href="https://github.com/alitahir6001" target="_blank" rel="noopener noreferrer"><span>▶  GitHub</span><span className="ar">→</span></a>
@@ -140,9 +117,32 @@ function Trajectory() {
         ))}
       </div>
 
-      {/* §02 — experience */}
+      {/* §02 — research. Above the employment record on purpose: it is the start of the
+          trajectory, and it spent the last revision as one small row down in §03. No link —
+          the paper lives in UTSA's archives, so the work is described rather than promised. */}
       <div className="cd-band" data-reveal>
-        <span className="a">§ 02</span><span className="ln"></span><span className="end">experience · engineering, research, operations</span>
+        <span className="a">§ 02</span><span className="ln"></span><span className="end">research · undergraduate thesis</span>
+      </div>
+      <article className="cd-proj" data-reveal>
+        <div className="when">2017 — 2018</div>
+        <div>
+          <h3>“Cross Cultural Stressors of Adolescents and Young Adults Ages 14–24 in a Bi-Cultural Upbringing”</h3>
+          <p>
+            My own study, sponsored into graduate-level (5000) research as an undergraduate. A 2×3
+            factorial design — two age bands against three stressor types, financial, educational,
+            and social — surveyed 138 respondents across San Antonio and the D.C. metro, with
+            self-report triangulated against Bexar County and forty years of US Census demographics
+            plus a meta-analysis of existing work on cultural stressors. The dominant pressure was
+            social — conforming on language, behavioral norms, etiquette — with financial pressure
+            close behind. Presented as a poster at UTSA's thesis conference in 2018.
+          </p>
+          <p className="stack"><span>2×3 factorial</span><span>n = 138 · two metros</span><span>survey · census · meta-analysis</span></p>
+        </div>
+      </article>
+
+      {/* §03 — experience */}
+      <div className="cd-band" data-reveal>
+        <span className="a">§ 03</span><span className="ln"></span><span className="end">experience · engineering, research, operations</span>
       </div>
       {TRAJ_ROLES.map((r, i) => (
         <article className="cd-role" data-reveal key={i}>
@@ -161,14 +161,13 @@ function Trajectory() {
         </article>
       ))}
 
-      {/* §03 — education first, then certifications (matches the résumé's combined section) */}
+      {/* §04 — education first, then certifications (matches the résumé's combined section).
+          The thesis and its sponsorship moved up to §02; don't restate them here. */}
       <div className="cd-band" data-reveal>
-        <span className="a">§ 03</span><span className="ln"></span><span className="end">education · certifications · community</span>
+        <span className="a">§ 04</span><span className="ln"></span><span className="end">education · certifications · community</span>
       </div>
       <div className="cd-params" data-reveal>
         <div className="row"><span className="k">B.S. Experimental Psychology · University of Texas at San Antonio</span><span className="v">2018</span></div>
-        <div className="row"><span className="k">Sponsored into graduate-level (5000) research</span><span className="v">2018</span></div>
-        <div className="row"><span className="k">Thesis · “Cross Cultural Stressors of Adolescents and Young Adults Ages 14–24 in a Bi-Cultural Upbringing” — poster, UTSA thesis conference</span><span className="v">2018</span></div>
         <div className="row"><span className="k">Full-Stack Development Bootcamp · Coding Dojo</span><span className="v">2021</span></div>
         <div className="row"><span className="k">AWS Machine Learning Engineer</span><span className="v a">in progress</span></div>
         <div className="row"><span className="k">SAFe® Scrum Master</span><span className="v">2023</span></div>
@@ -177,22 +176,22 @@ function Trajectory() {
         <div className="row"><span className="k">Community · TechCrunch All Stage, Boston</span><span className="v">2025</span></div>
       </div>
 
-      {/* §04 — personal projects, deliberately last and visually lighter than the roles */}
+      {/* §05 — personal projects live on the Projects page. This section used to restate all
+          four of its cards verbatim; it is a pointer now, not a second copy. */}
       <div className="cd-band" data-reveal>
-        <span className="a">§ 04</span><span className="ln"></span><span className="end">personal projects · built on my own time</span>
+        <span className="a">§ 05</span><span className="ln"></span><span className="end">personal projects · built on my own time</span>
       </div>
-      {TRAJ_PROJECTS.map((p, i) => (
-        <article className="cd-proj" data-reveal key={i}>
-          <div className="when">{p.when}</div>
-          <div>
-            <h3>{p.title}</h3>
-            <p>{p.sum}</p>
-            <p className="stack">{p.stack.map((s, j) => <span key={j}>{s}</span>)}</p>
-          </div>
-        </article>
-      ))}
+      <div className="cd-prose" data-reveal>
+        <p>
+          The personal work has its own page — Pocket Professor, the agent tooling I use daily,
+          a ZuneHD revival, and a couple of hardware detours, each with a link to its source.
+        </p>
+        <div className="cd-cta one">
+          <a href="#/projects"><span>▶  Projects</span><span className="ar">→</span></a>
+        </div>
+      </div>
 
-      <Foot left="— END OF RECORD" ack="SVC · 04" />
+      <Foot left="— END OF RECORD" ack="SVC · 05" />
     </div>
   );
 }

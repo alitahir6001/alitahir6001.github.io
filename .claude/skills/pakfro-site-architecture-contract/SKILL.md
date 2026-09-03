@@ -18,7 +18,7 @@ even allowed to make the change → `pakfro-site-change-control`. Page copy →
 ```
 index.html
   ├─ <head>: JetBrains Mono (Google Fonts) + React 18.3.1 + ReactDOM 18.3.1
-  │          production UMD from unpkg  →  defines global React / ReactDOM
+  │          production UMD, self-hosted in vendor/  →  global React / ReactDOM
   └─ <body>: <div id="root"> + ten plain <script> tags, in a LOAD-BEARING ORDER:
        tweaks-panel → cd-theme → cd-home → cd-detail → cd-projects →
        cd-fieldnotes → cd-trajectory → cd-about → cd-hire → cd-app  (LAST)
@@ -145,8 +145,8 @@ rebuild, and commit `.jsx` + `build/*.js` together.
 
 | Weakness | Status |
 |---|---|
-| **React loaded from unpkg CDN with no SRI.** `crossorigin="anonymous"` is set, but there is no `integrity` hash — a compromised CDN response would execute. | Open. Fix = add SRI or self-host into `build/`. On the security-audit list. |
-| **No CSP on the React `index.html`.** Only the `main` splash and the old deleted loose files ever had security meta tags. | Open. On the security-audit list. |
+| ~~React loaded from unpkg CDN with no SRI.~~ | **Closed 2026-09-02.** Vendored into `vendor/` and committed; verified byte-identical across unpkg and jsdelivr before landing. The site has no third-party script origin. |
+| ~~No CSP on the React `index.html`.~~ | **Closed 2026-08-11**, tightened to `script-src 'self'` on 2026-09-02. |
 | Substring route matching (Invariant 4). | Open, currently harmless. |
 | No tests, no CI, no linter anywhere in the repo. Verification is manual — see `pakfro-site-runbook`. | By design for a site this size; a real constraint on how confidently anything can change. |
 | Blog has no markdown/emphasis rendering — the live post shows literal `* *`. | Open, low priority. |
