@@ -99,9 +99,8 @@ After Option A or B, edit `index.html` (the copy of `Console Dossier.html`).
 ```html
 <!-- DELETE the @babel/standalone script tag entirely -->
 
-<!-- Replace the two react .development.js tags with the minified prod builds.
-     The integrity hashes differ for prod builds, so drop the integrity attr
-     (or regenerate it yourself if your host requires SRI). -->
+<!-- Historical: this is what the tags looked like when React came from a CDN.
+     The live site vendors React instead — see vendor/README.md. -->
 <script src="https://unpkg.com/react@18.3.1/umd/react.production.min.js" crossorigin="anonymous"></script>
 <script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.production.min.js" crossorigin="anonymous"></script>
 ```
@@ -134,11 +133,11 @@ production React, fully static output you can host anywhere.
 
 ---
 
-## Optional: cut the CDN dependency too
+## ✅ Done 2026-09-02: the CDN dependency is already cut
 
-The steps above still pull React from unpkg. To self-host React (no external
-CDN), download the two `.production.min.js` files into `build/` and point the
-script `src` at the local copies. Then your site has zero third-party requests.
+React 18.3.1 is **self-hosted in `vendor/`** and the CSP is `script-src 'self'`. The
+unpkg script tags shown above are historical — see `vendor/README.md` for the live setup
+and the upgrade procedure. Google Fonts is the only remaining third-party origin.
 
 ---
 
