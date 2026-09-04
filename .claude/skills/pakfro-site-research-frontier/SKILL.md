@@ -91,8 +91,8 @@ directory and the two `<script>` tags repointed at them. The CSP went from
 `script-src 'self' https://unpkg.com` to `script-src 'self'`, so the site now has **no
 third-party script origin at all** — SRI became unnecessary rather than being added.
 Provenance was checked before landing: both files are byte-identical (sha384) between unpkg
-and jsdelivr, and the version string reads `18.3.1`. `vendor/README.md` holds the upgrade
-procedure and the verification command.
+and jsdelivr, and the version string reads `18.3.1`. Upgrade procedure lives in the runbook
+skill's config table.
 
 `build/` was deliberately *not* used as the destination — it is esbuild's output directory,
 and mixing vendored input into it invites a future `--bundle` or clean step to eat it.
