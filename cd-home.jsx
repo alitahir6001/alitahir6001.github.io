@@ -7,7 +7,7 @@
 const HOME_CHANNELS = [
   {
     href: '#/projects', label: 'Projects', of: 'builds · routed',
-    blurb: "Here's some stuff I've made — a learning platform in pre-pilot, the agent tooling I use daily, and a few hardware detours.",
+    blurb: "Here's some stuff I've made: a learning platform with three AI agents behind strict output contracts, the agent tooling I use daily, and a few hardware detours.",
     badge: 'BUILDS',
   },
   {
