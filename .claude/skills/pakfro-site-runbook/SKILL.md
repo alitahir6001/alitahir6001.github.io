@@ -97,7 +97,7 @@ file.**
 | `--glow` CSS var | `cd-app.jsx:36` | `t.glow / 100`, spread onto the root `.cd` element with `OXBLOOD.vars`. |
 | `data-space` / `data-frame` | `cd-app.jsx:49` | `relaxed｜open｜lounge` and `stamp｜hairline` — drive vertical rhythm and rule weight in `cd-theme.jsx` CSS. |
 | `--watch` | `build.mjs:44` (`process.argv`) | The only CLI flag. Switches esbuild to watch mode. |
-| React / ReactDOM version | `index.html` `<head>` | Pinned `18.3.1` production UMD, **self-hosted in `vendor/`** since 2026-09-02. To upgrade, follow `vendor/README.md` — no rebuild needed, React isn't bundled into `build/*.js`. |
+| React / ReactDOM version | `index.html` `<head>` | Pinned `18.3.1` production UMD, **self-hosted in `vendor/`** since 2026-09-02. Upgrade = re-`curl` both `umd/react{,-dom}.production.min.js` from unpkg at the new version, diff the sha384 against jsdelivr's copy, done. No rebuild — React isn't bundled into `build/*.js`. |
 | `CNAME` | repo root | `pakfro.dev` — the custom domain. Don't delete it; Pages needs it. |
 | `robots.txt` | repo root | `Allow: /` + sitemap pointer. |
 | `sitemap.xml` | repo root | Root URL only — deliberate, since all routes are hash fragments crawlers don't index separately. |

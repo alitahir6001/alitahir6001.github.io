@@ -1,40 +1,37 @@
-# Security Hardening Notes
+# Security
 
-## Implemented
+pakfro.dev is a **fully static site** — no backend, no database, no API, no build step on the
+server. GitHub Pages serves the files in this repo exactly as committed. There is no user input,
+no authentication, and no data collected from visitors.
 
-- Content Security Policy (CSP) added to HTML pages via `<meta http-equiv="Content-Security-Policy">`.
-- Referrer policy set to `strict-origin-when-cross-origin`.
-- Permissions policy added to disable geolocation/camera/microphone by default.
-- `rel="noopener noreferrer"` preserved on external links opened in new tabs.
-- Subresource Integrity (`integrity`) is configured for third-party CDN scripts in `demo.html`.
-- Inline scripts were moved to dedicated files (`/js/demo.js`, `/js/form.js`) to support stricter CSP.
-- Client-side input sanitation and length checks are applied before API submission in demo/feedback flows.
+## Reporting
 
-## Injection protection baseline (current + required backend practices)
+Found something? Email **ali@pakfro.dev**. There is no bounty; I'll just fix it.
 
-### Input injection (XSS / command-like payloads)
-- Treat all user input as untrusted.
-- Sanitize and bound input length client-side (implemented) and validate again server-side (required).
-- Render responses via safe text APIs (`textContent`) rather than HTML injection.
+## What's actually enforced
 
-### SQL injection (for future DB integration)
-- Never build SQL with string concatenation.
-- Use parameterized/prepared statements in every query path.
-- Enforce allowlists for sortable/filterable fields and strict type coercion.
+Delivered as `<meta>` tags in `index.html` (see the constraint below):
 
-### Prompt injection (for AI-backed features)
-- Never pass raw user input directly into privileged system instructions.
-- Keep system/developer prompts server-side and immutable.
-- Constrain model tools/actions with explicit allowlists and output validation.
-- Treat model output as untrusted data; sanitize before render or downstream execution.
+- **CSP** — `default-src 'self'`, `script-src 'self'`, `object-src 'none'`, `base-uri 'self'`,
+  `connect-src 'self'`, `upgrade-insecure-requests`.
+- **`Referrer-Policy: strict-origin-when-cross-origin`**.
+- **`Permissions-Policy`** — geolocation, microphone, and camera denied.
+- **`rel="noopener noreferrer"`** on every external link that opens in a new tab (8 of 8).
+- **No third-party scripts.** React 18.3.1 is vendored in `vendor/` and served from this origin,
+  so `script-src` is `'self'` with no CDN exception. Verified byte-identical across two
+  independent registries before it was committed.
+- **No analytics, no trackers, no cookies.** `localStorage` is used for exactly one thing: a
+  `cdTweaks` flag that reveals a local-only dev panel.
 
-## Remaining hardening opportunities
+## Known limits
 
-1. **Move security controls from meta tags to HTTP headers** (preferred for stronger enforcement):
-   - `Content-Security-Policy`
-   - `X-Content-Type-Options: nosniff`
-   - `X-Frame-Options: DENY` (or rely on `frame-ancestors` in CSP)
-   - `Strict-Transport-Security`
-2. **Maintain strict CSP compatibility** by avoiding new inline event handlers/scripts/styles unless paired with nonces/hashes.
-3. **Form abuse protection** for external feedback form providers (rate limits / CAPTCHA where applicable).
-4. **Dependency update cadence** for CDN assets and periodic SRI hash verification.
+- **CSP is delivered by `<meta>`, not an HTTP header.** GitHub Pages does not allow custom
+  response headers, so `Strict-Transport-Security`, `X-Content-Type-Options: nosniff`, and
+  `X-Frame-Options` cannot be set on this host at all, and `frame-ancestors` is ignored inside a
+  `<meta>` CSP. Moving to a host that allows headers is the only real fix; it is not currently
+  worth it for a static portfolio.
+- **`style-src` keeps `'unsafe-inline'`** because the theme injects a `<style>` block at runtime.
+  Removing it means moving that CSS into a served stylesheet.
+- **Google Fonts is the one remaining third-party origin** (`fonts.googleapis.com` for the
+  stylesheet, `fonts.gstatic.com` for the font files). Self-hosting the woff2 files would let
+  `style-src` and `font-src` drop to `'self'`.
