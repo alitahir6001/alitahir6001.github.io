@@ -5,10 +5,10 @@
 
 const PROJECT_CHANNELS = [
   {
-    id: 'CH-01', of: '· learning platform · pre-pilot', title: 'Pocket Professor',
-    body: 'An adaptive learning platform for motivated autodidacts who want to change careers — a problem informed by 15 years of my own service-industry work. Three agents (onboarding, professor, career coach) build a plan and adapt it to real progress, under strict contracts with an append-only event store so every adaptation is reproducible.',
-    stack: ['node · fastify · ts', 'react · vite · tailwind', 'postgres · github actions'],
-    badge: 'PRE-PILOT', badgeCls: 'warn',
+    id: 'CH-01', of: '· learning platform · pre-deploy', title: 'Pocket Professor',
+    body: 'An adaptive learning platform for motivated autodidacts who want to change careers — a problem informed by 15 years of my own service-industry work. V2 runs end to end locally: onboarding and a daily professor session, with every agent response schema-validated before a learner sees it. A deterministic adaptation engine with an audit trail is built but not yet wired in, and v2 is not deployed yet.',
+    stack: ['node · fastify · ts', 'react · vite · tailwind', 'postgres · node:test'],
+    badge: 'PRE-DEPLOY', badgeCls: 'warn',
     href: '#/pocket-professor',
     // the v2 repo is incomplete — point at the playground, which is public and runnable
     repo: 'https://github.com/alitahir6001/pock_prof_playground',
