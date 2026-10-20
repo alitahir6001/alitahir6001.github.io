@@ -9,8 +9,8 @@ Open problems worth solving on this site, each with why the current approach fal
 what asset this project already has, the first three concrete steps **in this repo**, and
 a falsifiable milestone. Everything here is a **candidate**, not a decision — nothing in
 this file authorizes a change. Route every one of these through
-`pakfro-site-change-control`, and none of it outranks `.ai/current-task.md`, which is the
-live priority list.
+`pakfro-site-change-control`, and none of it outranks the Active task section of
+`.ai/handoff.md`, which is the live priority list.
 
 Ranked by leverage on the site's actual purpose: getting Ali hired.
 
@@ -204,5 +204,5 @@ grep -n "integrity\|unpkg\|fonts.g" index.html
 ```
 
 ```bash
-sed -n '1,40p' .ai/current-task.md   # live priorities always outrank this file
+sed -n '/^## Active task/,/^## Open threads/p' .ai/handoff.md   # live priorities always outrank this file
 ```
