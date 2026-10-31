@@ -1,33 +1,8 @@
 // Console Dossier — About (#/about). Personnel file: Ali's real bio narrative set in
 // the dossier vocabulary. Two framed photographs (childhood in Rock Creek Park; the
-// v1 Pocket Professor backend), a pull quote, the research record, and the kitchen years.
-// Medium density — richer than the landing, still calm.
-
-// §04. The page claims a researcher's instincts throughout; this section is the evidence
-// for it. Sourced from the 2019 résumé — every duty here is one Ali actually performed.
-const RESEARCH_RECORD = [
-  {
-    id: 'STUDY', of: 'own design · 2017 — 2018',
-    title: '“Cross Cultural Stressors of Adolescents and Young Adults Ages 14–24 in a Bi-Cultural Upbringing”',
-    body: 'My own thesis, sponsored into graduate-level (5000) research as an undergraduate, aimed at a question I grew up inside: what does it cost to be raised in two cultures at once? A 2×3 factorial design — two age bands (14–19, 20–24) against three stressor types, financial, educational, and social — surveyed 138 respondents, roughly three quarters in San Antonio and the rest in the D.C. metro. Self-report was triangulated against Bexar County and forty years of US Census demographics, plus a meta-analysis of existing work on cultural stressors and dominance-hierarchy paradigms. The dominant pressure turned out to be social — conforming on language, behavioral norms, etiquette — with financial pressure close behind, tracking the immigrant communities most respondents came from. Presented as a poster at UTSA\'s thesis conference in 2018.',
-    stack: ['2×3 factorial', 'n = 138 · two metros', 'survey · census · meta-analysis'],
-    badge: 'THESIS',
-  },
-  {
-    id: 'LAB', of: 'work-study · 2016',
-    title: 'Hermann Spermatogenesis Lab · UTSA',
-    body: 'Lab assistant to Dr. Brian Hermann and Dr. Nadine Mutoji. Most of it was protocol execution — synthesizing fixatives and ethanol dilutions, labeling PCR containers, organizing frozen tissue for slides and assays, running the autoclave, moving biohazard and animal waste under Risk Management SOP. The piece I would still defend is the filing system: the lab\'s sample database had grown to where nobody could find anything in it, so I restructured it chronologically and by sample type, migrated every file into monthly network folders, wrote the convention down, and told the people who depended on it. Provenance is the whole game in a wet lab — a tube you cannot trace is a tube you cannot use.',
-    stack: ['pcr · tissue prep', '4% pfa · ethanol dilutions', 'data migration · sop'],
-    badge: 'WORK-STUDY',
-  },
-  {
-    id: 'LARC', of: 'animal attendant · 2013 — 2014',
-    title: 'Lab Animal Resources Center · UTSA',
-    body: 'The first research job that paid. Husbandry and equipment sterilization across two facilities, plus the transport chain out to the START Company at the medical center — inventory tracked and signed for at both ends. Sanitation was verified rather than assumed: TSA plates and swabs sampled on a fixed monthly schedule, so contamination surfaced as data instead of as a ruined experiment months later. A controlled environment turns out to be something you maintain on a schedule, not something you declare once.',
-    stack: ['husbandry · autoclave', 'chain of custody', 'environmental sampling'],
-    badge: '2013 — 2014',
-  },
-];
+// v1 Pocket Professor backend), a pull quote, and a pointer to the full record.
+// The research record lives on Trajectory; §04 names it here so the "researcher" claim
+// is evidenced on this page (rules.md: back a claim on the page that makes it).
 
 function About() {
   useReveal('about');
@@ -39,9 +14,11 @@ function About() {
         <div className="k" data-reveal>— Personnel · Background</div>
         <h1 data-reveal>The researcher who<br />learned to <span className="a">ship.</span></h1>
         <p className="lead" data-reveal>
-          I'm a software engineer with an experimental psychology degree, and I still work the way
-          the lab taught me — <strong>state the claim, design the check, trust the evidence over
-          the story.</strong> The subjects are systems now.
+          I'm a software engineer with an experimental psychology degree. The lab taught me to
+          <strong> state the claim, design the check, and trust the evidence over the story.</strong> I
+          still work that way, and the question I keep coming back to is the one AI makes urgent:{' '}
+          <span className="a">how people come to trust, learn from, and be changed by the systems
+          they use.</span>
         </p>
       </section>
 
@@ -115,8 +92,9 @@ function About() {
         <p>
           My research background made me skeptical of popular neuromyths like "learning styles." The
           real leverage is in evidence-based mechanics — <span className="a">active recall, spaced
-          repetition, desirable difficulty.</span> Pocket Professor is built to facilitate those
-          processes, not just hand you a list of topics.
+          repetition, desirable difficulty.</span> Those are the mechanics I'm designing Pocket
+          Professor toward, instead of handing you a list of topics. Today it handles pacing, one
+          session a day; recall checks and spaced review are what it's designed to add.
         </p>
         <p>
           It's for people like me: motivated autodidacts who want to change careers, standing at
@@ -126,48 +104,23 @@ function About() {
         </p>
       </div>
 
-      {/* §04 — the research record: evidence for the claims made above */}
+      {/* §04 — the record behind the claims above; full detail lives on Trajectory */}
       <div className="cd-band" data-reveal>
-        <span className="a">§ 04</span><span className="ln"></span><span className="end">research record · 2013 — 2018</span>
+        <span className="a">§ 04</span><span className="ln"></span><span className="end">the record</span>
       </div>
-      {RESEARCH_RECORD.map((r) => (
-        <article className="cd-chan" data-reveal key={r.id}>
-          <div className="id">{r.id}<span className="of">{r.of}</span></div>
-          <div>
-            <h3>{r.title}</h3>
-            <p>{r.body}</p>
-            <p className="stack">{r.stack.map((s, i) => <span key={i}>{s}</span>)}</p>
-          </div>
-          <div className="right">
-            <div className="badge">{r.badge}</div>
-          </div>
-        </article>
-      ))}
-
-      {/* §05 — prior life. Was .cd-ch (a flex-column grid card), which stacked the right
-          rail full-width under the body. .cd-chan is the row component this markup wants. */}
-      <div className="cd-band" data-reveal>
-        <span className="a">§ 05</span><span className="ln"></span><span className="end">prior life · before the terminal</span>
+      <div className="cd-prose" data-reveal>
+        <p>
+          The research behind all this: an undergraduate thesis on cross-cultural stressors (a 2×3
+          factorial design, n = 138, presented at UTSA in 2018), work-study in the Hermann
+          Spermatogenesis Lab (2016), and animal-facility work at UTSA's Lab Animal Resources Center
+          (2013–2014). From 2015 to 2020 I also ran <strong>HerbNCurry</strong>, a solo catering
+          business. I speak English and Urdu/Hindi natively, understand Punjabi, and speak
+          conversational Spanish.
+        </p>
+        <div className="cd-cta one">
+          <a href="#/trajectory"><span>▶  Trajectory</span><span className="ar">→</span></a>
+        </div>
       </div>
-      <article className="cd-chan" data-reveal>
-        <div className="id">ARCHIVE<span className="of">2015 — 2020</span></div>
-        <div>
-          <h3>Chef, operator, undergraduate</h3>
-          <p>
-            All of the above ran alongside <strong style={{ color: 'var(--paper)', fontWeight: 500 }}>HerbNCurry</strong>,
-            a solo on-site catering business I built through college to ~155 events a year at its peak.
-            End-to-end ownership: clients, menus, logistics, the cooking. Labs by day, kitchens by night.
-            It taught me operations, reliability, and how to keep a promise to a customer — the same
-            instincts I bring to shipping software.
-          </p>
-          <p className="stack"><span>B.S. Experimental Psychology · UTSA</span><span>English (native)</span><span>Urdu/Hindi (native)</span><span>Punjabi (receptive fluency)</span><span>Spanish (conversational)</span></p>
-        </div>
-        <div className="right">
-          <div><span className="k">PEAK</span><span className="v"> · 155 ev/yr</span></div>
-          <div><span className="k">ROLE</span><span className="v"> · Owner</span></div>
-          <div className="badge">CLOSED 2020</div>
-        </div>
-      </article>
 
       <Foot left="— END OF FILE" ack="PSN · 01" />
     </div>

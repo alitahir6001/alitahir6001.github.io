@@ -3,9 +3,9 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <!-- script-src is 'self' only — React is vendored, no third-party script origin.
+  <!-- No third-party origins: React and JetBrains Mono are both self-hosted in vendor/.
        style-src keeps unsafe-inline for cd-theme's injected <style>. -->
-  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; object-src 'none'; base-uri 'self'; img-src 'self' data:; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; connect-src 'self'; upgrade-insecure-requests">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; object-src 'none'; base-uri 'self'; img-src 'self' data:; style-src 'self' 'unsafe-inline'; font-src 'self'; connect-src 'self'; upgrade-insecure-requests">
   <meta name="referrer" content="strict-origin-when-cross-origin">
   <meta http-equiv="Permissions-Policy" content="geolocation=(), microphone=(), camera=()">
   <meta name="robots" content="index, follow">
@@ -20,9 +20,7 @@
   <meta name="twitter:title" content="Ali Tahir — Console Dossier">
   <meta name="twitter:description" content="Ali Tahir — software engineer. Projects, field notes, and career trajectory, filed as a console dossier.">
 
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+  <link href="vendor/fonts/fonts.css" rel="stylesheet">
   <style>
     html, body { margin: 0; padding: 0; background: #08080a; }
   </style>
