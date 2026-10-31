@@ -84,7 +84,7 @@ in one session produces three distinct route events in the dashboard, with no co
 
 ---
 
-## F3 — Removing the unpkg dependency — ✅ MOSTLY SOLVED 2026-09-02
+## F3 — Removing the unpkg dependency — ✅ SOLVED 2026-09-02 (fonts closed 2026-10-30)
 
 **What was done.** React and ReactDOM 18.3.1 were downloaded into a new committed `vendor/`
 directory and the two `<script>` tags repointed at them. The CSP went from
@@ -97,14 +97,10 @@ skill's config table.
 `build/` was deliberately *not* used as the destination — it is esbuild's output directory,
 and mixing vendored input into it invites a future `--bundle` or clean step to eat it.
 
-**What is still open.** Google Fonts. `fonts.googleapis.com` (stylesheet) and
-`fonts.gstatic.com` (font files) remain the last third-party origins, and the CSP still
-allows both. Self-hosting JetBrains Mono — woff2 files into `vendor/fonts/` plus an
-`@font-face` block — would close it and let `style-src`/`font-src` drop to `'self'`.
-
-**You have a result when:** devtools → Network, filtered to third-party origins, is empty on
-a full page load, and the site renders identically offline after a cache clear. As of
-2026-09-02 that filter shows Google Fonts only.
+**Google Fonts closed 2026-10-30.** JetBrains Mono's six woff2 subsets (66 KB) and Google's
+own `@font-face` CSS (URLs localized) now live in `vendor/fonts/`; the CSP's `style-src` and
+`font-src` dropped both Google origins. Measured on the local preview: zero third-party resource
+requests on a full load, latin subset served from `vendor/fonts/`, no CSP errors.
 
 ---
 
