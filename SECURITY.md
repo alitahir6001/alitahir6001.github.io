@@ -32,6 +32,6 @@ Delivered as `<meta>` tags in `index.html` (see the constraint below):
   worth it for a static portfolio.
 - **`style-src` keeps `'unsafe-inline'`** because the theme injects a `<style>` block at runtime.
   Removing it means moving that CSS into a served stylesheet.
-- **Google Fonts is the one remaining third-party origin** (`fonts.googleapis.com` for the
-  stylesheet, `fonts.gstatic.com` for the font files). Self-hosting the woff2 files would let
-  `style-src` and `font-src` drop to `'self'`.
+- **No third-party origins.** React and JetBrains Mono are both self-hosted in `vendor/`, so
+  `script-src`, `style-src`, and `font-src` all allow `'self'` only (plus the inline-style
+  exception above).
