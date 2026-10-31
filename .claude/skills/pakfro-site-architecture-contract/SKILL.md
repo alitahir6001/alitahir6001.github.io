@@ -17,8 +17,8 @@ even allowed to make the change → `pakfro-site-change-control`. Page copy →
 
 ```
 index.html
-  ├─ <head>: JetBrains Mono (Google Fonts) + React 18.3.1 + ReactDOM 18.3.1
-  │          production UMD, self-hosted in vendor/  →  global React / ReactDOM
+  ├─ <head>: JetBrains Mono (vendor/fonts/fonts.css) + React 18.3.1 + ReactDOM 18.3.1
+  │          production UMD, all self-hosted in vendor/  →  global React / ReactDOM
   └─ <body>: <div id="root"> + ten plain <script> tags, in a LOAD-BEARING ORDER:
        tweaks-panel → cd-theme → cd-home → cd-detail → cd-projects →
        cd-fieldnotes → cd-trajectory → cd-about → cd-hire → cd-app  (LAST)
@@ -150,7 +150,7 @@ rebuild, and commit `.jsx` + `build/*.js` together.
 | Substring route matching (Invariant 4). | Open, currently harmless. |
 | No tests, no CI, no linter anywhere in the repo. Verification is manual — see `pakfro-site-runbook`. | By design for a site this size; a real constraint on how confidently anything can change. |
 | Blog has no markdown/emphasis rendering — the live post shows literal `* *`. | Open, low priority. |
-| Google Fonts is a second third-party request (privacy + availability). | Not currently tracked. |
+| ~~Google Fonts is a second third-party request (privacy + availability).~~ | **Closed 2026-10-30.** JetBrains Mono self-hosted in `vendor/fonts/` (6 woff2 subsets + Google's `@font-face` CSS, URLs localized); CSP `style-src`/`font-src` dropped the Google origins. |
 
 ## Provenance and maintenance
 
