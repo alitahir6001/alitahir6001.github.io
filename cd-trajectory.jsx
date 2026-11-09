@@ -184,7 +184,8 @@ function Trajectory() {
       <div className="cd-prose" data-reveal>
         <p>
           The personal work has its own page — Pocket Professor, the agent tooling I use daily,
-          a ZuneHD revival, and a couple of hardware detours, each with a link to its source.
+          an audio remastering tool, a ZuneHD revival, and a couple of hardware detours, each
+          with a link to its source.
         </p>
         <div className="cd-cta one">
           <a href="#/projects"><span>▶  Projects</span><span className="ar">→</span></a>
