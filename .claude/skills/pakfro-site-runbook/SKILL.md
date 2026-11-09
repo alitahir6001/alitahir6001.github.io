@@ -18,7 +18,6 @@ Why the architecture is like this → `pakfro-site-architecture-contract`. What 
 ```bash
 git clone https://github.com/alitahir6001/alitahir6001.github.io.git
 cd alitahir6001.github.io
-git checkout dev
 npm install
 ```
 
