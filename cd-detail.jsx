@@ -5,8 +5,8 @@
 
 function DetailTelemetry() {
   const cells = [
-    { k: 'Mission Status', v: '● PRE-DEPLOY', a: true, sub: 'v1 retired for rebuild' },
-    { k: 'Stage', v: 'v2 · BUILT', a: true, sub: 'runs locally' },
+    { k: 'Mission Status', v: '● PILOT', a: true, sub: 'live since 2026.11' },
+    { k: 'Stage', v: 'v2 · DEPLOYED', a: true, sub: 'engine not wired' },
     { k: 'Frontend', v: 'REACT · VITE', sub: 'tailwind' },
     { k: 'Backend', v: 'FASTIFY · TS', sub: 'node' },
     { k: 'Store', v: 'POSTGRES', sub: 'audit log' },
@@ -36,19 +36,19 @@ function Detail({ theme }) {
 
       {/* Header — airy */}
       <section className="cd-operator" style={{ paddingBottom: 40 }}>
-        <div className="k" data-reveal>— Channel CH-01 · Learning platform · Pre-deploy</div>
+        <div className="k" data-reveal>— Channel CH-01 · Learning platform · Pilot</div>
         <h1 className="id" data-reveal>POCKET PROFESSOR<span className="a">.</span></h1>
         <p className="stmt" data-reveal>
           An adaptive learning platform for motivated autodidacts who want to change careers — a
-          problem informed by 15 years of my own service-industry work. V2 is a full rebuild that
-          runs end to end on my machine. It is <strong>not deployed yet</strong>, and its adaptation
-          engine is built but not yet wired into the app.
+          problem informed by 15 years of my own service-industry work. V2 is a full rebuild,
+          now <strong>live as a trial pilot</strong>. Its adaptation engine is built but not yet wired
+          into the app.
         </p>
       </section>
 
       <article className="cd-console" data-reveal>
         <div className="pad">
-          <div className="chid">STATUS <span className="a">·</span> CURRENT <span className="a">·</span> PRE-DEPLOY</div>
+          <div className="chid">STATUS <span className="a">·</span> CURRENT <span className="a">·</span> PILOT</div>
         </div>
         <DetailTelemetry />
         <div className="cd-cta">
@@ -58,7 +58,7 @@ function Detail({ theme }) {
 
       {/* Product shot */}
       <div className="cd-shot" data-reveal>
-        <div className="cap"><span className="a">FIG.01</span> &nbsp; UI preview · captured at deploy</div>
+        <div className="cap"><span className="a">FIG.01</span> &nbsp; UI preview · capture pending</div>
       </div>
 
       {/* Overview prose */}
@@ -81,8 +81,8 @@ function Detail({ theme }) {
         <p>
           The <span className="a">deterministic adaptation engine</span> is built: five rules
           written as a pure function, so the same inputs always produce the same decision, with unit
-          tests and an audit trail. Nothing in the app calls it yet, and the career coach agent is in
-          the same state. Wiring them in waits on a small test with real users.
+          tests and an audit trail. Nothing in the live app calls it yet, and the career coach agent
+          is in the same state.
         </p>
       </div>
 
@@ -132,7 +132,7 @@ function Detail({ theme }) {
         <div className="row"><span className="k">Store</span><span className="v">PostgreSQL <span className="a">· audit log</span></span></div>
         <div className="row"><span className="k">Tests</span><span className="v">node:test · smoke scripts</span></div>
         <div className="row"><span className="k">Prod guards</span><span className="v">Locked CORS · token-gated engine · server-side admin</span></div>
-        <div className="row"><span className="k">Host</span><span className="v">Railway <span className="a">· v2 not yet deployed</span></span></div>
+        <div className="row"><span className="k">Host</span><span className="v">Railway <span className="a">· live 2026.11 · manual deploys</span></span></div>
         <div className="row"><span className="k">Crew</span><span className="v">Solo build</span></div>
       </div>
 
@@ -141,6 +141,10 @@ function Detail({ theme }) {
         <span className="a">§ 04</span><span className="ln"></span><span className="end">build log · v1 → v2</span>
       </div>
       <div className="cd-log">
+        <div className="entry" data-reveal>
+          <div className="date">2026.11<span className="rev">v2 · pilot</span></div>
+          <p><strong>Deployed as a trial pilot.</strong> Railway runs the Postgres, backend, and frontend services on a custom subdomain, with login codes emailed from a verified domain. Deploys are manual, so a push never touches the live app, and the database has no public port.</p>
+        </div>
         <div className="entry" data-reveal>
           <div className="date">2026.06<span className="rev">v2 · hardening</span></div>
           <p><strong>Live AI + production guards.</strong> Agents moved from canned examples to real model output through the provider chain and output guard. Added the sprint dashboard, a server-enforced admin view, locked CORS, a token-gated engine endpoint, login-code lockout, and Railway deploy config.</p>
