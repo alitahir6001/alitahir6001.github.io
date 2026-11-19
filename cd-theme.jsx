@@ -172,7 +172,7 @@ function GlobalStyle() {
       .cd-ch-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1px; background: var(--rule-2); border: 1px solid var(--rule-2); }
       .cd-ch { display: flex; flex-direction: column; background: var(--bg); }
       .cd-ch-art { height: 180px; background: var(--bg-2); display: flex; align-items: center; justify-content: center; color: var(--paper-4); font-size: 22px; overflow: hidden; }
-      .cd-ch-art img { width: 100%; height: 100%; object-fit: cover; }
+      .cd-ch-art img { width: 100%; height: 100%; object-fit: contain; padding: 18px; box-sizing: border-box; }
       .cd-ch-body { padding: 24px 28px 28px; flex: 1; display: flex; flex-direction: column; gap: 10px; }
       .cd-ch .id { color: var(--accent-ink); font-size: 11px; letter-spacing: .2em; text-transform: uppercase; }
       .cd-ch .id .of { color: var(--paper-3); font-size: 10px; letter-spacing: .1em; }
