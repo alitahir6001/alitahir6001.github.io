@@ -52,6 +52,7 @@ function Detail({ theme }) {
         </div>
         <DetailTelemetry />
         <div className="cd-cta">
+          <a className="primary" href="https://learn.pakfro.dev" target="_blank" rel="noopener noreferrer"><span>▶  Live pilot · invite only</span><span className="ar">→</span></a>
           <a href="https://github.com/alitahir6001" target="_blank" rel="noopener noreferrer"><span>▶  GitHub · alitahir6001</span><span className="ar">→</span></a>
         </div>
       </article>
