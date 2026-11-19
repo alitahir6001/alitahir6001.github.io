@@ -20,7 +20,7 @@ const PROJECT_CHANNELS = [
     stack: ['python 3.11 · uv', 'demucs · pytorch', 'pedalboard · pyloudnorm · ffmpeg'],
     badge: 'ACTIVE',
     repo: 'https://github.com/alitahir6001/gain-of-thrones',
-    art: null,
+    art: 'images/gain-of-thrones-loudness.svg',
   },
   {
     id: 'CH-03', of: '· tool · agent harness', title: 'The Advisor',
@@ -60,7 +60,7 @@ const PROJECT_CHANNELS = [
     stack: ['.net 8 · c# · p/invoke', 'macos iokit · win winusb · linux libusb', 'musicbrainz'],
     badge: 'ACTIVE',
     repo: 'https://github.com/alitahir6001/zune-artist-updater',
-    art: null,
+    art: 'images/zune-hd-logo.svg',
   },
   {
     id: 'CH-08', of: '· archive · tinkering', title: 'Hardware & IoT',
