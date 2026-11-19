@@ -1,6 +1,6 @@
 // Console Dossier — About (#/about). Personnel file: Ali's real bio narrative set in
-// the dossier vocabulary. Two framed photographs (childhood in Rock Creek Park; the
-// v1 Pocket Professor backend), a pull quote, and a pointer to the full record.
+// the dossier vocabulary. Two framed figures (childhood in Rock Creek Park; the
+// v2 Pocket Professor comeback code), a pull quote, and a pointer to the full record.
 // The research record lives on Trajectory; §04 names it here so the "researcher" claim
 // is evidenced on this page (rules.md: back a claim on the page that makes it).
 
@@ -68,9 +68,9 @@ function About() {
 
       <figure className="cd-figure" data-reveal>
         <div className="frame" data-tag="FIG.B · BACKEND">
-          <img src="images/pockProf_code_snapshot.png" alt="The early v1 Python backend for the first Pocket Professor syllabus generator" />
+          <img src="images/pp-v2-comeback-code.png" alt="Pocket Professor v2 TypeScript: evaluateComeback, which calls the deterministic adaptation engine after two or more missed days" />
         </div>
-        <div className="cap"><span className="a">FIG.B</span> &nbsp; The v1 Python backend — Pocket Professor's first syllabus generator</div>
+        <div className="cap"><span className="a">FIG.B</span> &nbsp; The v2 comeback check: the deterministic engine sets how much shorter a session gets</div>
       </figure>
 
       <blockquote className="cd-quote" data-reveal>
