@@ -10,6 +10,7 @@ const PROJECT_CHANNELS = [
     stack: ['node · fastify · ts', 'react · vite · tailwind', 'postgres · node:test'],
     badge: 'PILOT', badgeCls: 'warn',
     href: '#/pocket-professor',
+    live: 'https://learn.pakfro.dev',
     // the v2 repo is incomplete — point at the playground, which is public and runnable
     repo: 'https://github.com/alitahir6001/pock_prof_playground',
     art: null,
@@ -106,6 +107,7 @@ function Projects() {
               <div className="ch-foot">
                 <div className={'badge ' + (c.badgeCls || '')}>{c.badge}</div>
                 {c.href ? <a className="read" href={c.href}>▶ Open file →</a> : null}
+                {c.live ? <a className="read" href={c.live} target="_blank" rel="noopener noreferrer">▶ Pilot →</a> : null}
                 {c.repo ? <a className="read" href={c.repo} target="_blank" rel="noopener noreferrer">▶ Source →</a> : null}
               </div>
             </div>
