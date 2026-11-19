@@ -57,9 +57,12 @@ function Detail({ theme }) {
       </article>
 
       {/* Product shot */}
-      <div className="cd-shot" data-reveal>
-        <div className="cap"><span className="a">FIG.01</span> &nbsp; UI preview · capture pending</div>
-      </div>
+      <figure className="cd-figure phone" data-reveal>
+        <div className="frame" data-tag="FIG.01 · LIVE PILOT">
+          <img src="images/pp-pilot-dashboard.jpg" alt="Pocket Professor pilot dashboard on a phone: day 2 of a 14-day sprint, with a note that today is a shorter session of about 25 minutes after a few days away" />
+        </div>
+        <div className="cap"><span className="a">FIG.01</span> &nbsp; Live pilot, 2026.11.18: a comeback day, shortened by the engine's missed-session rule</div>
+      </figure>
 
       {/* Overview prose */}
       <div className="cd-band cd-spec-title" data-reveal>
