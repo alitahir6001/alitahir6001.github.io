@@ -288,6 +288,7 @@ function GlobalStyle() {
       .cd-figure .cap { margin-top: 12px; color: var(--paper-3); font-size: 10.5px; letter-spacing: .14em; text-transform: uppercase; }
       .cd-figure .cap .a { color: var(--accent-ink); }
       .cd-figure.right { float: right; width: 42%; margin-left: 40px; }
+      .cd-figure.phone { max-width: 380px; margin-left: auto; margin-right: auto; }
 
       /* ---- pull quote ---- */
       .cd-quote { margin: 44px 0; padding: 0 0 0 28px; border-left: 2px solid var(--accent); max-width: 56ch; }
